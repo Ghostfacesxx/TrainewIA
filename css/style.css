@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Quicksand", sans-serif;
+    background: #fff;
+    color: #5B1313;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.header {
+    background: #7A1818;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0 12px 0;
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 4px;
+}
+
+.header-text {
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 6rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 0.7rem;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 36px;
+}
+
+
+.welcome {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: #5B1313;
+}
+
+.app-desc {
+    font-size: 1rem;
+    color: #5B1313;
+    margin-bottom: 32px;
+}
+
+.login-box {
+    background: #5B1313;
+    border-radius: 12px;
+    padding: 28px 24px 28px 24px;
+    width: 90%;
+    max-width: 340px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.login-title {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #fff;
+    width: 70%;
+    text-align: center;
+    padding-bottom: 4px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.input-label {
+    color: #fff;
+    font-size: 0.95rem;
+    margin-top: 12px;
+    margin-bottom: 2px;
+}
+
+.input-field {
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid #fff;
+    color: #fff;
+    font-size: 1rem;
+    padding: 7px 0 5px 0;
+    margin-bottom: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    border-bottom: 1.5px solid #e0bcbc;
+}
+
+.forgot-password {
+    color: #fff;
+    font-size: 0.95rem;
+    margin: 10px auto;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.login-btn {
+    background: #7A1818;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 0;
+    font-size: 1rem;
+    margin-top: 18px;
+    cursor: pointer;
+}
+.cadastro-btn{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-line {
+    width: 90%;
+    border: none;
+    border-top: 2px solid #5B1313;
+    margin: 24px 0 22px 0;
+}
+/* Responsividade para mobile */
+@media (max-width: 480px) {
+    .header {
+        padding: 18px 0 8px 0;
+    }
+    .logo {
+        width: 170px;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 0.6rem;
+    }
+    .main-content {
+        margin-top: 24px;
+    }
+    .welcome {
+        font-size: 2rem;
+    }
+    .app-desc {
+        font-size: 1.1rem;
+        margin-bottom: 38px;
+    }
+    .login-box {
+        padding: 18px 8px 16px 8px;
+        max-width: 98vw;
+        min-width: 0
+    }
+    form{
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .login-title {
+        font-size: 1.5rem;
+        padding-bottom: 2px;
+    }
+    .input-label,
+    .forgot-password,
+    .google-btn {
+        font-size: 1rem;
+    }
+    .input-field {
+        font-size: 0.95rem;
+    }
+    .login-btn {
+        font-size: 0.95rem;
+        padding: 7px 0;
+    }
+    .footer-line {
+        width: 98%;
+        margin: 18px 0 8px 0;
+    }
+}

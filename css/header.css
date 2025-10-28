@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Quicksand", sans-serif;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #7a1818;
+    height: 90px;
+}
+
+.logo {
+    height: 32px;
+    width: auto;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.header-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 44px;
+}
+
+.menu .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    margin-bottom: 2px;
+}
+.menu .bar {
+    width: 22px;
+    height: 2.5px;
+    background: #fff;
+    margin: 2px 0;
+    border-radius: 2px;
+    display: block;
+}
+
+.menu .item-label {
+    color: #fff;
+    font-size: 12px;
+    margin-top: 1px;
+}
+
+.chat .chat-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+    position: relative;
+}
+.chat .chat-icon::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+}
+.chat .item-label {
+    color: #fff;
+    font-size: 12px;
+    margin-top: 1px;
+}
+
+.perfil .perfil-icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin-bottom: 2px;
+    position: relative;
+    border: 1px solid white;
+    border-radius: 100%;
+}
+.perfil .perfil-icon::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    left: 3px;
+    top: 1px;
+}
+.perfil .perfil-icon::after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 7px;
+    border-radius: 0 0 8px 8px;
+    border: 2px solid #fff;
+    border-top: none;
+    position: absolute;
+    left: 2px;
+    top: 11px;
+}
+.perfil .item-label {
+    color: #fff;
+    font-size: 12px;
+    margin-top: 1px;
+}
+
+.header-title {
+    margin: 12px 0 0 0;
+    font-size: 18px;
+    color: #fff;
+    text-align: left;
+    padding-left: 16px;
+    font-weight: 500;
+}
+
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-line {
+    width: 90%;
+    border: none;
+    border-top: 2px solid #5B1313;
+    margin: 24px 0 22px 0;
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 10px 10px 4px 8px;
+        height: 70px;
+    }
+    .logo {
+        height: 40px;
+    }
+    .header-title {
+        font-size: 16px;
+        padding-left: 10px;
+    }
+}
