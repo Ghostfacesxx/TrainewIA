@@ -67,6 +67,12 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
+// Verificar se a API key está configurada
+if (!process.env.OPENAI_API_KEY) {
+  console.error('❌ ERRO: OPENAI_API_KEY não está configurada!');
+  console.log('🔧 Configure a variável de ambiente OPENAI_API_KEY no Render');
+}
+
 const systemPrompt = `
 Você é o assistente **TrainewIA**, especializado em treinos e alimentação acessível.
 Sua missão é montar planos personalizados com base nas informações do usuário.
@@ -111,6 +117,13 @@ Sua missão é montar planos personalizados com base nas informações do usuár
 app.post('/api/chat', async (req, res) => {
   const { message, history } = req.body;
 
+  // Verificar se a API key está configurada
+  if (!process.env.OPENAI_API_KEY) {
+    return res.status(500).json({ 
+      reply: 'Erro de configuração: API key da OpenAI não encontrada. Entre em contato com o administrador.' 
+    });
+  }
+
   try {
     const messages = [
       { role: 'system', content: systemPrompt },
@@ -126,13 +139,41 @@ app.post('/api/chat', async (req, res) => {
       messages,
       temperature: 0.8
     });
-console.log("Resposta completa da IA:", completion);
+
     const resposta = completion.choices[0].message.content.trim();
     res.json({ reply: resposta });
   } catch (err) {
     console.error('Erro na IA:', err);
-    res.status(500).json({ reply: 'Erro ao acessar a IA. Tente novamente mais tarde.' });
+    
+    // Tratamento específico de erros
+    if (err.code === 'invalid_api_key') {
+      return res.status(500).json({ 
+        reply: 'Erro: Chave da API inválida. Verifique a configuração.' 
+      });
+    }
+    
+    if (err.code === 'insufficient_quota') {
+      return res.status(500).json({ 
+        reply: 'Erro: Cota da API esgotada. Tente novamente mais tarde.' 
+      });
+    }
+    
+    res.status(500).json({ 
+      reply: 'Erro ao acessar a IA. Tente novamente mais tarde.' 
+    });
   }
+});
+
+// Endpoint de teste para verificar se a API está funcionando
+app.get('/api/test', (req, res) => {
+  const status = {
+    server: 'OK',
+    timestamp: new Date().toISOString(),
+    openai_configured: !!process.env.OPENAI_API_KEY,
+    environment: process.env.NODE_ENV || 'development'
+  };
+  
+  res.json(status);
 });
 
 const PORT = process.env.PORT || 3000;
