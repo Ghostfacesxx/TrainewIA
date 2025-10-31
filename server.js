@@ -7,18 +7,61 @@ import path from 'path';
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
-app.use('/css', express.static('css'));
-app.use('/js', express.static('js'));
+
+// Headers de segurança
+app.use((req, res, next) => {
+  res.header('X-Content-Type-Options', 'nosniff');
+  res.header('X-Frame-Options', 'DENY');
+  res.header('X-XSS-Protection', '1; mode=block');
+  next();
+});
+
+// Configurar MIME types corretos
+app.use(express.static('public', {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.set('Content-Type', 'text/css');
+    }
+    if (path.endsWith('.js')) {
+      res.set('Content-Type', 'application/javascript');
+    }
+  }
+}));
+
+app.use('/css', express.static('css', {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.set('Content-Type', 'text/css');
+    }
+  }
+}));
+
+app.use('/js', express.static('js', {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.js')) {
+      res.set('Content-Type', 'application/javascript');
+    }
+  }
+}));
 
 const rootPath = path.resolve('public');
 
+// Rotas específicas para páginas
 app.get('/', (req, res) => res.sendFile('index.html', { root: rootPath }));
 app.get('/inicio', (req, res) => res.sendFile('inicio.html', { root: rootPath }));
+app.get('/inicio.html', (req, res) => res.sendFile('inicio.html', { root: rootPath }));
 app.get('/cadastro', (req, res) => res.sendFile('cadastro.html', { root: rootPath }));
+app.get('/cadastro.html', (req, res) => res.sendFile('cadastro.html', { root: rootPath }));
 app.get('/chat', (req, res) => res.sendFile('chat.html', { root: rootPath }));
+app.get('/chat.html', (req, res) => res.sendFile('chat.html', { root: rootPath }));
 app.get('/treino', (req, res) => res.sendFile('treino.html', { root: rootPath }));
+app.get('/treino.html', (req, res) => res.sendFile('treino.html', { root: rootPath }));
 app.get('/dieta', (req, res) => res.sendFile('dieta.html', { root: rootPath }));
+app.get('/dieta.html', (req, res) => res.sendFile('dieta.html', { root: rootPath }));
+app.get('/sobre', (req, res) => res.sendFile('sobre.html', { root: rootPath }));
+app.get('/sobre.html', (req, res) => res.sendFile('sobre.html', { root: rootPath }));
+app.get('/config', (req, res) => res.sendFile('config.html', { root: rootPath }));
+app.get('/config.html', (req, res) => res.sendFile('config.html', { root: rootPath }));
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
