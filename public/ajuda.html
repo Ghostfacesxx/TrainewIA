@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ajuda - Trainew IA</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/font-manager.js"></script>
+
+    <script>
+        // Verificar se o usuário está logado (opcional para ajuda)
+        // AuthManager.requireAuth(); // Descomente se quiser que ajuda seja privado
+        
+        // Inicializa os modais ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal Menu
+            document.querySelector('.header-item.menu').addEventListener('click', function() {
+                document.getElementById('menu-modal-bg').style.display = 'block';
+            });
+            document.getElementById('menu-modal-bg').addEventListener('click', function(e) {
+                if (e.target.id === 'menu-modal-bg') {
+                    this.style.display = 'none';
+                }
+            });
+
+            // Modal Perfil
+            document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+            document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+            
+            // FAQ Toggle
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isOpen = answer.style.display === 'block';
+                    
+                    // Fechar todas as respostas
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        ans.style.display = 'none';
+                    });
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                    });
+                    
+                    // Abrir/fechar a resposta clicada
+                    if (!isOpen) {
+                        answer.style.display = 'block';
+                        this.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo" style="cursor: pointer;">
+        <nav class="header-nav">
+            <div class="header-item menu">
+                <span class="menu-icon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+                <span class="item-label">Menu</span>
+            </div>
+            <div onclick="window.location.href='chat.html'" class="header-item chat">
+                <img src="img/icon-ia.png" class="chat-icon">
+                <span class="item-label">Chat IA</span>
+            </div>
+            <div class="header-item perfil" id="perfil-btn">
+                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+                <span class="item-label">Perfil</span>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <h1 style="text-align: center; color: var(--text-color, #333); margin-bottom: 30px;">📚 Central de Ajuda</h1>
+        
+        <!-- Seção: Como Usar o App -->
+        <section class="help-section">
+            <h2 class="section-title">🚀 Como Usar o Trainew IA</h2>
+            
+            <div class="tutorial-grid">
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">👤</div>
+                    <h3>1. Criar Conta</h3>
+                    <p>Cadastre-se com seu email e senha para ter acesso a todos os recursos do app.</p>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">🤖</div>
+                    <h3>2. Chat IA</h3>
+                    <p>Converse com nossa IA para receber treinos personalizados e sugestões de dieta.</p>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">💪</div>
+                    <h3>3. Treinos</h3>
+                    <p>Acesse seus treinos salvos e acompanhe seu progresso físico.</p>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">🥗</div>
+                    <h3>4. Dieta</h3>
+                    <p>Veja suas refeições planejadas e dicas nutricionais personalizadas.</p>
+                </div>
+
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">📸</div>
+                    <h3>5. Alimentação</h3>
+                    <p>Tire fotos das suas refeições e receba análise nutricional completa com IA Vision.</p>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">⚙️</div>
+                    <h3>6. Configurações</h3>
+                    <p>Personalize o app com modo escuro e outras preferências.</p>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">👥</div>
+                    <h3>7. Perfil</h3>
+                    <p>Gerencie suas informações, foto de perfil e dados da conta.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Como Usar Alimentação -->
+        <section class="help-section">
+            <h2 class="section-title">📸 Como Usar a Análise Nutricional</h2>
+            
+            <div class="feature-detail">
+                <h3>Análise de Refeições com IA Vision</h3>
+                <p>A página de Alimentação permite que você tire fotos das suas refeições e receba uma análise nutricional completa instantaneamente usando inteligência artificial avançada.</p>
+                
+                <div class="steps-list">
+                    <div class="step-item">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <h4>Acesse a Página</h4>
+                            <p>Vá até a aba "Alimentação" através do carrossel na página inicial ou pelo menu lateral.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <h4>Tire ou Selecione uma Foto</h4>
+                            <p>Você tem três opções:</p>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li><strong>📷 Tirar Foto:</strong> Clique no botão "Tirar Foto" para abrir a câmera do seu dispositivo e fotografar a refeição na hora</li>
+                                <li><strong>🖼️ Escolher da Galeria:</strong> Selecione uma foto já existente na galeria do seu celular ou computador</li>
+                                <li><strong>Arrastar:</strong> Arraste uma imagem diretamente para a área de upload</li>
+                            </ul>
+                            <p style="margin-top: 10px;">Formatos aceitos: JPG, PNG (máx. 10MB)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <span class="step-number">3</span>
+                        <div class="step-content">
+                            <h4>Clique em Analisar</h4>
+                            <p>Após selecionar a foto, clique no botão "🔍 Analisar Refeição" e aguarde alguns segundos enquanto a IA processa a imagem.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <span class="step-number">4</span>
+                        <div class="step-content">
+                            <h4>Veja os Resultados</h4>
+                            <p>A IA irá identificar o alimento e mostrar informações detalhadas sobre:</p>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li>Calorias totais</li>
+                                <li>Quantidade de proteínas</li>
+                                <li>Carboidratos</li>
+                                <li>Gorduras</li>
+                                <li>Fibras</li>
+                                <li>Observações nutricionais e dicas</li>
+                                <li>Classificação de saudabilidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <span class="step-number">5</span>
+                        <div class="step-content">
+                            <h4>Consulte o Histórico</h4>
+                            <p>Todas as suas análises são salvas automaticamente no histórico. Clique em qualquer item para rever a análise completa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #2196f3;">
+                    <h4 style="color: #1565c0; margin-bottom: 10px;">💡 Dicas para Melhores Resultados</h4>
+                    <ul style="padding-left: 20px; color: #555;">
+                        <li>📱 <strong>Use a câmera do celular:</strong> A opção "Tirar Foto" abre diretamente a câmera do seu dispositivo</li>
+                        <li>Tire fotos com boa iluminação natural</li>
+                        <li>Enquadre toda a refeição no centro da imagem</li>
+                        <li>Evite fotos muito escuras ou borradas</li>
+                        <li>Quanto mais clara a foto, mais precisa será a análise</li>
+                        <li>Funciona melhor com pratos individuais</li>
+                        <li>Segure o celular na posição horizontal para melhor enquadramento</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: FAQ -->
+        <section class="help-section">
+            <h2 class="section-title">❓ Perguntas Frequentes (FAQ)</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como funciona a IA do Trainew?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nossa IA analisa suas informações pessoais, objetivos e preferências para criar treinos e dietas personalizados. Ela usa tecnologia avançada de machine learning para fornecer recomendações precisas e eficazes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Os treinos são adequados para iniciantes?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! A IA adapta os treinos ao seu nível de condicionamento físico. Informe se você é iniciante, intermediário ou avançado, e receberá exercícios apropriados para sua condição.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso usar o app offline?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Os treinos e dietas salvos podem ser visualizados offline. Porém, para gerar novos conteúdos com a IA, é necessária conexão com a internet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como ativar o modo escuro?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Acesse o menu Perfil > Configurações e ative o "Modo Escuro". Suas preferências serão salvas automaticamente.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Meus dados estão seguros?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Utilizamos criptografia avançada e seguimos as melhores práticas de segurança. Seus dados pessoais são protegidos e nunca compartilhados com terceiros.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como alterar minha foto de perfil?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Clique no ícone de perfil no header, depois em "Alterar foto de perfil". Selecione uma imagem do seu dispositivo e ela será salva automaticamente.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como ajustar o tamanho da fonte? ♿</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Para melhorar a acessibilidade:</strong></p>
+                        <ol style="margin-top: 10px; padding-left: 20px; line-height: 1.8;">
+                            <li>Acesse <strong>Perfil > Configurações</strong></li>
+                            <li>Role até a seção <strong>"♿ Acessibilidade"</strong></li>
+                            <li>Use os botões <strong>A-</strong> (diminuir) ou <strong>A+</strong> (aumentar)</li>
+                            <li>Ou arraste o <strong>slider</strong> para o tamanho desejado</li>
+                            <li>Escolha entre 5 níveis: Muito Pequeno, Pequeno, Normal, Grande, Muito Grande</li>
+                        </ol>
+                        <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9em;">
+                            💡 <em>Sua preferência será salva e aplicada em todas as páginas do app automaticamente!</em>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>A análise nutricional por foto é precisa?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Utilizamos a tecnologia GPT-4 Vision da OpenAI, que é treinada para identificar alimentos e estimar valores nutricionais com alta precisão. No entanto, os valores são aproximados e devem ser usados como referência. Para informações exatas, consulte embalagens ou um nutricionista.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Minhas fotos de refeições ficam salvas?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, as últimas 10 análises ficam salvas localmente no seu navegador. Você pode acessá-las a qualquer momento através do histórico na página de Alimentação. As imagens são armazenadas apenas no seu dispositivo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso cancelar minha conta?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, você pode sair da sua conta a qualquer momento através do menu Perfil > Sair. Para excluir permanentemente, entre em contato conosco.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Contato -->
+        <section class="help-section">
+            <h2 class="section-title">📞 Entre em Contato</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>suporte@trainewia.com</p>
+                    <p class="contact-description">Resposta em até 24 horas</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <p>+55 (11) 99999-9999</p>
+                    <p class="contact-description">Atendimento: Seg-Sex, 9h às 18h</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Telegram</h3>
+                    <p>@trainewia_suporte</p>
+                    <p class="contact-description">Suporte técnico rápido</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">🌐</div>
+                    <h3>Site</h3>
+                    <p>www.trainewia.com</p>
+                    <p class="contact-description">Mais informações e tutoriais</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Dicas Rápidas -->
+        <section class="help-section">
+            <h2 class="section-title">💡 Dicas Rápidas</h2>
+            
+            <div class="tips-container">
+                <div class="tip-item">
+                    <span class="tip-icon">🎯</span>
+                    <span class="tip-text">Seja específico ao conversar com a IA para receber recomendações mais precisas</span>
+                </div>
+                
+                <div class="tip-item">
+                    <span class="tip-icon">📅</span>
+                    <span class="tip-text">Atualize regularmente suas informações de peso e medidas para treinos otimizados</span>
+                </div>
+                
+                <div class="tip-item">
+                    <span class="tip-icon">💧</span>
+                    <span class="tip-text">Sempre mantenha-se hidratado durante os exercícios</span>
+                </div>
+                
+                <div class="tip-item">
+                    <span class="tip-icon">😴</span>
+                    <span class="tip-text">O descanso é fundamental - respeite os dias de pausa sugeridos</span>
+                </div>
+                
+                <div class="tip-item">
+                    <span class="tip-icon">📊</span>
+                    <span class="tip-text">Acompanhe seu progresso regularmente para melhores resultados</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Perfil -->
+    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+        <div class="perfil-modal" id="perfil-modal">
+            <div class="perfil-modal-header">Conta</div>
+            <div class="perfil-modal-user">
+                <span class="perfil-modal-user-icon" id="perfil-user-icon">
+                    <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+                </span>
+                <div class="perfil-modal-user-info">
+                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+                    <span class="perfil-modal-user-email" id="perfil-email"></span>
+                </div>
+            </div>
+            <hr class="perfil-modal-divider">
+            <div class="perfil-modal-list">
+                <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+                    <input type="file" id="foto-input" accept="image/*" style="display:none;">
+                </div>
+                <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'" style="background: var(--accent-color, #ff6347); color: white; font-weight: 600;">Ajuda</div>
+                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Menu Lateral -->
+    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+        <div class="menu-modal" id="menu-modal">
+            <div class="menu-modal-header">
+                <span>Menu</span>
+            </div>
+            <hr class="menu-modal-divider">
+            <div class="menu-modal-list">
+                <div onclick="window.location.href='chat.html'" class="menu-modal-item">Chat IA</div>
+                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+                <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+                <div onclick="window.location.href='ajuda.html'" class="menu-modal-item" style="background: var(--accent-color, #ff6347); color: white;">Ajuda</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <hr class="footer-line">
+    </footer>
+
+    <script>
+        // Inicializa o gerenciador de tema
+        ThemeManager.init();
+
+        // Atualiza a foto do header com a foto do usuário logado
+        function atualizarFotoHeader() {
+            if (typeof AuthManager !== 'undefined') {
+                const usuario = AuthManager.getLoggedUser();
+                const headerIcon = document.getElementById('header-perfil-icon');
+                if (usuario && usuario.fotoPerfil && headerIcon) {
+                    headerIcon.src = usuario.fotoPerfil;
+                }
+            }
+        }
+
+        // Modal Perfil
+        function showPerfilModal() {
+            if (typeof AuthManager !== 'undefined') {
+                const usuario = AuthManager.getLoggedUser();
+                if (usuario) {
+                    document.getElementById('perfil-nome').textContent = usuario.nome || '';
+                    document.getElementById('perfil-email').textContent = usuario.email || '';
+                    // Foto de perfil
+                    const img = document.getElementById('perfil-img');
+                    if (usuario.fotoPerfil) {
+                        img.src = usuario.fotoPerfil;
+                    } else {
+                        img.src = "img/icon.png";
+                    }
+                }
+            }
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        }
+        
+        function hidePerfilModal(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                document.getElementById('perfil-modal-bg').style.display = 'none';
+            }
+        }
+
+        // Funções do perfil
+        document.getElementById('alterar-foto-btn').addEventListener('click', function () {
+            document.getElementById('foto-input').click();
+        });
+
+        document.getElementById('foto-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file || typeof AuthManager === 'undefined') return;
+            
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                const fotoBase64 = evt.target.result;
+                document.getElementById('perfil-img').src = fotoBase64;
+                AuthManager.updateLoggedUser({ fotoPerfil: fotoBase64 });
+                atualizarFotoHeader();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        document.getElementById('alterar-nome-btn').addEventListener('click', function () {
+            if (typeof AuthManager === 'undefined') return;
+            
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) return;
+            
+            const usuario = AuthManager.getLoggedUser();
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = usuario ? usuario.nome || '' : '';
+            input.style.fontSize = '15px';
+            input.style.fontWeight = '600';
+            input.style.borderRadius = '4px';
+            input.style.padding = '2px 6px';
+            input.style.width = '90%';
+            input.maxLength = 32;
+            
+            // Aplica estilos baseados no tema atual
+            applyThemeInputStyles(input);
+            
+            nomeSpan.textContent = '';
+            nomeSpan.appendChild(input);
+            input.focus();
+            input.select();
+
+            function salvarNome() {
+                const novoNome = input.value.trim() || (usuario ? usuario.nome || '' : '');
+                AuthManager.updateLoggedUser({ nome: novoNome });
+                nomeSpan.textContent = novoNome;
+            }
+
+            input.addEventListener('keydown', function (ev) {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    salvarNome();
+                } else if (ev.key === 'Escape') {
+                    nomeSpan.textContent = usuario ? usuario.nome || '' : '';
+                }
+            });
+            input.addEventListener('blur', salvarNome);
+        });
+
+        document.getElementById('sair-btn').addEventListener('click', function () {
+            if (typeof AuthManager !== 'undefined') {
+                AuthManager.logout();
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+
+        // Chama atualizarFotoHeader ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(atualizarFotoHeader, 100);
+        });
+    </script>
+
+    <style>
+        /* Estilos específicos para a página de ajuda */
+        body {
+            background-color: var(--bg-color, #f5f5f5);
+            color: var(--text-color, #333);
+            transition: all 0.3s ease;
+        }
+
+        main {
+            background-color: var(--bg-color, #f5f5f5);
+        }
+
+        .help-section {
+            margin-bottom: 40px;
+            background: var(--card-bg, #fff);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color, transparent);
+        }
+
+        .section-title {
+            color: var(--primary-color, #ff6347);
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Tutorial Grid */
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tutorial-card {
+            background: var(--modal-bg, #f8f9fa);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--border-color, transparent);
+            transition: all 0.3s ease;
+        }
+
+        .tutorial-card:hover {
+            border-color: var(--primary-color, #ff6347);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .tutorial-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-card h3 {
+            color: var(--text-color, #333);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .tutorial-card p {
+            color: var(--text-secondary, #666);
+            line-height: 1.5;
+        }
+
+        /* Feature Detail Styles */
+        .feature-detail {
+            background: var(--card-bg, #fff);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .feature-detail h3 {
+            color: var(--primary-color, #7A1919);
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .feature-detail p {
+            color: var(--text-secondary, #666);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .steps-list {
+            margin-top: 30px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: var(--primary-color, #7A1919);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: var(--text-color, #333);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .step-content p {
+            color: var(--text-secondary, #666);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .step-content ul {
+            color: var(--text-secondary, #666);
+            line-height: 1.6;
+        }
+
+        /* FAQ Styles */
+        .faq-container {
+            max-width: 800px;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--card-bg, #fff);
+        }
+
+        .faq-question {
+            background: var(--modal-bg, #f8f9fa);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-color, #333);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color, transparent);
+        }
+
+        .faq-question:hover {
+            background: var(--primary-color, #ff6347);
+            color: white;
+        }
+
+        .faq-question.active {
+            background: var(--primary-color, #ff6347);
+            color: white;
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 15px 20px;
+            background: var(--card-bg, #fff);
+            display: none;
+            border-top: 1px solid var(--border-color, #ddd);
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary, #666);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: var(--modal-bg, #f8f9fa);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--primary-color, #ff6347);
+            border: 1px solid var(--border-color, transparent);
+        }
+
+        .contact-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            color: var(--text-color, #333);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary, #666);
+            margin: 5px 0;
+        }
+
+        .contact-description {
+            font-size: 12px;
+            color: var(--text-muted, #999) !important;
+        }
+
+        /* Tips Container */
+        .tips-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: center;
+            background: var(--modal-bg, #f8f9fa);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color, #ff6347);
+            border: 1px solid var(--border-color, transparent);
+        }
+
+        .tip-icon {
+            font-size: 20px;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .tip-text {
+            color: var(--text-color, #333);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-bg, #fff);
+            border-top: 1px solid var(--border-color, #ddd);
+        }
+
+        .footer-line {
+            border-color: var(--border-color, #ddd);
+        }
+
+        /* Responsividade para modo escuro */
+        [data-theme='dark'] .help-section {
+            box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+        }
+
+        [data-theme='dark'] .tutorial-card:hover {
+            box-shadow: 0 4px 20px rgba(255,255,255,0.1);
+        }
+
+        /* Links e elementos clicáveis */
+        .perfil-modal-item[onclick*="ajuda.html"] {
+            background: var(--primary-color, #ff6347) !important;
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .menu-modal-item[onclick*="ajuda.html"] {
+            background: var(--primary-color, #ff6347) !important;
+            color: white !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 15px !important;
+            }
+            
+            .tutorial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+
+            .help-section {
+                padding: 20px;
+            }
+        }
+
+        /* Melhorias específicas para modo escuro */
+        [data-theme='dark'] h1 {
+            color: var(--text-color, #fff);
+        }
+
+        [data-theme='dark'] .section-title {
+            color: var(--primary-color, #ff6347);
+        }
+
+        [data-theme='dark'] .tutorial-card {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        [data-theme='dark'] .contact-card {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        [data-theme='dark'] .tip-item {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        [data-theme='dark'] .faq-item {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+    </style>
+</body>
+
+</html>

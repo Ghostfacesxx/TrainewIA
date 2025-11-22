@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainew IA</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/font-manager.js"></script>
+
+    <script>
+        // Verificar se o usuário está logado
+        AuthManager.requireAuth();
+        
+        // Inicializa os modais ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal Menu
+            document.querySelector('.header-item.menu').addEventListener('click', function() {
+                document.getElementById('menu-modal-bg').style.display = 'block';
+            });
+            document.getElementById('menu-modal-bg').addEventListener('click', function(e) {
+                if (e.target.id === 'menu-modal-bg') {
+                    this.style.display = 'none';
+                }
+            });
+
+            // Modal Perfil
+            document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+            document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+            
+            // Foto em tela cheia
+            document.getElementById('perfil-img').addEventListener('click', function() {
+                const src = this.src;
+                const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+                const fullscreenImg = document.getElementById('foto-fullscreen-img');
+                fullscreenImg.src = src;
+                fullscreenBg.style.display = 'flex';
+            });
+            
+            document.getElementById('foto-fullscreen-bg').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.getElementById('foto-fullscreen-img').src = '';
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
+        <nav class="header-nav">
+            <div class="header-item menu">
+                <span class="menu-icon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+                <span class="item-label">Menu</span>
+            </div>
+            <div onclick="window.location.href='chat.html'" class="header-item chat">
+                <img src="img/icon-ia.png" class="chat-icon">
+                <span class="item-label">Chat IA</span>
+            </div>
+            <div class="header-item perfil" id="perfil-btn">
+                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+                <span class="item-label">Perfil</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Área principal de configurações -->
+    <div class="container">
+        <h1 style="text-align: center; margin: 20px 0;">Configurações</h1>
+        
+        <!-- Switch do tema -->
+        <div class="theme-switch">
+            <span class="theme-switch-text">Modo Escuro</span>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- Controle de Acessibilidade - Tamanho da Fonte -->
+        <div class="accessibility-section" style="margin-top: 40px; padding: 25px; background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border-color);">
+            <h2 style="color: var(--text-color); font-size: 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 24px;">♿</span>
+                Acessibilidade
+            </h2>
+            
+            <div class="font-size-control" style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="font-control-label" style="color: var(--text-color); font-weight: 600; font-size: 16px;">
+                        Tamanho da Fonte
+                    </span>
+                    <span id="font-size-indicator" style="color: var(--text-secondary); font-size: 14px; font-weight: 600;">
+                        Normal
+                    </span>
+                </div>
+                
+                <div style="display: flex; gap: 15px; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <button id="font-decrease" class="font-btn" style="width: 50px; height: 50px; border-radius: 12px; border: 2px solid #7A1919; background: white; color: #7A1919; font-size: 24px; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
+                        A-
+                    </button>
+                    
+                    <div style="flex: 1; min-width: 200px; max-width: 400px;">
+                        <input type="range" id="font-size-slider" min="0" max="4" value="2" step="1" 
+                               style="width: 100%; height: 8px; border-radius: 5px; background: linear-gradient(to right, #7A1919 0%, #7A1919 50%, #ddd 50%, #ddd 100%); outline: none; -webkit-appearance: none; cursor: pointer;">
+                    </div>
+                    
+                    <button id="font-increase" class="font-btn" style="width: 50px; height: 50px; border-radius: 12px; border: 2px solid #7A1919; background: #7A1919; color: white; font-size: 24px; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
+                        A+
+                    </button>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 0 10px; color: var(--text-secondary); font-size: 12px;">
+                    <span>Pequeno</span>
+                    <span>Normal</span>
+                    <span>Grande</span>
+                </div>
+                
+                <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6; margin-top: 10px; text-align: center;">
+                    Ajuste o tamanho da fonte para melhorar a legibilidade em todas as páginas do aplicativo.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Perfil -->
+    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+        <div class="perfil-modal" id="perfil-modal">
+            <div class="perfil-modal-header">Conta</div>
+            <div class="perfil-modal-user">
+                <span class="perfil-modal-user-icon" id="perfil-user-icon">
+                    <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+                </span>
+                <div class="perfil-modal-user-info">
+                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+                    <span class="perfil-modal-user-email" id="perfil-email"></span>
+                </div>
+            </div>
+            <hr class="perfil-modal-divider">
+            <div class="perfil-modal-list">
+                <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+                    <input type="file" id="foto-input" accept="image/*" style="display:none;">
+                </div>
+                <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay para foto em tela cheia -->
+    <div id="foto-fullscreen-bg"
+        style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+        <img id="foto-fullscreen-img" src="" alt="Foto perfil"
+            style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">
+    </div>
+
+    <!-- Modal Menu Lateral -->
+    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+        <div class="menu-modal" id="menu-modal">
+            <div class="menu-modal-header">
+                <span>Menu</span>
+            </div>
+            <hr class="menu-modal-divider">
+            <div class="menu-modal-list">
+                <div onclick="window.location.href='chat.html'" class="menu-modal-item">Chat IA</div>
+                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+                <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <hr class="footer-line">
+    </footer>
+
+    <script>
+        // Inicializa o gerenciador de tema
+        ThemeManager.init();
+
+        // Configura o switch do tema
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Define o estado inicial do switch baseado no tema atual
+        themeToggle.checked = ThemeManager.getCurrentTheme() === 'dark';
+        
+        // Adiciona o evento de mudança do switch
+        themeToggle.addEventListener('change', function() {
+            const newTheme = ThemeManager.toggleTheme();
+            this.checked = newTheme === 'dark';
+        });
+
+        // Utilitário para atualizar localStorage e sessão
+        function atualizarUsuarioLogado(novosDados) {
+            let usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            usuario = { ...usuario, ...novosDados };
+            localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+            // Atualiza também na lista de usuários
+            let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+            usuarios = usuarios.map(u => u.email === usuario.email ? { ...u, ...novosDados } : u);
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        }
+
+        // Atualiza a foto do header com a foto do usuário logado
+        function atualizarFotoHeader() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const headerIcon = document.getElementById('header-perfil-icon');
+            if (usuario.fotoPerfil) {
+                headerIcon.src = usuario.fotoPerfil;
+            } else {
+                headerIcon.src = "img/icon.png";
+            }
+        }
+
+        // Chame ao abrir a página
+        atualizarFotoHeader();
+
+        // Modal Perfil
+        function showPerfilModal() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            document.getElementById('perfil-nome').textContent = usuario.nome || '';
+            document.getElementById('perfil-email').textContent = usuario.email || '';
+            // Foto de perfil
+            const img = document.getElementById('perfil-img');
+            if (usuario.fotoPerfil) {
+                img.src = usuario.fotoPerfil;
+            } else {
+                img.src = "img/icon.png";
+            }
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        }
+        function hidePerfilModal(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                document.getElementById('perfil-modal-bg').style.display = 'none';
+                removerInputNome();
+            }
+        }
+        document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+        document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+
+        // Alterar foto de perfil
+        document.getElementById('alterar-foto-btn').addEventListener('click', function () {
+            document.getElementById('foto-input').click();
+        });
+        document.getElementById('foto-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                const fotoBase64 = evt.target.result;
+                // Atualiza a imagem do modal imediatamente
+                document.getElementById('perfil-img').src = fotoBase64;
+                atualizarUsuarioLogado({ fotoPerfil: fotoBase64 });
+                // Atualiza a imagem do header também
+                atualizarFotoHeader();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Alterar nome
+        function removerInputNome() {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) {
+                const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+                nomeSpan.textContent = usuario.nome || '';
+            }
+        }
+        document.getElementById('alterar-nome-btn').addEventListener('click', function () {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) return; // já está editando
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = usuario.nome || '';
+            input.style.fontSize = '15px';
+            input.style.fontWeight = '600';
+            input.style.borderRadius = '4px';
+            input.style.padding = '2px 6px';
+            input.style.width = '90%';
+            input.maxLength = 32;
+            
+            // Aplica estilos baseados no tema atual
+            applyThemeInputStyles(input);
+            
+            nomeSpan.textContent = '';
+            nomeSpan.appendChild(input);
+            input.focus();
+            input.select();
+
+            input.addEventListener('keydown', function (ev) {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    salvarNome();
+                } else if (ev.key === 'Escape') {
+                    removerInputNome();
+                }
+            });
+            input.addEventListener('blur', salvarNome);
+
+            function salvarNome() {
+                let novoNome = input.value.trim();
+                if (!novoNome) novoNome = usuario.nome || '';
+                atualizarUsuarioLogado({ nome: novoNome });
+                nomeSpan.textContent = novoNome;
+            }
+        });
+
+        // Abrir foto em tela cheia ao clicar na imagem do modal
+        document.getElementById('perfil-img').addEventListener('click', function () {
+            const src = this.src;
+            const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+            const fullscreenImg = document.getElementById('foto-fullscreen-img');
+            fullscreenImg.src = src;
+            fullscreenImg.classList.remove('show'); // reset
+            fullscreenBg.style.display = 'flex';
+            // Força reflow para reiniciar animação
+            void fullscreenImg.offsetWidth;
+            fullscreenImg.classList.add('show');
+        });
+        // Fechar ao clicar fora da imagem
+        document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.getElementById('foto-fullscreen-img').src = '';
+                document.getElementById('foto-fullscreen-img').classList.remove('show');
+            }
+        });
+
+        // Sair da conta (mantém o perfil salvo no localStorage)
+        document.getElementById('sair-btn').addEventListener('click', function () {
+            localStorage.removeItem('usuarioLogado');
+            window.location.href = "index.html";
+        });
+
+        // Modal Menu Lateral
+        document.querySelector('.header-item.menu').addEventListener('click', function () {
+            document.getElementById('menu-modal-bg').style.display = 'block';
+        });
+        document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
+            if (e.target.id === 'menu-modal-bg') {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

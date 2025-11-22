@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trainew IA</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/font-manager.js"></script>
+
+    <style>
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
+            color: white;
+            padding: 16px 50px 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            max-width: 400px;
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        body.dark-mode .toast-notification {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+            color: #1a1a1a;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .toast-message {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .toast-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        body.dark-mode .toast-close {
+            color: #1a1a1a;
+        }
+
+        .toast-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        body.dark-mode .toast-close:hover {
+            background: rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .toast-notification {
+                right: 10px;
+                left: 10px;
+                min-width: auto;
+                max-width: none;
+            }
+        }
+    </style>
+
+</head><body>
+  <header class="header">
+    <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
+    <nav class="header-nav">
+      <div class="header-item menu">
+        <span class="menu-icon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+        <span class="item-label">Menu</span>
+      </div>
+      <div class="header-item perfil" id="perfil-btn">
+        <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+        <span class="item-label">Perfil</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Modal Perfil -->
+  <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+    <div class="perfil-modal" id="perfil-modal">
+      <div class="perfil-modal-header">Conta</div>
+      <div class="perfil-modal-user">
+        <span class="perfil-modal-user-icon" id="perfil-user-icon">
+          <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+        </span>
+        <div class="perfil-modal-user-info">
+          <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+          <span class="perfil-modal-user-email" id="perfil-email"></span>
+        </div>
+      </div>
+      <hr class="perfil-modal-divider">
+      <div class="perfil-modal-list">
+        <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+          <input type="file" id="foto-input" accept="image/*" style="display:none;">
+        </div>
+        <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+        <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+        <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+        <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay para foto em tela cheia -->
+  <div id="foto-fullscreen-bg"
+    style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+    <img id="foto-fullscreen-img" src="" alt="Foto perfil"
+      style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">
+  </div>
+
+  <!-- Modal Menu -->
+  <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+    <div class="menu-modal" id="menu-modal">
+      <div class="menu-modal-header"><span>Menu</span></div>
+      <hr class="menu-modal-divider">
+      <div class="menu-modal-list">
+        <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+        <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+        <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+        <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+      </div>
+    </div>
+  </div>
+
+
+<button id="limpar-chat" class="chat-clear-btn">Limpar chat</button>
+
+  <!-- Área principal do chat -->
+  <div class="chat-container">
+    <div class="chat-hint">Pergunte sobre treinos, alimentação ou peça um plano personalizado.</div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <form class="chat-input-area" id="chat-form" autocomplete="off">
+      <input type="text" id="chat-input" class="chat-input" placeholder="Digite sua mensagem..." autocomplete="off"
+        required>
+      <button type="submit" class="chat-send-btn" title="Enviar">&#10148;</button>
+    </form>
+  </div>
+
+  <script>
+// Verificar se o usuário está logado
+AuthManager.requireAuth();
+
+document.getElementById('limpar-chat').addEventListener('click', () => {
+  if (confirm('Tem certeza que deseja apagar a conversa?')) {
+    localStorage.removeItem('chatHistory');
+    document.getElementById('chat-messages').innerHTML = '';
+    chatHistory = [];
+  }
+});
+  function scrollToBottom() {
+    const chat = document.getElementById('chat-messages');
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function renderMessage({ text, sender, loading }) {
+    const chat = document.getElementById('chat-messages');
+    const row = document.createElement('div');
+    row.className = 'msg-row ' + (sender === 'user' ? 'user' : 'ia');
+
+    const bubble = document.createElement('div');
+    bubble.className = 'msg-bubble';
+    bubble.innerHTML = text; // permite link colorido
+    if (loading) bubble.style.opacity = 0.6;
+
+    row.appendChild(bubble);
+    chat.appendChild(row);
+    scrollToBottom();
+    return bubble;
+  }
+
+  // Função para animar texto letra por letra
+  async function typeWriter(element, text, speed = 15) {
+    element.innerHTML = '';
+    let i = 0;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = text;
+    const plainText = tempDiv.textContent || tempDiv.innerText;
+    
+    return new Promise((resolve) => {
+      function type() {
+        if (i < plainText.length) {
+          // Para HTML, precisamos adicionar caractere por caractere
+          const char = plainText.charAt(i);
+          element.textContent += char;
+          i++;
+          scrollToBottom();
+          setTimeout(type, speed);
+        } else {
+          // Após terminar, aplicar HTML completo (para links e formatação)
+          element.innerHTML = text;
+          resolve();
+        }
+      }
+      type();
+    });
+  }
+
+  // Histórico salvo entre sessões
+  let chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+  chatHistory.forEach(msg => renderMessage({ text: msg.text, sender: msg.sender }));
+
+  function salvarHistorico() {
+    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+  }
+
+  function salvarTabela(tipo, dados) {
+    if (!tipo || !dados) return;
+    console.log('💾 Salvando', tipo, 'com', dados.length, 'itens');
+    localStorage.setItem(tipo, JSON.stringify(dados));
+    
+    // Mostrar notificação
+    if (tipo === 'treino') {
+      showToast('💪 Treino Montado!', 'Acesse a aba Treinos para visualizar', 'treino');
+    } else if (tipo === 'dieta') {
+      showToast('🥗 Dieta Montada!', 'Acesse a aba Dieta para visualizar', 'dieta');
+    }
+  }
+
+  // Função para mostrar toast notification
+  function showToast(title, message, type) {
+    // Remove toast anterior se existir
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+      existingToast.remove();
+    }
+
+    // Cria o toast
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    
+    const icon = type === 'treino' ? '💪' : '🥗';
+    
+    toast.innerHTML = `
+      <div class="toast-icon">${icon}</div>
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-message">${message}</div>
+      </div>
+      <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Anima entrada
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 100);
+    
+    // Remove automaticamente após 3 segundos
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.remove();
+        }
+      }, 400);
+    }, 3000);
+  }
+
+  // Inicializa o gerenciador de tema
+ThemeManager.init();
+
+document.getElementById('chat-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+
+    renderMessage({ text: msg, sender: 'user' });
+    chatHistory.push({ text: msg, sender: 'user' });
+    salvarHistorico();
+
+    const loadingBubble = renderMessage({ text: '...', sender: 'ia', loading: true });
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, history: chatHistory })
+      });
+      console.log("Requisição enviada para o servidor com a mensagem:", msg);
+
+      const data = await response.json();
+      let resposta = data.reply || '[Sem resposta]';
+
+      // --- Verifica se há JSON dentro da resposta ---
+      try {
+        // Remove marcadores de código markdown se existirem
+        resposta = resposta.replace(/```json\s*/g, '').replace(/```\s*/g, '');
+        
+        // Encontra um trecho que pareça JSON dentro da resposta
+        const jsonMatch = resposta.match(/{[\s\S]*}/);
+        if (jsonMatch) {
+          const jsonStr = jsonMatch[0];
+          const possibleJSON = JSON.parse(jsonStr);
+
+          console.log("JSON extraído da IA:", possibleJSON);
+
+          if (possibleJSON.type && possibleJSON.data) {
+            // Salvar com tipo correto
+            const tipoSalvar = possibleJSON.type.toLowerCase().trim();
+            console.log('📋 Tipo detectado:', tipoSalvar);
+            salvarTabela(tipoSalvar, possibleJSON.data);
+            
+            // Remove o JSON da resposta e substitui pela mensagem bonita
+            if (tipoSalvar === 'treino') {
+              resposta = resposta.replace(jsonMatch[0], '').trim();
+              if (!resposta || resposta.length < 10) {
+                resposta = '💪 Treino pronto! Veja tudo na aba <span class="link-azul" onclick="window.location.href=\'treino.html\'">Treinos</span>. Deseja que eu monte uma dieta também?';
+              } else {
+                resposta = resposta.replace(/💪.*?Treinos[*"]?/g, '💪 Treino pronto! Veja tudo na aba <span class="link-azul" onclick="window.location.href=\'treino.html\'">Treinos</span>');
+              }
+            } else if (tipoSalvar === 'dieta') {
+              resposta = resposta.replace(jsonMatch[0], '').trim();
+              if (!resposta || resposta.length < 10) {
+                resposta = '🥗 Dieta pronta! Veja tudo na aba <span class="link-azul" onclick="window.location.href=\'dieta.html\'">Dieta</span>. Quer que eu monte um plano de treino também?';
+              } else {
+                resposta = resposta.replace(/🥗.*?Dieta[*"]?/g, '🥗 Dieta pronta! Veja tudo na aba <span class="link-azul" onclick="window.location.href=\'dieta.html\'">Dieta</span>');
+              }
+            }
+          }
+        }
+        
+        // Processa links para Treinos e Dieta que podem vir em qualquer resposta
+        resposta = resposta.replace(/\*Treinos\*/g, '<span class="link-azul" onclick="window.location.href=\'treino.html\'">Treinos</span>');
+        resposta = resposta.replace(/\*Dieta\*/g, '<span class="link-azul" onclick="window.location.href=\'dieta.html\'">Dieta</span>');
+        
+      } catch (err) {
+        console.warn("Erro ao interpretar JSON da IA:", err);
+        // Mesmo com erro, processa os links
+        resposta = resposta.replace(/\*Treinos\*/g, '<span class="link-azul" onclick="window.location.href=\'treino.html\'">Treinos</span>');
+        resposta = resposta.replace(/\*Dieta\*/g, '<span class="link-azul" onclick="window.location.href=\'dieta.html\'">Dieta</span>');
+      }
+
+      // Aguarda 500ms antes de começar a digitar
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Anima a digitação
+      loadingBubble.style.opacity = 1;
+      await typeWriter(loadingBubble, resposta, 15);
+      
+      chatHistory.push({ text: resposta, sender: 'ia' });
+      salvarHistorico();
+      scrollToBottom();
+    } catch (err) {
+      loadingBubble.textContent = 'Erro ao obter resposta. Tente novamente.';
+      loadingBubble.style.opacity = 1;
+    }
+  });
+
+
+</script>
+
+
+<script>
+// Modal Perfil
+        function showPerfilModal() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            document.getElementById('perfil-nome').textContent = usuario.nome || '';
+            document.getElementById('perfil-email').textContent = usuario.email || '';
+            // Foto de perfil
+            const img = document.getElementById('perfil-img');
+            if (usuario.fotoPerfil) {
+                img.src = usuario.fotoPerfil;
+            } else {
+                img.src = "img/icon.png";
+            }
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        }
+        function hidePerfilModal(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                document.getElementById('perfil-modal-bg').style.display = 'none';
+                removerInputNome();
+            }
+        }
+        document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+        document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+
+        // Alterar foto de perfil
+        document.getElementById('alterar-foto-btn').addEventListener('click', function () {
+            document.getElementById('foto-input').click();
+        });
+        document.getElementById('foto-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                const fotoBase64 = evt.target.result;
+                // Atualiza a imagem do modal imediatamente
+                document.getElementById('perfil-img').src = fotoBase64;
+                atualizarUsuarioLogado({ fotoPerfil: fotoBase64 });
+                // Atualiza a imagem do header também
+                atualizarFotoHeader();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Alterar nome
+        function removerInputNome() {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) {
+                const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+                nomeSpan.textContent = usuario.nome || '';
+            }
+        }
+        document.getElementById('alterar-nome-btn').addEventListener('click', function () {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) return; // já está editando
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = usuario.nome || '';
+            input.style.fontSize = '15px';
+            input.style.fontWeight = '600';
+            input.style.borderRadius = '4px';
+            input.style.padding = '2px 6px';
+            input.style.width = '90%';
+            input.maxLength = 32;
+            
+            // Aplica estilos baseados no tema atual
+            applyThemeInputStyles(input);
+            
+            nomeSpan.textContent = '';
+            nomeSpan.appendChild(input);
+            input.focus();
+            input.select();
+
+            input.addEventListener('keydown', function (ev) {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    salvarNome();
+                } else if (ev.key === 'Escape') {
+                    removerInputNome();
+                }
+            });
+            input.addEventListener('blur', salvarNome);
+
+            function salvarNome() {
+                let novoNome = input.value.trim();
+                if (!novoNome) novoNome = usuario.nome || '';
+                atualizarUsuarioLogado({ nome: novoNome });
+                nomeSpan.textContent = novoNome;
+            }
+        });
+
+        // Abrir foto em tela cheia ao clicar na imagem do modal
+        document.getElementById('perfil-img').addEventListener('click', function () {
+            const src = this.src;
+            const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+            const fullscreenImg = document.getElementById('foto-fullscreen-img');
+            fullscreenImg.src = src;
+            fullscreenImg.classList.remove('show'); // reset
+            fullscreenBg.style.display = 'flex';
+            // Força reflow para reiniciar animação
+            void fullscreenImg.offsetWidth;
+            fullscreenImg.classList.add('show');
+        });
+        // Fechar ao clicar fora da imagem
+        document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.getElementById('foto-fullscreen-img').src = '';
+                document.getElementById('foto-fullscreen-img').classList.remove('show');
+            }
+        });
+
+        // Sair da conta (mantém o perfil salvo no localStorage)
+        document.getElementById('sair-btn').addEventListener('click', function () {
+            localStorage.removeItem('usuarioLogado');
+            window.location.href = "index.html";
+        });
+
+        // Modal Menu Lateral
+        document.querySelector('.header-item.menu').addEventListener('click', function () {
+            document.getElementById('menu-modal-bg').style.display = 'block';
+        });
+        document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
+            if (e.target.id === 'menu-modal-bg') {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

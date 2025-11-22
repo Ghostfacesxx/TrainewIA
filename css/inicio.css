@@ -1,0 +1,504 @@
+.perfil-modal-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.12);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+.perfil-modal {
+    background: #fff;
+    width: 92vw;
+    max-width: 340px;
+    min-width: 220px;
+    height: 370px;
+    margin: 0 auto;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    animation: slideDownPerfilModal 0.18s;
+}
+.faixa-section {
+  display: none;
+}
+/* === Modal Planos (demonstração) === */
+
+.planos-modal-bg {
+  position: fixed;
+  inset: 0;
+  display: none; /* JS controla */
+  background: rgba(0,0,0,0.45);
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 18px;
+}
+
+/* modal card - mobile style narrow like seu mockup */
+.planos-modal {
+  width: 92%;
+  max-width: 360px;
+  background: #fff;
+  border-radius: 18px;
+  border: 6px solid #7b1414; /* borda marrom */
+  padding: 18px 18px 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  position: relative;
+  font-family: inherit;
+  color: #5a1515;
+}
+
+/* close X */
+.planos-close {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #7b1414;
+  cursor: pointer;
+}
+
+/* title */
+.planos-title {
+  text-align: center;
+  margin: 6px 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #7b1414;
+}
+
+/* price blocks */
+.planos-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.plano-option {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+}
+
+.plano-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+}
+
+.plano-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.plano-valor {
+  font-size: 20px;
+  font-weight: 700;
+  color: #7b1414;
+}
+
+.plano-valor .per {
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.plano-sub {
+  font-size: 12px;
+  color: #7b1414;
+}
+
+.badge {
+  background: #7b1414;
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+/* vantagens */
+.vantagens-title {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 6px;
+  color: #7b1414;
+}
+
+.vantagens-list {
+  list-style: none;
+  padding: 8px 0 0;
+  margin: 0 0 10px 0;
+  color: #2b2b2b;
+}
+
+.vantagens-list li {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+/* metodo de pagamento - demo */
+.metodo-pgto {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #333;
+  flex-direction: column;
+}
+
+.metodo-pgto label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* actions */
+.planos-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-pagar {
+  background: #7b1414;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+/* small screens adjustments */
+@media (max-width: 420px) {
+  .planos-modal { padding: 14px; border-radius: 14px; }
+  .plano-valor { font-size: 18px; }
+  .btn-pagar { width: 100%; }
+}
+/* Mostra e estiliza a faixa apenas em mobile (<=600px). Ajuste o breakpoint se necessário */
+@media (max-width: 600px) {
+  .faixa-section {
+    display: flex;
+    padding: 22px 30px;
+    margin-top: 30px;
+  }
+
+  .faixa-inner {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .faixa-text {
+    flex: 1;
+    color: black; /* cor do texto, ajuste conforme tema */
+    font-size: 14px;
+    line-height: 1.3;
+    padding-right: 6px;
+    font-weight: 600;
+  }
+
+  .faixa-mascot img {
+    width: 160px;
+    height: auto;
+  }
+
+  .faixa-mascot{
+    position: relative;
+    bottom: 60px;
+  }
+}
+/* CARROSSEL DESKTOP */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cards-container {
+  display: flex;
+  width: 300%; /* 3 cards, mas o JS controla o deslocamento */
+  transition: transform 0.5s cubic-bezier(.4,1.4,.6,1);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  touch-action: pan-y; /* Permite scroll vertical mas captura horizontal */
+}
+
+.cards-container:active {
+  cursor: grabbing;
+}
+
+.card {
+  flex: 0 0 33.333%; /* 3 por linha no desktop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card img {
+  width: 30%;
+}
+
+/* Setas */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  opacity: 50;
+  border-radius: 100%;
+  transition: background 0.3s;
+  z-index: 2;
+}
+.arrow-left {
+  left: 5px;
+}
+
+.arrow-right {
+  right: 5px;
+}
+
+.faixa{
+  object-fit: cover;
+  height: 170px;
+  width: 100%;
+  margin-top: 15%;
+  border-bottom: #6b0000 solid 3px;
+  border-top: solid 3px #6b0000;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 360px;
+    margin-top: 15%;
+  }
+
+  .cards-container {
+    width: 150%; /* 3 cards, mas visíveis 2 por vez */
+    transition: transform 0.5s cubic-bezier(.4,1.4,.6,1);
+    display: flex;
+  }
+
+  .card {
+    flex: 0 0 50%; /* 2 por vez */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card img {
+    width: 60%;
+  }
+}
+
+@keyframes slideDownPerfilModal {
+    from { transform: translateY(-30px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+.perfil-modal-header {
+    font-weight: 600;
+    font-size: 16px;
+    color: #7a1818;
+    padding: 16px 18px 8px 18px;
+    background: #fff;
+}
+
+.perfil-modal-user {
+    display: flex;
+    align-items: center;
+    padding: 10px 18px 8px 18px;
+    gap: 12px;
+}
+
+.perfil-modal-user-icon img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #7a1818;
+    background: #fff;
+}
+
+.perfil-modal-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.perfil-modal-user-nome {
+    font-weight: 600;
+    font-size: 15px;
+    color: #222;
+}
+
+.perfil-modal-user-email {
+    font-size: 13px;
+    color: #7a1818;
+    opacity: 0.85;
+}
+
+.perfil-modal-divider {
+    border: none;
+    border-top: 1.5px solid #e5e5e5;
+    margin: 0 0 0 0;
+}
+
+.perfil-modal-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+.perfil-modal-item {
+    padding: 13px 18px;
+    font-size: 15px;
+    color: #7a1818;
+    border-bottom: 1px solid #f2f2f2;
+    cursor: pointer;
+    transition: background 0.13s;
+}
+.perfil-modal-item:last-child {
+    border-bottom: none;
+}
+.perfil-modal-item:hover {
+    background: #f7f7f7;
+}
+
+@media (max-width: 600px) {
+    .perfil-modal {
+        width: 98vw;
+        min-width: 0;
+        margin-top: 54px;
+    }
+}
+
+.menu-modal-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.08);
+    z-index: 1100;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.card {
+  flex-direction: column;
+}
+
+.card-label {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #222;
+  font-weight: 500;
+  text-align: center;
+}
+.menu-modal {
+    background: #fff;
+    width: 60vw;
+    max-width: 200px;
+    min-width: 180px;
+    height: 100vh;
+    box-shadow: 2px 0 18px rgba(0,0,0,0.10);
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    animation: slideMenuModal 0.18s;
+}
+
+@keyframes slideMenuModal {
+    from { transform: translateX(-40px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+
+.menu-modal-header {
+    text-align: center;
+    font-size: 17px;
+    color: #6b0000;
+    font-weight: 500;
+    padding: 18px 0 8px 0;
+    background: #fff;
+    letter-spacing: 0.5px;
+}
+
+.menu-modal-divider {
+    border: none;
+    border-top: 1.2px solid #6b0000;
+    margin: 0 0 0 0;
+    width: 98%;
+    align-self: center;
+}
+
+.menu-modal-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    gap: 22px;
+    padding-left: 18px;
+}
+
+.menu-modal-item {
+    font-size: 17px;
+    color: #6b0000;
+    font-weight: 500;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    text-align: left;
+    padding: 0;
+    transition: color 0.13s;
+}
+
+.menu-modal-item:hover {
+    color: #a51a1a;
+}
+
+@media (max-width: 600px) {
+    .menu-modal {
+        width: 90vw;
+        min-width: 0;
+        max-width: 98vw;
+    }
+    .menu-modal-header {
+        font-size: 16px;
+        padding: 14px 0 7px 0;
+    }
+    .menu-modal-list {
+        gap: 18px;
+        padding-left: 12px;
+    }
+    .menu-modal-item {
+        font-size: 16px;
+    }
+}
+
+#foto-fullscreen-img {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 1s cubic-bezier(.4,1.4,.6,1), transform 1s cubic-bezier(.4,1.4,.6,1);
+}
+#foto-fullscreen-img.show {
+  opacity: 1;
+  transform: scale(1);
+}

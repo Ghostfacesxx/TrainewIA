@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Trainew IA</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dark-theme.css">
+  <script src="../js/theme-manager.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <img src="img/logo.png" alt="Logo Trainew IA" class="logo">
+  </header>
+
+  <main class="main-content">
+    <h2 class="welcome">Seja Bem-vindo</h2>
+    <p class="app-desc">Seu app de ajuda física</p>
+    <section class="login-box">
+      <h3 class="login-title" id="form-title">Comece agora</h3>
+      <form id="auth-form">
+        <label for="email" class="input-label">E-mail</label>
+        <input type="email" id="email" class="input-field" autocomplete="username" placeholder="Digite seu e-mail"
+          required>
+
+        <label for="senha" class="input-label">Senha</label>
+        <input type="password" id="senha" class="input-field" autocomplete="current-password"
+          placeholder="Digite sua senha" required>
+
+        <a href="#" class="forgot-password" id="forgot-link">Esqueci a senha</a>
+        <button type="submit" class="login-btn" id="submit-btn" disabled>Entrar</button>
+        <a id="cadastroLink" href="cadastro.html" class="cadastro-btn"
+          style="margin-top:10px;margin-bottom: 13px;cursor:pointer;display:block;text-align:center;">Cadastrar-se</a>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <hr class="footer-line">
+  </footer>
+  <script>
+    const emailInput = document.getElementById('email');
+    const senhaInput = document.getElementById('senha');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Função para verificar se os campos estão preenchidos
+    function checkFields() {
+      const filled = emailInput.value.trim() && senhaInput.value.trim();
+      submitBtn.disabled = !filled;
+      submitBtn.style.cursor = filled ? "pointer" : "default";
+      submitBtn.style.opacity = filled ? "1" : "0.7";
+    }
+
+    // Monitorar os campos
+    [emailInput, senhaInput].forEach(input => {
+      input.addEventListener('input', checkFields);
+    });
+
+    // Login usando localStorage
+    document.getElementById('auth-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Entrando...";
+
+      const email = emailInput.value.trim();
+      const senha = senhaInput.value.trim();
+      const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+      const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+
+      if (!usuario) {
+        alert("E-mail ou senha incorretos.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Entrar";
+      } else {
+        // Salva usuário logado com informações completas
+        localStorage.setItem('usuarioLogado', JSON.stringify({
+          id: usuario.id || Date.now(),
+          nome: usuario.nome,
+          email: usuario.email,
+          fotoPerfil: usuario.fotoPerfil || null,
+          dataLogin: new Date().toISOString()
+        }));
+        window.location.href = "inicio.html";
+      }
+    });
+
+    // Verificar se já está logado
+    if (localStorage.getItem('usuarioLogado')) {
+      window.location.href = "inicio.html";
+    }
+
+    // Esqueci a senha
+    document.getElementById('forgot-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      const email = prompt("Digite seu e-mail para redefinir a senha:");
+      if (email) {
+        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+        const usuario = usuarios.find(u => u.email === email);
+        if (usuario) {
+          alert("Uma redefinição de senha não é suportada neste modo demo. Entre em contato com o suporte.");
+        } else {
+          alert("E-mail não encontrado.");
+        }
+      }
+    });
+
+    // Inicializa o gerenciador de tema
+    ThemeManager.init();
+
+    // Inicializa
+    checkFields();
+  
+
+  </script>
+  
+</body>
+
+</html>

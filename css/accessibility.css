@@ -1,0 +1,266 @@
+/* Sistema de Acessibilidade - Tamanho de Fonte */
+
+/* Tamanho Muito Pequeno */
+html.font-small {
+    font-size: 13px;
+}
+
+html.font-small .msg-bubble {
+    font-size: 0.85rem;
+}
+
+html.font-small .chat-input {
+    font-size: 0.9rem;
+}
+
+html.font-small .modal-exercicio-nome,
+html.font-small .modal-refeicao-nome {
+    font-size: 0.95rem;
+}
+
+/* Tamanho Pequeno */
+html.font-medium-small {
+    font-size: 14px;
+}
+
+html.font-medium-small .msg-bubble {
+    font-size: 0.9rem;
+}
+
+html.font-medium-small .chat-input {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .modal-exercicio-nome,
+html.font-medium-small .modal-refeicao-nome {
+    font-size: 1rem;
+}
+
+/* Tamanho Normal (padrão) */
+html.font-normal {
+    font-size: 16px;
+}
+
+/* Tamanho Grande */
+html.font-medium-large {
+    font-size: 18px;
+}
+
+html.font-medium-large .msg-bubble {
+    font-size: 1.05rem;
+    padding: 14px 18px;
+}
+
+html.font-medium-large .chat-input {
+    font-size: 1.05rem;
+    padding: 14px 16px;
+}
+
+html.font-medium-large .modal-exercicio-nome,
+html.font-medium-large .modal-refeicao-nome {
+    font-size: 1.15rem;
+}
+
+html.font-medium-large .dia-card {
+    padding: 22px;
+}
+
+html.font-medium-large .dia-nome {
+    font-size: 24px;
+}
+
+html.font-medium-large .dia-resumo {
+    font-size: 16px;
+}
+
+/* Tamanho Muito Grande */
+html.font-large {
+    font-size: 20px;
+}
+
+html.font-large .msg-bubble {
+    font-size: 1.1rem;
+    padding: 16px 20px;
+    max-width: 85%;
+}
+
+html.font-large .chat-input {
+    font-size: 1.1rem;
+    padding: 16px 18px;
+}
+
+html.font-large .modal-exercicio-nome,
+html.font-large .modal-refeicao-nome {
+    font-size: 1.25rem;
+}
+
+html.font-large .modal-exercicio-desc,
+html.font-large .modal-refeicao-desc {
+    font-size: 1rem;
+}
+
+html.font-large .dia-card {
+    padding: 24px;
+}
+
+html.font-large .dia-nome {
+    font-size: 26px;
+}
+
+html.font-large .dia-resumo {
+    font-size: 17px;
+}
+
+html.font-large .dia-exercicios,
+html.font-large .dia-refeicoes {
+    font-size: 15px;
+}
+
+/* Header adaptativo */
+html.font-medium-large .item-label,
+html.font-large .item-label {
+    font-size: 0.85rem;
+}
+
+/* Botões e inputs mantêm proporção */
+html.font-medium-large button,
+html.font-large button {
+    font-size: 1rem;
+}
+
+/* Títulos escaláveis */
+html.font-medium-large h1 {
+    font-size: 2rem;
+}
+
+html.font-large h1 {
+    font-size: 2.2rem;
+}
+
+html.font-medium-large h2 {
+    font-size: 1.6rem;
+}
+
+html.font-large h2 {
+    font-size: 1.8rem;
+}
+
+/* Garantir legibilidade em cards pequenos */
+html.font-medium-large .card-title,
+html.font-large .card-title {
+    font-size: 1.1rem;
+}
+
+/* Modais responsivos ao tamanho */
+html.font-large .modal-content {
+    max-width: 650px;
+}
+
+html.font-large .modal-dia-nome {
+    font-size: 30px;
+}
+
+/* Toast notifications */
+html.font-medium-large .toast-notification,
+html.font-large .toast-notification {
+    padding: 18px 55px 18px 22px;
+}
+
+html.font-medium-large .toast-title,
+html.font-large .toast-title {
+    font-size: 16px;
+}
+
+html.font-medium-large .toast-message,
+html.font-large .toast-message {
+    font-size: 14px;
+}
+
+/* Espaçamento adaptativo para fontes grandes */
+html.font-large .chat-messages {
+    gap: 16px;
+}
+
+html.font-large .dias-grid {
+    gap: 22px;
+}
+
+/* Prevenir quebra de layout em mobile */
+@media (max-width: 600px) {
+    html.font-large {
+        font-size: 18px;
+    }
+    
+    html.font-large .msg-bubble {
+        font-size: 1rem;
+        padding: 14px 16px;
+    }
+    
+    html.font-large .modal-content {
+        padding: 18px;
+    }
+}
+
+/* Estilo do slider range */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #7A1919;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #7A1919;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+body.dark-mode input[type="range"]::-webkit-slider-thumb {
+    background: #ff6b6b;
+}
+
+body.dark-mode input[type="range"]::-moz-range-thumb {
+    background: #ff6b6b;
+}
+
+/* Botões de fonte - tema escuro */
+body.dark-mode .font-btn {
+    border-color: #ff6b6b !important;
+}
+
+body.dark-mode #font-decrease {
+    background: transparent !important;
+    color: #ff6b6b !important;
+}
+
+body.dark-mode #font-increase {
+    background: #ff6b6b !important;
+    color: #1a1a1a !important;
+}
+
+.font-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+}
+
+body.dark-mode .font-btn:hover {
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.font-btn:active {
+    transform: scale(0.95);
+}

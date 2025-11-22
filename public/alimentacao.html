@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainew IA - Alimentação</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/font-manager.js"></script>
+
+    <script>
+        // Verificar se o usuário está logado
+        AuthManager.requireAuth();
+        
+        // Inicializa os modais ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal Menu
+            document.querySelector('.header-item.menu').addEventListener('click', function() {
+                document.getElementById('menu-modal-bg').style.display = 'block';
+            });
+            document.getElementById('menu-modal-bg').addEventListener('click', function(e) {
+                if (e.target.id === 'menu-modal-bg') {
+                    this.style.display = 'none';
+                }
+            });
+
+            // Modal Perfil
+            document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+            document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+            
+            // Foto em tela cheia
+            document.getElementById('perfil-img').addEventListener('click', function() {
+                const src = this.src;
+                const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+                const fullscreenImg = document.getElementById('foto-fullscreen-img');
+                fullscreenImg.src = src;
+                fullscreenBg.style.display = 'flex';
+            });
+            
+            document.getElementById('foto-fullscreen-bg').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.getElementById('foto-fullscreen-img').src = '';
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .alimentacao-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .alimentacao-header {
+            margin: 40px 0 30px 0;
+        }
+
+        .alimentacao-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        .alimentacao-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #7A1919;
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .alimentacao-title {
+            color: #ff6b6b;
+        }
+
+        .alimentacao-subtitle {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        body.dark-mode .alimentacao-subtitle {
+            color: #ccc;
+        }
+
+        .upload-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body.dark-mode .upload-section {
+            background: #2a2a2a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .upload-area {
+            border: 3px dashed #7A1919;
+            border-radius: 12px;
+            padding: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .upload-area {
+            border-color: #ff6b6b;
+            background: #333;
+        }
+
+        .upload-area:hover {
+            border-color: #5a1313;
+            background: #f0f0f0;
+        }
+
+        body.dark-mode .upload-area:hover {
+            border-color: #ff5252;
+            background: #3a3a3a;
+        }
+
+        .upload-area.dragging {
+            background: #ffe0e0;
+            border-color: #5a1313;
+        }
+
+        body.dark-mode .upload-area.dragging {
+            background: #4a2020;
+            border-color: #ff5252;
+        }
+
+        .camera-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .camera-btn {
+            background-color: #7A1919;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .camera-btn:hover {
+            background-color: #5a1313;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+        }
+
+        body.dark-mode .camera-btn {
+            background-color: #ff6b6b;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .camera-btn:hover {
+            background-color: #ff5252;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        .camera-btn.secondary {
+            background-color: #555;
+        }
+
+        .camera-btn.secondary:hover {
+            background-color: #444;
+        }
+
+        body.dark-mode .camera-btn.secondary {
+            background-color: #444;
+            color: #fff;
+        }
+
+        body.dark-mode .camera-btn.secondary:hover {
+            background-color: #555;
+        }
+
+        .upload-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        body.dark-mode .upload-text {
+            color: #ddd;
+        }
+
+        .upload-hint {
+            font-size: 14px;
+            color: #999;
+        }
+
+        body.dark-mode .upload-hint {
+            color: #777;
+        }
+
+        .image-preview {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .analyze-btn {
+            background-color: #7A1919;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .analyze-btn:hover {
+            background-color: #5a1313;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+        }
+
+        body.dark-mode .analyze-btn {
+            background-color: #ff6b6b;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .analyze-btn:hover {
+            background-color: #ff5252;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #7A1919;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        body.dark-mode .loading-spinner {
+            border-color: #444;
+            border-top-color: #ff6b6b;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            display: none;
+            text-align: left;
+        }
+
+        body.dark-mode .results-section {
+            background: #2a2a2a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .results-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #7A1919;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        body.dark-mode .results-title {
+            color: #ff6b6b;
+        }
+
+        .food-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        body.dark-mode .food-name {
+            color: #fff;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .nutrition-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        body.dark-mode .nutrition-item {
+            background: #333;
+            border-color: #444;
+        }
+
+        .nutrition-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        body.dark-mode .nutrition-label {
+            color: #999;
+        }
+
+        .nutrition-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #7A1919;
+        }
+
+        body.dark-mode .nutrition-value {
+            color: #ff6b6b;
+        }
+
+        .observations {
+            background: #fff8e1;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .observations {
+            background: #3a3520;
+            border-color: #ffab00;
+        }
+
+        .observations-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        body.dark-mode .observations-title {
+            color: #ffc107;
+        }
+
+        .observations-text {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        body.dark-mode .observations-text {
+            color: #ccc;
+        }
+
+        .health-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .health-badge.healthy {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        body.dark-mode .health-badge.healthy {
+            background: #1b3a1f;
+            color: #66bb6a;
+        }
+
+        .health-badge.unhealthy {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        body.dark-mode .health-badge.unhealthy {
+            background: #3a1a1a;
+            color: #ef5350;
+        }
+
+        .new-analysis-btn {
+            background-color: #7A1919;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .new-analysis-btn:hover {
+            background-color: #5a1313;
+        }
+
+        body.dark-mode .new-analysis-btn {
+            background-color: #ff6b6b;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .new-analysis-btn:hover {
+            background-color: #ff5252;
+        }
+
+        .history-section {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .history-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #7A1919;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .history-title {
+            color: #ff6b6b;
+        }
+
+        .history-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #7A1919;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .history-item {
+            background: #2a2a2a;
+            border-color: #ff6b6b;
+        }
+
+        .history-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .history-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .history-food {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        body.dark-mode .history-food {
+            color: #fff;
+        }
+
+        .history-calories {
+            font-size: 14px;
+            color: #7A1919;
+            font-weight: 600;
+        }
+
+        body.dark-mode .history-calories {
+            color: #ff6b6b;
+        }
+
+        @media (max-width: 768px) {
+            .alimentacao-title {
+                font-size: 24px;
+            }
+
+            .alimentacao-subtitle {
+                font-size: 16px;
+            }
+
+            .alimentacao-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .upload-section {
+                padding: 20px;
+            }
+
+            .upload-area {
+                padding: 30px 20px;
+            }
+
+            .nutrition-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
+        <nav class="header-nav">
+            <div class="header-item menu">
+                <span class="menu-icon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+                <span class="item-label">Menu</span>
+            </div>
+            <div onclick="window.location.href='chat.html'" class="header-item chat">
+                <img src="img/icon-ia.png" class="chat-icon">
+                <span class="item-label">Chat IA</span>
+            </div>
+            <div class="header-item perfil" id="perfil-btn">
+                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+                <span class="item-label">Perfil</span>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Modal Perfil -->
+    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+        <div class="perfil-modal" id="perfil-modal">
+            <div class="perfil-modal-header">Conta</div>
+            <div class="perfil-modal-user">
+                <span class="perfil-modal-user-icon" id="perfil-user-icon">
+                    <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+                </span>
+                <div class="perfil-modal-user-info">
+                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+                    <span class="perfil-modal-user-email" id="perfil-email"></span>
+                </div>
+            </div>
+            <hr class="perfil-modal-divider">
+            <div class="perfil-modal-list">
+                <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+                    <input type="file" id="foto-input" accept="image/*" style="display:none;">
+                </div>
+                <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay para foto em tela cheia -->
+    <div id="foto-fullscreen-bg"
+        style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+        <img id="foto-fullscreen-img" src="" alt="Foto perfil"
+            style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">
+    </div>
+
+    <!-- Modal Menu Lateral -->
+    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+        <div class="menu-modal" id="menu-modal">
+            <div class="menu-modal-header">
+                <span>Menu</span>
+            </div>
+            <hr class="menu-modal-divider">
+            <div class="menu-modal-list">
+                <div onclick="window.location.href='chat.html'" class="menu-modal-item">Chat IA</div>
+                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+                <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="alimentacao-container">
+        <div class="alimentacao-header">
+            <img src="img/comida-e-restaurante.png" alt="Alimentação" class="alimentacao-icon theme-image" data-light="img/comida-e-restaurante.png" data-dark="img/comida-e-restaurante (bt).png">
+            <h1 class="alimentacao-title">Análise Nutricional IA</h1>
+            <p class="alimentacao-subtitle">
+                Tire uma foto da refeição e receba análise completa instantaneamente
+            </p>
+        </div>
+
+        <!-- Seção de Upload -->
+        <div class="upload-section" id="upload-section">
+            <!-- Botões de Câmera -->
+            <div class="camera-options">
+                <button class="camera-btn" id="camera-btn">
+                    📷 Tirar Foto
+                </button>
+                <button class="camera-btn" id="gallery-btn">
+                    🖼️ Galeria
+                </button>
+            </div>
+
+            <div class="upload-area" id="upload-area">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text">Ou arraste uma imagem</div>
+                <div class="upload-hint">JPG, PNG, HEIC, WEBP (máx. 10MB)</div>
+                <input type="file" id="file-input" accept="image/*,.heic,.heif" style="display: none;">
+                <input type="file" id="camera-input" accept="image/*,.heic,.heif" capture="environment" style="display: none;">
+            </div>
+            
+            <div class="image-preview" id="image-preview">
+                <img id="preview-img" src="" alt="Preview">
+            </div>
+            
+            <button class="analyze-btn" id="analyze-btn">
+                🔍 Analisar Refeição
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p style="margin-top: 15px; color: #666;">Analisando...</p>
+        </div>
+
+        <!-- Resultados -->
+        <div class="results-section" id="results-section">
+            <h2 class="results-title">Análise Completa</h2>
+            
+            <div class="food-name" id="food-name"></div>
+            
+            <div class="nutrition-grid">
+                <div class="nutrition-item">
+                    <div class="nutrition-label">Calorias</div>
+                    <div class="nutrition-value" id="calories">-</div>
+                </div>
+                <div class="nutrition-item">
+                    <div class="nutrition-label">Proteínas</div>
+                    <div class="nutrition-value" id="proteins">-</div>
+                </div>
+                <div class="nutrition-item">
+                    <div class="nutrition-label">Carboidratos</div>
+                    <div class="nutrition-value" id="carbs">-</div>
+                </div>
+                <div class="nutrition-item">
+                    <div class="nutrition-label">Gorduras</div>
+                    <div class="nutrition-value" id="fats">-</div>
+                </div>
+            </div>
+
+            <div class="observations">
+                <div class="observations-title">💡 Observações</div>
+                <div class="observations-text" id="observations"></div>
+            </div>
+
+            <div style="text-align: center;">
+                <span class="health-badge" id="health-badge"></span>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="new-analysis-btn" id="new-analysis-btn">
+                    Nova Análise
+                </button>
+            </div>
+        </div>
+
+        <!-- Histórico -->
+        <div class="history-section" id="history-section" style="display: none;">
+            <h3 class="history-title">Histórico Recente</h3>
+            <div id="history-list"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <hr class="footer-line">
+    </footer>
+
+    <script>
+        // Inicializa o gerenciador de tema
+        ThemeManager.init();
+
+        // Variáveis globais
+        let selectedImage = null;
+        let currentAnalysis = null;
+
+        // Elementos do DOM
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const cameraInput = document.getElementById('camera-input');
+        const cameraBtn = document.getElementById('camera-btn');
+        const galleryBtn = document.getElementById('gallery-btn');
+        const imagePreview = document.getElementById('image-preview');
+        const previewImg = document.getElementById('preview-img');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const loading = document.getElementById('loading');
+        const resultsSection = document.getElementById('results-section');
+        const uploadSection = document.getElementById('upload-section');
+        const newAnalysisBtn = document.getElementById('new-analysis-btn');
+        const historySection = document.getElementById('history-section');
+        const historyList = document.getElementById('history-list');
+
+        // Botão para tirar foto com câmera
+        cameraBtn.addEventListener('click', () => {
+            cameraInput.click();
+        });
+
+        // Botão para escolher da galeria
+        galleryBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Upload de arquivo
+        uploadArea.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', handleFileSelect);
+        cameraInput.addEventListener('change', handleFileSelect);
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragging');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragging');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragging');
+            
+            const file = e.dataTransfer.files[0];
+            if (file && (file.type.startsWith('image/') || file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif'))) {
+                handleFile(file);
+            } else {
+                alert('Por favor, envie apenas arquivos de imagem.');
+            }
+        });
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleFile(file);
+            }
+        }
+
+        function handleFile(file) {
+            // Validar tamanho (10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                alert('Arquivo muito grande! Máximo de 10MB.');
+                return;
+            }
+
+            // Lista de tipos de imagem suportados (incluindo formatos de celular)
+            const supportedTypes = [
+                'image/jpeg',
+                'image/jpg', 
+                'image/png',
+                'image/gif',
+                'image/webp',
+                'image/heic',
+                'image/heif',
+                'image/bmp',
+                'image/tiff',
+                'image/svg+xml'
+            ];
+
+            // Verifica extensão também (para HEIC/HEIF que podem não ter MIME type correto)
+            const fileName = file.name.toLowerCase();
+            const isHeic = fileName.endsWith('.heic') || fileName.endsWith('.heif');
+            const isSupportedType = supportedTypes.includes(file.type) || file.type.startsWith('image/');
+
+            if (!isSupportedType && !isHeic) {
+                alert('Formato não suportado! Use JPG, PNG, HEIC, WEBP ou outros formatos de imagem.');
+                return;
+            }
+
+            // Para HEIC/HEIF, tentar converter para JPEG (iOS específico)
+            if (isHeic || file.type === 'image/heic' || file.type === 'image/heif') {
+                handleHeicImage(file);
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                selectedImage = e.target.result;
+                previewImg.src = selectedImage;
+                imagePreview.style.display = 'block';
+                analyzeBtn.style.display = 'inline-block';
+            };
+            reader.onerror = () => {
+                alert('Erro ao ler o arquivo. Tente novamente.');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Função para lidar com imagens HEIC/HEIF (formato iOS)
+        function handleHeicImage(file) {
+            // Tentar ler como blob e converter
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    // Se o navegador suportar nativamente, usar diretamente
+                    const img = new Image();
+                    img.onload = () => {
+                        // Criar canvas para converter para JPEG
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        
+                        // Converter para JPEG
+                        selectedImage = canvas.toDataURL('image/jpeg', 0.9);
+                        previewImg.src = selectedImage;
+                        imagePreview.style.display = 'block';
+                        analyzeBtn.style.display = 'inline-block';
+                    };
+                    img.onerror = () => {
+                        // Se falhar, informar ao usuário
+                        alert('Formato HEIC/HEIF detectado. Por favor, tire uma nova foto em formato JPG ou converta a imagem antes de enviar.');
+                    };
+                    img.src = e.target.result;
+                } catch (error) {
+                    console.error('Erro ao processar HEIC:', error);
+                    alert('Erro ao processar imagem HEIC. Tente tirar uma nova foto ou use outro formato.');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Analisar imagem
+        analyzeBtn.addEventListener('click', async () => {
+            if (!selectedImage) return;
+
+            // Mostrar loading
+            analyzeBtn.disabled = true;
+            analyzeBtn.textContent = 'Analisando...';
+            loading.style.display = 'block';
+            resultsSection.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/analyze-food', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        image: selectedImage
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    currentAnalysis = {
+                        ...data,
+                        date: new Date().toISOString(),
+                        image: selectedImage
+                    };
+                    
+                    displayResults(data);
+                    saveToHistory(currentAnalysis);
+                    loadHistory();
+                } else {
+                    throw new Error(data.error || 'Erro ao analisar imagem');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao analisar a imagem. Tente novamente.');
+            } finally {
+                loading.style.display = 'none';
+                analyzeBtn.disabled = false;
+                analyzeBtn.textContent = '🔍 Analisar Refeição';
+            }
+        });
+
+        function displayResults(data) {
+            document.getElementById('food-name').textContent = data.alimento || 'Alimento não identificado';
+            document.getElementById('calories').textContent = data.calorias || '-';
+            document.getElementById('proteins').textContent = data.proteinas || '-';
+            document.getElementById('carbs').textContent = data.carboidratos || '-';
+            document.getElementById('fats').textContent = data.gorduras || '-';
+            document.getElementById('observations').textContent = data.observacoes || 'Sem observações';
+
+            const healthBadge = document.getElementById('health-badge');
+            if (data.saudavel) {
+                healthBadge.textContent = '✅ Saudável';
+                healthBadge.className = 'health-badge healthy';
+            } else {
+                healthBadge.textContent = '⚠️ Com Moderação';
+                healthBadge.className = 'health-badge unhealthy';
+            }
+
+            uploadSection.style.display = 'none';
+            resultsSection.style.display = 'block';
+        }
+
+        // Nova análise
+        newAnalysisBtn.addEventListener('click', () => {
+            selectedImage = null;
+            currentAnalysis = null;
+            fileInput.value = '';
+            imagePreview.style.display = 'none';
+            analyzeBtn.style.display = 'none';
+            uploadSection.style.display = 'block';
+            resultsSection.style.display = 'none';
+        });
+
+        // Salvar no histórico
+        function saveToHistory(analysis) {
+            let history = JSON.parse(localStorage.getItem('foodHistory') || '[]');
+            history.unshift(analysis);
+            
+            // Manter apenas últimas 10 análises
+            if (history.length > 10) {
+                history = history.slice(0, 10);
+            }
+            
+            localStorage.setItem('foodHistory', JSON.stringify(history));
+        }
+
+        // Carregar histórico
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem('foodHistory') || '[]');
+            
+            if (history.length === 0) {
+                historySection.style.display = 'none';
+                return;
+            }
+
+            historySection.style.display = 'block';
+            historyList.innerHTML = '';
+
+            history.forEach((item, index) => {
+                const date = new Date(item.date);
+                const dateStr = date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }) + ' • ' + date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.innerHTML = `
+                    <div class="history-info">
+                        <div class="history-date">${dateStr}</div>
+                        <div class="history-food">${item.alimento}</div>
+                    </div>
+                    <div class="history-calories">${item.calorias}</div>
+                `;
+                
+                historyItem.addEventListener('click', () => {
+                    selectedImage = item.image;
+                    previewImg.src = item.image;
+                    displayResults(item);
+                });
+
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        // Carregar histórico ao iniciar
+        loadHistory();
+
+        // Utilitário para atualizar localStorage e sessão
+        function atualizarUsuarioLogado(novosDados) {
+            let usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            usuario = { ...usuario, ...novosDados };
+            localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+            // Atualiza também na lista de usuários
+            let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+            usuarios = usuarios.map(u => u.email === usuario.email ? { ...u, ...novosDados } : u);
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        }
+
+        // Atualiza a foto do header com a foto do usuário logado
+        function atualizarFotoHeader() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const headerIcon = document.getElementById('header-perfil-icon');
+            if (usuario.fotoPerfil) {
+                headerIcon.src = usuario.fotoPerfil;
+            } else {
+                headerIcon.src = "img/icon.png";
+            }
+        }
+
+        // Chame ao abrir a página
+        atualizarFotoHeader();
+
+        // Modal Perfil
+        function showPerfilModal() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            document.getElementById('perfil-nome').textContent = usuario.nome || '';
+            document.getElementById('perfil-email').textContent = usuario.email || '';
+            // Foto de perfil
+            const img = document.getElementById('perfil-img');
+            if (usuario.fotoPerfil) {
+                img.src = usuario.fotoPerfil;
+            } else {
+                img.src = "img/icon.png";
+            }
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        }
+        function hidePerfilModal(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                document.getElementById('perfil-modal-bg').style.display = 'none';
+                removerInputNome();
+            }
+        }
+        document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+        document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+
+        // Alterar foto de perfil
+        document.getElementById('alterar-foto-btn').addEventListener('click', function () {
+            document.getElementById('foto-input').click();
+        });
+        document.getElementById('foto-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                const fotoBase64 = evt.target.result;
+                // Atualiza a imagem do modal imediatamente
+                document.getElementById('perfil-img').src = fotoBase64;
+                atualizarUsuarioLogado({ fotoPerfil: fotoBase64 });
+                // Atualiza a imagem do header também
+                atualizarFotoHeader();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Alterar nome
+        function removerInputNome() {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) {
+                const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+                nomeSpan.textContent = usuario.nome || '';
+            }
+        }
+        document.getElementById('alterar-nome-btn').addEventListener('click', function () {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) return; // já está editando
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = usuario.nome || '';
+            input.style.fontSize = '15px';
+            input.style.fontWeight = '600';
+            input.style.borderRadius = '4px';
+            input.style.padding = '2px 6px';
+            input.style.width = '90%';
+            input.maxLength = 32;
+            
+            // Aplica estilos baseados no tema atual
+            applyThemeInputStyles(input);
+            
+            nomeSpan.textContent = '';
+            nomeSpan.appendChild(input);
+            input.focus();
+            input.select();
+
+            input.addEventListener('keydown', function (ev) {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    salvarNome();
+                } else if (ev.key === 'Escape') {
+                    removerInputNome();
+                }
+            });
+            input.addEventListener('blur', salvarNome);
+
+            function salvarNome() {
+                let novoNome = input.value.trim();
+                if (!novoNome) novoNome = usuario.nome || '';
+                atualizarUsuarioLogado({ nome: novoNome });
+                nomeSpan.textContent = novoNome;
+            }
+        });
+
+        // Abrir foto em tela cheia ao clicar na imagem do modal
+        document.getElementById('perfil-img').addEventListener('click', function () {
+            const src = this.src;
+            const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+            const fullscreenImg = document.getElementById('foto-fullscreen-img');
+            fullscreenImg.src = src;
+            fullscreenImg.classList.remove('show'); // reset
+            fullscreenBg.style.display = 'flex';
+            // Força reflow para reiniciar animação
+            void fullscreenImg.offsetWidth;
+            fullscreenImg.classList.add('show');
+        });
+        // Fechar ao clicar fora da imagem
+        document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.getElementById('foto-fullscreen-img').src = '';
+                document.getElementById('foto-fullscreen-img').classList.remove('show');
+            }
+        });
+
+        // Sair da conta (mantém o perfil salvo no localStorage)
+        document.getElementById('sair-btn').addEventListener('click', function () {
+            localStorage.removeItem('usuarioLogado');
+            window.location.href = "index.html";
+        });
+
+        // Modal Menu Lateral
+        document.querySelector('.header-item.menu').addEventListener('click', function () {
+            document.getElementById('menu-modal-bg').style.display = 'block';
+        });
+        document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
+            if (e.target.id === 'menu-modal-bg') {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

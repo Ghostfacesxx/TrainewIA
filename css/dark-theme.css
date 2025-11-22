@@ -1,0 +1,643 @@
+/* Tema escuro */
+[data-theme='dark'] {
+    /* Cores de fundo */
+    --bg-color: #121212;
+    --modal-bg: #1e1e1e;
+    --card-bg: #2d2d2d;
+    --secondary-bg: #1e1e1e;
+    --overlay-bg: rgba(0, 0, 0, 0.85);
+    
+    /* Cores de texto */
+    --text-color: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-muted: #808080;
+    
+    /* Cores de destaque - mantendo o vermelho original */
+    --primary-color: #ff6347;
+    --primary-hover: #e55347;
+    --accent-color: #ff6347;
+    
+    /* Cores de borda */
+    --border-color: #404040;
+    --divider-color: #404040;
+    --input-border: #555555;
+    
+    /* Variáveis específicas do chat */
+    --chat-user-bg: #8B2525;
+    --chat-bot-bg: #2a2a2a;
+    --chat-input-bg: #1e1e1e;
+    --chat-container-bg: #121212;
+    --chat-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --chat-message-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* TESTE: Regra bem visível para verificar se o CSS está carregando */
+[data-theme='dark'] body {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+/* Aplicação das variáveis */
+[data-theme='dark'] body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Header - mantém sem modificações conforme solicitado */
+/* Não alteramos o header conforme solicitado pelo usuário */
+/* Garantindo que o header permaneça visível em modo escuro */
+[data-theme='dark'] .header {
+    /* Mantém todas as propriedades originais do header */
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+/* Modais */
+[data-theme='dark'] .perfil-modal,
+[data-theme='dark'] .menu-modal {
+    background-color: var(--modal-bg);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .perfil-modal-bg,
+[data-theme='dark'] .menu-modal-bg {
+    background: var(--overlay-bg);
+}
+
+[data-theme='dark'] .perfil-modal-divider,
+[data-theme='dark'] .menu-modal-divider {
+    border-color: var(--divider-color);
+}
+
+[data-theme='dark'] .perfil-modal-item,
+[data-theme='dark'] .menu-modal-item {
+    color: var(--text-color);
+    border-bottom-color: var(--divider-color);
+}
+
+[data-theme='dark'] .perfil-modal-item:hover,
+[data-theme='dark'] .menu-modal-item:hover {
+    background-color: var(--card-bg);
+}
+
+/* Cards e containers */
+[data-theme='dark'] .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .card-label {
+    color: var(--text-color);
+}
+
+/* Footer */
+[data-theme='dark'] .footer-line {
+    border-color: var(--primary-color);
+}
+
+/* Textos específicos */
+[data-theme='dark'] .perfil-modal-header {
+    color: var(--primary-color);
+    background: var(--modal-bg);
+}
+
+[data-theme='dark'] .perfil-modal-user-nome {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .perfil-modal-user-email {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .menu-modal-header {
+    color: var(--primary-color);
+    background: var(--modal-bg);
+}
+
+/* Mantém elementos vermelhos na cor original ou melhora para modo escuro */
+[data-theme='dark'] .header-item:hover,
+[data-theme='dark'] .btn-primary,
+[data-theme='dark'] .chat-send-btn,
+[data-theme='dark'] .menu-icon .bar {
+    color: var(--primary-color) !important;
+}
+
+/* Manter o botão "Sair" em vermelho mais forte */
+[data-theme='dark'] #sair-btn {
+    color: #ff4444 !important;
+}
+
+/* Links e elementos de destaque */
+[data-theme='dark'] a:hover,
+[data-theme='dark'] .btn-primary:hover {
+    color: var(--primary-hover) !important;
+}
+
+/* Tabelas no modo escuro */
+[data-theme='dark'] table {
+    background-color: var(--modal-bg);
+    border-color: var(--primary-color) !important;
+}
+
+[data-theme='dark'] th,
+[data-theme='dark'] td {
+    color: var(--text-color);
+    border-color: var(--divider-color);
+    background-color: var(--modal-bg);
+}
+
+[data-theme='dark'] th {
+    background-color: var(--card-bg);
+}
+
+/* Input e campos de formulário */
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select {
+    background-color: var(--modal-bg);
+    color: var(--text-color);
+    border-color: var(--input-border);
+}
+
+[data-theme='dark'] input:focus,
+[data-theme='dark'] textarea:focus,
+[data-theme='dark'] select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(122, 25, 25, 0.2);
+}
+
+/* Placeholders em inputs */
+[data-theme='dark'] input::placeholder,
+[data-theme='dark'] textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Container principal */
+[data-theme='dark'] .container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Títulos e seções */
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6 {
+    color: var(--text-color);
+}
+
+/* Seção da faixa */
+[data-theme='dark'] .faixa-section {
+    background-color: var(--modal-bg);
+}
+
+[data-theme='dark'] .faixa-text {
+    color: var(--text-color) !important;
+}
+
+/* Modal de planos */
+[data-theme='dark'] .planos-modal-bg {
+    background: var(--overlay-bg);
+}
+
+[data-theme='dark'] .planos-modal {
+    background: var(--modal-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .planos-close {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .planos-title {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .plano-valor {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .plano-sub {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .badge {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .vantagens-title {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .vantagens-list {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .metodo-pgto {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .btn-pagar {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .btn-pagar:hover {
+    background: var(--primary-hover);
+}
+
+/* Chat específico - Versão otimizada */
+[data-theme='dark'] body {
+    background: var(--bg-color) !important;
+}
+
+/* Container principal do chat */
+[data-theme='dark'] .chat-container {
+    background-color: var(--chat-container-bg) !important;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--chat-shadow);
+}
+
+/* Header do chat */
+[data-theme='dark'] .chat-header {
+    background-color: var(--primary-color) !important;
+    color: var(--text-color) !important;
+    border-bottom: 2px solid var(--primary-hover);
+}
+
+/* Área de mensagens */
+[data-theme='dark'] .chat-messages {
+    background-color: var(--bg-color) !important;
+}
+
+/* Mensagens gerais */
+[data-theme='dark'] .message {
+    color: var(--text-color);
+    box-shadow: var(--chat-message-shadow);
+    border: 1px solid var(--border-color);
+}
+
+/* Mensagens do usuário */
+[data-theme='dark'] .message.user {
+    background-color: var(--chat-user-bg) !important;
+    color: #ffffff !important;
+    border: 1px solid #a52d2d;
+    box-shadow: 0 3px 12px rgba(139, 37, 37, 0.4);
+}
+
+[data-theme='dark'] .msg-row.user .msg-bubble {
+    background: var(--chat-user-bg) !important;
+    color: #ffffff !important;
+    border: 1px solid #a52d2d;
+    box-shadow: 0 2px 8px rgba(139, 37, 37, 0.3);
+}
+
+/* Mensagens do bot/IA */
+[data-theme='dark'] .message.bot,
+[data-theme='dark'] .message.ia {
+    background-color: var(--chat-bot-bg) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .msg-row.ia .msg-bubble {
+    background: var(--chat-bot-bg) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Mensagens de loading */
+[data-theme='dark'] .message.loading {
+    background-color: var(--card-bg) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--border-color);
+    opacity: 0.8;
+}
+
+/* Container do input */
+[data-theme='dark'] .chat-input-container,
+[data-theme='dark'] .chat-input-area {
+    background-color: #1a1a1a !important;
+    border-top: 1px solid #2a2a2a;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Input de texto */
+[data-theme='dark'] .chat-input {
+    background-color: var(--chat-input-bg) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a !important;
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .chat-input:focus {
+    border-color: #8B2525 !important;
+    box-shadow: 0 0 0 2px rgba(139, 37, 37, 0.3) !important;
+    background-color: #252525 !important;
+}
+
+[data-theme='dark'] .chat-input::placeholder {
+    color: #666 !important;
+}
+
+/* Botão de enviar */
+[data-theme='dark'] .chat-send-btn {
+    background-color: #8B2525 !important;
+    color: #ffffff !important;
+    border: 1px solid #a52d2d;
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .chat-send-btn:hover {
+    background-color: #a52d2d !important;
+    box-shadow: 0 4px 16px rgba(139, 37, 37, 0.5);
+    transform: translateY(-1px);
+}
+
+[data-theme='dark'] .chat-send-btn:active {
+    background-color: #6f1d1d !important;
+}
+
+/* Hint e área de mensagens */
+[data-theme='dark'] .chat-hint {
+    color: #888 !important;
+}
+
+[data-theme='dark'] .chat-messages {
+    background-color: #121212 !important;
+}
+
+[data-theme='dark'] .chat-clear-btn {
+    background-color: #8B2525 !important;
+    border-top: solid 2px #2a2a2a !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .chat-send-btn:active {
+    transform: translateY(0);
+}
+
+/* Botão limpar chat */
+[data-theme='dark'] .clear-chat {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .clear-chat:hover {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Melhorias adicionais para chat */
+[data-theme='dark'] .msg-bubble {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .msg-bubble.user {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-hover);
+}
+
+/* Timestamps */
+[data-theme='dark'] .msg-time {
+    color: var(--text-muted) !important;
+}
+
+/* Scrollbar customizada para chat */
+[data-theme='dark'] .chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme='dark'] .chat-messages::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 4px;
+}
+
+[data-theme='dark'] .chat-messages::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+[data-theme='dark'] .chat-messages::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Status indicators */
+[data-theme='dark'] .typing-indicator {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .connection-status {
+    background-color: var(--card-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+/* Links azuis no chat */
+[data-theme='dark'] .link-azul {
+    color: #4da3ff !important;
+}
+
+[data-theme='dark'] .link-azul:hover {
+    color: #66b3ff !important;
+}
+
+/* Página Sobre específica */
+[data-theme='dark'] .sobre-h1 {
+    color: var(--text-color) !important;
+    text-shadow: 0 0 15px var(--primary-color);
+    background: linear-gradient(45deg, var(--text-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme='dark'] .container {
+    background-color: var(--bg-color);
+}
+
+[data-theme='dark'] .content-text {
+    background: linear-gradient(135deg, var(--modal-bg), var(--card-bg)) !important;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 12px 40px rgba(122, 25, 25, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .content-text p {
+    color: var(--text-color) !important;
+    background-color: transparent;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .img-nos {
+    border: 4px solid var(--primary-color) !important;
+    box-shadow: 0 12px 32px rgba(122, 25, 25, 0.6),
+                0 0 0 1px rgba(122, 25, 25, 0.3) !important;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+/* Estilos específicos para o switch do tema */
+[data-theme='dark'] .theme-switch {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.theme-switch-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: inherit;
+}
+
+/* Garantir que elementos específicos mantenham boa legibilidade */
+[data-theme='dark'] .arrow {
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .arrow:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Overlay para foto em tela cheia */
+[data-theme='dark'] #foto-fullscreen-bg {
+    background: var(--overlay-bg);
+}
+
+/* Transições suaves para mudança de tema */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilos específicos para páginas de login e cadastro */
+[data-theme='dark'] .title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .subtitle {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .container {
+    background-color: var(--modal-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .form-group label {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .form-group input {
+    background-color: var(--modal-bg);
+    color: var(--text-color);
+    border-color: var(--input-border);
+}
+
+/* Inputs criados dinamicamente para edição de nome */
+[data-theme='dark'] #perfil-nome input {
+    background-color: var(--modal-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--input-border) !important;
+}
+
+/* Classe utilitária para inputs que respondem ao tema */
+[data-theme='dark'] .theme-aware-input {
+    background-color: var(--modal-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--input-border) !important;
+}
+
+[data-theme='dark'] .form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(122, 25, 25, 0.2);
+}
+
+[data-theme='dark'] .submit-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .submit-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+[data-theme='dark'] .form-footer a {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .form-footer a:hover {
+    color: var(--primary-hover);
+}

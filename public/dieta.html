@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainew IA</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/font-manager.js"></script>
+
+    <script>
+        // Verificar se o usuário está logado
+        AuthManager.requireAuth();
+        
+        // Inicializa os modais ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal Menu
+            document.querySelector('.header-item.menu').addEventListener('click', function() {
+                document.getElementById('menu-modal-bg').style.display = 'block';
+            });
+            document.getElementById('menu-modal-bg').addEventListener('click', function(e) {
+                if (e.target.id === 'menu-modal-bg') {
+                    this.style.display = 'none';
+                }
+            });
+
+            // Modal Perfil
+            document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+            document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+            
+            // Foto em tela cheia
+            document.getElementById('perfil-img').addEventListener('click', function() {
+                const src = this.src;
+                const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+                const fullscreenImg = document.getElementById('foto-fullscreen-img');
+                fullscreenImg.src = src;
+                fullscreenBg.style.display = 'flex';
+            });
+            
+            document.getElementById('foto-fullscreen-bg').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.getElementById('foto-fullscreen-img').src = '';
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
+        <nav class="header-nav">
+            <div class="header-item menu">
+                <span class="menu-icon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+                <span class="item-label">Menu</span>
+            </div>
+            <div onclick="window.location.href='chat.html'" class="header-item chat">
+                <img src="img/icon-ia.png" class="chat-icon">
+                <span class="item-label">Chat IA</span>
+            </div>
+            <div class="header-item perfil" id="perfil-btn">
+                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+                <span class="item-label">Perfil</span>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Modal Perfil -->
+    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+        <div class="perfil-modal" id="perfil-modal">
+            <div class="perfil-modal-header">Conta</div>
+            <div class="perfil-modal-user">
+                <span class="perfil-modal-user-icon" id="perfil-user-icon">
+                    <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+                </span>
+                <div class="perfil-modal-user-info">
+                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+                    <span class="perfil-modal-user-email" id="perfil-email"></span>
+                </div>
+            </div>
+            <hr class="perfil-modal-divider">
+            <div class="perfil-modal-list">
+                <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+                    <input type="file" id="foto-input" accept="image/*" style="display:none;">
+                </div>
+                <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay para foto em tela cheia -->
+    <div id="foto-fullscreen-bg"
+        style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+        <img id="foto-fullscreen-img" src="" alt="Foto perfil"
+            style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">
+    </div>
+
+    <!-- Modal Menu Lateral -->
+    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+        <div class="menu-modal" id="menu-modal">
+            <div class="menu-modal-header">
+                <span>Menu</span>
+            </div>
+            <hr class="menu-modal-divider">
+            <div class="menu-modal-list">
+                <div onclick="window.location.href='chat.html'" class="menu-modal-item">Chat IA</div>
+                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <hr class="footer-line">
+    </footer>
+    <script>
+        // Inicializa o gerenciador de tema
+        ThemeManager.init();
+
+        // Utilitário para atualizar localStorage e sessão
+        function atualizarUsuarioLogado(novosDados) {
+            let usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            usuario = { ...usuario, ...novosDados };
+            localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+            // Atualiza também na lista de usuários
+            let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+            usuarios = usuarios.map(u => u.email === usuario.email ? { ...u, ...novosDados } : u);
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        }
+
+        // Atualiza a foto do header com a foto do usuário logado
+        function atualizarFotoHeader() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const headerIcon = document.getElementById('header-perfil-icon');
+            if (usuario.fotoPerfil) {
+                headerIcon.src = usuario.fotoPerfil;
+            } else {
+                headerIcon.src = "img/icon.png";
+            }
+        }
+
+        // Chame ao abrir a página
+        atualizarFotoHeader();
+
+        // Modal Perfil
+        function showPerfilModal() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            document.getElementById('perfil-nome').textContent = usuario.nome || '';
+            document.getElementById('perfil-email').textContent = usuario.email || '';
+            // Foto de perfil
+            const img = document.getElementById('perfil-img');
+            if (usuario.fotoPerfil) {
+                img.src = usuario.fotoPerfil;
+            } else {
+                img.src = "img/icon.png";
+            }
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        }
+        function hidePerfilModal(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                document.getElementById('perfil-modal-bg').style.display = 'none';
+                removerInputNome();
+            }
+        }
+        document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+        document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+
+        // Alterar foto de perfil
+        document.getElementById('alterar-foto-btn').addEventListener('click', function () {
+            document.getElementById('foto-input').click();
+        });
+        document.getElementById('foto-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                const fotoBase64 = evt.target.result;
+                // Atualiza a imagem do modal imediatamente
+                document.getElementById('perfil-img').src = fotoBase64;
+                atualizarUsuarioLogado({ fotoPerfil: fotoBase64 });
+                // Atualiza a imagem do header também
+                atualizarFotoHeader();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Alterar nome
+        function removerInputNome() {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) {
+                const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+                nomeSpan.textContent = usuario.nome || '';
+            }
+        }
+        document.getElementById('alterar-nome-btn').addEventListener('click', function () {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) return; // já está editando
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = usuario.nome || '';
+            input.style.fontSize = '15px';
+            input.style.fontWeight = '600';
+            input.style.borderRadius = '4px';
+            input.style.padding = '2px 6px';
+            input.style.width = '90%';
+            input.maxLength = 32;
+            
+            // Aplica estilos baseados no tema atual
+            applyThemeInputStyles(input);
+            
+            nomeSpan.textContent = '';
+            nomeSpan.appendChild(input);
+            input.focus();
+            input.select();
+
+            input.addEventListener('keydown', function (ev) {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    salvarNome();
+                } else if (ev.key === 'Escape') {
+                    removerInputNome();
+                }
+            });
+            input.addEventListener('blur', salvarNome);
+
+            function salvarNome() {
+                let novoNome = input.value.trim();
+                if (!novoNome) novoNome = usuario.nome || '';
+                atualizarUsuarioLogado({ nome: novoNome });
+                nomeSpan.textContent = novoNome;
+            }
+        });
+
+        // Abrir foto em tela cheia ao clicar na imagem do modal
+        document.getElementById('perfil-img').addEventListener('click', function () {
+            const src = this.src;
+            const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+            const fullscreenImg = document.getElementById('foto-fullscreen-img');
+            fullscreenImg.src = src;
+            fullscreenImg.classList.remove('show'); // reset
+            fullscreenBg.style.display = 'flex';
+            // Força reflow para reiniciar animação
+            void fullscreenImg.offsetWidth;
+            fullscreenImg.classList.add('show');
+        });
+        // Fechar ao clicar fora da imagem
+        document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.getElementById('foto-fullscreen-img').src = '';
+                document.getElementById('foto-fullscreen-img').classList.remove('show');
+            }
+        });
+
+        // Sair da conta (mantém o perfil salvo no localStorage)
+        document.getElementById('sair-btn').addEventListener('click', function () {
+            localStorage.removeItem('usuarioLogado');
+            window.location.href = "index.html";
+        });
+
+        // Modal Menu Lateral
+        document.querySelector('.header-item.menu').addEventListener('click', function () {
+            document.getElementById('menu-modal-bg').style.display = 'block';
+        });
+        document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
+            if (e.target.id === 'menu-modal-bg') {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+
+
+
+<style>
+.dieta-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dieta-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+.dias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.dia-card {
+  background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark-mode .dia-card {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+}
+
+.dia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Modal de Detalhes */
+.modal-detalhes {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-detalhes.show {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .modal-content {
+  background: #1a1a1a;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #1a1a1a;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+body.dark-mode .modal-close {
+  color: #f5f5f5;
+}
+
+.modal-close:hover {
+  background: rgba(122, 25, 25, 0.2);
+}
+
+body.dark-mode .modal-close:hover {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+.modal-dia-nome {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+body.dark-mode .modal-dia-nome {
+  color: #f5f5f5;
+}
+
+.modal-dia-resumo {
+  font-size: 16px;
+  color: #7A1919;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+body.dark-mode .modal-dia-resumo {
+  color: #ff6b6b;
+}
+
+.modal-refeicao {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid #7A1919;
+}
+
+body.dark-mode .modal-refeicao {
+  background: #2a2a2a;
+  border-left-color: #ff6b6b;
+}
+
+.modal-refeicao-nome {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+body.dark-mode .modal-refeicao-nome {
+  color: #f5f5f5;
+}
+
+.modal-refeicao-desc {
+  font-size: 14px;
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
+body.dark-mode .modal-refeicao-desc {
+  color: #b0b0b0;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px;
+    max-height: 90vh;
+  }
+  
+  .modal-dia-nome {
+    font-size: 24px;
+  }
+}
+
+.dia-card.descanso {
+  background: linear-gradient(135deg, #4a4a4a 0%, #2d2d2d 100%);
+  cursor: default;
+}
+
+body.dark-mode .dia-card.descanso {
+  background: linear-gradient(135deg, #666 0%, #444 100%);
+}
+
+.dia-card.descanso:hover {
+  transform: none;
+}
+
+.dia-nome {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+}
+
+body.dark-mode .dia-nome {
+  color: #1a1a1a;
+}
+
+.dia-card.descanso .dia-nome {
+  color: white;
+}
+
+.dia-resumo {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+body.dark-mode .dia-resumo {
+  color: rgba(26,26,26,0.8);
+}
+
+.dia-card.descanso .dia-resumo {
+  color: rgba(255,255,255,0.9);
+}
+
+.dia-refeicoes {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+
+body.dark-mode .dia-refeicoes {
+  color: rgba(26,26,26,0.7);
+}
+
+.dia-card.descanso .dia-refeicoes {
+  color: rgba(255,255,255,0.8);
+}
+
+.sem-dieta {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .dias-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .dieta-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .dieta-container {
+    padding: 15px;
+  }
+  
+  .dia-card {
+    padding: 16px;
+  }
+  
+  .dia-nome {
+    font-size: 20px;
+  }
+  
+  .modal-content {
+    margin: 10px;
+    padding: 20px;
+    max-height: 85vh;
+  }
+}
+</style>
+
+<script>
+window.onload = function() {
+  const container = document.createElement('div');
+  container.className = 'dieta-container';
+  container.innerHTML = "<h2 class='dieta-title'>Seu Plano Alimentar</h2>";
+
+  const dados = JSON.parse(localStorage.getItem('dieta') || '[]');
+  
+  if (dados.length === 0) {
+    container.innerHTML += "<div class='sem-dieta'>Nenhuma dieta definida ainda.</div>";
+  } else {
+    // Agrupar refeições por dia
+    const diasMap = {};
+    dados.forEach(item => {
+      if (!diasMap[item.dia]) {
+        diasMap[item.dia] = [];
+      }
+      diasMap[item.dia].push(item);
+    });
+
+    // Ordem dos dias da semana
+    const ordensDias = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+    
+    let cardsHTML = "<div class='dias-grid'>";
+    
+    ordensDias.forEach(dia => {
+      if (diasMap[dia]) {
+        const refeicoes = diasMap[dia];
+        
+        // Verificar se é dia de descanso/jejum
+        const isDescanso = refeicoes.some(ref => 
+          ref.refeicao && (ref.refeicao.toLowerCase().includes('descanso') || ref.refeicao.toLowerCase().includes('jejum'))
+        );
+        
+        if (isDescanso) {
+          cardsHTML += `
+            <div class="dia-card descanso">
+              <div class="dia-nome">${dia}</div>
+              <div class="dia-resumo">🍃 Descanso</div>
+              <div class="dia-refeicoes">Dia de descanso alimentar</div>
+            </div>
+          `;
+        } else {
+          // Contar refeições
+          const numRefeicoes = refeicoes.length;
+          const resumo = `${numRefeicoes} refeição${numRefeicoes > 1 ? 'ões' : ''}`;
+          const previewText = `${resumo} • Clique para ver detalhes`;
+          
+          cardsHTML += `
+            <div class="dia-card" onclick="abrirDetalhesDia('${dia}')">
+              <div class="dia-nome">${dia}</div>
+              <div class="dia-resumo">🥗 ${resumo}</div>
+              <div class="dia-refeicoes">${previewText}</div>
+            </div>
+          `;
+        }
+      }
+    });
+    
+    cardsHTML += "</div>";
+    container.innerHTML += cardsHTML;
+    
+    // Adicionar modal
+    const modal = document.createElement('div');
+    modal.className = 'modal-detalhes';
+    modal.id = 'modal-detalhes';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <button class="modal-close" onclick="fecharModal()">&times;</button>
+        <div id="modal-body"></div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // Fechar modal ao clicar fora
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        fecharModal();
+      }
+    });
+  }
+
+  document.body.appendChild(container);
+};
+
+// Função para abrir modal com detalhes do dia
+function abrirDetalhesDia(dia) {
+  const dados = JSON.parse(localStorage.getItem('dieta') || '[]');
+  const refeicoesDia = dados.filter(item => item.dia === dia);
+  
+  if (refeicoesDia.length === 0) return;
+  
+  const numRefeicoes = refeicoesDia.length;
+  const resumo = `${numRefeicoes} refeição${numRefeicoes > 1 ? 'ões' : ''}`;
+  
+  let modalHTML = `
+    <div class="modal-dia-nome">${dia}</div>
+    <div class="modal-dia-resumo">🥗 ${resumo}</div>
+  `;
+  
+  refeicoesDia.forEach(ref => {
+    modalHTML += `
+      <div class="modal-refeicao">
+        <div class="modal-refeicao-nome">${ref.refeicao}</div>
+        <div class="modal-refeicao-desc">${ref.descricao}</div>
+      </div>
+    `;
+  });
+  
+  document.getElementById('modal-body').innerHTML = modalHTML;
+  document.getElementById('modal-detalhes').classList.add('show');
+}
+
+// Função para fechar modal
+function fecharModal() {
+  document.getElementById('modal-detalhes').classList.remove('show');
+}
+</script>
+
+</body>
+
+</html>

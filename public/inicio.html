@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainew IA</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/font-manager.js"></script>
+
+    <script>
+        // Verificar se o usuário está logado
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 DOMContentLoaded - Verificando autenticação...');
+            console.log('🛠️ AuthManager disponível:', typeof AuthManager !== 'undefined');
+            
+            if (typeof AuthManager === 'undefined') {
+                console.error('❌ AuthManager não está disponível! Verifique se theme-manager.js foi carregado.');
+                return;
+            }
+            
+            // TEMPORARIAMENTE COMENTANDO A VERIFICAÇÃO DE AUTH
+            // if (!AuthManager.requireAuth()) {
+            //     return;
+            // }
+            
+            // Criar usuário de teste se não existir
+            let usuarioLogado = AuthManager.getLoggedUser();
+            if (!usuarioLogado) {
+                console.log('👤 Criando usuário de teste...');
+                usuarioLogado = {
+                    id: Date.now(),
+                    nome: 'Usuário Teste',
+                    email: 'teste@teste.com',
+                    fotoPerfil: null,
+                    dataLogin: new Date().toISOString()
+                };
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+            }
+            
+            console.log('👤 Usuário logado:', usuarioLogado);
+            
+            // Atualizar interface com dados do usuário
+            if (usuarioLogado) {
+                console.log('📝 Atualizando interface com dados do usuário...');
+                // Aguardar um pouco para garantir que todos os elementos estejam carregados
+                setTimeout(() => {
+                    atualizarFotoHeader();
+                }, 100);
+                
+                // Verificar se os elementos existem
+                const headerIcon = document.getElementById('header-perfil-icon');
+                console.log('🖼️ Header icon encontrado:', !!headerIcon);
+                if (headerIcon) {
+                    console.log('📸 Foto atual do header:', headerIcon.src);
+                    console.log('💾 Foto salva do usuário:', usuarioLogado.fotoPerfil);
+                }
+            }
+            
+            // Inicializa os modais ao carregar a página
+            // Modal Menu
+            document.querySelector('.header-item.menu').addEventListener('click', function() {
+                document.getElementById('menu-modal-bg').style.display = 'block';
+            });
+            document.getElementById('menu-modal-bg').addEventListener('click', function(e) {
+                if (e.target.id === 'menu-modal-bg') {
+                    this.style.display = 'none';
+                }
+            });
+
+            // Modal Perfil
+            document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+            document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+            
+            // Foto em tela cheia
+            document.getElementById('perfil-img').addEventListener('click', function() {
+                const src = this.src;
+                const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+                const fullscreenImg = document.getElementById('foto-fullscreen-img');
+                fullscreenImg.src = src;
+                fullscreenBg.style.display = 'flex';
+            });
+            
+            document.getElementById('foto-fullscreen-bg').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.getElementById('foto-fullscreen-img').src = '';
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <img src="img/logo.png" alt="Logo Trainew IA" class="logo">
+        <nav class="header-nav">
+            <div class="header-item menu">
+                <span class="menu-icon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+                <span class="item-label">Menu</span>
+            </div>
+            <div onclick="window.location.href='chat.html'" class="header-item chat">
+                <img src="img/icon-ia.png" class="chat-icon">
+                <span class="item-label">Chat IA</span>
+            </div>
+            <div class="header-item perfil" id="perfil-btn">
+                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+                <span class="item-label">Perfil</span>
+            </div>
+        </nav>
+    </header>
+<!-- ...existing code... (cole este bloco logo após o header) ... -->
+<!-- Modal Planos (demostração) -->
+<div id="planos-modal-bg" class="planos-modal-bg" style="display:none;">
+  <div class="planos-modal" role="dialog" aria-labelledby="planos-title" aria-modal="true">
+    <button id="planos-close" class="planos-close" aria-label="Fechar">✕</button>
+
+    <h2 id="planos-title" class="planos-title">Planos</h2>
+
+    <div class="planos-prices">
+      <label class="plano-option">
+        <input type="radio" name="duracao" value="12" checked>
+        <div class="plano-info">
+          <div class="plano-valor">R$ 17,40<span class="per">/mês</span></div>
+          <div class="plano-sub">12 meses <span class="badge">economize 70%</span></div>
+        </div>
+      </label>
+
+      <label class="plano-option">
+        <input type="radio" name="duracao" value="1">
+        <div class="plano-info">
+          <div class="plano-valor">R$ 24,90<span class="per">/mês</span></div>
+          <div class="plano-sub">1 mês</div>
+        </div>
+      </label>
+    </div>
+
+    <h3 class="vantagens-title">Vantagens</h3>
+    <ul class="vantagens-list">
+      <li>✔ Personalizar os treinos e dietas</li>
+      <li>✔ Conversa com a IA ilimitada</li>
+      <li>✔ Montar mais de uma tabela</li>
+    </ul>
+
+    <div class="metodo-pgto">
+      <label><input type="radio" name="metodo" value="pix" checked> PIX</label>
+      <label><input type="radio" name="metodo" value="cartao"> Cartão</label>
+    </div>
+
+    <div class="planos-actions">
+      <button id="planos-pagar" class="btn-pagar">Pagar</button>
+    </div>
+  </div>
+</div>
+<!-- ...existing code... -->
+
+
+    <div class="carousel-container">
+        <button class="arrow arrow-left" id="prevBtn">‹</button>
+
+        <div class="cards-container">
+            <div onclick="window.location.href='chat.html'" class="card">
+                <img src="img/icon-ia.png" alt="Chat IA">
+                <span class="card-label">Chat IA</span>
+            </div>
+            <div onclick="window.location.href='dieta.html'" class="card">
+                <img src="img/dieta.png" alt="Dieta">
+                <span class="card-label">Dieta</span>
+            </div>
+            <div onclick="window.location.href='treino.html'" class="card">
+                <img src="img/treino.png" alt="Treinos">
+                <span class="card-label">Treinos</span>
+            </div>
+            <div onclick="window.location.href='alimentacao.html'" class="card">
+                <img src="img/comida-e-restaurante.png" alt="Alimentação" class="theme-image" data-light="img/comida-e-restaurante.png" data-dark="img/comida-e-restaurante (bt).png">
+                <span class="card-label">Alimentação</span>
+            </div>
+        </div>
+
+        <button class="arrow arrow-right" id="nextBtn">›</button>
+    </div>
+
+    <img class="faixa" src="img/faixa.jpg" alt="">
+
+    <!-- Modal Perfil -->
+    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+        <div class="perfil-modal" id="perfil-modal">
+            <div class="perfil-modal-header">Conta</div>
+            <div class="perfil-modal-user">
+                <span class="perfil-modal-user-icon" id="perfil-user-icon">
+                    <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+                </span>
+                <div class="perfil-modal-user-info">
+                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+                    <span class="perfil-modal-user-email" id="perfil-email"></span>
+                </div>
+            </div>
+            <hr class="perfil-modal-divider">
+            <div class="perfil-modal-list">
+                <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+                    <input type="file" id="foto-input" accept="image/*" style="display:none;">
+                </div>
+                <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay para foto em tela cheia -->
+    <div id="foto-fullscreen-bg"
+        style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+        <img id="foto-fullscreen-img" src="" alt="Foto perfil"
+            style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">
+    </div>
+
+    <!-- Modal Menu Lateral -->
+    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+        <div class="menu-modal" id="menu-modal">
+            <div class="menu-modal-header">
+                <span>Menu</span>
+            </div>
+            <hr class="menu-modal-divider">
+            <div class="menu-modal-list">
+                <div onclick="window.location.href='chat.html'" class="menu-modal-item">Chat IA</div>
+                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+                <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="faixa-section" aria-label="informativa">
+        <div class="faixa-inner">
+            <div class="faixa-text">
+                Nosso aplicativo de treino e dieta oferece uma alternativa prática e econômica para quem quer manter uma
+                rotina saudável. Com planos personalizados, sugestões de refeições e acompanhamento de resultados, você
+                consegue organizar seus treinos e alimentação sem precisar gastar com nutricionistas ou personal
+                trainers caros. Tudo de forma simples, eficiente e acessível!
+            </div>
+            <div class="faixa-mascot" aria-hidden="true">
+                <img src="img/coração-mascote.png" alt="Mascote coração segurando peso">
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <hr class="footer-line">
+    </footer>
+    <script>
+        // Inicializa o gerenciador de tema
+        ThemeManager.init();
+
+        // Utilitário para atualizar localStorage e sessão
+        function atualizarUsuarioLogado(novosDados) {
+            console.log('💾 Atualizando dados do usuário:', novosDados);
+            AuthManager.updateLoggedUser(novosDados);
+        }
+
+        // Atualiza a foto do header com a foto do usuário logado
+        function atualizarFotoHeader() {
+            console.log('🔄 Executando atualizarFotoHeader...');
+            
+            // Aguardar até o elemento estar disponível
+            const headerIcon = document.getElementById('header-perfil-icon');
+            if (!headerIcon) {
+                console.log('⏳ Elemento header-perfil-icon não encontrado, tentando novamente...');
+                setTimeout(atualizarFotoHeader, 100);
+                return;
+            }
+            
+            const usuario = AuthManager.getLoggedUser();
+            console.log('👤 Usuário obtido:', usuario);
+            console.log('🎯 Elemento header-perfil-icon:', headerIcon);
+            
+            if (usuario && usuario.fotoPerfil) {
+                console.log('📸 Definindo foto personalizada:', usuario.fotoPerfil.substring(0, 50) + '...');
+                headerIcon.src = usuario.fotoPerfil;
+            } else {
+                console.log('🖼️ Usando foto padrão: img/icon.png');
+                headerIcon.src = "img/icon.png";
+            }
+            
+            console.log('✅ Foto do header atualizada para:', headerIcon.src.substring(0, 50) + '...');
+        }
+
+        // Chame ao abrir a página - movido para dentro do DOMContentLoaded
+        // atualizarFotoHeader(); // REMOVIDO DAQUI
+
+        // Modal Perfil
+        function showPerfilModal() {
+            console.log('📋 Abrindo modal do perfil...');
+            const usuario = AuthManager.getLoggedUser();
+            console.log('👤 Dados do usuário para modal:', usuario);
+            
+            document.getElementById('perfil-nome').textContent = usuario ? usuario.nome || '' : '';
+            document.getElementById('perfil-email').textContent = usuario ? usuario.email || '' : '';
+            
+            console.log('📝 Nome definido:', usuario ? usuario.nome : 'nenhum');
+            console.log('📧 Email definido:', usuario ? usuario.email : 'nenhum');
+            
+            // Foto de perfil
+            const img = document.getElementById('perfil-img');
+            if (usuario && usuario.fotoPerfil) {
+                console.log('📸 Definindo foto do modal:', usuario.fotoPerfil.substring(0, 50) + '...');
+                img.src = usuario.fotoPerfil;
+            } else {
+                console.log('🖼️ Usando foto padrão no modal');
+                img.src = "img/icon.png";
+            }
+            
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        }
+        function hidePerfilModal(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                document.getElementById('perfil-modal-bg').style.display = 'none';
+                removerInputNome();
+            }
+        }
+        document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+        document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+
+        // Alterar foto de perfil
+        document.getElementById('alterar-foto-btn').addEventListener('click', function () {
+            document.getElementById('foto-input').click();
+        });
+        document.getElementById('foto-input').addEventListener('change', function (e) {
+            console.log('📁 Arquivo selecionado para upload...');
+            const file = e.target.files[0];
+            if (!file) {
+                console.log('❌ Nenhum arquivo selecionado');
+                return;
+            }
+            
+            console.log('📄 Arquivo:', file.name, file.size, 'bytes');
+            
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                const fotoBase64 = evt.target.result;
+                console.log('✅ Arquivo convertido para Base64:', fotoBase64.substring(0, 100) + '...');
+                
+                // Atualiza a imagem do modal imediatamente
+                document.getElementById('perfil-img').src = fotoBase64;
+                console.log('🖼️ Foto do modal atualizada');
+                
+                // Salva no localStorage
+                atualizarUsuarioLogado({ fotoPerfil: fotoBase64 });
+                console.log('💾 Foto salva no localStorage');
+                
+                // Atualiza a imagem do header também
+                atualizarFotoHeader();
+                console.log('🔄 Header atualizado');
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Alterar nome
+        function removerInputNome() {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) {
+                const usuario = AuthManager.getLoggedUser();
+                nomeSpan.textContent = usuario ? usuario.nome || '' : '';
+            }
+        }
+        document.getElementById('alterar-nome-btn').addEventListener('click', function () {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) return; // já está editando
+            const usuario = AuthManager.getLoggedUser();
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = usuario ? usuario.nome || '' : '';
+            input.style.fontSize = '15px';
+            input.style.fontWeight = '600';
+            input.style.borderRadius = '4px';
+            input.style.padding = '2px 6px';
+            input.style.width = '90%';
+            input.maxLength = 32;
+            
+            // Aplica estilos baseados no tema atual
+            applyThemeInputStyles(input);
+            
+            nomeSpan.textContent = '';
+            nomeSpan.appendChild(input);
+            input.focus();
+            input.select();
+
+            input.addEventListener('keydown', function (ev) {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    salvarNome();
+                } else if (ev.key === 'Escape') {
+                    removerInputNome();
+                }
+            });
+            input.addEventListener('blur', salvarNome);
+
+            function salvarNome() {
+                let novoNome = input.value.trim();
+                if (!novoNome) novoNome = usuario ? usuario.nome || '' : '';
+                atualizarUsuarioLogado({ nome: novoNome });
+                nomeSpan.textContent = novoNome;
+            }
+        });
+
+        // Abrir foto em tela cheia ao clicar na imagem do modal
+        document.getElementById('perfil-img').addEventListener('click', function () {
+            const src = this.src;
+            const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+            const fullscreenImg = document.getElementById('foto-fullscreen-img');
+            fullscreenImg.src = src;
+            fullscreenImg.classList.remove('show'); // reset
+            fullscreenBg.style.display = 'flex';
+            // Força reflow para reiniciar animação
+            void fullscreenImg.offsetWidth;
+            fullscreenImg.classList.add('show');
+        });
+        // Fechar ao clicar fora da imagem
+        document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.getElementById('foto-fullscreen-img').src = '';
+                document.getElementById('foto-fullscreen-img').classList.remove('show');
+            }
+        });
+
+        // Sair da conta (mantém o perfil salvo no localStorage)
+        document.getElementById('sair-btn').addEventListener('click', function () {
+            AuthManager.logout();
+        });
+
+        // Modal Menu Lateral
+        document.querySelector('.header-item.menu').addEventListener('click', function () {
+            document.getElementById('menu-modal-bg').style.display = 'block';
+        });
+        document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
+            if (e.target.id === 'menu-modal-bg') {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        const cardsContainer = document.querySelector('.cards-container');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const cards = document.querySelectorAll('.card');
+
+        let currentSlide = 0;
+
+        function getCardsPerView() {
+            return window.innerWidth <= 768 ? 2 : 3;
+        }
+
+        function updateCarousel() {
+            const cardsPerView = getCardsPerView();
+            const maxSlide = cards.length - cardsPerView;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide > maxSlide) currentSlide = maxSlide;
+
+            // Cada card ocupa 100/cardsPerView % do container
+            const percent = -(100 / cardsPerView) * currentSlide;
+            cardsContainer.style.transform = `translateX(${percent}%)`;
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === maxSlide;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide++;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide--;
+            updateCarousel();
+        });
+
+        // Suporte a Touch/Swipe para mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        cardsContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        cardsContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // Mínimo de pixels para considerar um swipe
+            const horizontalDiff = Math.abs(touchEndX - touchStartX);
+            const verticalDiff = Math.abs(touchEndY - touchStartY);
+            
+            // Só considera swipe horizontal se o movimento horizontal for maior que o vertical
+            if (horizontalDiff > verticalDiff && horizontalDiff > swipeThreshold) {
+                if (touchEndX < touchStartX) {
+                    // Swipe para esquerda - próximo
+                    currentSlide++;
+                    updateCarousel();
+                } else if (touchEndX > touchStartX) {
+                    // Swipe para direita - anterior
+                    currentSlide--;
+                    updateCarousel();
+                }
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            // Garante que o slide não fique fora do limite ao redimensionar
+            const cardsPerView = getCardsPerView();
+            const maxSlide = cards.length - cardsPerView;
+            if (currentSlide > maxSlide) currentSlide = maxSlide;
+            updateCarousel();
+        });
+
+        updateCarousel();
+    </script>
+
+<script>
+  (function () {
+    const modalBg = document.getElementById('planos-modal-bg');
+    const closeBtn = document.getElementById('planos-close');
+    const pagarBtn = document.getElementById('planos-pagar');
+
+    // Chave localStorage
+    const KEY_PAGO = 'planoPago'; // 'true' quando pago
+    const KEY_SELEC = 'planoSelecionado'; // armazena escolha (duracao/metodo)
+
+    // mostrar modal se não pago
+    function abrirSeNecessario() {
+      try {
+        const pago = localStorage.getItem(KEY_PAGO) === 'true';
+        if (!pago) {
+          // breve timeout para evitar conflito com outros scripts de carregamento
+          setTimeout(() => {
+            modalBg.style.display = 'flex';
+            // opcional: animação de entrada
+            modalBg.querySelector('.planos-modal').classList?.add('entrar');
+          }, 220);
+        }
+      } catch (e) {
+        console.error('Erro localStorage', e);
+        modalBg.style.display = 'flex';
+      }
+    }
+
+    // fechar sem persistir (voltará ao recarregar)
+    closeBtn.addEventListener('click', () => {
+      modalBg.style.display = 'none';
+    });
+
+    // "Pagar" - demonstração: salva escolha e marca como pago
+    pagarBtn.addEventListener('click', () => {
+      const dur = document.querySelector('input[name="duracao"]:checked')?.value || null;
+      const metodo = document.querySelector('input[name="metodo"]:checked')?.value || null;
+      const payload = {
+        duracaoMeses: dur,
+        metodo,
+        timestamp: new Date().toISOString()
+      };
+      try {
+        localStorage.setItem(KEY_PAGO, 'true');
+        localStorage.setItem(KEY_SELEC, JSON.stringify(payload));
+      } catch (e) {
+        console.error('Erro salvando plano no localStorage', e);
+      }
+      // fecha e não reaparece nas próximas visitas
+      modalBg.style.display = 'none';
+    });
+
+    // fecha também ao clicar no fundo fora do modal
+    modalBg.addEventListener('click', (e) => {
+      if (e.target === modalBg) {
+        modalBg.style.display = 'none';
+      }
+    });
+
+    // abre ao carregar a página
+    window.addEventListener('load', abrirSeNecessario);
+  })();
+
+
+
+     
+</script>
+
+
+
+
+
+
+</body>
+
+</html>
