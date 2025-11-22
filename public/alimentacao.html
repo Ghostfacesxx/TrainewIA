@@ -1024,7 +1024,7 @@
 
         // Salvar no histórico
         function saveToHistory(analysis) {
-            let history = JSON.parse(localStorage.getItem('foodHistory') || '[]');
+            let history = JSON.parse(localStorage.getItem('analiseHistorico') || '[]');
             history.unshift(analysis);
             
             // Manter apenas últimas 10 análises
@@ -1032,12 +1032,18 @@
                 history = history.slice(0, 10);
             }
             
-            localStorage.setItem('foodHistory', JSON.stringify(history));
+            localStorage.setItem('analiseHistorico', JSON.stringify(history));
+            
+            // Sincroniza automaticamente com os dados do usuário
+            const user = AuthManager.getLoggedUser();
+            if (user) {
+                AuthManager.syncCurrentSessionData(user.email);
+            }
         }
 
         // Carregar histórico
         function loadHistory() {
-            const history = JSON.parse(localStorage.getItem('foodHistory') || '[]');
+            const history = JSON.parse(localStorage.getItem('analiseHistorico') || '[]');
             
             if (history.length === 0) {
                 historySection.style.display = 'none';

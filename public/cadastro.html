@@ -150,6 +150,15 @@
       usuarios.push(novoUsuario);
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
       
+      // Inicializa estrutura de dados vazia para o novo usuário
+      AuthManager.saveUserData(email, {
+        chatHistory: [],
+        treino: null,
+        dieta: null,
+        alimentacao: [],
+        preferences: {}
+      });
+      
       // Faz login automático após cadastro
       localStorage.setItem('usuarioLogado', JSON.stringify(novoUsuario));
 

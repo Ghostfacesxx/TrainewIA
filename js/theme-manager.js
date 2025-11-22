@@ -126,6 +126,37 @@ const ThemeManager = {
 
 // Utilitários de autenticação
 const AuthManager = {
+    // Chave para dados de sessão do usuário
+    getUserDataKey(email) {
+        return `userData_${email}`;
+    },
+
+    // Salvar dados específicos do usuário (chat, treino, dieta, etc)
+    saveUserData(email, data) {
+        const key = this.getUserDataKey(email);
+        const existingData = this.getUserData(email);
+        const mergedData = { ...existingData, ...data };
+        localStorage.setItem(key, JSON.stringify(mergedData));
+    },
+
+    // Obter dados específicos do usuário
+    getUserData(email) {
+        const key = this.getUserDataKey(email);
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : {
+            chatHistory: [],
+            treino: null,
+            dieta: null,
+            alimentacao: [],
+            preferences: {}
+        };
+    },
+
+    // Limpar dados do usuário ao fazer logout (NÃO MAIS NECESSÁRIO - mantém tudo)
+    clearUserSession(email) {
+        // Não faz nada - mantém os dados salvos
+    },
+
     // Verificar se usuário está logado
     isLoggedIn() {
         return localStorage.getItem('usuarioLogado') !== null;
@@ -137,10 +168,63 @@ const AuthManager = {
         return user ? JSON.parse(user) : null;
     },
     
-    // Fazer logout
+    // Fazer logout (mantém dados do usuário salvos)
     logout() {
+        const user = this.getLoggedUser();
+        if (user) {
+            // Salva dados da sessão atual antes de sair
+            this.syncCurrentSessionData(user.email);
+        }
         localStorage.removeItem('usuarioLogado');
         window.location.href = "index.html";
+    },
+
+    // Sincronizar dados da sessão atual com os dados do usuário
+    syncCurrentSessionData(email) {
+        const chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+        const treino = JSON.parse(localStorage.getItem('treino') || 'null');
+        const dieta = JSON.parse(localStorage.getItem('dieta') || 'null');
+        const analiseHistorico = JSON.parse(localStorage.getItem('analiseHistorico') || '[]');
+
+        this.saveUserData(email, {
+            chatHistory: chatHistory,
+            treino: treino,
+            dieta: dieta,
+            alimentacao: analiseHistorico
+        });
+    },
+
+    // Carregar dados do usuário ao fazer login
+    loadUserSessionData(email) {
+        const userData = this.getUserData(email);
+        
+        // Restaura histórico de chat
+        if (userData.chatHistory && userData.chatHistory.length > 0) {
+            localStorage.setItem('chatHistory', JSON.stringify(userData.chatHistory));
+        } else {
+            localStorage.removeItem('chatHistory');
+        }
+
+        // Restaura treino
+        if (userData.treino) {
+            localStorage.setItem('treino', JSON.stringify(userData.treino));
+        } else {
+            localStorage.removeItem('treino');
+        }
+
+        // Restaura dieta
+        if (userData.dieta) {
+            localStorage.setItem('dieta', JSON.stringify(userData.dieta));
+        } else {
+            localStorage.removeItem('dieta');
+        }
+
+        // Restaura histórico de alimentação
+        if (userData.alimentacao && userData.alimentacao.length > 0) {
+            localStorage.setItem('analiseHistorico', JSON.stringify(userData.alimentacao));
+        } else {
+            localStorage.removeItem('analiseHistorico');
+        }
     },
     
     // Redirecionar para login se não estiver logado

@@ -2,20 +2,33 @@
 
 /* Tamanho Muito Pequeno */
 html.font-small {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 html.font-small .msg-bubble {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 html.font-small .chat-input {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 html.font-small .modal-exercicio-nome,
 html.font-small .modal-refeicao-nome {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+}
+
+html.font-small button,
+html.font-small .btn {
+    font-size: 0.85rem;
+}
+
+html.font-small h1 {
+    font-size: 1.5rem;
+}
+
+html.font-small h2 {
+    font-size: 1.25rem;
 }
 
 /* Tamanho Pequeno */
@@ -36,6 +49,19 @@ html.font-medium-small .modal-refeicao-nome {
     font-size: 1rem;
 }
 
+html.font-medium-small button,
+html.font-medium-small .btn {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small h1 {
+    font-size: 1.75rem;
+}
+
+html.font-medium-small h2 {
+    font-size: 1.4rem;
+}
+
 /* Tamanho Normal (padrão) */
 html.font-normal {
     font-size: 16px;
@@ -43,22 +69,22 @@ html.font-normal {
 
 /* Tamanho Grande */
 html.font-medium-large {
-    font-size: 18px;
+    font-size: 19px;
 }
 
 html.font-medium-large .msg-bubble {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     padding: 14px 18px;
 }
 
 html.font-medium-large .chat-input {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     padding: 14px 16px;
 }
 
 html.font-medium-large .modal-exercicio-nome,
 html.font-medium-large .modal-refeicao-nome {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
 }
 
 html.font-medium-large .dia-card {
@@ -73,9 +99,343 @@ html.font-medium-large .dia-resumo {
     font-size: 16px;
 }
 
+html.font-medium-large button,
+html.font-medium-large .btn {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+}
+
+html.font-medium-large h1 {
+    font-size: 2.25rem;
+}
+
+html.font-medium-large h2 {
+    font-size: 1.75rem;
+}
+
 /* Tamanho Muito Grande */
 html.font-large {
-    font-size: 20px;
+    font-size: 22px;
+}
+
+html.font-large .msg-bubble {
+    font-size: 1.2rem;
+    padding: 16px 20px;
+    max-width: 85%;
+}
+
+html.font-large .chat-input {
+    font-size: 1.2rem;
+    padding: 16px 18px;
+}
+
+html.font-large .modal-exercicio-nome,
+html.font-large .modal-refeicao-nome {
+    font-size: 1.35rem;
+}
+
+html.font-large .modal-exercicio-desc,
+html.font-large .modal-refeicao-desc {
+    font-size: 1.05rem;
+}
+
+html.font-large button,
+html.font-large .btn {
+    font-size: 1.2rem;
+    padding: 14px 26px;
+}
+
+html.font-large h1 {
+    font-size: 2.5rem;
+}
+
+html.font-large h2 {
+    font-size: 2rem;
+}
+
+html.font-large .dia-card {
+    padding: 24px;
+}
+
+html.font-large .dia-nome {
+    font-size: 26px;
+}
+
+html.font-large .dia-resumo {
+    font-size: 18px;
+}
+
+/* Página de Configurações - Acessibilidade */
+html.font-small .accessibility-section,
+html.font-small .danger-zone-section,
+html.font-small .theme-switch {
+    font-size: 0.85rem;
+}
+
+html.font-small .theme-switch-text,
+html.font-small .font-control-label {
+    font-size: 0.9rem;
+}
+
+html.font-small .font-btn {
+    font-size: 16px !important;
+    width: 38px !important;
+    height: 38px !important;
+}
+
+html.font-medium-small .accessibility-section,
+html.font-medium-small .danger-zone-section,
+html.font-medium-small .theme-switch {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .font-btn {
+    font-size: 18px !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+html.font-medium-large .accessibility-section,
+html.font-medium-large .danger-zone-section,
+html.font-medium-large .theme-switch {
+    font-size: 1.05rem;
+}
+
+html.font-medium-large .theme-switch-text,
+html.font-medium-large .font-control-label {
+    font-size: 1.1rem;
+}
+
+html.font-medium-large .font-btn {
+    font-size: 22px !important;
+    width: 46px !important;
+    height: 46px !important;
+}
+
+html.font-medium-large #delete-account-btn {
+    font-size: 1.05rem !important;
+    padding: 14px !important;
+}
+
+html.font-large .accessibility-section,
+html.font-large .danger-zone-section,
+html.font-large .theme-switch {
+    font-size: 1.15rem;
+}
+
+html.font-large .theme-switch-text,
+html.font-large .font-control-label {
+    font-size: 1.2rem;
+}
+
+html.font-large .font-btn {
+    font-size: 24px !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+html.font-large #delete-account-btn {
+    font-size: 1.15rem !important;
+    padding: 16px !important;
+}
+
+html.font-large #font-size-indicator {
+    font-size: 0.95rem;
+}
+
+/* Página Inicial - Cards e Seções */
+html.font-small .inicio-card,
+html.font-small .sobre-section {
+    font-size: 0.85rem;
+}
+
+html.font-small .inicio-card h2,
+html.font-small .sobre-section h2 {
+    font-size: 1.3rem;
+}
+
+html.font-small .inicio-card p {
+    font-size: 0.85rem;
+}
+
+html.font-medium-small .inicio-card,
+html.font-medium-small .sobre-section {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .inicio-card h2,
+html.font-medium-small .sobre-section h2 {
+    font-size: 1.45rem;
+}
+
+html.font-medium-large .inicio-card,
+html.font-medium-large .sobre-section {
+    font-size: 1.05rem;
+}
+
+html.font-medium-large .inicio-card h2,
+html.font-medium-large .sobre-section h2 {
+    font-size: 1.85rem;
+}
+
+html.font-medium-large .inicio-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+html.font-medium-large .inicio-btn {
+    font-size: 1.05rem !important;
+    padding: 14px 28px !important;
+}
+
+html.font-large .inicio-card,
+html.font-large .sobre-section {
+    font-size: 1.15rem;
+    padding: 26px;
+}
+
+html.font-large .inicio-card h2,
+html.font-large .sobre-section h2 {
+    font-size: 2.1rem;
+}
+
+html.font-large .inicio-card p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+html.font-large .inicio-btn {
+    font-size: 1.15rem !important;
+    padding: 16px 32px !important;
+}
+
+/* Página Sobre */
+html.font-medium-large .sobre-text,
+html.font-large .sobre-text {
+    line-height: 1.8;
+}
+
+html.font-medium-large .team-member-name {
+    font-size: 1.25rem;
+}
+
+html.font-large .team-member-name {
+    font-size: 1.4rem;
+}
+
+html.font-medium-large .team-member-role {
+    font-size: 1rem;
+}
+
+html.font-large .team-member-role {
+    font-size: 1.1rem;
+}
+
+/* Página de Ajuda/FAQ */
+html.font-small .faq-question {
+    font-size: 0.9rem;
+}
+
+html.font-small .faq-answer {
+    font-size: 0.85rem;
+}
+
+html.font-medium-small .faq-question {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .faq-answer {
+    font-size: 0.9rem;
+}
+
+html.font-medium-large .faq-question {
+    font-size: 1.1rem;
+    padding: 18px 20px;
+}
+
+html.font-medium-large .faq-answer {
+    font-size: 1.05rem;
+    padding: 16px 20px;
+    line-height: 1.7;
+}
+
+html.font-large .faq-question {
+    font-size: 1.2rem;
+    padding: 20px 22px;
+}
+
+html.font-large .faq-answer {
+    font-size: 1.15rem;
+    padding: 18px 22px;
+    line-height: 1.8;
+}
+
+/* Páginas de Login e Cadastro */
+html.font-small .login-box,
+html.font-small .cadastro-box {
+    font-size: 0.85rem;
+}
+
+html.font-small .login-box h1,
+html.font-small .cadastro-box h1 {
+    font-size: 1.6rem;
+}
+
+html.font-small .input-field {
+    font-size: 0.9rem !important;
+    padding: 10px 14px !important;
+}
+
+html.font-medium-small .login-box,
+html.font-medium-small .cadastro-box {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .input-field {
+    font-size: 0.95rem !important;
+}
+
+html.font-medium-large .login-box,
+html.font-medium-large .cadastro-box {
+    font-size: 1.05rem;
+}
+
+html.font-medium-large .login-box h1,
+html.font-medium-large .cadastro-box h1 {
+    font-size: 2.3rem;
+}
+
+html.font-medium-large .input-field {
+    font-size: 1.05rem !important;
+    padding: 14px 18px !important;
+}
+
+html.font-medium-large .login-btn,
+html.font-medium-large .cadastro-btn {
+    font-size: 1.05rem !important;
+    padding: 14px !important;
+}
+
+html.font-large .login-box,
+html.font-large .cadastro-box {
+    font-size: 1.15rem;
+    padding: 44px;
+}
+
+html.font-large .login-box h1,
+html.font-large .cadastro-box h1 {
+    font-size: 2.5rem;
+}
+
+html.font-large .input-field {
+    font-size: 1.15rem !important;
+    padding: 16px 20px !important;
+}
+
+html.font-large .login-btn,
+html.font-large .cadastro-btn {
+    font-size: 1.15rem !important;
+    padding: 16px !important;
 }
 
 html.font-large .msg-bubble {

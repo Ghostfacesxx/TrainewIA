@@ -105,6 +105,110 @@
                 max-width: none;
             }
         }
+
+        /* Modal de Confirmação */
+        .confirm-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 10001;
+            align-items: center;
+            justify-content: center;
+        }
+        .confirm-modal-overlay.show {
+            display: flex;
+        }
+        .confirm-modal {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        body.dark-mode .confirm-modal {
+            background: #2a2a2a;
+            color: #e8e8e8;
+        }
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .confirm-modal-icon {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .confirm-modal-title {
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        body.dark-mode .confirm-modal-title {
+            color: #e8e8e8;
+        }
+        .confirm-modal-message {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #666;
+            line-height: 1.5;
+        }
+        body.dark-mode .confirm-modal-message {
+            color: #aaa;
+        }
+        .confirm-modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .confirm-modal-btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .confirm-modal-btn.cancel {
+            background: #e0e0e0;
+            color: #333;
+        }
+        body.dark-mode .confirm-modal-btn.cancel {
+            background: #444;
+            color: #e8e8e8;
+        }
+        .confirm-modal-btn.cancel:hover {
+            background: #d0d0d0;
+        }
+        body.dark-mode .confirm-modal-btn.cancel:hover {
+            background: #555;
+        }
+        .confirm-modal-btn.confirm {
+            background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+            color: white;
+        }
+        body.dark-mode .confirm-modal-btn.confirm {
+            background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
+        }
+        .confirm-modal-btn.confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.4);
+        }
     </style>
 
 </head><body>
@@ -173,6 +277,19 @@
     </div>
   </div>
 
+  <!-- Modal de Confirmação -->
+  <div class="confirm-modal-overlay" id="confirm-modal-overlay">
+    <div class="confirm-modal">
+      <div class="confirm-modal-icon">🗑️</div>
+      <h3 class="confirm-modal-title">Limpar Conversa?</h3>
+      <p class="confirm-modal-message">Tem certeza que deseja apagar toda a conversa? Esta ação não pode ser desfeita.</p>
+      <div class="confirm-modal-buttons">
+        <button class="confirm-modal-btn cancel" onclick="closeConfirmModal()">Cancelar</button>
+        <button class="confirm-modal-btn confirm" onclick="confirmClearChat()">Sim, Limpar</button>
+      </div>
+    </div>
+  </div>
+
 
 <button id="limpar-chat" class="chat-clear-btn">Limpar chat</button>
 
@@ -191,13 +308,44 @@
 // Verificar se o usuário está logado
 AuthManager.requireAuth();
 
+// Função para abrir modal de confirmação
+function openConfirmModal() {
+  document.getElementById('confirm-modal-overlay').classList.add('show');
+}
+
+// Função para fechar modal de confirmação
+function closeConfirmModal() {
+  document.getElementById('confirm-modal-overlay').classList.remove('show');
+}
+
+// Função para confirmar limpeza do chat
+function confirmClearChat() {
+  localStorage.removeItem('chatHistory');
+  document.getElementById('chat-messages').innerHTML = '';
+  chatHistory = [];
+  closeConfirmModal();
+  
+  // Sincroniza dados vazios com o usuário
+  const user = AuthManager.getLoggedUser();
+  if (user) {
+    AuthManager.syncCurrentSessionData(user.email);
+  }
+  
+  showToast('Chat Limpo', 'Conversa apagada com sucesso.', 'success');
+}
+
+// Event listener para botão limpar chat
 document.getElementById('limpar-chat').addEventListener('click', () => {
-  if (confirm('Tem certeza que deseja apagar a conversa?')) {
-    localStorage.removeItem('chatHistory');
-    document.getElementById('chat-messages').innerHTML = '';
-    chatHistory = [];
+  openConfirmModal();
+});
+
+// Fechar modal ao clicar fora
+document.getElementById('confirm-modal-overlay').addEventListener('click', (e) => {
+  if (e.target.id === 'confirm-modal-overlay') {
+    closeConfirmModal();
   }
 });
+
   function scrollToBottom() {
     const chat = document.getElementById('chat-messages');
     chat.scrollTop = chat.scrollHeight;
@@ -252,12 +400,24 @@ document.getElementById('limpar-chat').addEventListener('click', () => {
 
   function salvarHistorico() {
     localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    
+    // Sincroniza automaticamente com os dados do usuário
+    const user = AuthManager.getLoggedUser();
+    if (user) {
+      AuthManager.syncCurrentSessionData(user.email);
+    }
   }
 
   function salvarTabela(tipo, dados) {
     if (!tipo || !dados) return;
     console.log('💾 Salvando', tipo, 'com', dados.length, 'itens');
     localStorage.setItem(tipo, JSON.stringify(dados));
+    
+    // Sincroniza automaticamente com os dados do usuário
+    const user = AuthManager.getLoggedUser();
+    if (user) {
+      AuthManager.syncCurrentSessionData(user.email);
+    }
     
     // Mostrar notificação
     if (tipo === 'treino') {

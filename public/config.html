@@ -77,11 +77,11 @@
     </header>
 
     <!-- Área principal de configurações -->
-    <div class="container">
-        <h1 style="text-align: center; margin: 20px 0;">Configurações</h1>
+    <div class="container" style="max-width: 600px; margin: 0 auto; padding: 0 20px;">
+        <h1 style="text-align: center; margin: 15px 0; font-size: 24px;">Configurações</h1>
         
         <!-- Switch do tema -->
-        <div class="theme-switch">
+        <div class="theme-switch" style="margin-top: 20px;">
             <span class="theme-switch-text">Modo Escuro</span>
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
@@ -90,46 +90,97 @@
         </div>
 
         <!-- Controle de Acessibilidade - Tamanho da Fonte -->
-        <div class="accessibility-section" style="margin-top: 40px; padding: 25px; background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border-color);">
-            <h2 style="color: var(--text-color); font-size: 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 24px;">♿</span>
+        <div class="accessibility-section" style="margin-top: 25px; padding: 18px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border-color);">
+            <h2 style="color: var(--text-color); font-size: 17px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px;">♿</span>
                 Acessibilidade
             </h2>
             
-            <div class="font-size-control" style="display: flex; flex-direction: column; gap: 15px;">
+            <div class="font-size-control" style="display: flex; flex-direction: column; gap: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span class="font-control-label" style="color: var(--text-color); font-weight: 600; font-size: 16px;">
+                    <span class="font-control-label" style="color: var(--text-color); font-weight: 600; font-size: 15px;">
                         Tamanho da Fonte
                     </span>
-                    <span id="font-size-indicator" style="color: var(--text-secondary); font-size: 14px; font-weight: 600;">
+                    <span id="font-size-indicator" style="color: var(--text-secondary); font-size: 13px; font-weight: 600;">
                         Normal
                     </span>
                 </div>
                 
-                <div style="display: flex; gap: 15px; align-items: center; justify-content: center; flex-wrap: wrap;">
-                    <button id="font-decrease" class="font-btn" style="width: 50px; height: 50px; border-radius: 12px; border: 2px solid #7A1919; background: white; color: #7A1919; font-size: 24px; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
+                <div style="display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <button id="font-decrease" class="font-btn" style="width: 42px; height: 42px; border-radius: 10px; border: 2px solid #7A1919; background: white; color: #7A1919; font-size: 20px; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
                         A-
                     </button>
                     
-                    <div style="flex: 1; min-width: 200px; max-width: 400px;">
+                    <div style="flex: 1; min-width: 180px; max-width: 350px;">
                         <input type="range" id="font-size-slider" min="0" max="4" value="2" step="1" 
-                               style="width: 100%; height: 8px; border-radius: 5px; background: linear-gradient(to right, #7A1919 0%, #7A1919 50%, #ddd 50%, #ddd 100%); outline: none; -webkit-appearance: none; cursor: pointer;">
+                               style="width: 100%; height: 6px; border-radius: 5px; background: linear-gradient(to right, #7A1919 0%, #7A1919 50%, #ddd 50%, #ddd 100%); outline: none; appearance: none; -webkit-appearance: none; cursor: pointer;">
                     </div>
                     
-                    <button id="font-increase" class="font-btn" style="width: 50px; height: 50px; border-radius: 12px; border: 2px solid #7A1919; background: #7A1919; color: white; font-size: 24px; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
+                    <button id="font-increase" class="font-btn" style="width: 42px; height: 42px; border-radius: 10px; border: 2px solid #7A1919; background: #7A1919; color: white; font-size: 20px; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
                         A+
                     </button>
                 </div>
                 
-                <div style="display: flex; justify-content: space-between; padding: 0 10px; color: var(--text-secondary); font-size: 12px;">
+                <div style="display: flex; justify-content: space-between; padding: 0 8px; color: var(--text-secondary); font-size: 11px;">
                     <span>Pequeno</span>
                     <span>Normal</span>
                     <span>Grande</span>
                 </div>
                 
-                <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6; margin-top: 10px; text-align: center;">
+                <p style="color: var(--text-secondary); font-size: 12px; line-height: 1.5; margin-top: 8px; text-align: center;">
                     Ajuste o tamanho da fonte para melhorar a legibilidade em todas as páginas do aplicativo.
                 </p>
+            </div>
+        </div>
+
+        <!-- Zona de Perigo - Excluir Conta -->
+        <div class="danger-zone-section" style="margin-top: 25px; margin-bottom: 25px; padding: 18px; background: var(--card-bg); border-radius: 12px; border: 2px solid #c62828;">
+            <h2 style="color: #ff5252; font-size: 17px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px;">⚠️</span>
+                Excluir Minha Conta
+            </h2>
+            
+            <div>
+                <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.5; margin-bottom: 15px;">
+                    A exclusão da conta é permanente e irreversível. Todos os seus dados, incluindo histórico de conversas, treinos, dietas e análises de alimentação serão perdidos para sempre.
+                </p>
+                <button id="delete-account-btn" style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #c62828; background: transparent; color: #c62828; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                    🗑️ Excluir Minha Conta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão de Conta -->
+    <div class="delete-account-modal-overlay" id="delete-account-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 10001; align-items: center; justify-content: center;">
+        <div class="delete-account-modal" style="background: white; border-radius: 14px; padding: 25px 20px; max-width: 420px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); animation: modalSlideIn 0.3s ease-out;">
+            <div style="font-size: 42px; text-align: center; margin-bottom: 15px;">⚠️</div>
+            <h3 style="font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 12px; color: #c62828;">
+                Excluir Conta Permanentemente?
+            </h3>
+            <p style="font-size: 14px; text-align: center; margin-bottom: 15px; color: #666; line-height: 1.5;">
+                Esta ação <strong>não pode ser desfeita</strong>. Todos os seus dados serão perdidos permanentemente:
+            </p>
+            <ul style="font-size: 13px; color: #666; margin-bottom: 18px; line-height: 1.6; padding-left: 20px;">
+                <li>Histórico de conversas com a IA</li>
+                <li>Planos de treino personalizados</li>
+                <li>Planos de dieta personalizados</li>
+                <li>Histórico de análises de alimentação</li>
+                <li>Todas as configurações e preferências</li>
+            </ul>
+            <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 10px; margin-bottom: 15px;">
+                <p style="font-size: 12px; color: #856404; margin: 0; text-align: center;">
+                    <strong>⚠️ Atenção:</strong> Digite sua senha para confirmar
+                </p>
+            </div>
+            <input type="password" id="delete-account-password" placeholder="Digite sua senha" style="width: 100%; padding: 11px 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; margin-bottom: 18px; box-sizing: border-box;">
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="closeDeleteAccountModal()" style="padding: 11px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; background: #e0e0e0; color: #333;">
+                    Cancelar
+                </button>
+                <button onclick="confirmDeleteAccount()" style="padding: 11px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%); color: white;">
+                    Sim, Excluir Permanentemente
+                </button>
             </div>
         </div>
     </div>
@@ -342,8 +393,93 @@
 
         // Sair da conta (mantém o perfil salvo no localStorage)
         document.getElementById('sair-btn').addEventListener('click', function () {
+            AuthManager.logout();
+        });
+
+        // Exclusão de conta
+        function showToast(title, message, type = 'error') {
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) existingToast.remove();
+            const toast = document.createElement('div');
+            toast.className = `toast-notification ${type}`;
+            toast.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%); color: white; padding: 16px 50px 16px 20px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.3); z-index: 10000; display: flex; align-items: center; gap: 12px; min-width: 300px; max-width: 400px; opacity: 0; transform: translateX(400px); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);';
+            if (type === 'success') toast.style.background = 'linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%)';
+            const icons = { error: '❌', success: '✅', info: 'ℹ️' };
+            toast.innerHTML = `
+                <div style="font-size: 24px; flex-shrink: 0;">${icons[type] || '❌'}</div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">${title}</div>
+                    <div style="font-size: 13px; opacity: 0.9;">${message}</div>
+                </div>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: transparent; border: none; color: white; font-size: 20px; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 6px;">×</button>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.style.cssText += 'opacity: 1; transform: translateX(0);', 100);
+            setTimeout(() => {
+                toast.style.cssText += 'opacity: 0; transform: translateX(400px);';
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
+
+        function openDeleteAccountModal() {
+            document.getElementById('delete-account-modal-overlay').style.display = 'flex';
+            document.getElementById('delete-account-password').value = '';
+        }
+
+        function closeDeleteAccountModal() {
+            document.getElementById('delete-account-modal-overlay').style.display = 'none';
+        }
+
+        function confirmDeleteAccount() {
+            const senha = document.getElementById('delete-account-password').value.trim();
+            if (!senha) {
+                showToast('Senha Necessária', 'Digite sua senha para confirmar a exclusão.', 'error');
+                return;
+            }
+
+            const usuario = AuthManager.getLoggedUser();
+            if (!usuario) {
+                showToast('Erro', 'Usuário não encontrado.', 'error');
+                return;
+            }
+
+            // Verifica senha
+            const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+            const userAccount = usuarios.find(u => u.email === usuario.email && u.senha === senha);
+
+            if (!userAccount) {
+                showToast('Senha Incorreta', 'A senha digitada está incorreta.', 'error');
+                return;
+            }
+
+            // Remove dados do usuário
+            const userDataKey = `userData_${usuario.email}`;
+            localStorage.removeItem(userDataKey);
+
+            // Remove usuário da lista
+            const novosUsuarios = usuarios.filter(u => u.email !== usuario.email);
+            localStorage.setItem('usuarios', JSON.stringify(novosUsuarios));
+
+            // Remove sessão atual
             localStorage.removeItem('usuarioLogado');
-            window.location.href = "index.html";
+            localStorage.removeItem('chatHistory');
+            localStorage.removeItem('treino');
+            localStorage.removeItem('dieta');
+            localStorage.removeItem('analiseHistorico');
+
+            showToast('Conta Excluída', 'Sua conta foi excluída permanentemente.', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+
+        document.getElementById('delete-account-btn').addEventListener('click', openDeleteAccountModal);
+        
+        document.getElementById('delete-account-modal-overlay').addEventListener('click', (e) => {
+            if (e.target.id === 'delete-account-modal-overlay') {
+                closeDeleteAccountModal();
+            }
         });
 
         // Modal Menu Lateral

@@ -641,3 +641,124 @@ input:checked + .slider:before {
 [data-theme='dark'] .form-footer a:hover {
     color: var(--primary-hover);
 }
+
+/* Páginas de Login e Cadastro */
+[data-theme='dark'] .main-content {
+    background-color: var(--bg-color);
+}
+
+[data-theme='dark'] .welcome,
+[data-theme='dark'] .app-desc {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .login-box {
+    background: #2a2a2a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='dark'] .login-title {
+    color: var(--text-color);
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme='dark'] .input-label {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .input-field {
+    background: transparent;
+    border-bottom-color: var(--input-border);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .input-field::placeholder {
+    color: #666;
+}
+
+[data-theme='dark'] .input-field:focus {
+    border-bottom-color: var(--primary-color);
+}
+
+[data-theme='dark'] .forgot-password {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .forgot-password:hover {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .login-btn,
+[data-theme='dark'] .cadastro-btn {
+    background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+    color: white;
+}
+
+[data-theme='dark'] .login-btn:hover,
+[data-theme='dark'] .cadastro-btn:hover {
+    background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+}
+
+[data-theme='dark'] .login-btn:disabled {
+    background: #444;
+    color: #888;
+}
+
+[data-theme='dark'] .cadastro-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .cadastro-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Modal de Exclusão de Conta */
+[data-theme='dark'] .delete-account-modal-overlay {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+[data-theme='dark'] .delete-account-modal {
+    background: #2a2a2a !important;
+}
+
+[data-theme='dark'] .delete-account-modal h3 {
+    color: #ff5252 !important;
+}
+
+[data-theme='dark'] .delete-account-modal p,
+[data-theme='dark'] .delete-account-modal ul li {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme='dark'] .delete-account-modal input {
+    background: #333 !important;
+    border-color: #555 !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme='dark'] .delete-account-modal input::placeholder {
+    color: #666;
+}
+
+[data-theme='dark'] .delete-account-modal input:focus {
+    border-color: var(--primary-color) !important;
+}
+
+[data-theme='dark'] #delete-account-btn {
+    border-color: #ff5252 !important;
+    color: #ff5252 !important;
+}
+
+[data-theme='dark'] #delete-account-btn:hover {
+    background: #ff5252 !important;
+    color: white !important;
+}
+
+[data-theme='dark'] .danger-zone-section {
+    background: #2a2a2a !important;
+    border-color: #c62828 !important;
+}
+
