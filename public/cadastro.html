@@ -90,9 +90,12 @@
       
       usuarios.push(novoUsuario);
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
+      
+      // Faz login automático após cadastro
+      localStorage.setItem('usuarioLogado', JSON.stringify(novoUsuario));
 
       alert("Cadastro realizado com sucesso!");
-      window.location.href = "index.html";
+      window.location.href = "inicio.html";
       submitBtn.style.opacity = "1";
       submitBtn.disabled = false;
     });
