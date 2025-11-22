@@ -5,11 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Trainew IA</title>
-  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="icon" href="img/favicon.png" type="image/png">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/dark-theme.css">
   <script src="../js/theme-manager.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    .toast-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
+      color: white;
+      padding: 16px 50px 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 300px;
+      max-width: 400px;
+      opacity: 0;
+      transform: translateX(400px);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    body.dark-mode .toast-notification {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+      color: #1a1a1a;
+    }
+    .toast-notification.show { opacity: 1; transform: translateX(0); }
+    .toast-notification.error { background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%); }
+    body.dark-mode .toast-notification.error { background: linear-gradient(135deg, #ef5350 0%, #e53935 100%); }
+    .toast-notification.success { background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); }
+    body.dark-mode .toast-notification.success { background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%); }
+    .toast-icon { font-size: 24px; flex-shrink: 0; }
+    .toast-content { flex: 1; }
+    .toast-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .toast-message { font-size: 13px; opacity: 0.9; }
+    .toast-close {
+      position: absolute; top: 8px; right: 8px;
+      background: transparent; border: none; color: white;
+      font-size: 20px; cursor: pointer;
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 6px; transition: all 0.2s;
+    }
+    body.dark-mode .toast-close { color: #1a1a1a; }
+    .toast-close:hover { background: rgba(255,255,255,0.2); }
+    @media (max-width: 768px) {
+      .toast-notification { right: 10px; left: 10px; min-width: auto; max-width: none; }
+    }
+  </style>
 </head>
 
 <body>
@@ -47,6 +94,29 @@
     const senhaInput = document.getElementById('senha');
     const submitBtn = document.getElementById('submit-btn');
 
+    // Função toast
+    function showToast(title, message, type = 'error') {
+      const existingToast = document.querySelector('.toast-notification');
+      if (existingToast) existingToast.remove();
+      const toast = document.createElement('div');
+      toast.className = `toast-notification ${type}`;
+      const icons = { error: '❌', success: '✅', info: 'ℹ️' };
+      toast.innerHTML = `
+        <div class="toast-icon">${icons[type] || '❌'}</div>
+        <div class="toast-content">
+          <div class="toast-title">${title}</div>
+          <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 100);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
     // Função para verificar se os campos estão preenchidos
     function checkFields() {
       const filled = emailInput.value.trim() && senhaInput.value.trim();
@@ -72,7 +142,7 @@
       const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
       if (!usuario) {
-        alert("E-mail ou senha incorretos.");
+        showToast('Erro no Login', 'E-mail ou senha incorretos.', 'error');
         submitBtn.disabled = false;
         submitBtn.textContent = "Entrar";
       } else {
@@ -101,9 +171,9 @@
         const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
         const usuario = usuarios.find(u => u.email === email);
         if (usuario) {
-          alert("Uma redefinição de senha não é suportada neste modo demo. Entre em contato com o suporte.");
+          showToast('Recurso Indisponível', 'Redefinição de senha não suportada no modo demo.', 'info');
         } else {
-          alert("E-mail não encontrado.");
+          showToast('E-mail Não Encontrado', 'Este e-mail não está cadastrado.', 'error');
         }
       }
     });
