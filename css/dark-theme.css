@@ -1,3 +1,29 @@
+/* Variáveis do tema claro (padrão) */
+:root {
+    /* Cores de fundo */
+    --bg-color: #ffffff;
+    --modal-bg: #ffffff;
+    --card-bg: #ffffff;
+    --secondary-bg: #f5f5f5;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --hover-bg: #f5f5f5;
+    
+    /* Cores de texto */
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    
+    /* Cores de destaque */
+    --primary-color: #7A1919;
+    --primary-hover: #5a1212;
+    --accent-color: #7A1919;
+    
+    /* Cores de borda */
+    --border-color: #e0e0e0;
+    --divider-color: #e0e0e0;
+    --input-border: #cccccc;
+}
+
 /* Tema escuro */
 [data-theme='dark'] {
     /* Cores de fundo */
@@ -6,6 +32,7 @@
     --card-bg: #2d2d2d;
     --secondary-bg: #1e1e1e;
     --overlay-bg: rgba(0, 0, 0, 0.85);
+    --hover-bg: #3a3a3a;
     
     /* Cores de texto */
     --text-color: #ffffff;
@@ -760,5 +787,295 @@ input:checked + .slider:before {
 [data-theme='dark'] .danger-zone-section {
     background: #2a2a2a !important;
     border-color: #c62828 !important;
+}
+
+/* Página de Execução (Avaliação) */
+[data-theme='dark'] .avaliacao-container {
+    background: var(--bg-color);
+}
+
+[data-theme='dark'] .upload-section {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .upload-section:hover {
+    border-color: #ff5252;
+    background: #3a3a3a;
+}
+
+[data-theme='dark'] .video-preview {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .resultado-section {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .resultado-header {
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme='dark'] .loading-content {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .analise-type-section {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .analise-type-select {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .analise-type-select:hover,
+[data-theme='dark'] .analise-type-select:focus {
+    border-color: #ff5252;
+}
+
+[data-theme='dark'] .analise-type-select option {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* Seções de análise estilizadas */
+[data-theme='dark'] .analise-section {
+    background: var(--secondary-bg);
+    border-left-color: #ff5252;
+}
+
+[data-theme='dark'] .analise-section-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .analise-section-content {
+    color: var(--text-color);
+}
+
+/* Histórico de avaliações */
+[data-theme='dark'] .historico-section {
+    background: transparent;
+}
+
+[data-theme='dark'] .historico-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .clear-historico-btn {
+    border-color: #ff5252;
+    color: #ff5252;
+    background: transparent;
+}
+
+[data-theme='dark'] .clear-historico-btn:hover {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .historico-item {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .historico-item:hover {
+    border-color: #ff5252;
+    box-shadow: 0 4px 12px rgba(255, 82, 82, 0.2);
+}
+
+[data-theme='dark'] .historico-item-date {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .historico-item-tipo {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .historico-item-exercicio {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .historico-item-preview {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .empty-historico {
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   Página de Alimentação - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] .alimentacao-container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .alimentacao-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .alimentacao-subtitle {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .upload-section {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .upload-area {
+    background: var(--secondary-bg);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .upload-area:hover {
+    border-color: #ff5252;
+    background: var(--hover-bg);
+}
+
+[data-theme='dark'] .upload-btn,
+[data-theme='dark'] .camera-btn,
+[data-theme='dark'] .gallery-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .upload-btn:hover,
+[data-theme='dark'] .camera-btn:hover,
+[data-theme='dark'] .gallery-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .image-preview {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .analyze-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .analyze-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .analyze-btn:disabled {
+    background: var(--secondary-bg);
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .loading {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .results-section {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .results-title {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .food-name {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .nutrition-item {
+    background: var(--secondary-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .nutrition-label {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .nutrition-value {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .observations {
+    background: var(--secondary-bg);
+    border-left-color: #ffab00;
+}
+
+[data-theme='dark'] .observations-title {
+    color: #ffab00;
+}
+
+[data-theme='dark'] .observations-text {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .new-analysis-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .new-analysis-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .history-title {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .history-health-badge.healthy {
+    background: #1b3a1f;
+    color: #66bb6a;
+}
+
+[data-theme='dark'] .history-health-badge.unhealthy {
+    background: #3a1a1a;
+    color: #ef5350;
+}
+
+/* ========================================
+   Página de Execução - Tema Escuro Adicional
+   ======================================== */
+
+[data-theme='dark'] .avaliacao-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .avaliacao-subtitle {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .upload-video-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .upload-video-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .analyze-video-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .analyze-video-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .nova-analise-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .nova-analise-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .resultado-title {
+    color: #ff5252;
 }
 

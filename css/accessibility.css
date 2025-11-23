@@ -624,3 +624,206 @@ body.dark-mode .font-btn:hover {
 .font-btn:active {
     transform: scale(0.95);
 }
+
+/* ========================================
+   Página de Alimentação - Responsividade de Fonte
+   ======================================== */
+
+html.font-small .alimentacao-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-small .alimentacao-subtitle {
+    font-size: 0.85rem !important;
+}
+
+html.font-small .upload-btn,
+html.font-small .analyze-btn,
+html.font-small .new-analysis-btn {
+    font-size: 0.8rem !important;
+    padding: 10px 20px !important;
+}
+
+html.font-small .results-title,
+html.font-small .history-title {
+    font-size: 1.3rem !important;
+}
+
+html.font-small .food-name {
+    font-size: 1.2rem !important;
+}
+
+html.font-small .nutrition-label,
+html.font-small .observations-text {
+    font-size: 0.75rem !important;
+}
+
+html.font-small .nutrition-value {
+    font-size: 1rem !important;
+}
+
+html.font-medium-small .alimentacao-title {
+    font-size: 1.75rem !important;
+}
+
+html.font-medium-small .alimentacao-subtitle {
+    font-size: 0.95rem !important;
+}
+
+html.font-medium-small .upload-btn,
+html.font-medium-small .analyze-btn,
+html.font-medium-small .new-analysis-btn {
+    font-size: 0.9rem !important;
+    padding: 11px 24px !important;
+}
+
+html.font-medium-small .results-title,
+html.font-medium-small .history-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-medium-small .food-name {
+    font-size: 1.35rem !important;
+}
+
+html.font-large .alimentacao-title {
+    font-size: 2.5rem !important;
+}
+
+html.font-large .alimentacao-subtitle {
+    font-size: 1.15rem !important;
+}
+
+html.font-large .upload-btn,
+html.font-large .analyze-btn,
+html.font-large .new-analysis-btn {
+    font-size: 1.1rem !important;
+    padding: 14px 32px !important;
+}
+
+html.font-large .results-title,
+html.font-large .history-title {
+    font-size: 2rem !important;
+}
+
+html.font-large .food-name {
+    font-size: 1.65rem !important;
+}
+
+html.font-large .nutrition-label,
+html.font-large .observations-text {
+    font-size: 0.95rem !important;
+}
+
+html.font-large .nutrition-value {
+    font-size: 1.4rem !important;
+}
+
+html.font-large .history-food {
+    font-size: 1.1rem !important;
+}
+
+html.font-large .history-nutrition {
+    font-size: 0.95rem !important;
+}
+
+/* ========================================
+   Página de Execução - Responsividade de Fonte
+   ======================================== */
+
+html.font-small .avaliacao-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-small .avaliacao-subtitle {
+    font-size: 0.85rem !important;
+}
+
+html.font-small .upload-video-btn,
+html.font-small .analyze-video-btn,
+html.font-small .nova-analise-btn {
+    font-size: 0.8rem !important;
+    padding: 10px 20px !important;
+}
+
+html.font-small .resultado-title,
+html.font-small .historico-title {
+    font-size: 1.3rem !important;
+}
+
+html.font-small .analise-section-title {
+    font-size: 1rem !important;
+}
+
+html.font-small .analise-section-content {
+    font-size: 0.8rem !important;
+}
+
+html.font-small .historico-item-exercicio {
+    font-size: 0.9rem !important;
+}
+
+html.font-medium-small .avaliacao-title {
+    font-size: 1.75rem !important;
+}
+
+html.font-medium-small .avaliacao-subtitle {
+    font-size: 0.95rem !important;
+}
+
+html.font-medium-small .upload-video-btn,
+html.font-medium-small .analyze-video-btn,
+html.font-medium-small .nova-analise-btn {
+    font-size: 0.9rem !important;
+    padding: 11px 24px !important;
+}
+
+html.font-medium-small .resultado-title,
+html.font-medium-small .historico-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-medium-small .analise-section-title {
+    font-size: 1.1rem !important;
+}
+
+html.font-large .avaliacao-title {
+    font-size: 2.5rem !important;
+}
+
+html.font-large .avaliacao-subtitle {
+    font-size: 1.15rem !important;
+}
+
+html.font-large .upload-video-btn,
+html.font-large .analyze-video-btn,
+html.font-large .nova-analise-btn {
+    font-size: 1.1rem !important;
+    padding: 14px 32px !important;
+}
+
+html.font-large .resultado-title,
+html.font-large .historico-title {
+    font-size: 2rem !important;
+}
+
+html.font-large .analise-section-title {
+    font-size: 1.3rem !important;
+}
+
+html.font-large .analise-section-content {
+    font-size: 1rem !important;
+}
+
+html.font-large .historico-item-exercicio {
+    font-size: 1.1rem !important;
+}
+
+html.font-large .historico-item-preview {
+    font-size: 0.95rem !important;
+}
+
+html.font-large .analise-type-label,
+html.font-large .analise-type-select {
+    font-size: 1rem !important;
+}

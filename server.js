@@ -65,6 +65,8 @@ app.get('/sobre', (req, res) => res.sendFile('sobre.html', { root: rootPath }));
 app.get('/sobre.html', (req, res) => res.sendFile('sobre.html', { root: rootPath }));
 app.get('/config', (req, res) => res.sendFile('config.html', { root: rootPath }));
 app.get('/config.html', (req, res) => res.sendFile('config.html', { root: rootPath }));
+app.get('/avaliacao', (req, res) => res.sendFile('avaliacao.html', { root: rootPath }));
+app.get('/avaliacao.html', (req, res) => res.sendFile('avaliacao.html', { root: rootPath }));
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -395,6 +397,106 @@ NÃO inclua markdown, explicações ou texto adicional. APENAS o JSON.`
     
     res.status(500).json({ 
       error: 'Erro ao analisar a imagem. Tente novamente.' 
+    });
+  }
+});
+
+// Endpoint para análise de vídeos de exercícios
+app.post('/api/analisar-exercicio', async (req, res) => {
+  try {
+    const { frames, tipo } = req.body;
+
+    if (!frames || !Array.isArray(frames) || frames.length === 0) {
+      return res.status(400).json({ error: 'Frames do vídeo não fornecidos' });
+    }
+
+    console.log(`🎥 Analisando vídeo de exercício (${frames.length} frames, tipo: ${tipo || 'resumida'})...`);
+
+    // Define o prompt baseado no tipo de análise
+    let promptText = '';
+    
+    if (tipo === 'detalhada') {
+      promptText = `Você é um personal trainer experiente e especialista em biomecânica. Analise estas imagens extraídas de um vídeo de exercício (início, meio e fim do movimento) e forneça uma avaliação DETALHADA e COMPLETA.
+
+IMPORTANTE: Organize sua resposta EXATAMENTE no seguinte formato com estas seções:
+
+**EXERCÍCIO:** [Nome do exercício e grupo muscular alvo]
+
+**EXECUÇÃO:** [Análise completa da técnica: postura, alinhamento, amplitude de movimento, velocidade, compensações]
+
+**PONTOS POSITIVOS:** [Liste 2-4 aspectos que o praticante está fazendo corretamente]
+
+**PONTOS DE MELHORIA:** [Liste 2-4 erros identificados e como corrigir cada um de forma específica e prática]
+
+**RISCOS:** [Explique se há risco de lesão e quais cuidados devem ser tomados]
+
+**RECOMENDAÇÕES:** [Sugestões de progressão/regressão e exercícios complementares]
+
+Seja específico, didático e encorajador. Use linguagem acessível.`;
+    } else {
+      // Análise resumida (padrão)
+      promptText = `Você é um personal trainer experiente. Analise estas imagens de um exercício e forneça uma avaliação RESUMIDA e OBJETIVA.
+
+IMPORTANTE: Organize sua resposta EXATAMENTE no seguinte formato com estas seções:
+
+**EXERCÍCIO:** [Nome do exercício e músculo trabalhado]
+
+**EXECUÇÃO:** [Avaliação rápida da técnica geral em 1-2 frases]
+
+**PONTOS POSITIVOS:** [2-3 acertos principais]
+
+**PONTOS DE MELHORIA:** [2-3 erros mais importantes, se houver]
+
+**RECOMENDAÇÕES:** [Correções práticas e rápidas em 1-2 frases]
+
+Seja direto, claro e encorajador. Máximo 150 palavras no total.`;
+    }
+
+    // Cria o conteúdo com múltiplas imagens
+    const content = [
+      {
+        type: 'text',
+        text: promptText
+      }
+    ];
+
+    // Adiciona cada frame como uma imagem
+    frames.forEach((frame, index) => {
+      content.push({
+        type: 'image_url',
+        image_url: {
+          url: frame
+        }
+      });
+    });
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'user',
+          content: content
+        }
+      ],
+      max_tokens: tipo === 'detalhada' ? 1500 : 500,
+      temperature: 0.7
+    });
+
+    const analise = response.choices[0].message.content;
+
+    console.log('✅ Análise de exercício concluída');
+
+    res.json({ analise });
+  } catch (err) {
+    console.error('❌ Erro na análise do vídeo:', err);
+    console.error('📊 Detalhes do erro:', {
+      code: err.code,
+      status: err.status,
+      message: err.message
+    });
+    
+    res.status(500).json({ 
+      error: 'Erro ao analisar o vídeo. Verifique se o formato é válido e tente novamente.' 
     });
   }
 });

@@ -173,16 +173,6 @@
             background: #3a3a3a;
         }
 
-        .upload-area.dragging {
-            background: #ffe0e0;
-            border-color: #5a1313;
-        }
-
-        body.dark-mode .upload-area.dragging {
-            background: #4a2020;
-            border-color: #ff5252;
-        }
-
         .camera-options {
             display: flex;
             gap: 15px;
@@ -441,7 +431,7 @@
 
         .observations-text {
             font-size: 15px;
-            color: #555;
+            color: #444;
             line-height: 1.6;
         }
 
@@ -509,61 +499,161 @@
             text-align: left;
         }
 
+        .historico-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         .history-title {
             font-size: 22px;
             font-weight: 700;
             color: #7A1919;
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
 
         body.dark-mode .history-title {
             color: #ff6b6b;
         }
 
+        .clear-historico-btn {
+            background: transparent;
+            border: 2px solid #c62828;
+            color: #c62828;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .clear-historico-btn:hover {
+            background: #c62828;
+            color: white;
+        }
+
+        body.dark-mode .clear-historico-btn {
+            border-color: #ff5252;
+            color: #ff5252;
+        }
+
+        body.dark-mode .clear-historico-btn:hover {
+            background: #ff5252;
+            color: white;
+        }
+
+        .historico-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
         .history-item {
             background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid #7A1919;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 0;
+            border: 1px solid #e0e0e0;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         body.dark-mode .history-item {
             background: #2a2a2a;
-            border-color: #ff6b6b;
+            border-color: #444;
         }
 
         .history-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-color: #7A1919;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 25, 25, 0.2);
+        }
+
+        body.dark-mode .history-item:hover {
+            border-color: #ff5252;
+            box-shadow: 0 4px 12px rgba(255, 82, 82, 0.2);
+        }
+
+        .history-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
         }
 
         .history-date {
-            font-size: 12px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        body.dark-mode .history-date {
             color: #999;
-            margin-bottom: 5px;
+        }
+
+        .history-health-badge {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .history-health-badge.healthy {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        body.dark-mode .history-health-badge.healthy {
+            background: #1b3a1f;
+            color: #66bb6a;
+        }
+
+        .history-health-badge.unhealthy {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        body.dark-mode .history-health-badge.unhealthy {
+            background: #3a1a1a;
+            color: #ef5350;
         }
 
         .history-food {
             font-size: 16px;
             font-weight: 600;
             color: #333;
+            margin-bottom: 6px;
         }
 
         body.dark-mode .history-food {
             color: #fff;
         }
 
-        .history-calories {
+        .history-nutrition {
             font-size: 14px;
-            color: #7A1919;
-            font-weight: 600;
+            color: #666;
+            line-height: 1.5;
         }
 
-        body.dark-mode .history-calories {
-            color: #ff6b6b;
+        body.dark-mode .history-nutrition {
+            color: #999;
+        }
+
+        .empty-historico {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        body.dark-mode .empty-historico {
+            color: #999;
+        }
+
+        .empty-historico-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
         }
 
         @media (max-width: 768px) {
@@ -664,6 +754,7 @@
                 <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
                 <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
                 <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='avaliacao.html'" class="menu-modal-item">Execução</div>
                 <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
             </div>
         </div>
@@ -693,7 +784,7 @@
 
             <div class="upload-area" id="upload-area">
                 <div class="upload-icon">📸</div>
-                <div class="upload-text">Ou arraste uma imagem</div>
+                <div class="upload-text">Suas imagens aparecerão aqui</div>
                 <div class="upload-hint">JPG, PNG, HEIC, WEBP (máx. 10MB)</div>
                 <input type="file" id="file-input" accept="image/*,.heic,.heif" style="display: none;">
                 <input type="file" id="camera-input" accept="image/*,.heic,.heif" capture="environment" style="display: none;">
@@ -756,9 +847,17 @@
         </div>
 
         <!-- Histórico -->
-        <div class="history-section" id="history-section" style="display: none;">
-            <h3 class="history-title">Histórico Recente</h3>
-            <div id="history-list"></div>
+        <div class="history-section" id="history-section">
+            <div class="historico-header">
+                <h3 class="history-title">📋 Histórico de Análises</h3>
+                <button class="clear-historico-btn" onclick="clearHistorico()">🗑️ Limpar</button>
+            </div>
+            <div class="historico-list" id="history-list">
+                <div class="empty-historico">
+                    <div class="empty-historico-icon">🍽️</div>
+                    <p>Nenhuma análise salva ainda</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -792,10 +891,16 @@
 
         // Inicializa o gerenciador de tema
         ThemeManager.init();
+        
+        // Inicializar acessibilidade de fonte
+        if (typeof FontManager !== 'undefined') {
+            FontManager.init();
+        }
 
         // Variáveis globais
         let selectedImage = null;
         let currentAnalysis = null;
+        let historicoAlimentacao = [];
 
         // Elementos do DOM
         const uploadArea = document.getElementById('upload-area');
@@ -813,6 +918,141 @@
         const historySection = document.getElementById('history-section');
         const historyList = document.getElementById('history-list');
 
+        // Carregar histórico ao iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHistorico();
+        });
+
+        // Carregar histórico do localStorage
+        function loadHistorico() {
+            const user = AuthManager.getLoggedUser();
+            if (!user || !user.email) {
+                console.warn('Usuário não logado, histórico não carregado');
+                renderHistorico(); // Renderiza vazio
+                return;
+            }
+
+            const storageKey = `historicoAlimentacao_${user.email}`;
+            const saved = localStorage.getItem(storageKey);
+            
+            if (saved) {
+                try {
+                    historicoAlimentacao = JSON.parse(saved);
+                    console.log(`Histórico carregado: ${historicoAlimentacao.length} análises`);
+                } catch (e) {
+                    console.error('Erro ao parsear histórico:', e);
+                    historicoAlimentacao = [];
+                }
+            }
+            renderHistorico();
+        }
+
+        // Salvar histórico no localStorage
+        function saveHistorico() {
+            const user = AuthManager.getLoggedUser();
+            if (!user || !user.email) return;
+
+            const storageKey = `historicoAlimentacao_${user.email}`;
+            localStorage.setItem(storageKey, JSON.stringify(historicoAlimentacao));
+            console.log(`Histórico salvo: ${historicoAlimentacao.length} análises`);
+        }
+
+        // Adicionar nova análise ao histórico
+        function addToHistorico(analiseData) {
+            const historicoItem = {
+                id: Date.now(),
+                date: new Date().toLocaleString('pt-BR'),
+                alimento: analiseData.alimento,
+                calorias: analiseData.calorias,
+                proteinas: analiseData.proteinas,
+                carboidratos: analiseData.carboidratos,
+                gorduras: analiseData.gorduras,
+                observacoes: analiseData.observacoes,
+                saudavel: analiseData.saudavel
+            };
+
+            historicoAlimentacao.unshift(historicoItem);
+            
+            // Manter apenas últimas 20 análises
+            if (historicoAlimentacao.length > 20) {
+                historicoAlimentacao = historicoAlimentacao.slice(0, 20);
+            }
+
+            saveHistorico();
+            renderHistorico();
+        }
+
+        // Renderizar histórico na interface
+        function renderHistorico() {
+            const historicoSection = document.getElementById('history-section');
+            
+            // Sempre exibir a seção
+            historicoSection.style.display = 'block';
+            
+            if (historicoAlimentacao.length === 0) {
+                historyList.innerHTML = `
+                    <div class="empty-historico">
+                        <div class="empty-historico-icon">🍽️</div>
+                        <p>Nenhuma análise salva ainda</p>
+                    </div>
+                `;
+                return;
+            }
+
+            historyList.innerHTML = historicoAlimentacao.map(item => `
+                <div class="history-item" onclick="viewAnalise(${item.id})">
+                    <div class="history-item-header">
+                        <span class="history-date">${item.date}</span>
+                        <span class="history-health-badge ${item.saudavel ? 'healthy' : 'unhealthy'}">
+                            ${item.saudavel ? '✅ Saudável' : '⚠️ Moderação'}
+                        </span>
+                    </div>
+                    <div class="history-food">${item.alimento}</div>
+                    <div class="history-nutrition">
+                        ${item.calorias} | Ptn: ${item.proteinas} | Carb: ${item.carboidratos} | Gord: ${item.gorduras}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Visualizar análise completa
+        function viewAnalise(id) {
+            const item = historicoAlimentacao.find(h => h.id === id);
+            if (!item) return;
+
+            // Exibir na seção de resultados
+            document.getElementById('food-name').textContent = item.alimento;
+            document.getElementById('calories').textContent = item.calorias;
+            document.getElementById('proteins').textContent = item.proteinas;
+            document.getElementById('carbs').textContent = item.carboidratos;
+            document.getElementById('fats').textContent = item.gorduras;
+            document.getElementById('observations').textContent = item.observacoes;
+
+            const healthBadge = document.getElementById('health-badge');
+            if (item.saudavel) {
+                healthBadge.textContent = '✅ Saudável';
+                healthBadge.className = 'health-badge healthy';
+            } else {
+                healthBadge.textContent = '⚠️ Com Moderação';
+                healthBadge.className = 'health-badge unhealthy';
+            }
+
+            uploadSection.style.display = 'none';
+            resultsSection.style.display = 'block';
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Limpar histórico
+        function clearHistorico() {
+            if (!confirm('Tem certeza que deseja limpar todo o histórico de análises?')) {
+                return;
+            }
+
+            historicoAlimentacao = [];
+            saveHistorico();
+            renderHistorico();
+        }
+
         // Botão para tirar foto com câmera
         cameraBtn.addEventListener('click', () => {
             cameraInput.click();
@@ -828,28 +1068,6 @@
         
         fileInput.addEventListener('change', handleFileSelect);
         cameraInput.addEventListener('change', handleFileSelect);
-
-        // Drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('dragging');
-        });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('dragging');
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('dragging');
-            
-            const file = e.dataTransfer.files[0];
-            if (file && (file.type.startsWith('image/') || file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif'))) {
-                handleFile(file);
-            } else {
-                showToast('Arquivo Inválido', 'Por favor, envie apenas arquivos de imagem.', 'error');
-            }
-        });
 
         function handleFileSelect(e) {
             const file = e.target.files[0];
@@ -967,15 +1185,8 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    currentAnalysis = {
-                        ...data,
-                        date: new Date().toISOString(),
-                        image: selectedImage
-                    };
-                    
                     displayResults(data);
-                    saveToHistory(currentAnalysis);
-                    loadHistory();
+                    addToHistorico(data);
                     showToast('Análise Concluída!', 'Informações nutricionais obtidas com sucesso.', 'success');
                 } else {
                     throw new Error(data.error || 'Erro ao analisar imagem');
@@ -1016,69 +1227,12 @@
             selectedImage = null;
             currentAnalysis = null;
             fileInput.value = '';
+            cameraInput.value = '';
             imagePreview.style.display = 'none';
             analyzeBtn.style.display = 'none';
             uploadSection.style.display = 'block';
             resultsSection.style.display = 'none';
         });
-
-        // Salvar no histórico
-        function saveToHistory(analysis) {
-            let history = JSON.parse(localStorage.getItem('analiseHistorico') || '[]');
-            history.unshift(analysis);
-            
-            // Manter apenas últimas 10 análises
-            if (history.length > 10) {
-                history = history.slice(0, 10);
-            }
-            
-            localStorage.setItem('analiseHistorico', JSON.stringify(history));
-            
-            // Sincroniza automaticamente com os dados do usuário
-            const user = AuthManager.getLoggedUser();
-            if (user) {
-                AuthManager.syncCurrentSessionData(user.email);
-            }
-        }
-
-        // Carregar histórico
-        function loadHistory() {
-            const history = JSON.parse(localStorage.getItem('analiseHistorico') || '[]');
-            
-            if (history.length === 0) {
-                historySection.style.display = 'none';
-                return;
-            }
-
-            historySection.style.display = 'block';
-            historyList.innerHTML = '';
-
-            history.forEach((item, index) => {
-                const date = new Date(item.date);
-                const dateStr = date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }) + ' • ' + date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-                const historyItem = document.createElement('div');
-                historyItem.className = 'history-item';
-                historyItem.innerHTML = `
-                    <div class="history-info">
-                        <div class="history-date">${dateStr}</div>
-                        <div class="history-food">${item.alimento}</div>
-                    </div>
-                    <div class="history-calories">${item.calorias}</div>
-                `;
-                
-                historyItem.addEventListener('click', () => {
-                    selectedImage = item.image;
-                    previewImg.src = item.image;
-                    displayResults(item);
-                });
-
-                historyList.appendChild(historyItem);
-            });
-        }
-
-        // Carregar histórico ao iniciar
-        loadHistory();
 
         // Utilitário para atualizar localStorage e sessão
         function atualizarUsuarioLogado(novosDados) {

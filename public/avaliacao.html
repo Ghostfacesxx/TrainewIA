@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Execução - Trainew IA</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/font-manager.js"></script>
+
+    <style>
+        .avaliacao-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .avaliacao-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avaliacao-header h1 {
+            font-size: 28px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .avaliacao-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .upload-section {
+            background: var(--card-bg);
+            border: 2px dashed var(--border-color);
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .upload-section:hover {
+            border-color: #7A1919;
+            background: var(--hover-bg);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .upload-section h3 {
+            color: var(--text-color);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .upload-section p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #7A1919 0%, #5a1212 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 25, 25, 0.4);
+        }
+
+        #video-input {
+            display: none;
+        }
+
+        .video-preview {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .video-preview.show {
+            display: block;
+        }
+
+        .video-preview video {
+            width: 100%;
+            max-height: 500px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .video-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .analyze-btn {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .remove-btn {
+            background: #e0e0e0;
+            color: #333;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .resultado-section {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .resultado-section.show {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resultado-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .resultado-icon {
+            font-size: 32px;
+        }
+
+        .resultado-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .resultado-content {
+            color: var(--text-color);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .resultado-content h4 {
+            color: #7A1919;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .resultado-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .resultado-content li {
+            margin-bottom: 8px;
+        }
+
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        .loading-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--border-color);
+            border-top-color: #7A1919;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--text-color);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .loading-subtext {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .info-card-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .info-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .info-card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .nova-analise-btn {
+            background: linear-gradient(135deg, #7A1919 0%, #5a1212 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        .nova-analise-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 25, 25, 0.4);
+        }
+
+        .analise-type-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .analise-type-label {
+            display: block;
+            color: var(--text-color);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .analise-type-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .analise-type-select:hover {
+            border-color: #7A1919;
+        }
+
+        .analise-type-select:focus {
+            outline: none;
+            border-color: #7A1919;
+            box-shadow: 0 0 0 3px rgba(122, 25, 25, 0.1);
+        }
+
+        .analise-type-desc {
+            color: #666;
+            font-size: 13px;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        body.dark-mode .analise-type-desc {
+            color: #999;
+        }
+
+        .analise-section {
+            background: var(--secondary-bg);
+            border-left: 4px solid #7A1919;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .analise-section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .analise-section-emoji {
+            font-size: 28px;
+        }
+
+        .analise-section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .analise-section-content {
+            color: var(--text-color);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .analise-section-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .analise-section-content li {
+            margin-bottom: 8px;
+        }
+
+        .historico-section {
+            margin-top: 30px;
+        }
+
+        .historico-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .historico-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .clear-historico-btn {
+            background: transparent;
+            border: 2px solid #c62828;
+            color: #c62828;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .clear-historico-btn:hover {
+            background: #c62828;
+            color: white;
+        }
+
+        .historico-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .historico-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .historico-item:hover {
+            border-color: #7A1919;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 25, 25, 0.2);
+        }
+
+        .historico-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .historico-item-date {
+            font-size: 13px;
+            color: #666;
+        }
+
+        body.dark-mode .historico-item-date {
+            color: #999;
+        }
+
+        .historico-item-tipo {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: #7A1919;
+            color: white;
+            font-weight: 600;
+        }
+
+        .historico-item-exercicio {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 6px;
+        }
+
+        .historico-item-preview {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        body.dark-mode .historico-item-preview {
+            color: #999;
+        }
+
+        .empty-historico {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        body.dark-mode .empty-historico {
+            color: #999;
+        }
+
+        .empty-historico-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
+        <nav class="header-nav">
+            <div class="header-item menu">
+                <span class="menu-icon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+                <span class="item-label">Menu</span>
+            </div>
+            <div onclick="window.location.href='chat.html'" class="header-item chat">
+                <img src="img/icon-ia.png" class="chat-icon">
+                <span class="item-label">Chat IA</span>
+            </div>
+            <div class="header-item perfil" id="perfil-btn">
+                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+                <span class="item-label">Perfil</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="avaliacao-container">
+        <div class="avaliacao-header">
+            <h1>🎯 Execução</h1>
+            <p>Envie um vídeo executando seu exercício e receba feedback detalhado da IA!</p>
+        </div>
+
+        <div class="analise-type-section">
+            <label class="analise-type-label" for="analise-type">📊 Tipo de Análise</label>
+            <select id="analise-type" class="analise-type-select">
+                <option value="resumida" selected>⚡ Análise Resumida - Rápida e objetiva</option>
+                <option value="detalhada">📝 Análise Detalhada - Completa e aprofundada</option>
+            </select>
+            <p class="analise-type-desc" id="analise-desc">
+                Análise rápida com os pontos principais: identificação do exercício, principais erros e correções essenciais.
+            </p>
+        </div>
+
+        <div class="upload-section" id="upload-section">
+            <div class="upload-icon">🎥</div>
+            <h3>Selecione seu vídeo</h3>
+            <p>Formatos: MP4, MOV, AVI • Máximo: 100MB</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                <button class="upload-btn" onclick="document.getElementById('camera-input').click()">
+                    📹 Gravar Vídeo
+                </button>
+                <button class="upload-btn" onclick="document.getElementById('video-input').click()">
+                    🖼️ Galeria
+                </button>
+            </div>
+            <input type="file" id="video-input" accept="video/*" style="display: none;">
+            <input type="file" id="camera-input" accept="video/*" capture="environment" style="display: none;">
+        </div>
+
+        <div class="video-preview" id="video-preview">
+            <video id="video-player" controls></video>
+            <div class="video-actions">
+                <button class="analyze-btn" id="analyze-btn">🤖 Analisar Execução</button>
+                <button class="remove-btn" id="remove-btn">🗑️ Remover Vídeo</button>
+            </div>
+        </div>
+
+        <div class="resultado-section" id="resultado-section">
+            <div class="resultado-header">
+                <span class="resultado-icon">✅</span>
+                <h2 class="resultado-title">Análise Completa</h2>
+            </div>
+            <div class="resultado-content" id="resultado-content"></div>
+            <button class="nova-analise-btn" onclick="novaAnalise()">📹 Nova Análise</button>
+        </div>
+
+        <div class="historico-section" id="historico-section">
+            <div class="historico-header">
+                <h2 class="historico-title">📋 Histórico de Avaliações</h2>
+                <button class="clear-historico-btn" id="clear-historico-btn" onclick="clearHistorico()">🗑️ Limpar</button>
+            </div>
+            <div class="historico-list" id="historico-list">
+                <div class="empty-historico">
+                    <div class="empty-historico-icon">📋</div>
+                    <p>Nenhuma avaliação salva ainda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Analisando seu vídeo...</div>
+            <div class="loading-subtext">A IA está avaliando sua execução. Isso pode levar alguns segundos.</div>
+        </div>
+    </div>
+
+    <!-- Modal Perfil -->
+    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+        <div class="perfil-modal" id="perfil-modal">
+            <div class="perfil-modal-header">Conta</div>
+            <div class="perfil-modal-user">
+                <span class="perfil-modal-user-icon" id="perfil-user-icon">
+                    <img src="img/icon.png" alt="Perfil" id="perfil-img">
+                </span>
+                <div class="perfil-modal-user-info">
+                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+                    <span class="perfil-modal-user-email" id="perfil-email"></span>
+                </div>
+            </div>
+            <hr class="perfil-modal-divider">
+            <div class="perfil-modal-list">
+                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Menu Lateral -->
+    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+        <div class="menu-modal" id="menu-modal">
+            <div class="menu-modal-header">
+                <span>Menu</span>
+            </div>
+            <hr class="menu-modal-divider">
+            <div class="menu-modal-list">
+                <div onclick="window.location.href='chat.html'" class="menu-modal-item">Chat IA</div>
+                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+                <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='avaliacao.html'" class="menu-modal-item">Execução</div>
+                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <hr class="footer-line">
+    </footer>
+
+    <script>
+        // Verificar autenticação
+        AuthManager.requireAuth();
+        ThemeManager.init();
+        
+        // Inicializar acessibilidade de fonte
+        if (typeof FontManager !== 'undefined') {
+            FontManager.init();
+        }
+
+        let selectedVideo = null;
+        let videoBase64 = null;
+
+        // Upload de vídeo
+        const videoInput = document.getElementById('video-input');
+        const cameraInput = document.getElementById('camera-input');
+        const uploadSection = document.getElementById('upload-section');
+        const videoPreview = document.getElementById('video-preview');
+        const videoPlayer = document.getElementById('video-player');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const removeBtn = document.getElementById('remove-btn');
+        const resultadoSection = document.getElementById('resultado-section');
+        const resultadoContent = document.getElementById('resultado-content');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const analiseTypeSelect = document.getElementById('analise-type');
+        const analiseDesc = document.getElementById('analise-desc');
+
+        let historicoAvaliacoes = [];
+
+        // Carregar histórico ao iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHistorico();
+        });
+
+        // Carregar histórico do localStorage
+        function loadHistorico() {
+            const user = AuthManager.getLoggedUser();
+            if (!user || !user.email) {
+                console.warn('Usuário não logado, histórico não carregado');
+                renderHistorico(); // Renderiza vazio
+                return;
+            }
+
+            const storageKey = `historicoExecucao_${user.email}`;
+            const saved = localStorage.getItem(storageKey);
+            
+            if (saved) {
+                try {
+                    historicoAvaliacoes = JSON.parse(saved);
+                    console.log(`Histórico carregado: ${historicoAvaliacoes.length} avaliações`);
+                } catch (e) {
+                    console.error('Erro ao parsear histórico:', e);
+                    historicoAvaliacoes = [];
+                }
+            }
+            renderHistorico();
+        }
+
+        // Salvar histórico no localStorage
+        function saveHistorico() {
+            const user = AuthManager.getLoggedUser();
+            if (!user || !user.email) return;
+
+            const storageKey = `historicoExecucao_${user.email}`;
+            localStorage.setItem(storageKey, JSON.stringify(historicoAvaliacoes));
+            console.log(`Histórico salvo: ${historicoAvaliacoes.length} avaliações`);
+        }
+
+        // Adicionar nova avaliação ao histórico
+        function addToHistorico(exercicio, tipo, analise) {
+            const avaliacaoData = {
+                id: Date.now(),
+                date: new Date().toLocaleString('pt-BR'),
+                exercicio: exercicio,
+                tipo: tipo,
+                analise: analise
+            };
+
+            historicoAvaliacoes.unshift(avaliacaoData);
+            
+            // Manter apenas últimas 20 avaliações
+            if (historicoAvaliacoes.length > 20) {
+                historicoAvaliacoes = historicoAvaliacoes.slice(0, 20);
+            }
+
+            saveHistorico();
+            renderHistorico();
+        }
+
+        // Renderizar histórico na interface
+        function renderHistorico() {
+            const historicoList = document.getElementById('historico-list');
+            const historicoSection = document.getElementById('historico-section');
+            
+            // Sempre exibir a seção
+            historicoSection.style.display = 'block';
+            
+            if (historicoAvaliacoes.length === 0) {
+                historicoList.innerHTML = `
+                    <div class="empty-historico">
+                        <div class="empty-historico-icon">📋</div>
+                        <p>Nenhuma avaliação salva ainda</p>
+                    </div>
+                `;
+                return;
+            }
+
+            historicoList.innerHTML = historicoAvaliacoes.map(item => `
+                <div class="historico-item" onclick="viewAnalise(${item.id})">
+                    <div class="historico-item-header">
+                        <span class="historico-item-date">${item.date}</span>
+                        <span class="historico-item-tipo">${item.tipo === 'resumida' ? 'Resumida' : 'Detalhada'}</span>
+                    </div>
+                    <div class="historico-item-exercicio">${item.exercicio}</div>
+                    <div class="historico-item-preview">${getAnalisePreview(item.analise)}</div>
+                </div>
+            `).join('');
+        }
+
+        // Obter prévia da análise
+        function getAnalisePreview(analise) {
+            // Extrair apenas o texto, sem HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = analise;
+            return tempDiv.textContent.substring(0, 150) + '...';
+        }
+
+        // Visualizar análise completa
+        function viewAnalise(id) {
+            const avaliacaoItem = historicoAvaliacoes.find(item => item.id === id);
+            if (!avaliacaoItem) return;
+
+            // Ocultar seção de upload e vídeo
+            uploadSection.style.display = 'none';
+            videoPreview.style.display = 'none';
+
+            // Exibir análise no resultado
+            resultadoContent.innerHTML = avaliacaoItem.analise;
+            resultadoSection.style.display = 'block';
+            resultadoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Limpar histórico
+        function clearHistorico() {
+            if (!confirm('Tem certeza que deseja limpar todo o histórico de avaliações?')) {
+                return;
+            }
+
+            historicoAvaliacoes = [];
+            saveHistorico();
+            renderHistorico();
+        }
+
+        // Atualizar descrição do tipo de análise
+        analiseTypeSelect.addEventListener('change', function() {
+            if (this.value === 'resumida') {
+                analiseDesc.textContent = 'Análise rápida com os pontos principais: identificação do exercício, principais erros e correções essenciais.';
+            } else {
+                analiseDesc.textContent = 'Análise completa e aprofundada com todos os detalhes: postura, biomecânica, riscos, progressões e exercícios complementares.';
+            }
+        });
+
+        videoInput.addEventListener('change', handleVideoSelect);
+        cameraInput.addEventListener('change', handleVideoSelect);
+        removeBtn.addEventListener('click', removeVideo);
+        analyzeBtn.addEventListener('click', analyzeVideo);
+
+        function handleVideoSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                processVideo(file);
+            }
+        }
+
+        function processVideo(file) {
+            // Verifica tamanho (100MB)
+            if (file.size > 100 * 1024 * 1024) {
+                showToast('Erro', 'O vídeo é muito grande. Tamanho máximo: 100MB', 'error');
+                return;
+            }
+
+            selectedVideo = file;
+            const url = URL.createObjectURL(file);
+            videoPlayer.src = url;
+            
+            uploadSection.style.display = 'none';
+            videoPreview.classList.add('show');
+            resultadoSection.classList.remove('show');
+
+            // Extrai frames do vídeo
+            videoPlayer.addEventListener('loadeddata', function() {
+                extractFrames(videoPlayer);
+            }, { once: true });
+        }
+
+        function extractFrames(video) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            // Extrair 3 frames: início, meio e fim
+            const frames = [];
+            const totalDuration = video.duration;
+            const times = [0, totalDuration / 2, totalDuration - 0.5];
+            
+            let frameIndex = 0;
+            
+            function captureFrame() {
+                if (frameIndex >= times.length) {
+                    videoBase64 = frames;
+                    return;
+                }
+                
+                video.currentTime = times[frameIndex];
+            }
+            
+            video.addEventListener('seeked', function onSeeked() {
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                frames.push(canvas.toDataURL('image/jpeg', 0.8));
+                frameIndex++;
+                
+                if (frameIndex < times.length) {
+                    captureFrame();
+                } else {
+                    video.removeEventListener('seeked', onSeeked);
+                    videoBase64 = frames;
+                }
+            });
+            
+            captureFrame();
+        }
+
+        function removeVideo() {
+            selectedVideo = null;
+            videoBase64 = null;
+            videoPlayer.src = '';
+            videoPreview.classList.remove('show');
+            uploadSection.style.display = 'block';
+            resultadoSection.classList.remove('show');
+            videoInput.value = '';
+            cameraInput.value = '';
+        }
+
+        // Formatar análise em seções estilizadas
+        function formatAnalise(analiseText) {
+            // Definir mapeamento de seções e emojis
+            const sectionMap = {
+                'EXERCÍCIO': '🏋️',
+                'EXECUÇÃO': '✅',
+                'PONTOS POSITIVOS': '⭐',
+                'PONTOS DE MELHORIA': '💡',
+                'RISCOS': '⚠️',
+                'RECOMENDAÇÕES': '🎯'
+            };
+
+            let formattedHtml = '';
+            const lines = analiseText.split('\n');
+            let currentSection = null;
+            let currentContent = [];
+
+            for (let line of lines) {
+                line = line.trim();
+                if (!line) continue;
+
+                // Verificar se é início de uma seção
+                let foundSection = null;
+                for (const [sectionName, emoji] of Object.entries(sectionMap)) {
+                    const regex = new RegExp(`^\\*?\\*?${sectionName}:?\\*?\\*?`, 'i');
+                    if (regex.test(line)) {
+                        foundSection = { name: sectionName, emoji: emoji };
+                        // Remover o título da seção da linha
+                        line = line.replace(regex, '').trim();
+                        break;
+                    }
+                }
+
+                if (foundSection) {
+                    // Salvar seção anterior
+                    if (currentSection && currentContent.length > 0) {
+                        formattedHtml += createSectionHtml(currentSection.name, currentSection.emoji, currentContent.join('\n'));
+                    }
+                    
+                    // Iniciar nova seção
+                    currentSection = foundSection;
+                    currentContent = [];
+                    
+                    // Se houver conteúdo na mesma linha do título
+                    if (line) {
+                        currentContent.push(line);
+                    }
+                } else if (currentSection) {
+                    // Adicionar conteúdo à seção atual
+                    currentContent.push(line);
+                } else {
+                    // Conteúdo antes de qualquer seção
+                    currentContent.push(line);
+                }
+            }
+
+            // Adicionar última seção
+            if (currentSection && currentContent.length > 0) {
+                formattedHtml += createSectionHtml(currentSection.name, currentSection.emoji, currentContent.join('\n'));
+            } else if (currentContent.length > 0 && !currentSection) {
+                // Se não houver seções, exibir texto normal
+                formattedHtml = `<div class="analise-section">
+                    <div class="analise-section-content">${formatContent(currentContent.join('\n'))}</div>
+                </div>`;
+            }
+
+            return formattedHtml;
+        }
+
+        // Criar HTML de uma seção
+        function createSectionHtml(title, emoji, content) {
+            return `
+                <div class="analise-section">
+                    <div class="analise-section-header">
+                        <span class="analise-section-emoji">${emoji}</span>
+                        <h3 class="analise-section-title">${title}</h3>
+                    </div>
+                    <div class="analise-section-content">
+                        ${formatContent(content)}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Formatar conteúdo (bullets, quebras de linha, etc)
+        function formatContent(content) {
+            // Converter bullets em lista HTML
+            let formatted = content;
+            
+            // Detectar listas com - ou •
+            if (formatted.includes('\n-') || formatted.includes('\n•')) {
+                const lines = formatted.split('\n');
+                let inList = false;
+                let result = [];
+                
+                for (let line of lines) {
+                    line = line.trim();
+                    if (line.startsWith('-') || line.startsWith('•')) {
+                        if (!inList) {
+                            result.push('<ul>');
+                            inList = true;
+                        }
+                        result.push(`<li>${line.substring(1).trim()}</li>`);
+                    } else {
+                        if (inList) {
+                            result.push('</ul>');
+                            inList = false;
+                        }
+                        if (line) {
+                            result.push(`<p>${line}</p>`);
+                        }
+                    }
+                }
+                
+                if (inList) {
+                    result.push('</ul>');
+                }
+                
+                formatted = result.join('\n');
+            } else {
+                // Apenas quebras de linha
+                formatted = formatted.split('\n')
+                    .filter(line => line.trim())
+                    .map(line => `<p>${line.trim()}</p>`)
+                    .join('');
+            }
+            
+            return formatted;
+        }
+
+        function novaAnalise() {
+            removeVideo();
+        }
+
+        async function analyzeVideo() {
+            if (!videoBase64 || videoBase64.length === 0) {
+                showToast('Erro', 'Por favor, aguarde o processamento do vídeo.', 'error');
+                return;
+            }
+
+            loadingOverlay.classList.add('show');
+            analyzeBtn.disabled = true;
+
+            const analiseType = analiseTypeSelect.value;
+
+            try {
+                const response = await fetch('/api/analisar-exercicio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        frames: videoBase64,
+                        tipo: analiseType
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Erro ao analisar vídeo');
+                }
+
+                mostrarResultado(data.analise);
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                showToast('Erro', error.message || 'Erro ao analisar o vídeo. Tente novamente.', 'error');
+            } finally {
+                loadingOverlay.classList.remove('show');
+                analyzeBtn.disabled = false;
+            }
+        }
+
+        function mostrarResultado(analise) {
+            const analiseType = analiseTypeSelect.value;
+            
+            // Formatar análise em seções estilizadas
+            const formattedAnalise = formatAnalise(analise);
+            resultadoContent.innerHTML = formattedAnalise;
+            resultadoSection.style.display = 'block';
+            resultadoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Extrair nome do exercício da primeira seção
+            const exercicioMatch = analise.match(/(?:\*\*EXERCÍCIO:|EXERCÍCIO:)\s*(.+?)(?:\n|\*\*|$)/i);
+            const exercicioNome = exercicioMatch ? exercicioMatch[1].trim() : 'Exercício';
+            
+            // Adicionar ao histórico
+            addToHistorico(exercicioNome, analiseType, formattedAnalise);
+        }
+
+        function showToast(title, message, type = 'error') {
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) existingToast.remove();
+            
+            const toast = document.createElement('div');
+            toast.className = `toast-notification ${type}`;
+            toast.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%); color: white; padding: 16px 50px 16px 20px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.3); z-index: 10000; display: flex; align-items: center; gap: 12px; min-width: 300px; max-width: 400px; opacity: 0; transform: translateX(400px); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);';
+            
+            if (type === 'success') toast.style.background = 'linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%)';
+            
+            const icons = { error: '❌', success: '✅', info: 'ℹ️' };
+            toast.innerHTML = `
+                <div style="font-size: 24px; flex-shrink: 0;">${icons[type] || '❌'}</div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">${title}</div>
+                    <div style="font-size: 13px; opacity: 0.9;">${message}</div>
+                </div>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: transparent; border: none; color: white; font-size: 20px; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 6px;">×</button>
+            `;
+            
+            document.body.appendChild(toast);
+            setTimeout(() => toast.style.cssText += 'opacity: 1; transform: translateX(0);', 100);
+            setTimeout(() => {
+                toast.style.cssText += 'opacity: 0; transform: translateX(400px);';
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+        // Modal Perfil
+        function showPerfilModal() {
+            const usuario = AuthManager.getLoggedUser();
+            document.getElementById('perfil-nome').textContent = usuario.nome || '';
+            document.getElementById('perfil-email').textContent = usuario.email || '';
+            const img = document.getElementById('perfil-img');
+            if (usuario.fotoPerfil) {
+                img.src = usuario.fotoPerfil;
+            } else {
+                img.src = "img/icon.png";
+            }
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        }
+
+        function hidePerfilModal(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                document.getElementById('perfil-modal-bg').style.display = 'none';
+            }
+        }
+
+        // Inicializar modais - executar imediatamente pois script está no final do body
+        const perfilBtn = document.getElementById('perfil-btn');
+        const perfilModalBg = document.getElementById('perfil-modal-bg');
+        const sairBtn = document.getElementById('sair-btn');
+        
+        if (perfilBtn) {
+            perfilBtn.addEventListener('click', showPerfilModal);
+        }
+        if (perfilModalBg) {
+            perfilModalBg.addEventListener('click', hidePerfilModal);
+        }
+        if (sairBtn) {
+            sairBtn.addEventListener('click', () => AuthManager.logout());
+        }
+
+        // Modal Menu
+        const menuBtn = document.querySelector('.header-item.menu');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                const menuModalBg = document.getElementById('menu-modal-bg');
+                if (menuModalBg) {
+                    menuModalBg.style.display = 'block';
+                }
+            });
+        }
+        
+        const menuModalBg = document.getElementById('menu-modal-bg');
+        if (menuModalBg) {
+            menuModalBg.addEventListener('click', function(e) {
+                if (e.target.id === 'menu-modal-bg') {
+                    this.style.display = 'none';
+                }
+            });
+        }
+
+        // Atualizar foto do header
+        function atualizarFotoHeader() {
+            const usuario = AuthManager.getLoggedUser();
+            const headerIcon = document.getElementById('header-perfil-icon');
+            if (usuario && usuario.fotoPerfil) {
+                headerIcon.src = usuario.fotoPerfil;
+            }
+        }
+        atualizarFotoHeader();
+    </script>
+</body>
+
+</html>
