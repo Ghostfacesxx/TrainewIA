@@ -217,13 +217,32 @@ PROCESSO OBRIGATÓRIO:
 5. NUNCA pule a etapa 3!
 
 REGRAS PARA MONTAGEM DE TREINO:
-- Para CADA grupo muscular trabalhado no dia, incluir NO MÍNIMO 3 exercícios/máquinas diferentes
-- Exemplo: Treino de Peito → 3 exercícios (supino reto, supino inclinado, crucifixo)
-- Exemplo: Treino de Peito + Costas → 3 para peito + 3 para costas = 6 exercícios no total
-- Se o usuário tiver MAIS DE 2 HORAS disponíveis: adicionar 1-2 exercícios extras por grupo muscular (4-5 exercícios por grupo)
-- Se o usuário tiver MENOS DE 1 HORA: manter 3 exercícios por grupo, mas com menos séries
-- Variar os exercícios para trabalhar diferentes ângulos e partes do músculo (exemplo: peito superior, médio, inferior)
-- Incluir exercícios compostos e isolados para cada grupo muscular
+
+🏋️ QUANTIDADE DE EXERCÍCIOS POR TEMPO DISPONÍVEL:
+- 30-45 minutos: 3-4 exercícios (2-3 séries cada)
+- 1 hora: 5-6 exercícios (3 séries cada)
+- 1h30-2 horas: 7-9 exercícios (3-4 séries cada)
+- Mais de 2 horas: 10+ exercícios (3-4 séries cada)
+
+🎯 COMPOSIÇÃO DO TREINO:
+- Para CADA grupo muscular trabalhado no dia, incluir NO MÍNIMO 3 exercícios diferentes
+- Exemplo: Treino de Peito (1h) → 5-6 exercícios (supino reto, supino inclinado, crucifixo, peck deck, crossover)
+- Exemplo: Treino de Peito + Costas (1h) → 3 para peito + 3 para costas = 6 exercícios no total
+- Variar os exercícios para trabalhar diferentes ângulos e partes do músculo
+- Incluir exercícios compostos (trabalham vários músculos) e isolados (trabalham um músculo específico)
+
+🏠 TREINO EM CASA vs 🏢 ACADEMIA - CRÍTICO:
+SE o usuário disse que vai treinar em CASA:
+  ✅ Use APENAS exercícios de CASA (peso corporal, halteres, elásticos)
+  ✅ Exemplos: flexões, agachamento livre, prancha, pull-up (se tiver barra)
+  ❌ NUNCA use máquinas ou equipamentos de academia
+
+SE o usuário disse que vai treinar na ACADEMIA:
+  ✅ Use máquinas, barras, halteres, cabos da academia
+  ✅ Exemplos: supino na máquina, leg press, puxada frontal
+  ❌ NUNCA use apenas exercícios corporais
+
+⚠️ ATENÇÃO: Respeite RIGOROSAMENTE o local de treino informado pelo usuário!
 
 DIVISÃO DE TREINO SEMANAL (CORPO TODO):
 SEMPRE monte o treino para trabalhar TODOS os grupos musculares durante a semana:
