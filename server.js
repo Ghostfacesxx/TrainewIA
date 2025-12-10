@@ -47,6 +47,12 @@ app.use('/js', express.static(path.join(process.cwd(), 'js'), {
 
 const rootPath = path.resolve('public');
 
+// Log para debug - verificar se os arquivos existem
+const fs = require('fs');
+const exercisesPath = path.join(process.cwd(), 'public', 'exercises_gifs', 'exercises.json');
+console.log('🔍 Verificando exercises.json:', fs.existsSync(exercisesPath) ? '✅ Existe' : '❌ Não encontrado');
+console.log('📁 Caminho completo:', exercisesPath);
+
 // Rotas específicas para páginas
 app.get('/', (req, res) => res.sendFile('index.html', { root: rootPath }));
 app.get('/inicio', (req, res) => res.sendFile('inicio.html', { root: rootPath }));
