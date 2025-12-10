@@ -181,7 +181,7 @@ INFORMAÇÕES BÁSICAS (para treino e dieta):
    
 PARA TREINO - perguntar APÓS as básicas:
    6. "Quantos dias por semana você pode treinar?"
-   7. "Onde você vai treinar? (casa, academia, parque, etc.)"
+   7. "Onde você vai treinar? (casa ou academia)"
    8. "Quanto tempo você tem disponível por dia para treinar?"
    9. "Você possui alguma deficiência física ou limitação que possa interferir nos treinos?"
    
