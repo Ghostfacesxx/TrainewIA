@@ -53,6 +53,30 @@ const exercisesPath = path.join(process.cwd(), 'public', 'exercises_gifs', 'exer
 console.log('🔍 Verificando exercises.json:', fs.existsSync(exercisesPath) ? '✅ Existe' : '❌ Não encontrado');
 console.log('📁 Caminho completo:', exercisesPath);
 
+// Rota de teste para verificar se os arquivos existem
+app.get('/api/test-exercises', (req, res) => {
+  const fs = require('fs');
+  const exercisesPath = path.join(process.cwd(), 'public', 'exercises_gifs', 'exercises.json');
+  const exists = fs.existsSync(exercisesPath);
+  
+  if (exists) {
+    const data = fs.readFileSync(exercisesPath, 'utf8');
+    res.json({ 
+      success: true, 
+      path: exercisesPath,
+      fileSize: data.length,
+      preview: data.substring(0, 100)
+    });
+  } else {
+    res.status(404).json({ 
+      success: false, 
+      path: exercisesPath,
+      cwd: process.cwd(),
+      message: 'File not found' 
+    });
+  }
+});
+
 // Rotas específicas para páginas
 app.get('/', (req, res) => res.sendFile('index.html', { root: rootPath }));
 app.get('/inicio', (req, res) => res.sendFile('inicio.html', { root: rootPath }));
