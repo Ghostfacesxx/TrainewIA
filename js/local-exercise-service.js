@@ -18,19 +18,19 @@ const LocalExerciseService = {
 
         try {
             // Carrega exercises
-            const exercisesResponse = await fetch('exercises_gifs/exercises.json');
+            const exercisesResponse = await fetch('/exercises_gifs/exercises.json');
             this.exercises = await exercisesResponse.json();
 
             // Carrega bodyParts traduzidos
-            const bodyPartsResponse = await fetch('exercises_gifs/bodyParts_pt.json');
+            const bodyPartsResponse = await fetch('/exercises_gifs/bodyParts_pt.json');
             this.bodyParts = await bodyPartsResponse.json();
 
             // Carrega equipments traduzidos
-            const equipmentsResponse = await fetch('exercises_gifs/equipments_pt.json');
+            const equipmentsResponse = await fetch('/exercises_gifs/equipments_pt.json');
             this.equipments = await equipmentsResponse.json();
 
             // Carrega muscles traduzidos
-            const musclesResponse = await fetch('exercises_gifs/muscles_pt.json');
+            const musclesResponse = await fetch('/exercises_gifs/muscles_pt.json');
             this.muscles = await musclesResponse.json();
 
             this.loaded = true;

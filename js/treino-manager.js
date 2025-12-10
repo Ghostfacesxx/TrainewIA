@@ -339,7 +339,7 @@ const TreinoManager = {
             // Busca o GIF da API
             const gifData = this.getExerciseGif(ex.exercicio, ex.exercicioId);
             const gifHTML = gifData && gifData.gifUrl
-                ? `<img src="../exercises_gifs/${gifData.gifUrl}" alt="${ex.exercicio}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🏋️';">`
+                ? `<img src="/exercises_gifs/${gifData.gifUrl}" alt="${ex.exercicio}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🏋️';">`
                 : '🏋️';
             
             exerciciosHTML += `
@@ -424,12 +424,12 @@ const TreinoManager = {
         // Busca o GIF da API
         const gifData = this.getExerciseGif(ex.exercicio, ex.exercicioId);
         const gifHTML = gifData && gifData.gifUrl
-            ? `<img src="../exercises_gifs/${gifData.gifUrl}" alt="${ex.exercicio}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'execution-gif-placeholder\\'>🏋️</div>';">`
+            ? `<img src="/exercises_gifs/${gifData.gifUrl}" alt="${ex.exercicio}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'execution-gif-placeholder\\'>🏋️</div>';">`
             : '<div class="execution-gif-placeholder">🏋️</div>';
         
         // GIF para o modal de ampliar
         const gifFullscreenHTML = gifData && gifData.gifUrl
-            ? `<img src="../exercises_gifs/${gifData.gifUrl}" alt="${ex.exercicio}" class="modal-fullscreen-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'execution-gif-placeholder\\' style=\\'font-size: 128px;\\'>🏋️</div>';">`
+            ? `<img src="/exercises_gifs/${gifData.gifUrl}" alt="${ex.exercicio}" class="modal-fullscreen-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'execution-gif-placeholder\\' style=\\'font-size: 128px;\\'>🏋️</div>';">`
             : '<div class="execution-gif-placeholder" style="font-size: 128px;">🏋️</div>';
         
         // Prepara instruções e músculos do exercício
@@ -1134,7 +1134,7 @@ const TreinoManager = {
             `;
             
             academia.forEach(ex => {
-                const gifUrl = `../exercises_gifs/${ex.gifUrl}`;
+                const gifUrl = `/exercises_gifs/${ex.gifUrl}`;
                 cardioHTML += `
                     <div class="exercicio-card" onclick="TreinoManager.iniciarCardioExercicio('${ex.id}')">
                         <div class="exercicio-gif-container">
@@ -1165,7 +1165,7 @@ const TreinoManager = {
             `;
             
             casa.forEach(ex => {
-                const gifUrl = `../exercises_gifs/${ex.gifUrl}`;
+                const gifUrl = `/exercises_gifs/${ex.gifUrl}`;
                 cardioHTML += `
                     <div class="exercicio-card" onclick="TreinoManager.iniciarCardioExercicio('${ex.id}')">
                         <div class="exercicio-gif-container">
@@ -1202,7 +1202,7 @@ const TreinoManager = {
         if (!exercicio) return;
         
         // Cria modal de execução simplificado para cardio
-        const gifUrl = `../exercises_gifs/${exercicio.gifUrl}`;
+        const gifUrl = `/exercises_gifs/${exercicio.gifUrl}`;
         
         let instructionsHTML = '<ol class="exercise-instructions">';
         exercicio.instructions.forEach(instruction => {

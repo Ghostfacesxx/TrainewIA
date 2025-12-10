@@ -361,7 +361,7 @@ const ChatAIHandler = {
         // Carrega exercícios do JSON
         let exercises = [];
         try {
-            const response = await fetch('exercises_gifs/exercises.json');
+            const response = await fetch('/exercises_gifs/exercises.json');
             exercises = await response.json();
         } catch (error) {
             console.error('Erro ao carregar exercícios:', error);
