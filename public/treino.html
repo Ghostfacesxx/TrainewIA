@@ -2,2119 +2,2208 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trainew IA</title>
-    <link rel="icon" href="img/favicon.png" type="image/png">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/inicio.css">
-    <link rel="stylesheet" href="../css/dark-theme.css">
-    <link rel="stylesheet" href="../css/accessibility.css">
-    <script src="../js/theme-manager.js"></script>
-    <script src="../js/font-manager.js"></script>
-    <script src="../js/local-exercise-service.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainew IA</title>
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/inicio.css">
+  <link rel="stylesheet" href="../css/dark-theme.css">
+  <link rel="stylesheet" href="../css/accessibility.css">
+  <script src="../js/theme-manager.js"></script>
+  <script src="../js/font-manager.js"></script>
+  <script src="../js/local-exercise-service.js"></script>
 
-    <script>
-        // Verificar se o usuário está logado
-        AuthManager.requireAuth();
-        
-        // Inicializa os modais ao carregar a página
-        document.addEventListener('DOMContentLoaded', function() {
-            // Modal Menu
-            document.querySelector('.header-item.menu').addEventListener('click', function() {
-                document.getElementById('menu-modal-bg').style.display = 'block';
-            });
-            document.getElementById('menu-modal-bg').addEventListener('click', function(e) {
-                if (e.target.id === 'menu-modal-bg') {
-                    this.style.display = 'none';
-                }
-            });
+  <script>
+    // Verificar se o usuário está logado
+    AuthManager.requireAuth();
 
-            // Modal Perfil
-            document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
-            document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
-            
-            // Foto em tela cheia
-            document.getElementById('perfil-img').addEventListener('click', function() {
-                const src = this.src;
-                const fullscreenBg = document.getElementById('foto-fullscreen-bg');
-                const fullscreenImg = document.getElementById('foto-fullscreen-img');
-                fullscreenImg.src = src;
-                fullscreenBg.style.display = 'flex';
-            });
-            
-            document.getElementById('foto-fullscreen-bg').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                    document.getElementById('foto-fullscreen-img').src = '';
-                }
-            });
-        });
-    </script>
+    // Inicializa os modais ao carregar a página
+    document.addEventListener('DOMContentLoaded', function () {
+      // Modal Menu
+      document.querySelector('.header-item.menu').addEventListener('click', function () {
+        document.getElementById('menu-modal-bg').style.display = 'block';
+      });
+      document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
+        if (e.target.id === 'menu-modal-bg') {
+          this.style.display = 'none';
+        }
+      });
+
+      // Modal Perfil
+      document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+      document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+
+      // Foto em tela cheia
+      document.getElementById('perfil-img').addEventListener('click', function () {
+        const src = this.src;
+        const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+        const fullscreenImg = document.getElementById('foto-fullscreen-img');
+        fullscreenImg.src = src;
+        fullscreenBg.style.display = 'flex';
+      });
+
+      document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('foto-fullscreen-img').src = '';
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
-    <header class="header">
-        <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
-        <nav class="header-nav">
-            <div class="header-item menu">
-                <span class="menu-icon">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </span>
-                <span class="item-label">Menu</span>
-            </div>
-            <div onclick="window.location.href='chat.html'" class="header-item chat">
-                <img src="img/icon-ia.png" class="chat-icon">
-                <span class="item-label">Chat IA</span>
-            </div>
-            <div class="header-item perfil" id="perfil-btn">
-                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
-                <span class="item-label">Perfil</span>
-            </div>
-        </nav>
-    </header>
+  <header class="header">
+    <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
+    <nav class="header-nav">
+      <div class="header-item menu">
+        <span class="menu-icon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+        <span class="item-label">Menu</span>
+      </div>
+      <div onclick="window.location.href='chat.html'" class="header-item chat">
+        <img src="img/icon-ia.png" class="chat-icon">
+        <span class="item-label">Chat IA</span>
+      </div>
+      <div class="header-item perfil" id="perfil-btn">
+        <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+        <span class="item-label">Perfil</span>
+      </div>
+    </nav>
+  </header>
 
 
-    <!-- Modal Perfil -->
-    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
-        <div class="perfil-modal" id="perfil-modal">
-            <div class="perfil-modal-header">Conta</div>
-            <div class="perfil-modal-user">
-                <span class="perfil-modal-user-icon" id="perfil-user-icon">
-                    <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
-                </span>
-                <div class="perfil-modal-user-info">
-                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
-                    <span class="perfil-modal-user-email" id="perfil-email"></span>
-                </div>
-            </div>
-            <hr class="perfil-modal-divider">
-            <div class="perfil-modal-list">
-                <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
-                    <input type="file" id="foto-input" accept="image/*" style="display:none;">
-                </div>
-                <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
-                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
-                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
-                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
-            </div>
+  <!-- Modal Perfil -->
+  <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+    <div class="perfil-modal" id="perfil-modal">
+      <div class="perfil-modal-header">Conta</div>
+      <div class="perfil-modal-user">
+        <span class="perfil-modal-user-icon" id="perfil-user-icon">
+          <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+        </span>
+        <div class="perfil-modal-user-info">
+          <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+          <span class="perfil-modal-user-email" id="perfil-email"></span>
         </div>
-    </div>
-
-    <!-- Overlay para foto em tela cheia -->
-    <div id="foto-fullscreen-bg"
-        style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
-        <img id="foto-fullscreen-img" src="" alt="Foto perfil"
-            style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">
-    </div>
-
-    <!-- Modal Menu Lateral -->
-    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
-        <div class="menu-modal" id="menu-modal">
-            <div class="menu-modal-header">
-                <span>Menu</span>
-            </div>
-            <hr class="menu-modal-divider">
-            <div class="menu-modal-list">
-                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
-                <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
-                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
-                <div onclick="window.location.href='avaliacao.html'" class="menu-modal-item">Execução</div>
-                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
-            </div>
+      </div>
+      <hr class="perfil-modal-divider">
+      <div class="perfil-modal-list">
+        <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+          <input type="file" id="foto-input" accept="image/*" style="display:none;">
         </div>
+        <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+        <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+        <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+        <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+      </div>
     </div>
+  </div>
 
+  <!-- Overlay para foto em tela cheia -->
+  <div id="foto-fullscreen-bg"
+    style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+    <img id="foto-fullscreen-img" src="" alt="Foto perfil"
+      style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">
+  </div>
 
-    <!-- Container Principal do Treino -->
-    <div class="treino-main-container" id="treino-main-container">
-        <!-- Será preenchido dinamicamente -->
+  <!-- Modal Menu Lateral -->
+  <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+    <div class="menu-modal" id="menu-modal">
+      <div class="menu-modal-header">
+        <span>Menu</span>
+      </div>
+      <hr class="menu-modal-divider">
+      <div class="menu-modal-list">
+        <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+        <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+        <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+        <div onclick="window.location.href='avaliacao.html'" class="menu-modal-item">Execução</div>
+        <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+      </div>
     </div>
+  </div>
 
-    <!-- Botão de Cardio (apenas na tela de seleção de dias) -->
-    <button class="btn-cardio" id="btn-cardio" onclick="TreinoManager.abrirCardio()" title="Exercícios Cardiovasculares" style="display: none;">
-        🏃 Cardio
-    </button>
 
-    <!-- Botão flutuante de Chat de Treinos (apenas na tela de seleção de dias) -->
-    <button class="fab-chat-treino" id="fab-chat-treino" onclick="TreinoManager.abrirChatTreino()" title="Chat de Treinos" style="display: none;">
-        <img src="img/icon-ia.png" alt="Chat IA" style="width: 32px; height: 32px; filter: brightness(0) invert(1);">
-    </button>
+  <!-- Container Principal do Treino -->
+  <div class="treino-main-container" id="treino-main-container">
+    <!-- Será preenchido dinamicamente -->
+  </div>
 
-    <footer class="footer">
-        <hr class="footer-line">
-    </footer>
-    
-    <script src="../js/treino-manager.js"></script>
-    <script>
-        // Inicializa o gerenciador de tema
-        ThemeManager.init();
+  <!-- Botão de Cardio (apenas na tela de seleção de dias) -->
+  <button class="btn-cardio" id="btn-cardio" onclick="TreinoManager.abrirCardio()" title="Exercícios Cardiovasculares"
+    style="display: none;">
+    🏃 Cardio
+  </button>
 
-        // Utilitário para atualizar localStorage e sessão
-        function atualizarUsuarioLogado(novosDados) {
-            let usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
-            usuario = { ...usuario, ...novosDados };
-            localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-            // Atualiza também na lista de usuários
-            let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-            usuarios = usuarios.map(u => u.email === usuario.email ? { ...u, ...novosDados } : u);
-            localStorage.setItem('usuarios', JSON.stringify(usuarios));
-        }
+  <!-- Botão flutuante de Chat de Treinos (apenas na tela de seleção de dias) -->
+  <button class="fab-chat-treino" id="fab-chat-treino" onclick="TreinoManager.abrirChatTreino()" title="Chat de Treinos"
+    style="display: none;">
+    <img src="img/icon-ia.png" alt="Chat IA" style="width: 32px; height: 32px; filter: brightness(0) invert(1);">
+  </button>
 
-        // Atualiza a foto do header com a foto do usuário logado
-        function atualizarFotoHeader() {
-            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
-            const headerIcon = document.getElementById('header-perfil-icon');
-            if (usuario.fotoPerfil) {
-                headerIcon.src = usuario.fotoPerfil;
-            } else {
-                headerIcon.src = "img/icon.png";
-            }
-        }
+  <footer class="footer">
+    <hr class="footer-line">
+  </footer>
 
-        // Chame ao abrir a página
+  <script src="../js/treino-manager.js"></script>
+  <script>
+    // Inicializa o gerenciador de tema
+    ThemeManager.init();
+
+    // Utilitário para atualizar localStorage e sessão
+    function atualizarUsuarioLogado(novosDados) {
+      let usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+      usuario = { ...usuario, ...novosDados };
+      localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+      // Atualiza também na lista de usuários
+      let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+      usuarios = usuarios.map(u => u.email === usuario.email ? { ...u, ...novosDados } : u);
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+
+    // Atualiza a foto do header com a foto do usuário logado
+    function atualizarFotoHeader() {
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+      const headerIcon = document.getElementById('header-perfil-icon');
+      if (usuario.fotoPerfil) {
+        headerIcon.src = usuario.fotoPerfil;
+      } else {
+        headerIcon.src = "img/icon.png";
+      }
+    }
+
+    // Chame ao abrir a página
+    atualizarFotoHeader();
+
+    // Modal Perfil
+    function showPerfilModal() {
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+      document.getElementById('perfil-nome').textContent = usuario.nome || '';
+      document.getElementById('perfil-email').textContent = usuario.email || '';
+      // Foto de perfil
+      const img = document.getElementById('perfil-img');
+      if (usuario.fotoPerfil) {
+        img.src = usuario.fotoPerfil;
+      } else {
+        img.src = "img/icon.png";
+      }
+      document.getElementById('perfil-modal-bg').style.display = 'block';
+    }
+    function hidePerfilModal(e) {
+      if (e.target.id === 'perfil-modal-bg') {
+        document.getElementById('perfil-modal-bg').style.display = 'none';
+        removerInputNome();
+      }
+    }
+    document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
+    document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+
+    // Alterar foto de perfil
+    document.getElementById('alterar-foto-btn').addEventListener('click', function () {
+      document.getElementById('foto-input').click();
+    });
+    document.getElementById('foto-input').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        const fotoBase64 = evt.target.result;
+        // Atualiza a imagem do modal imediatamente
+        document.getElementById('perfil-img').src = fotoBase64;
+        atualizarUsuarioLogado({ fotoPerfil: fotoBase64 });
+        // Atualiza a imagem do header também
         atualizarFotoHeader();
+      };
+      reader.readAsDataURL(file);
+    });
 
-        // Modal Perfil
-        function showPerfilModal() {
-            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
-            document.getElementById('perfil-nome').textContent = usuario.nome || '';
-            document.getElementById('perfil-email').textContent = usuario.email || '';
-            // Foto de perfil
-            const img = document.getElementById('perfil-img');
-            if (usuario.fotoPerfil) {
-                img.src = usuario.fotoPerfil;
-            } else {
-                img.src = "img/icon.png";
-            }
-            document.getElementById('perfil-modal-bg').style.display = 'block';
+    // Alterar nome
+    function removerInputNome() {
+      const nomeSpan = document.getElementById('perfil-nome');
+      if (nomeSpan.querySelector('input')) {
+        const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+        nomeSpan.textContent = usuario.nome || '';
+      }
+    }
+    document.getElementById('alterar-nome-btn').addEventListener('click', function () {
+      const nomeSpan = document.getElementById('perfil-nome');
+      if (nomeSpan.querySelector('input')) return; // já está editando
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = usuario.nome || '';
+      input.style.fontSize = '15px';
+      input.style.fontWeight = '600';
+      input.style.borderRadius = '4px';
+      input.style.padding = '2px 6px';
+      input.style.width = '90%';
+      input.maxLength = 32;
+
+      // Aplica estilos baseados no tema atual
+      applyThemeInputStyles(input);
+
+      nomeSpan.textContent = '';
+      nomeSpan.appendChild(input);
+      input.focus();
+      input.select();
+
+      input.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter') {
+          ev.preventDefault();
+          salvarNome();
+        } else if (ev.key === 'Escape') {
+          removerInputNome();
         }
-        function hidePerfilModal(e) {
-            if (e.target.id === 'perfil-modal-bg') {
-                document.getElementById('perfil-modal-bg').style.display = 'none';
-                removerInputNome();
-            }
-        }
-        document.getElementById('perfil-btn').addEventListener('click', showPerfilModal);
-        document.getElementById('perfil-modal-bg').addEventListener('click', hidePerfilModal);
+      });
+      input.addEventListener('blur', salvarNome);
 
-        // Alterar foto de perfil
-        document.getElementById('alterar-foto-btn').addEventListener('click', function () {
-            document.getElementById('foto-input').click();
-        });
-        document.getElementById('foto-input').addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function (evt) {
-                const fotoBase64 = evt.target.result;
-                // Atualiza a imagem do modal imediatamente
-                document.getElementById('perfil-img').src = fotoBase64;
-                atualizarUsuarioLogado({ fotoPerfil: fotoBase64 });
-                // Atualiza a imagem do header também
-                atualizarFotoHeader();
-            };
-            reader.readAsDataURL(file);
-        });
+      function salvarNome() {
+        let novoNome = input.value.trim();
+        if (!novoNome) novoNome = usuario.nome || '';
+        atualizarUsuarioLogado({ nome: novoNome });
+        nomeSpan.textContent = novoNome;
+      }
+    });
 
-        // Alterar nome
-        function removerInputNome() {
-            const nomeSpan = document.getElementById('perfil-nome');
-            if (nomeSpan.querySelector('input')) {
-                const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
-                nomeSpan.textContent = usuario.nome || '';
-            }
-        }
-        document.getElementById('alterar-nome-btn').addEventListener('click', function () {
-            const nomeSpan = document.getElementById('perfil-nome');
-            if (nomeSpan.querySelector('input')) return; // já está editando
-            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = usuario.nome || '';
-            input.style.fontSize = '15px';
-            input.style.fontWeight = '600';
-            input.style.borderRadius = '4px';
-            input.style.padding = '2px 6px';
-            input.style.width = '90%';
-            input.maxLength = 32;
-            
-            // Aplica estilos baseados no tema atual
-            applyThemeInputStyles(input);
-            
-            nomeSpan.textContent = '';
-            nomeSpan.appendChild(input);
-            input.focus();
-            input.select();
+    // Abrir foto em tela cheia ao clicar na imagem do modal
+    document.getElementById('perfil-img').addEventListener('click', function () {
+      const src = this.src;
+      const fullscreenBg = document.getElementById('foto-fullscreen-bg');
+      const fullscreenImg = document.getElementById('foto-fullscreen-img');
+      fullscreenImg.src = src;
+      fullscreenImg.classList.remove('show'); // reset
+      fullscreenBg.style.display = 'flex';
+      // Força reflow para reiniciar animação
+      void fullscreenImg.offsetWidth;
+      fullscreenImg.classList.add('show');
+    });
+    // Fechar ao clicar fora da imagem
+    document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('foto-fullscreen-img').src = '';
+        document.getElementById('foto-fullscreen-img').classList.remove('show');
+      }
+    });
 
-            input.addEventListener('keydown', function (ev) {
-                if (ev.key === 'Enter') {
-                    ev.preventDefault();
-                    salvarNome();
-                } else if (ev.key === 'Escape') {
-                    removerInputNome();
-                }
-            });
-            input.addEventListener('blur', salvarNome);
+    // Sair da conta (mantém o perfil salvo no localStorage)
+    document.getElementById('sair-btn').addEventListener('click', function () {
+      localStorage.removeItem('usuarioLogado');
+      window.location.href = "index.html";
+    });
 
-            function salvarNome() {
-                let novoNome = input.value.trim();
-                if (!novoNome) novoNome = usuario.nome || '';
-                atualizarUsuarioLogado({ nome: novoNome });
-                nomeSpan.textContent = novoNome;
-            }
-        });
+    // Modal Menu Lateral
+    document.querySelector('.header-item.menu').addEventListener('click', function () {
+      document.getElementById('menu-modal-bg').style.display = 'block';
+    });
+    document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
+      if (e.target.id === 'menu-modal-bg') {
+        this.style.display = 'none';
+      }
+    });
 
-        // Abrir foto em tela cheia ao clicar na imagem do modal
-        document.getElementById('perfil-img').addEventListener('click', function () {
-            const src = this.src;
-            const fullscreenBg = document.getElementById('foto-fullscreen-bg');
-            const fullscreenImg = document.getElementById('foto-fullscreen-img');
-            fullscreenImg.src = src;
-            fullscreenImg.classList.remove('show'); // reset
-            fullscreenBg.style.display = 'flex';
-            // Força reflow para reiniciar animação
-            void fullscreenImg.offsetWidth;
-            fullscreenImg.classList.add('show');
-        });
-        // Fechar ao clicar fora da imagem
-        document.getElementById('foto-fullscreen-bg').addEventListener('click', function (e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-                document.getElementById('foto-fullscreen-img').src = '';
-                document.getElementById('foto-fullscreen-img').classList.remove('show');
-            }
-        });
-
-        // Sair da conta (mantém o perfil salvo no localStorage)
-        document.getElementById('sair-btn').addEventListener('click', function () {
-            localStorage.removeItem('usuarioLogado');
-            window.location.href = "index.html";
-        });
-
-        // Modal Menu Lateral
-        document.querySelector('.header-item.menu').addEventListener('click', function () {
-            document.getElementById('menu-modal-bg').style.display = 'block';
-        });
-        document.getElementById('menu-modal-bg').addEventListener('click', function (e) {
-            if (e.target.id === 'menu-modal-bg') {
-                this.style.display = 'none';
-            }
-        });
-        
-        // Inicializa o gerenciador de treinos
-        window.addEventListener('DOMContentLoaded', () => {
-            TreinoManager.init();
-        });
-    </script>
+    // Inicializa o gerenciador de treinos
+    window.addEventListener('DOMContentLoaded', () => {
+      TreinoManager.init();
+    });
+  </script>
 
 
-<style>
-/* Reset e Container Principal */
-* {
-  box-sizing: border-box;
-}
+  <style>
+    /* Reset e Container Principal */
+    * {
+      box-sizing: border-box;
+    }
 
-/* =============================================
+    /* =============================================
    TEMA ESCURO - CONFIGURAÇÃO GLOBAL
    ============================================= */
-body[data-theme='dark'] {
-  background-color: #0a0a0a !important;
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] {
+      background-color: #0a0a0a !important;
+      color: #f0f0f0 !important;
+    }
 
-body[data-theme='dark'] .treino-main-container {
-  background-color: #0a0a0a !important;
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] .treino-main-container {
+      background-color: #0a0a0a !important;
+      color: #f0f0f0 !important;
+    }
 
-.treino-main-container {
-  min-height: calc(100vh - 180px);
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    .treino-main-container {
+      min-height: calc(100vh - 180px);
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-/* =============================================
+    /* =============================================
    TELA DE SELEÇÃO DE DIA
    ============================================= */
-.dia-selection-screen {
-  animation: fadeIn 0.3s ease;
-}
+    .dia-selection-screen {
+      animation: fadeIn 0.3s ease;
+    }
 
-.dia-selection-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: var(--text-color);
-}
+    .dia-selection-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: var(--text-color);
+    }
 
-.dias-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
+    .dias-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
 
-.dia-card {
-  background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
+    .dia-card {
+      background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
 
-body[data-theme='dark'] .dia-card {
-  background: linear-gradient(135deg, #8B2525 0%, #6f1d1d 100%);
-  border: 1px solid #a52d2d;
-}
+    body[data-theme='dark'] .dia-card {
+      background: linear-gradient(135deg, #8B2525 0%, #6f1d1d 100%);
+      border: 1px solid #a52d2d;
+    }
 
-.dia-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
+    .dia-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
 
-.dia-card.descanso {
-  background: linear-gradient(135deg, #4a4a4a 0%, #2d2d2d 100%);
-  cursor: default;
-}
+    .dia-card.descanso {
+      background: linear-gradient(135deg, #4a4a4a 0%, #2d2d2d 100%);
+      cursor: default;
+    }
 
-body[data-theme='dark'] .dia-card.descanso {
-  background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
-  border: 1px solid #444;
-}
+    body[data-theme='dark'] .dia-card.descanso {
+      background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+      border: 1px solid #444;
+    }
 
-.dia-card.descanso:hover {
-  transform: none;
-}
+    .dia-card.descanso:hover {
+      transform: none;
+    }
 
-.dia-nome {
-  font-size: 22px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 8px;
-}
+    .dia-nome {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
 
-body[data-theme='dark'] .dia-nome {
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
+    body[data-theme='dark'] .dia-nome {
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
 
-.dia-card.descanso .dia-nome {
-  color: white;
-}
+    .dia-card.descanso .dia-nome {
+      color: white;
+    }
 
-.dia-resumo {
-  font-size: 14px;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 12px;
-  font-weight: 500;
-}
+    .dia-resumo {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
 
-body[data-theme='dark'] .dia-resumo {
-  color: rgba(255,255,255,0.95);
-}
+    body[data-theme='dark'] .dia-resumo {
+      color: rgba(255, 255, 255, 0.95);
+    }
 
-.dia-card.descanso .dia-resumo {
-  color: rgba(255,255,255,0.9);
-}
+    .dia-card.descanso .dia-resumo {
+      color: rgba(255, 255, 255, 0.9);
+    }
 
-.dia-exercicios {
-  font-size: 13px;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.6;
-}
+    .dia-exercicios {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
 
-body[data-theme='dark'] .dia-exercicios {
-  color: rgba(255,255,255,0.95);
-}
+    body[data-theme='dark'] .dia-exercicios {
+      color: rgba(255, 255, 255, 0.95);
+    }
 
-.dia-card.descanso .dia-exercicios {
-  color: rgba(255,255,255,0.85);
-}
+    .dia-card.descanso .dia-exercicios {
+      color: rgba(255, 255, 255, 0.85);
+    }
 
-/* =============================================
+    /* =============================================
    TELA DE LISTA DE EXERCÍCIOS
    ============================================= */
-.exercicio-list-screen {
-  animation: fadeIn 0.3s ease;
-  padding-bottom: 80px;
-}
+    .exercicio-list-screen {
+      animation: fadeIn 0.3s ease;
+      padding-bottom: 80px;
+    }
 
-body[data-theme='dark'] .exercicio-list-screen {
-  background-color: #0a0a0a !important;
-}
+    body[data-theme='dark'] .exercicio-list-screen {
+      background-color: #0a0a0a !important;
+    }
 
-.exercicio-list-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
+    .exercicio-list-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
 
-.back-btn {
-  background: var(--primary-color);
-  border: none;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 700;
-  transition: transform 0.2s, box-shadow 0.2s;
-  flex-shrink: 0;
-}
+    .back-btn {
+      background: var(--primary-color);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
 
-body[data-theme='dark'] .back-btn {
-  background: #ff6b6b;
-}
+    body[data-theme='dark'] .back-btn {
+      background: #ff6b6b;
+    }
 
-.back-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
-}
+    .back-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+    }
 
-.exercicio-list-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-color);
-  flex: 1;
-}
+    .exercicio-list-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-color);
+      flex: 1;
+    }
 
-.exercicios-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+    .exercicios-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-body[data-theme='dark'] .exercicios-grid {
-  background-color: transparent !important;
-}
+    body[data-theme='dark'] .exercicios-grid {
+      background-color: transparent !important;
+    }
 
-.exercicio-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-  border: 1px solid var(--border-color);
-}
+    .exercicio-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+    }
 
-body[data-theme='dark'] .exercicio-card {
-  background: #1f1f1f !important;
-  border: 1px solid #3a3a3a !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
-}
+    body[data-theme='dark'] .exercicio-card {
+      background: #1f1f1f !important;
+      border: 1px solid #3a3a3a !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    }
 
-.exercicio-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-}
+    .exercicio-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
 
-body[data-theme='dark'] .exercicio-card:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-  border-color: #8B2525;
-}
+    body[data-theme='dark'] .exercicio-card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      border-color: #8B2525;
+    }
 
-.exercicio-card-gif {
-  width: 100%;
-  height: 200px;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 64px;
-  position: relative;
-  overflow: hidden;
-  padding: 10px;
-}
+    .exercicio-card-gif {
+      width: 100%;
+      height: 200px;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      position: relative;
+      overflow: hidden;
+      padding: 10px;
+    }
 
-body[data-theme='dark'] .exercicio-card-gif {
-  background: #161616 !important;
-  border-bottom: 1px solid #3a3a3a !important;
-}
+    body[data-theme='dark'] .exercicio-card-gif {
+      background: #161616 !important;
+      border-bottom: 1px solid #3a3a3a !important;
+    }
 
-.exercicio-card-gif img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
+    .exercicio-card-gif img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-.exercicio-card-content {
-  padding: 16px;
-  background: transparent;
-}
+    .exercicio-card-content {
+      padding: 16px;
+      background: transparent;
+    }
 
-body[data-theme='dark'] .exercicio-card-content {
-  background: #1f1f1f !important;
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] .exercicio-card-content {
+      background: #1f1f1f !important;
+      color: #f0f0f0 !important;
+    }
 
-.exercicio-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  gap: 12px;
-}
+    .exercicio-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
 
-.exercicio-card-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-color);
-  flex: 1;
-  line-height: 1.3;
-}
+    .exercicio-card-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-color);
+      flex: 1;
+      line-height: 1.3;
+    }
 
-body[data-theme='dark'] .exercicio-card-name {
-  color: #f0f0f0;
-}
+    body[data-theme='dark'] .exercicio-card-name {
+      color: #f0f0f0;
+    }
 
-.exercicio-card-toggle {
-  width: 50px;
-  height: 28px;
-  background: #ddd;
-  border-radius: 14px;
-  position: relative;
-  cursor: pointer;
-  transition: background 0.3s;
-  flex-shrink: 0;
-}
+    .exercicio-card-toggle {
+      width: 50px;
+      height: 28px;
+      background: #ddd;
+      border-radius: 14px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
 
-body[data-theme='dark'] .exercicio-card-toggle {
-  background: #444;
-}
+    body[data-theme='dark'] .exercicio-card-toggle {
+      background: #444;
+    }
 
-.exercicio-card-toggle.active {
-  background: #4caf50;
-}
+    .exercicio-card-toggle.active {
+      background: #4caf50;
+    }
 
-.exercicio-card-toggle-circle {
-  width: 22px;
-  height: 22px;
-  background: white;
-  border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  transition: left 0.3s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+    .exercicio-card-toggle-circle {
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: left 0.3s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-.exercicio-card-toggle.active .exercicio-card-toggle-circle {
-  left: 25px;
-}
+    .exercicio-card-toggle.active .exercicio-card-toggle-circle {
+      left: 25px;
+    }
 
-.exercicio-card-musculos {
-  font-size: 13px;
-  color: var(--primary-color);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
+    .exercicio-card-musculos {
+      font-size: 13px;
+      color: var(--primary-color);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
 
-body[data-theme='dark'] .exercicio-card-musculos {
-  color: #ff8577;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
+    body[data-theme='dark'] .exercicio-card-musculos {
+      color: #ff8577;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
 
-.exercicio-card-info-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
+    .exercicio-card-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
 
-.exercicio-card-info-item {
-  background: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 8px 6px;
-  text-align: center;
-}
+    .exercicio-card-info-item {
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 8px 6px;
+      text-align: center;
+    }
 
-body[data-theme='dark'] .exercicio-card-info-item {
-  background: #0a0a0a;
-  border-color: #444;
-}
+    body[data-theme='dark'] .exercicio-card-info-item {
+      background: #0a0a0a;
+      border-color: #444;
+    }
 
-.exercicio-card-info-label {
-  font-size: 10px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
+    .exercicio-card-info-label {
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
 
-body[data-theme='dark'] .exercicio-card-info-label {
-  color: #a0a0a0;
-}
+    body[data-theme='dark'] .exercicio-card-info-label {
+      color: #a0a0a0;
+    }
 
-.exercicio-card-info-value {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-color);
-}
+    .exercicio-card-info-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-color);
+    }
 
-body[data-theme='dark'] .exercicio-card-info-value {
-  color: #f0f0f0;
-}
+    body[data-theme='dark'] .exercicio-card-info-value {
+      color: #f0f0f0;
+    }
 
-/* =============================================
+    /* =============================================
    TELA DE EXECUÇÃO DETALHADA
    ============================================= */
-.exercicio-execution-screen {
-  animation: fadeIn 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 180px);
-  padding-bottom: 180px;
-}
+    .exercicio-execution-screen {
+      animation: fadeIn 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 180px);
+      padding-bottom: 180px;
+    }
 
-.execution-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid var(--border-color);
-}
+    .execution-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--border-color);
+    }
 
-.execution-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-color);
-  flex: 1;
-}
+    .execution-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-color);
+      flex: 1;
+    }
 
-.execution-gif-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 20px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
+    .execution-gif-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-body[data-theme='dark'] .execution-gif-container {
-  background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
-}
+    body[data-theme='dark'] .execution-gif-container {
+      background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+    }
 
-.execution-gif-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
+    .execution-gif-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-.execution-gif-placeholder {
-  font-size: 64px;
-  color: #999;
-}
+    .execution-gif-placeholder {
+      font-size: 64px;
+      color: #999;
+    }
 
-body[data-theme='dark'] .execution-gif-placeholder {
-  color: #666;
-}
+    body[data-theme='dark'] .execution-gif-placeholder {
+      color: #666;
+    }
 
-/* Info Row - Séries e Descanso */
-.execution-info-row {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 15px 0;
-  padding: 0 20px;
-}
+    /* Info Row - Séries e Descanso */
+    .execution-info-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 15px 0;
+      padding: 0 20px;
+    }
 
-.execution-info-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--card-bg);
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--border-color);
-}
+    .execution-info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+    }
 
-.execution-info-label {
-  font-size: 13px;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
+    .execution-info-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
 
-.execution-info-value {
-  font-size: 14px;
-  color: var(--text-color);
-  font-weight: 700;
-}
+    .execution-info-value {
+      font-size: 14px;
+      color: var(--text-color);
+      font-weight: 700;
+    }
 
-/* Progress Circles - Maiores e mais destaque */
-.execution-progress-circles {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 25px 0 20px;
-  padding: 0 20px;
-}
+    /* Progress Circles - Maiores e mais destaque */
+    .execution-progress-circles {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0 20px;
+      padding: 0 20px;
+    }
 
-.progress-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 700;
-  transition: all 0.3s;
-  background: #e0e0e0;
-  color: #999;
-  border: 3px solid transparent;
-}
+    .progress-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      transition: all 0.3s;
+      background: #e0e0e0;
+      color: #999;
+      border: 3px solid transparent;
+    }
 
-body[data-theme='dark'] .progress-circle {
-  background: #3a3a3a;
-  color: #666;
-}
+    body[data-theme='dark'] .progress-circle {
+      background: #3a3a3a;
+      color: #666;
+    }
 
-.progress-circle.pending {
-  background: #e0e0e0;
-  color: #999;
-}
+    .progress-circle.pending {
+      background: #e0e0e0;
+      color: #999;
+    }
 
-body[data-theme='dark'] .progress-circle.pending {
-  background: #3a3a3a;
-  color: #666;
-}
+    body[data-theme='dark'] .progress-circle.pending {
+      background: #3a3a3a;
+      color: #666;
+    }
 
-.progress-circle.current {
-  background: #ffc107;
-  color: white;
-  border-color: #ffc107;
-  box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.2);
-  transform: scale(1.1);
-}
+    .progress-circle.current {
+      background: #ffc107;
+      color: white;
+      border-color: #ffc107;
+      box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.2);
+      transform: scale(1.1);
+    }
 
-.progress-circle.completed {
-  background: #4caf50;
-  color: white;
-  border-color: #4caf50;
-}
+    .progress-circle.completed {
+      background: #4caf50;
+      color: white;
+      border-color: #4caf50;
+    }
 
-.progress-circle.resting {
-  background: #ff9800;
-  color: white;
-  border-color: #ff9800;
-  box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.2);
-  transform: scale(1.1);
-}
+    .progress-circle.resting {
+      background: #ff9800;
+      color: white;
+      border-color: #ff9800;
+      box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.2);
+      transform: scale(1.1);
+    }
 
-/* Timer Label - Label da série */
-.execution-timer-label {
-  text-align: center;
-  font-size: 18px;
-  color: var(--text-color);
-  font-weight: 600;
-  margin: 20px 0;
-}
+    /* Timer Label - Label da série */
+    .execution-timer-label {
+      text-align: center;
+      font-size: 18px;
+      color: var(--text-color);
+      font-weight: 600;
+      margin: 20px 0;
+    }
 
-/* Actions - Botões em linha horizontal */
-.execution-actions {
-  max-width: 600px;
-  margin: 20px auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 0 20px;
-}
+    /* Actions - Botões em linha horizontal */
+    .execution-actions {
+      max-width: 600px;
+      margin: 20px auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+    }
 
-.execution-action-btn {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 12px 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  flex: 1;
-  max-width: 120px;
-}
+    .execution-action-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      max-width: 120px;
+    }
 
-.execution-action-btn:hover {
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+    .execution-action-btn:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-.execution-action-icon {
-  font-size: 24px;
-}
+    .execution-action-icon {
+      font-size: 24px;
+    }
 
-.execution-action-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-color);
-}
+    .execution-action-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
 
-/* Bottom Controls - Botão Realizado Grande com Setas */
-.execution-bottom-controls {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  z-index: 100;
-}
+    /* Bottom Controls - Botão Realizado Grande com Setas */
+    .execution-bottom-controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 100;
+    }
 
-.execution-done-btn-large {
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-  border: 5px solid #4ade80;
-  border-radius: 50%;
-  width: 140px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.4);
-  position: relative;
-}
+    .execution-done-btn-large {
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      border: 5px solid #4ade80;
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 24px rgba(0, 123, 255, 0.4);
+      position: relative;
+    }
 
-.execution-done-btn-large:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px rgba(0, 123, 255, 0.5);
-}
+    .execution-done-btn-large:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(0, 123, 255, 0.5);
+    }
 
-.execution-done-btn-large:active {
-  transform: scale(0.98);
-}
+    .execution-done-btn-large:active {
+      transform: scale(0.98);
+    }
 
-.execution-done-checkmark {
-  font-size: 48px;
-  color: white;
-  font-weight: 700;
-  line-height: 1;
-}
+    .execution-done-checkmark {
+      font-size: 48px;
+      color: white;
+      font-weight: 700;
+      line-height: 1;
+    }
 
-.execution-done-timer {
-  font-size: 32px;
-  color: white;
-  font-weight: 700;
-  line-height: 1;
-}
+    .execution-done-timer {
+      font-size: 32px;
+      color: white;
+      font-weight: 700;
+      line-height: 1;
+    }
 
-.execution-done-text {
-  font-size: 16px;
-  color: white;
-  font-weight: 700;
-  margin-top: 5px;
-}
+    .execution-done-text {
+      font-size: 16px;
+      color: white;
+      font-weight: 700;
+      margin-top: 5px;
+    }
 
-/* Estado de descanso */
-.execution-done-btn-large.resting {
-  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-  border-color: #ffc107;
-  animation: pulse 1.5s ease-in-out infinite;
-}
+    /* Estado de descanso */
+    .execution-done-btn-large.resting {
+      background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+      border-color: #ffc107;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
 
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 8px 24px rgba(255, 152, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 8px 32px rgba(255, 152, 0, 0.7);
-  }
-}
+    @keyframes pulse {
 
-[data-theme='dark'] .execution-done-btn-large {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  border-color: #4ade80;
-  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.4);
-}
+      0%,
+      100% {
+        box-shadow: 0 8px 24px rgba(255, 152, 0, 0.4);
+      }
 
-.execution-nav-arrow {
-  background: #007bff;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-  font-size: 24px;
-  color: white;
-}
+      50% {
+        box-shadow: 0 8px 32px rgba(255, 152, 0, 0.7);
+      }
+    }
 
-.execution-nav-arrow:hover:not(:disabled) {
-  background: #0056b3;
-  transform: scale(1.1);
-}
+    [data-theme='dark'] .execution-done-btn-large {
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      border-color: #4ade80;
+      box-shadow: 0 8px 24px rgba(52, 152, 219, 0.4);
+    }
 
-.execution-nav-arrow:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  opacity: 0.5;
-}
+    .execution-nav-arrow {
+      background: #007bff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+      font-size: 24px;
+      color: white;
+    }
 
-[data-theme='dark'] .execution-nav-arrow {
-  background: #3498db;
-}
+    .execution-nav-arrow:hover:not(:disabled) {
+      background: #0056b3;
+      transform: scale(1.1);
+    }
 
-[data-theme='dark'] .execution-nav-arrow:hover:not(:disabled) {
-  background: #2980b9;
-}
+    .execution-nav-arrow:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
 
-.execution-nav-btn {
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
+    [data-theme='dark'] .execution-nav-arrow {
+      background: #3498db;
+    }
 
-.execution-nav-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
-}
+    [data-theme='dark'] .execution-nav-arrow:hover:not(:disabled) {
+      background: #2980b9;
+    }
 
-.execution-nav-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+    .execution-nav-btn {
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
 
-.execution-nav-btn:disabled:hover {
-  transform: none;
-  box-shadow: none;
-}
+    .execution-nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+    }
 
-/* =============================================
+    .execution-nav-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .execution-nav-btn:disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* =============================================
    BOTÃO DE CARDIO
    ============================================= */
-.btn-cardio {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  padding: 12px 24px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
-  color: white;
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-  transition: all 0.3s;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .btn-cardio {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 12px 24px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      transition: all 0.3s;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-body[data-theme='dark'] .btn-cardio {
-  background: linear-gradient(135deg, #FFA726 0%, #FF9800 100%);
-  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3);
-}
+    body[data-theme='dark'] .btn-cardio {
+      background: linear-gradient(135deg, #FFA726 0%, #FF9800 100%);
+      box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3);
+    }
 
-.btn-cardio:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-}
+    .btn-cardio:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    }
 
-body[data-theme='dark'] .btn-cardio:hover {
-  box-shadow: 0 6px 20px rgba(255, 167, 38, 0.4);
-}
+    body[data-theme='dark'] .btn-cardio:hover {
+      box-shadow: 0 6px 20px rgba(255, 167, 38, 0.4);
+    }
 
-.btn-cardio:active {
-  transform: translateY(-1px);
-}
+    .btn-cardio:active {
+      transform: translateY(-1px);
+    }
 
-/* =============================================
+    /* =============================================
    BOTÃO FLUTUANTE DE CHAT DE TREINOS
    ============================================= */
-.fab-chat-treino {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
-  transition: all 0.2s;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-}
+    .fab-chat-treino {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+      transition: all 0.2s;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
 
-.fab-chat-treino img {
-  width: 32px;
-  height: 32px;
-  filter: brightness(0) invert(1);
-}
+    .fab-chat-treino img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
 
-body[data-theme='dark'] .fab-chat-treino {
-  background: #ff6b6b;
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-}
+    body[data-theme='dark'] .fab-chat-treino {
+      background: #ff6b6b;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    }
 
-.fab-chat-treino:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(122, 25, 25, 0.4);
-}
+    .fab-chat-treino:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(122, 25, 25, 0.4);
+    }
 
-body[data-theme='dark'] .fab-chat-treino:hover {
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-}
+    body[data-theme='dark'] .fab-chat-treino:hover {
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
 
-.fab-chat-treino:active {
-  transform: scale(0.95);
-}
+    .fab-chat-treino:active {
+      transform: scale(0.95);
+    }
 
-/* =============================================
+    /* =============================================
    BOTÃO FLUTUANTE DE HISTÓRICO (REMOVIDO)
    ============================================= */
-.fab-historico {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
-  transition: all 0.2s;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .fab-historico {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+      transition: all 0.2s;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-body[data-theme='dark'] .fab-historico {
-  background: #ff6b6b;
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-}
+    body[data-theme='dark'] .fab-historico {
+      background: #ff6b6b;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    }
 
-.fab-historico:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(122, 25, 25, 0.4);
-}
+    .fab-historico:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(122, 25, 25, 0.4);
+    }
 
-body[data-theme='dark'] .fab-historico:hover {
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-}
+    body[data-theme='dark'] .fab-historico:hover {
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
 
-.fab-historico:active {
-  transform: scale(0.95);
-}
+    .fab-historico:active {
+      transform: scale(0.95);
+    }
 
-/* =============================================
+    /* =============================================
    TELA DE HISTÓRICO
    ============================================= */
-.historico-screen {
-  animation: fadeIn 0.3s ease;
-}
+    .historico-screen {
+      animation: fadeIn 0.3s ease;
+    }
 
-.historico-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid var(--border-color);
-}
+    .historico-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--border-color);
+    }
 
-.historico-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-color);
-  flex: 1;
-}
+    .historico-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-color);
+      flex: 1;
+    }
 
-.historico-grid {
-  display: grid;
-  gap: 20px;
-}
+    .historico-grid {
+      display: grid;
+      gap: 20px;
+    }
 
-.historico-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  border-left: 4px solid var(--primary-color);
-}
+    .historico-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid var(--primary-color);
+    }
 
-.historico-card-date {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
-  font-weight: 600;
-}
+    .historico-card-date {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
 
-.historico-card-dia {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 12px;
-}
+    .historico-card-dia {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 12px;
+    }
 
-.historico-card-exercicios {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    .historico-card-exercicios {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-.historico-exercicio-item {
-  font-size: 14px;
-  color: var(--text-color);
-  padding: 8px 12px;
-  background: var(--bg-color);
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .historico-exercicio-item {
+      font-size: 14px;
+      color: var(--text-color);
+      padding: 8px 12px;
+      background: var(--bg-color);
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.historico-exercicio-nome {
-  font-weight: 600;
-}
+    .historico-exercicio-nome {
+      font-weight: 600;
+    }
 
-.historico-exercicio-carga {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
+    .historico-exercicio-carga {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
 
-.historico-empty {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--text-secondary);
-  font-size: 16px;
-}
+    .historico-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
 
-/* =============================================
+    /* =============================================
    MODAIS
    ============================================= */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  z-index: 10000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.2s ease;
-}
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
 
-.modal-overlay.show {
-  display: flex;
-}
+    .modal-overlay.show {
+      display: flex;
+    }
 
-.modal-content {
-  background: var(--card-bg);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 500px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  animation: slideUp 0.3s ease;
-}
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.3s ease;
+    }
 
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  font-size: 32px;
-  cursor: pointer;
-  color: var(--text-color);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background 0.2s;
-}
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      color: var(--text-color);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
 
-.modal-close:hover {
-  background: rgba(122, 25, 25, 0.1);
-}
+    .modal-close:hover {
+      background: rgba(122, 25, 25, 0.1);
+    }
 
-body[data-theme='dark'] .modal-close:hover {
-  background: rgba(255, 107, 107, 0.1);
-}
+    body[data-theme='dark'] .modal-close:hover {
+      background: rgba(255, 107, 107, 0.1);
+    }
 
-.modal-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 20px;
-}
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 20px;
+    }
 
-.modal-body {
-  font-size: 15px;
-  color: var(--text-color);
-  line-height: 1.6;
-}
+    .modal-body {
+      font-size: 15px;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
 
-.modal-body p {
-  margin: 10px 0;
-}
+    .modal-body p {
+      margin: 10px 0;
+    }
 
-/* Lista de instruções do exercício */
-.exercise-instructions {
-  margin: 15px 0 15px 20px;
-  padding-left: 10px;
-  list-style: decimal;
-}
+    /* Lista de instruções do exercício */
+    .exercise-instructions {
+      margin: 15px 0 15px 20px;
+      padding-left: 10px;
+      list-style: decimal;
+    }
 
-.exercise-instructions li {
-  margin: 10px 0;
-  padding-left: 8px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text-color);
-}
+    .exercise-instructions li {
+      margin: 10px 0;
+      padding-left: 8px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-color);
+    }
 
-body[data-theme='dark'] .exercise-instructions li {
-  color: #e0e0e0;
-}
+    body[data-theme='dark'] .exercise-instructions li {
+      color: #e0e0e0;
+    }
 
-/* Modal de Carga */
-.modal-carga-input-group {
-  margin: 20px 0;
-}
+    /* Modal de Carga */
+    .modal-carga-input-group {
+      margin: 20px 0;
+    }
 
-.modal-carga-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
-}
+    .modal-carga-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
 
-.modal-carga-input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
-  background: var(--bg-color);
-  color: var(--text-color);
-  transition: border-color 0.2s;
-}
+    .modal-carga-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: border-color 0.2s;
+    }
 
-.modal-carga-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-}
+    .modal-carga-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
 
-.modal-carga-btn {
-  width: 100%;
-  padding: 14px;
-  background: var(--primary-color);
-  border: none;
-  color: white;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
+    .modal-carga-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary-color);
+      border: none;
+      color: white;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-.modal-carga-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
-}
+    .modal-carga-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+    }
 
-/* Modal de Ampliar (Fullscreen GIF) */
-.modal-fullscreen {
-  background: rgba(0,0,0,0.95);
-}
+    /* Modal de Ampliar (Fullscreen GIF) */
+    .modal-fullscreen {
+      background: rgba(0, 0, 0, 0.95);
+    }
 
-.modal-fullscreen .modal-content {
-  background: transparent;
-  box-shadow: none;
-  max-width: 90vw;
-  max-height: 90vh;
-  padding: 0;
-}
+    .modal-fullscreen .modal-content {
+      background: transparent;
+      box-shadow: none;
+      max-width: 90vw;
+      max-height: 90vh;
+      padding: 0;
+    }
 
-.modal-fullscreen-img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  max-height: 90vh;
-  object-fit: contain;
-}
+    .modal-fullscreen-img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      max-height: 90vh;
+      object-fit: contain;
+    }
 
-/* Mensagem de Sem Treino */
-.sem-treino {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--text-color);
-  font-size: 18px;
-}
+    /* Mensagem de Sem Treino */
+    .sem-treino {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-color);
+      font-size: 18px;
+    }
 
-/* Animações */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+    /* Animações */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
+      to {
+        opacity: 1;
+      }
+    }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .treino-main-container {
-    padding: 15px;
-  }
-  
-  .dias-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .dia-selection-title,
-  .exercicio-list-title {
-    font-size: 22px;
-  }
-  
-  .exercicios-grid {
-    gap: 16px;
-  }
-  
-  .exercicio-card-gif {
-    height: 180px;
-  }
-  
-  .exercicio-card-info-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-  }
-  
-  .execution-gif-container {
-    margin-bottom: 15px;
-  }
-  
-  .execution-progress-circles {
-    gap: 15px;
-  }
-  
-  .progress-circle {
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
-  }
-  
-  .execution-timer {
-    font-size: 36px;
-  }
-  
-  .execution-actions {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  
-  .modal-content {
-    padding: 20px;
-  }
-  
-  .modal-title {
-    font-size: 20px;
-  }
-}
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
 
-/* =============================================
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .treino-main-container {
+        padding: 15px;
+      }
+
+      .dias-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .dia-selection-title,
+      .exercicio-list-title {
+        font-size: 22px;
+      }
+
+      .exercicios-grid {
+        gap: 16px;
+      }
+
+      .exercicio-card-gif {
+        height: 180px;
+      }
+
+      .exercicio-card-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+      }
+
+      .execution-gif-container {
+        margin-bottom: 15px;
+      }
+
+      .execution-progress-circles {
+        gap: 15px;
+      }
+
+      .progress-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+      }
+
+      .execution-timer {
+        font-size: 36px;
+      }
+
+      .execution-actions {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .modal-content {
+        padding: 20px;
+      }
+
+      .modal-title {
+        font-size: 20px;
+      }
+    }
+
+    /* =============================================
    TELA DE CARDIO
    ============================================= */
-.cardio-screen {
-  padding: 20px;
-  animation: fadeIn 0.3s ease;
-}
+    .cardio-screen {
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
 
-.exercicio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 15px;
-  margin-bottom: 20px;
-}
+    .exercicio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
 
-@media (max-width: 768px) {
-  .exercicio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
-  }
-}
+    @media (max-width: 768px) {
+      .exercicio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+      }
+    }
 
-.exercicio-card {
-  background: white;
-  border-radius: 12px;
-  padding: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    .exercicio-card {
+      background: white;
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-body[data-theme='dark'] .exercicio-card {
-  background: #2a2a2a;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
+    body[data-theme='dark'] .exercicio-card {
+      background: #2a2a2a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
 
-.exercicio-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
+    .exercicio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
 
-body[data-theme='dark'] .exercicio-card:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-}
+    body[data-theme='dark'] .exercicio-card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
 
-.exercicio-gif-container {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-}
+    .exercicio-gif-container {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
 
-body[data-theme='dark'] .exercicio-gif-container {
-  background: #1a1a1a;
-}
+    body[data-theme='dark'] .exercicio-gif-container {
+      background: #1a1a1a;
+    }
 
-.exercicio-gif {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+    .exercicio-gif {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-.exercicio-gif-fallback {
-  font-size: 48px;
-  display: none;
-}
+    .exercicio-gif-fallback {
+      font-size: 48px;
+      display: none;
+    }
 
-.exercicio-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+    .exercicio-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
-.exercicio-nome {
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--text-color);
-  line-height: 1.3;
-}
+    .exercicio-nome {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-color);
+      line-height: 1.3;
+    }
 
-.exercicio-musculos {
-  font-size: 12px;
-  color: #666;
-  line-height: 1.2;
-}
+    .exercicio-musculos {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.2;
+    }
 
-body[data-theme='dark'] .exercicio-musculos {
-  color: #999;
-}
+    body[data-theme='dark'] .exercicio-musculos {
+      color: #999;
+    }
 
-.cardio-categories h3 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .cardio-categories h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-/* =============================================
+    /* =============================================
    CHAT DE TREINOS
    ============================================= */
-.chat-treino-screen {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 80px);
-  padding: 0;
-}
+    .chat-treino-screen {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 80px);
+      padding: 0;
+    }
 
-.chat-treino-sugestoes {
-  display: flex;
-  gap: 8px;
-  padding: 12px 20px;
-  background: white;
-  border-top: 1px solid #eee;
-  overflow-x: auto;
-  flex-wrap: nowrap;
-}
+    .chat-treino-sugestoes {
+      display: flex;
+      gap: 8px;
+      padding: 12px 20px;
+      background: white;
+      border-top: 1px solid #eee;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
 
-body[data-theme='dark'] .chat-treino-sugestoes {
-  background: #1a1a1a !important;
-  border-top: 1px solid #2a2a2a;
-}
+    body[data-theme='dark'] .chat-treino-sugestoes {
+      background: #1a1a1a !important;
+      border-top: 1px solid #2a2a2a;
+    }
 
-.chat-sugestao-btn {
-  flex-shrink: 0;
-  background: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: #333;
-  white-space: nowrap;
-  font-weight: 500;
-}
+    .chat-sugestao-btn {
+      flex-shrink: 0;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #333;
+      white-space: nowrap;
+      font-weight: 500;
+    }
 
-body[data-theme='dark'] .chat-sugestao-btn {
-  background: #2a2a2a;
-  border-color: #555;
-  color: #e0e0e0;
-}
+    body[data-theme='dark'] .chat-sugestao-btn {
+      background: #2a2a2a;
+      border-color: #555;
+      color: #e0e0e0;
+    }
 
-.chat-sugestao-btn:hover {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(122, 25, 25, 0.2);
-}
+    .chat-sugestao-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(122, 25, 25, 0.2);
+    }
 
-body[data-theme='dark'] .chat-sugestao-btn:hover {
-  background: #ff6b6b;
-  border-color: #ff6b6b;
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
-}
+    body[data-theme='dark'] .chat-sugestao-btn:hover {
+      background: #ff6b6b;
+      border-color: #ff6b6b;
+      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    }
 
-.chat-treino-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: #fafafa;
-}
+    .chat-treino-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fafafa;
+    }
 
-body[data-theme='dark'] .chat-treino-messages {
-  background: #0a0a0a !important;
-}
+    body[data-theme='dark'] .chat-treino-messages {
+      background: #0a0a0a !important;
+    }
 
-.chat-message {
-  display: flex;
-  animation: fadeIn 0.3s ease;
-}
+    .chat-message {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
 
-.chat-message-user {
-  justify-content: flex-end;
-}
+    .chat-message-user {
+      justify-content: flex-end;
+    }
 
-.chat-message-ia {
-  justify-content: flex-start;
-}
+    .chat-message-ia {
+      justify-content: flex-start;
+    }
 
-.chat-message-content {
-  max-width: 75%;
-  padding: 12px 16px;
-  border-radius: 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-}
+    .chat-message-content {
+      max-width: 75%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
 
-.chat-message-user .chat-message-content {
-  background: var(--primary-color);
-  color: white;
-  border-bottom-right-radius: 4px;
-  box-shadow: 0 2px 6px rgba(122, 25, 25, 0.25);
-}
+    .chat-message-user .chat-message-content {
+      background: var(--primary-color);
+      color: white;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 6px rgba(122, 25, 25, 0.25);
+    }
 
-body[data-theme='dark'] .chat-message-user .chat-message-content {
-  background: #8B2525 !important;
-  color: #ffffff !important;
-  border: 1px solid #a52d2d;
-  box-shadow: 0 3px 12px rgba(139, 37, 37, 0.4);
-}
+    body[data-theme='dark'] .chat-message-user .chat-message-content {
+      background: #8B2525 !important;
+      color: #ffffff !important;
+      border: 1px solid #a52d2d;
+      box-shadow: 0 3px 12px rgba(139, 37, 37, 0.4);
+    }
 
-.chat-message-ia .chat-message-content {
-  background: white;
-  color: #1a1a1a;
-  border-bottom-left-radius: 4px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
+    .chat-message-ia .chat-message-content {
+      background: white;
+      color: #1a1a1a;
+      border-bottom-left-radius: 4px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
 
-body[data-theme='dark'] .chat-message-ia .chat-message-content {
-  background: #2a2a2a !important;
-  color: #e8e8e8 !important;
-  border: 1px solid #3a3a3a;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
+    body[data-theme='dark'] .chat-message-ia .chat-message-content {
+      background: #2a2a2a !important;
+      color: #e8e8e8 !important;
+      border: 1px solid #3a3a3a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
 
-.chat-typing .chat-message-content {
-  display: flex;
-  gap: 4px;
-  padding: 16px;
-}
+    .chat-typing .chat-message-content {
+      display: flex;
+      gap: 4px;
+      padding: 16px;
+    }
 
-.typing-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #999;
-  animation: typing 1.4s infinite;
-}
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #999;
+      animation: typing 1.4s infinite;
+    }
 
-.typing-dot:nth-child(2) {
-  animation-delay: 0.2s;
-}
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-.typing-dot:nth-child(3) {
-  animation-delay: 0.4s;
-}
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
 
-@keyframes typing {
-  0%, 60%, 100% {
-    transform: translateY(0);
-    opacity: 0.7;
-  }
-  30% {
-    transform: translateY(-10px);
-    opacity: 1;
-  }
-}
+    @keyframes typing {
 
-.chat-treino-input-container {
-  display: flex;
-  gap: 10px;
-  padding: 15px 20px;
-  background: white;
-  border-top: 2px solid #e0e0e0;
-  align-items: flex-end;
-}
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
 
-body[data-theme='dark'] .chat-treino-input-container {
-  background: #1a1a1a !important;
-  border-top: 1px solid #2a2a2a;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
-}
+      30% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+    }
 
-.chat-treino-input {
-  flex: 1;
-  border: 2px solid #ddd;
-  border-radius: 24px;
-  padding: 12px 18px;
-  font-size: 14px;
-  font-family: inherit;
-  resize: none;
-  max-height: 120px;
-  overflow-y: auto;
-  color: #1a1a1a;
-  background: #f5f5f5;
-  transition: all 0.2s;
-}
+    .chat-treino-input-container {
+      display: flex;
+      gap: 10px;
+      padding: 15px 20px;
+      background: white;
+      border-top: 2px solid #e0e0e0;
+      align-items: flex-end;
+    }
 
-body[data-theme='dark'] .chat-treino-input {
-  background-color: #1e1e1e !important;
-  color: #e8e8e8 !important;
-  border: 1px solid #3a3a3a !important;
-}
+    body[data-theme='dark'] .chat-treino-input-container {
+      background: #1a1a1a !important;
+      border-top: 1px solid #2a2a2a;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+    }
 
-.chat-treino-input::placeholder {
-  color: #999;
-}
+    .chat-treino-input {
+      flex: 1;
+      border: 2px solid #ddd;
+      border-radius: 24px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+      max-height: 120px;
+      overflow-y: auto;
+      color: #1a1a1a;
+      background: #f5f5f5;
+      transition: all 0.2s;
+    }
 
-body[data-theme='dark'] .chat-treino-input::placeholder {
-  color: #666 !important;
-}
+    body[data-theme='dark'] .chat-treino-input {
+      background-color: #1e1e1e !important;
+      color: #e8e8e8 !important;
+      border: 1px solid #3a3a3a !important;
+    }
 
-.chat-treino-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(122, 25, 25, 0.1);
-}
+    .chat-treino-input::placeholder {
+      color: #999;
+    }
 
-body[data-theme='dark'] .chat-treino-input:focus {
-  border-color: #8B2525 !important;
-  box-shadow: 0 0 0 2px rgba(139, 37, 37, 0.3) !important;
-  background-color: #252525 !important;
-}
+    body[data-theme='dark'] .chat-treino-input::placeholder {
+      color: #666 !important;
+    }
 
-.chat-treino-send-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+    .chat-treino-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(122, 25, 25, 0.1);
+    }
 
-body[data-theme='dark'] .chat-treino-send-btn {
-  background-color: #8B2525 !important;
-  color: #ffffff !important;
-  border: 1px solid #a52d2d;
-}
+    body[data-theme='dark'] .chat-treino-input:focus {
+      border-color: #8B2525 !important;
+      box-shadow: 0 0 0 2px rgba(139, 37, 37, 0.3) !important;
+      background-color: #252525 !important;
+    }
 
-.chat-treino-send-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
-}
+    .chat-treino-send-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
 
-body[data-theme='dark'] .chat-treino-send-btn:hover {
-  background-color: #a52d2d !important;
-  box-shadow: 0 4px 16px rgba(139, 37, 37, 0.5);
-  transform: translateY(-1px);
-}
+    body[data-theme='dark'] .chat-treino-send-btn {
+      background-color: #8B2525 !important;
+      color: #ffffff !important;
+      border: 1px solid #a52d2d;
+    }
 
-.chat-treino-send-btn:active {
-  transform: scale(0.95);
-}
+    .chat-treino-send-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+    }
 
-body[data-theme='dark'] .chat-treino-send-btn:active {
-  background-color: #6f1d1d !important;
-}
+    body[data-theme='dark'] .chat-treino-send-btn:hover {
+      background-color: #a52d2d !important;
+      box-shadow: 0 4px 16px rgba(139, 37, 37, 0.5);
+      transform: translateY(-1px);
+    }
 
-/* =============================================
+    .chat-treino-send-btn:active {
+      transform: scale(0.95);
+    }
+
+    body[data-theme='dark'] .chat-treino-send-btn:active {
+      background-color: #6f1d1d !important;
+    }
+
+    /* =============================================
    TEMA ESCURO - REFATORAÇÃO COMPLETA
    ============================================= */
 
-/* CARDS DE DIA DA SEMANA */
-body[data-theme='dark'] .dia-card {
-  background: linear-gradient(135deg, #8B2525 0%, #6f1d1d 100%) !important;
-  border: 1px solid #a52d2d !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
-}
+    /* CARDS DE DIA DA SEMANA */
+    body[data-theme='dark'] .dia-card {
+      background: linear-gradient(135deg, #8B2525 0%, #6f1d1d 100%) !important;
+      border: 1px solid #a52d2d !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+    }
 
-body[data-theme='dark'] .dia-card.descanso {
-  background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%) !important;
-  border: 1px solid #444 !important;
-}
+    body[data-theme='dark'] .dia-card.descanso {
+      background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%) !important;
+      border: 1px solid #444 !important;
+    }
 
-body[data-theme='dark'] .dia-nome {
-  color: #ffffff !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
+    body[data-theme='dark'] .dia-nome {
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
 
-body[data-theme='dark'] .dia-resumo {
-  color: rgba(255,255,255,0.95) !important;
-}
+    body[data-theme='dark'] .dia-resumo {
+      color: rgba(255, 255, 255, 0.95) !important;
+    }
 
-body[data-theme='dark'] .dia-exercicios {
-  color: rgba(255,255,255,0.95) !important;
-}
+    body[data-theme='dark'] .dia-exercicios {
+      color: rgba(255, 255, 255, 0.95) !important;
+    }
 
-/* LISTA DE EXERCÍCIOS */
-body[data-theme='dark'] .exercicio-list-screen {
-  background-color: #0a0a0a !important;
-}
+    /* LISTA DE EXERCÍCIOS */
+    body[data-theme='dark'] .exercicio-list-screen {
+      background-color: #0a0a0a !important;
+    }
 
-body[data-theme='dark'] .exercicio-list-title {
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] .exercicio-list-title {
+      color: #f0f0f0 !important;
+    }
 
-body[data-theme='dark'] .exercicio-list-subtitle {
-  color: #d0d0d0 !important;
-}
+    body[data-theme='dark'] .exercicio-list-subtitle {
+      color: #d0d0d0 !important;
+    }
 
-body[data-theme='dark'] .back-btn {
-  background: #8B2525 !important;
-}
+    body[data-theme='dark'] .back-btn {
+      background: #8B2525 !important;
+    }
 
-/* CARDS DE EXERCÍCIO */
-body[data-theme='dark'] .exercicio-card {
-  background: #1a1a1a !important;
-  border: 2px solid #3a3a3a !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6) !important;
-}
+    /* CARDS DE EXERCÍCIO */
+    body[data-theme='dark'] .exercicio-card {
+      background: #1a1a1a !important;
+      border: 2px solid #3a3a3a !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+    }
 
-body[data-theme='dark'] .exercicio-card:hover {
-  border-color: #8B2525 !important;
-  box-shadow: 0 6px 20px rgba(139, 37, 37, 0.4) !important;
-}
+    body[data-theme='dark'] .exercicio-card:hover {
+      border-color: #8B2525 !important;
+      box-shadow: 0 6px 20px rgba(139, 37, 37, 0.4) !important;
+    }
 
-body[data-theme='dark'] .exercicio-card-gif {
-  background: #0a0a0a !important;
-  border-bottom: 2px solid #3a3a3a !important;
-}
+    body[data-theme='dark'] .exercicio-card-gif {
+      background: #0a0a0a !important;
+      border-bottom: 2px solid #3a3a3a !important;
+    }
 
-body[data-theme='dark'] .exercicio-card-content {
-  background: #1a1a1a !important;
-}
+    body[data-theme='dark'] .exercicio-card-content {
+      background: #1a1a1a !important;
+    }
 
-body[data-theme='dark'] .exercicio-card-name {
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] .exercicio-card-name {
+      color: #f0f0f0 !important;
+    }
 
-body[data-theme='dark'] .exercicio-card-musculos {
-  color: #ff8577 !important;
-}
+    body[data-theme='dark'] .exercicio-card-musculos {
+      color: #ff8577 !important;
+    }
 
-body[data-theme='dark'] .exercicio-card-info-item {
-  background: #0f0f0f !important;
-  border: 1px solid #4a4a4a !important;
-}
+    body[data-theme='dark'] .exercicio-card-info-item {
+      background: #0f0f0f !important;
+      border: 1px solid #4a4a4a !important;
+    }
 
-body[data-theme='dark'] .exercicio-card-info-label {
-  color: #b0b0b0 !important;
-}
+    body[data-theme='dark'] .exercicio-card-info-label {
+      color: #b0b0b0 !important;
+    }
 
-body[data-theme='dark'] .exercicio-card-info-value {
-  color: #f5f5f5 !important;
-}
+    body[data-theme='dark'] .exercicio-card-info-value {
+      color: #f5f5f5 !important;
+    }
 
-/* TELA DE EXECUÇÃO */
-body[data-theme='dark'] .execution-header {
-  background: #8B2525 !important;
-  color: #ffffff !important;
-}
+    /* TELA DE EXECUÇÃO */
+    body[data-theme='dark'] .execution-header {
+      background: #8B2525 !important;
+      color: #ffffff !important;
+    }
 
-body[data-theme='dark'] .execution-title {
-  color: #ffffff !important;
-}
+    body[data-theme='dark'] .execution-title {
+      color: #ffffff !important;
+    }
 
-body[data-theme='dark'] .execution-subtitle {
-  color: rgba(255,255,255,0.9) !important;
-}
+    body[data-theme='dark'] .execution-subtitle {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
 
-body[data-theme='dark'] .execution-gif-container {
-  background: #0a0a0a !important;
-  border: 2px solid #3a3a3a !important;
-}
+    body[data-theme='dark'] .execution-gif-container {
+      background: #0a0a0a !important;
+      border: 2px solid #3a3a3a !important;
+    }
 
-body[data-theme='dark'] .execution-info-section {
-  background: #1a1a1a !important;
-  border: 1px solid #3a3a3a !important;
-}
+    body[data-theme='dark'] .execution-info-section {
+      background: #1a1a1a !important;
+      border: 1px solid #3a3a3a !important;
+    }
 
-body[data-theme='dark'] .execution-info-title {
-  color: #ff8577 !important;
-}
+    body[data-theme='dark'] .execution-info-title {
+      color: #ff8577 !important;
+    }
 
-body[data-theme='dark'] .execution-info-text {
-  color: #d0d0d0 !important;
-}
+    body[data-theme='dark'] .execution-info-text {
+      color: #d0d0d0 !important;
+    }
 
-body[data-theme='dark'] .series-counter {
-  background: #1a1a1a !important;
-  border: 2px solid #3a3a3a !important;
-}
+    body[data-theme='dark'] .series-counter {
+      background: #1a1a1a !important;
+      border: 2px solid #3a3a3a !important;
+    }
 
-body[data-theme='dark'] .series-counter-current {
-  color: #ff8577 !important;
-}
+    body[data-theme='dark'] .series-counter-current {
+      color: #ff8577 !important;
+    }
 
-body[data-theme='dark'] .series-counter-total {
-  color: #a0a0a0 !important;
-}
+    body[data-theme='dark'] .series-counter-total {
+      color: #a0a0a0 !important;
+    }
 
-body[data-theme='dark'] .progress-circle {
-  background: #1a1a1a !important;
-  border: 3px solid #3a3a3a !important;
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] .progress-circle {
+      background: #1a1a1a !important;
+      border: 3px solid #3a3a3a !important;
+      color: #f0f0f0 !important;
+    }
 
-body[data-theme='dark'] .progress-circle.completed {
-  background: #1b3a1f !important;
-  border-color: #4caf50 !important;
-  color: #66bb6a !important;
-}
+    body[data-theme='dark'] .progress-circle.completed {
+      background: #1b3a1f !important;
+      border-color: #4caf50 !important;
+      color: #66bb6a !important;
+    }
 
-body[data-theme='dark'] .progress-circle.current {
-  background: #8B2525 !important;
-  border-color: #ff8577 !important;
-  color: #ffffff !important;
-}
+    body[data-theme='dark'] .progress-circle.current {
+      background: #8B2525 !important;
+      border-color: #ff8577 !important;
+      color: #ffffff !important;
+    }
 
-body[data-theme='dark'] .execution-done-btn,
-body[data-theme='dark'] .execution-done-btn-large {
-  background: #8B2525 !important;
-  color: #ffffff !important;
-}
+    body[data-theme='dark'] .execution-done-btn,
+    body[data-theme='dark'] .execution-done-btn-large {
+      background: #8B2525 !important;
+      color: #ffffff !important;
+    }
 
-body[data-theme='dark'] .execution-done-btn:hover,
-body[data-theme='dark'] .execution-done-btn-large:hover {
-  background: #a52d2d !important;
-}
+    body[data-theme='dark'] .execution-done-btn:hover,
+    body[data-theme='dark'] .execution-done-btn-large:hover {
+      background: #a52d2d !important;
+    }
 
-body[data-theme='dark'] .carga-input {
-  background: #1a1a1a !important;
-  border: 2px solid #4a4a4a !important;
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] .carga-input {
+      background: #1a1a1a !important;
+      border: 2px solid #4a4a4a !important;
+      color: #f0f0f0 !important;
+    }
 
-body[data-theme='dark'] .carga-input:focus {
-  border-color: #8B2525 !important;
-  background: #252525 !important;
-}
+    body[data-theme='dark'] .carga-input:focus {
+      border-color: #8B2525 !important;
+      background: #252525 !important;
+    }
 
-/* BOTÕES DE NAVEGAÇÃO */
-body[data-theme='dark'] .execution-nav-arrow {
-  background: #8B2525 !important;
-  color: #ffffff !important;
-}
+    /* BOTÕES DE NAVEGAÇÃO */
+    body[data-theme='dark'] .execution-nav-arrow {
+      background: #8B2525 !important;
+      color: #ffffff !important;
+    }
 
-body[data-theme='dark'] .execution-nav-arrow:hover:not(:disabled) {
-  background: #a52d2d !important;
-}
+    body[data-theme='dark'] .execution-nav-arrow:hover:not(:disabled) {
+      background: #a52d2d !important;
+    }
 
-body[data-theme='dark'] .execution-nav-arrow:disabled {
-  background: #2a2a2a !important;
-  color: #666 !important;
-}
+    body[data-theme='dark'] .execution-nav-arrow:disabled {
+      background: #2a2a2a !important;
+      color: #666 !important;
+    }
 
-/* SEÇÃO DE CARDIO */
-body[data-theme='dark'] .exercicio-grid .exercicio-card {
-  background: #1a1a1a !important;
-  border: 2px solid #3a3a3a !important;
-}
+    /* SEÇÃO DE CARDIO */
+    body[data-theme='dark'] .exercicio-grid .exercicio-card {
+      background: #1a1a1a !important;
+      border: 2px solid #3a3a3a !important;
+    }
 
-body[data-theme='dark'] .exercicio-nome {
-  color: #f0f0f0 !important;
-}
+    body[data-theme='dark'] .exercicio-nome {
+      color: #f0f0f0 !important;
+    }
 
-body[data-theme='dark'] .exercicio-musculos {
-  color: #b0b0b0 !important;
-}
+    body[data-theme='dark'] .exercicio-musculos {
+      color: #b0b0b0 !important;
+    }
 
-body[data-theme='dark'] .btn-cardio {
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
-  color: #ffffff !important;
-}
+    body[data-theme='dark'] .btn-cardio {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+      color: #ffffff !important;
+    }
 
-body[data-theme='dark'] .btn-cardio:hover {
-  background: linear-gradient(135deg, #ff8555 0%, #ffa13e 100%) !important;
-}
+    body[data-theme='dark'] .btn-cardio:hover {
+      background: linear-gradient(135deg, #ff8555 0%, #ffa13e 100%) !important;
+    }
 
-/* BOTÃO FAB CHAT TREINO */
-body[data-theme='dark'] .fab-chat-treino {
-  background: #8B2525 !important;
-  box-shadow: 0 4px 16px rgba(139, 37, 37, 0.5) !important;
-}
+    /* BOTÃO FAB CHAT TREINO */
+    body[data-theme='dark'] .fab-chat-treino {
+      background: #8B2525 !important;
+      box-shadow: 0 4px 16px rgba(139, 37, 37, 0.5) !important;
+    }
 
-body[data-theme='dark'] .fab-chat-treino:hover {
-  background: #a52d2d !important;
-  box-shadow: 0 6px 20px rgba(139, 37, 37, 0.6) !important;
-}
+    body[data-theme='dark'] .fab-chat-treino:hover {
+      background: #a52d2d !important;
+      box-shadow: 0 6px 20px rgba(139, 37, 37, 0.6) !important;
+    }
 
-/* TOAST NOTIFICATION */
-.toast-notification {
-  position: fixed; top: 80px; right: 20px;
-  background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
-  color: white; padding: 16px 50px 16px 20px; border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3); z-index: 10000;
-  display: flex; align-items: center; gap: 12px;
-  min-width: 300px; max-width: 400px; opacity: 0;
-  transform: translateX(400px);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-body[data-theme='dark'] .toast-notification {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%); color: #1a1a1a;
-}
-.toast-notification.show { opacity: 1; transform: translateX(0); }
-.toast-notification.error { background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%); }
-body[data-theme='dark'] .toast-notification.error { background: linear-gradient(135deg, #ef5350 0%, #e53935 100%); }
-.toast-notification.success { background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); }
-body[data-theme='dark'] .toast-notification.success { background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%); }
-.toast-notification.warning { background: linear-gradient(135deg, #f57c00 0%, #e65100 100%); }
-body[data-theme='dark'] .toast-notification.warning { background: linear-gradient(135deg, #ffa726 0%, #ff9800 100%); }
-.toast-notification.info { background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%); }
-body[data-theme='dark'] .toast-notification.info { background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%); }
-.toast-icon { font-size: 24px; flex-shrink: 0; }
-.toast-content { flex: 1; }
-.toast-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
-.toast-message { font-size: 13px; opacity: 0.9; }
-.toast-close {
-  position: absolute; top: 8px; right: 8px; background: transparent;
-  border: none; color: white; font-size: 20px; cursor: pointer;
-  width: 30px; height: 30px; display: flex; align-items: center;
-  justify-content: center; border-radius: 6px; transition: all 0.2s;
-}
-body[data-theme='dark'] .toast-close { color: #1a1a1a; }
-.toast-close:hover { background: rgba(255,255,255,0.2); }
-@media (max-width: 768px) {
-  .toast-notification { right: 10px; left: 10px; min-width: auto; max-width: none; }
-}
+    /* TOAST NOTIFICATION */
+    .toast-notification {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
+      color: white;
+      padding: 16px 50px 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 300px;
+      max-width: 400px;
+      opacity: 0;
+      transform: translateX(400px);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
 
-</style>
+    body[data-theme='dark'] .toast-notification {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+      color: #1a1a1a;
+    }
 
-<script>
-// Função showToast para notificações
-function showToast(title, message, type = 'info') {
-  const existingToast = document.querySelector('.toast-notification');
-  if (existingToast) existingToast.remove();
-  const toast = document.createElement('div');
-  toast.className = `toast-notification ${type}`;
-  const icons = { error: '❌', success: '✅', info: 'ℹ️', warning: '⚠️' };
-  toast.innerHTML = `
+    .toast-notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .toast-notification.error {
+      background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+    }
+
+    body[data-theme='dark'] .toast-notification.error {
+      background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
+    }
+
+    .toast-notification.success {
+      background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+    }
+
+    body[data-theme='dark'] .toast-notification.success {
+      background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+    }
+
+    .toast-notification.warning {
+      background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+    }
+
+    body[data-theme='dark'] .toast-notification.warning {
+      background: linear-gradient(135deg, #ffa726 0%, #ff9800 100%);
+    }
+
+    .toast-notification.info {
+      background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    }
+
+    body[data-theme='dark'] .toast-notification.info {
+      background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%);
+    }
+
+    .toast-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .toast-content {
+      flex: 1;
+    }
+
+    .toast-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .toast-message {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .toast-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    body[data-theme='dark'] .toast-close {
+      color: #1a1a1a;
+    }
+
+    .toast-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .toast-notification {
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        max-width: none;
+      }
+    }
+  </style>
+
+  <script>
+    // Função showToast para notificações
+    function showToast(title, message, type = 'info') {
+      const existingToast = document.querySelector('.toast-notification');
+      if (existingToast) existingToast.remove();
+      const toast = document.createElement('div');
+      toast.className = `toast-notification ${type}`;
+      const icons = { error: '❌', success: '✅', info: 'ℹ️', warning: '⚠️' };
+      toast.innerHTML = `
     <div class="toast-icon">${icons[type] || 'ℹ️'}</div>
     <div class="toast-content">
       <div class="toast-title">${title}</div>
@@ -2122,16 +2211,16 @@ function showToast(title, message, type = 'info') {
     </div>
     <button class="toast-close" onclick="this.parentElement.remove()">×</button>
   `;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.classList.add('show'), 100);
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => { if (toast.parentElement) toast.remove(); }, 400);
-  }, 3500);
-}
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 100);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => { if (toast.parentElement) toast.remove(); }, 400);
+      }, 3500);
+    }
 
-// Script antigo removido - usando apenas TreinoManager.init()
-</script>
+    // Script antigo removido - usando apenas TreinoManager.init()
+  </script>
 
 </body>
 
