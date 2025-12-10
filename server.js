@@ -53,6 +53,19 @@ const exercisesPath = path.join(process.cwd(), 'public', 'exercises_gifs', 'exer
 console.log('🔍 Verificando exercises.json:', fs.existsSync(exercisesPath) ? '✅ Existe' : '❌ Não encontrado');
 console.log('📁 Caminho completo:', exercisesPath);
 
+// Carregar lista de exercícios disponíveis
+let availableExercises = [];
+try {
+  const exercisesData = JSON.parse(fs.readFileSync(exercisesPath, 'utf8'));
+  availableExercises = exercisesData.map(ex => ({
+    name: ex.namePt,
+    location: ex.location
+  }));
+  console.log('✅ Carregados', availableExercises.length, 'exercícios disponíveis');
+} catch (error) {
+  console.error('❌ Erro ao carregar exercises.json:', error);
+}
+
 // Rota de teste para verificar se os arquivos existem
 app.get('/api/test-exercises', (req, res) => {
   const exercisesPath = path.join(process.cwd(), 'public', 'exercises_gifs', 'exercises.json');
@@ -251,6 +264,21 @@ SE o usuário disse que vai treinar na ACADEMIA:
 
 ⚠️ ATENÇÃO: Respeite RIGOROSAMENTE o local de treino informado pelo usuário!
 
+🎯 LISTA DE EXERCÍCIOS DISPONÍVEIS - USE APENAS ESTES NOMES EXATOS:
+
+⚠️ CRÍTICO: Ao montar treinos, você DEVE usar APENAS os nomes EXATOS dos exercícios listados abaixo.
+NÃO invente nomes, NÃO use variações, NÃO use "Descanso" como exercício.
+
+EXERCÍCIOS DISPONÍVEIS:
+{{AVAILABLE_EXERCISES}}
+
+📋 REGRAS OBRIGATÓRIAS PARA NOMES DE EXERCÍCIOS:
+1. Copie e cole o nome EXATAMENTE como está na lista acima
+2. Respeite maiúsculas, minúsculas, acentos e espaços
+3. NUNCA use "Descanso" como exercício - descanso é apenas o intervalo entre séries
+4. Se não encontrar um exercício adequado na lista, escolha o mais similar disponível
+5. Sempre filtre pela location correta (casa ou academia)
+
 DIVISÃO DE TREINO SEMANAL (CORPO TODO):
 SEMPRE monte o treino para trabalhar TODOS os grupos musculares durante a semana:
 
@@ -402,8 +430,22 @@ app.post('/api/chat', async (req, res) => {
   console.log('✅ API key configurada, processando mensagem:', message);
 
   try {
+    // Preparar lista de exercícios para o prompt
+    const casaExercises = availableExercises.filter(ex => ex.location === 'casa').map(ex => `- ${ex.name} (Casa)`);
+    const academiaExercises = availableExercises.filter(ex => ex.location === 'academia').map(ex => `- ${ex.name} (Academia)`);
+    const exercisesList = [
+      '📍 EXERCÍCIOS PARA CASA:',
+      ...casaExercises,
+      '',
+      '📍 EXERCÍCIOS PARA ACADEMIA:',
+      ...academiaExercises
+    ].join('\n');
+    
+    // Substituir placeholder no prompt
+    const finalSystemPrompt = systemPrompt.replace('{{AVAILABLE_EXERCISES}}', exercisesList);
+    
     const messages = [
-      { role: 'system', content: systemPrompt },
+      { role: 'system', content: finalSystemPrompt },
       ...(history || []).map(msg => ({
         role: msg.sender === 'user' ? 'user' : 'assistant',
         content: msg.text
