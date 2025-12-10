@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 // Configurar MIME types corretos
-app.use(express.static('public', {
+app.use(express.static(path.join(process.cwd(), 'public'), {
   setHeaders: (res, path) => {
     if (path.endsWith('.css')) {
       res.set('Content-Type', 'text/css');
@@ -29,7 +29,7 @@ app.use(express.static('public', {
   }
 }));
 
-app.use('/css', express.static('css', {
+app.use('/css', express.static(path.join(process.cwd(), 'css'), {
   setHeaders: (res, path) => {
     if (path.endsWith('.css')) {
       res.set('Content-Type', 'text/css');
@@ -37,7 +37,7 @@ app.use('/css', express.static('css', {
   }
 }));
 
-app.use('/js', express.static('js', {
+app.use('/js', express.static(path.join(process.cwd(), 'js'), {
   setHeaders: (res, path) => {
     if (path.endsWith('.js')) {
       res.set('Content-Type', 'application/javascript');
@@ -45,7 +45,7 @@ app.use('/js', express.static('js', {
   }
 }));
 
-app.use('/exercises_gifs', express.static('exercises_gifs', {
+app.use('/exercises_gifs', express.static(path.join(process.cwd(), 'exercises_gifs'), {
   setHeaders: (res, path) => {
     if (path.endsWith('.json')) {
       res.set('Content-Type', 'application/json');
