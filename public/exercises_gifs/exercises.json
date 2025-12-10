@@ -4,10 +4,19 @@
     "name": "Supino Reto com Barra",
     "namePt": "Supino Reto com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Peito/Supino-reto.gif",
-    "targetMuscles": ["Peitoral Maior", "Tríceps", "Deltoide Anterior"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Barra", "Banco"],
+    "gifUrl": "gifs360x360/Academia/Peito/Supino-reto.gif",
+    "targetMuscles": [
+      "Peitoral Maior",
+      "Tríceps",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Barra",
+      "Banco"
+    ],
     "instructions": [
       "Deite-se no banco plano com os pés firmes no chão",
       "Segure a barra com pegada ligeiramente mais larga que os ombros",
@@ -21,10 +30,19 @@
     "name": "Supino Inclinado com Barra",
     "namePt": "Supino Inclinado com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Peito/Supino-inclinado.gif",
-    "targetMuscles": ["Peitoral Superior", "Tríceps", "Deltoide Anterior"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Barra", "Banco Inclinado"],
+    "gifUrl": "gifs360x360/Academia/Peito/Supino-inclinado.gif",
+    "targetMuscles": [
+      "Peitoral Superior",
+      "Tríceps",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Barra",
+      "Banco Inclinado"
+    ],
     "instructions": [
       "Ajuste o banco em 30-45 graus de inclinação",
       "Deite-se no banco com os pés firmes no chão",
@@ -38,10 +56,18 @@
     "name": "Crucifixo com Halteres",
     "namePt": "Crucifixo com Halteres",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Peito/crucifixo.gif",
-    "targetMuscles": ["Peitoral Maior", "Deltoide Anterior"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Halteres", "Banco"],
+    "gifUrl": "gifs360x360/Academia/Peito/crucifixo.gif",
+    "targetMuscles": [
+      "Peitoral Maior",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Halteres",
+      "Banco"
+    ],
     "instructions": [
       "Deite-se no banco plano segurando um halter em cada mão",
       "Estenda os braços acima do peito com cotovelos levemente flexionados",
@@ -55,10 +81,17 @@
     "name": "Peck Deck (Voador)",
     "namePt": "Peck Deck (Voador)",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Peito/Pec-Deck.gif",
-    "targetMuscles": ["Peitoral Maior", "Deltoide Anterior"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Peito/Pec-Deck.gif",
+    "targetMuscles": [
+      "Peitoral Maior",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Sente-se na máquina com as costas apoiadas",
       "Ajuste a altura do banco para que os cotovelos fiquem na altura do peito",
@@ -72,10 +105,18 @@
     "name": "Crossover no Cabo",
     "namePt": "Crossover no Cabo",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Peito/Cross-cabo.gif",
-    "targetMuscles": ["Peitoral Maior", "Peitoral Menor"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Polia", "Cabos"],
+    "gifUrl": "gifs360x360/Academia/Peito/Cross-cabo.gif",
+    "targetMuscles": [
+      "Peitoral Maior",
+      "Peitoral Menor"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Polia",
+      "Cabos"
+    ],
     "instructions": [
       "Posicione-se no meio da polia dupla com cabos ajustados no alto",
       "Segure uma alça em cada mão e dê um passo à frente",
@@ -89,10 +130,18 @@
     "name": "Flexão de Braço",
     "namePt": "Flexão de Braço",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Peito/Push-Up.gif",
-    "targetMuscles": ["Peitoral Maior", "Tríceps", "Deltoide Anterior"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Peito/Push-Up.gif",
+    "targetMuscles": [
+      "Peitoral Maior",
+      "Tríceps",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione-se em prancha com mãos na largura dos ombros",
       "Mantenha o corpo reto dos pés até a cabeça",
@@ -106,10 +155,19 @@
     "name": "Flexão Declinada",
     "namePt": "Flexão Declinada",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Peito/Decline-Push-Up.gif",
-    "targetMuscles": ["Peitoral Superior", "Deltoide Anterior", "Tríceps"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Peso Corporal", "Banco/Caixa"],
+    "gifUrl": "gifs360x360/Casa/Peito/Decline-Push-Up.gif",
+    "targetMuscles": [
+      "Peitoral Superior",
+      "Deltoide Anterior",
+      "Tríceps"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Peso Corporal",
+      "Banco/Caixa"
+    ],
     "instructions": [
       "Coloque os pés elevados em um banco ou caixa",
       "Posicione as mãos no chão na largura dos ombros",
@@ -123,10 +181,18 @@
     "name": "Flexão Inclinada",
     "namePt": "Flexão Inclinada",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Peito/Incline-Push-Up.gif",
-    "targetMuscles": ["Peitoral Inferior", "Tríceps"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Peso Corporal", "Banco/Mesa"],
+    "gifUrl": "gifs360x360/Casa/Peito/Incline-Push-Up.gif",
+    "targetMuscles": [
+      "Peitoral Inferior",
+      "Tríceps"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Peso Corporal",
+      "Banco/Mesa"
+    ],
     "instructions": [
       "Coloque as mãos em uma superfície elevada (banco, mesa ou parede)",
       "Posicione os pés no chão afastados na largura dos ombros",
@@ -140,10 +206,17 @@
     "name": "Flexão Diamante",
     "namePt": "Flexão Diamante",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Peito/Diamond-Push-up.gif",
-    "targetMuscles": ["Tríceps", "Peitoral Interno"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Peito/Diamond-Push-up.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Peitoral Interno"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione-se em prancha com as mãos juntas formando um diamante",
       "Una os polegares e indicadores embaixo do peito",
@@ -157,10 +230,18 @@
     "name": "Flexão Arqueiro",
     "namePt": "Flexão Arqueiro",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Peito/Archer-Push-Up.gif",
-    "targetMuscles": ["Peitoral Maior", "Tríceps", "Core"],
-    "bodyParts": ["Peito"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Peito/Archer-Push-Up.gif",
+    "targetMuscles": [
+      "Peitoral Maior",
+      "Tríceps",
+      "Core"
+    ],
+    "bodyParts": [
+      "Peito"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione as mãos mais afastadas que na flexão tradicional",
       "Desloque o peso para um lado mantendo um braço estendido",
@@ -174,10 +255,19 @@
     "name": "Puxada Frontal",
     "namePt": "Puxada Frontal",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Costas/Puxada-frontal.gif",
-    "targetMuscles": ["Grande Dorsal", "Bíceps", "Trapézio"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Polia", "Barra"],
+    "gifUrl": "gifs360x360/Academia/Costas/Puxada-frontal.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Bíceps",
+      "Trapézio"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Polia",
+      "Barra"
+    ],
     "instructions": [
       "Sente-se na máquina e ajuste o apoio para as coxas",
       "Segure a barra com pegada pronada (palmas para frente) mais larga que os ombros",
@@ -191,10 +281,19 @@
     "name": "Pulldown com Pegada Neutra",
     "namePt": "Pulldown com Pegada Neutra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Costas/pulldown.gif",
-    "targetMuscles": ["Grande Dorsal", "Romboides", "Bíceps"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Polia", "Barra V"],
+    "gifUrl": "gifs360x360/Academia/Costas/pulldown.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Romboides",
+      "Bíceps"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Polia",
+      "Barra V"
+    ],
     "instructions": [
       "Sente-se na máquina segurando a barra V com pegada neutra",
       "Mantenha o peito para frente e as costas retas",
@@ -208,10 +307,18 @@
     "name": "Remada com Barra",
     "namePt": "Remada com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Costas/Remada-com-barra.gif",
-    "targetMuscles": ["Grande Dorsal", "Trapézio", "Romboides"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Barra"],
+    "gifUrl": "gifs360x360/Academia/Costas/Remada-com-barra.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Trapézio",
+      "Romboides"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Barra"
+    ],
     "instructions": [
       "Fique em pé com joelhos levemente flexionados",
       "Incline o tronco para frente mantendo as costas retas",
@@ -225,10 +332,18 @@
     "name": "Remada Lateral na Máquina",
     "namePt": "Remada Lateral na Máquina",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Costas/remada-lateral.gif",
-    "targetMuscles": ["Grande Dorsal", "Romboides", "Trapézio Médio"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Costas/remada-lateral.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Romboides",
+      "Trapézio Médio"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Sente-se na máquina com o peito apoiado no suporte",
       "Segure as alças com os braços estendidos",
@@ -242,10 +357,19 @@
     "name": "Remada Sentado no Cabo",
     "namePt": "Remada Sentado no Cabo",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Costas/remada-sentadano-cabo.gif",
-    "targetMuscles": ["Grande Dorsal", "Romboides", "Trapézio"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Polia", "Cabo"],
+    "gifUrl": "gifs360x360/Academia/Costas/remada-sentadano-cabo.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Romboides",
+      "Trapézio"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Polia",
+      "Cabo"
+    ],
     "instructions": [
       "Sente-se na máquina com os pés apoiados na plataforma",
       "Segure a alça mantendo as costas retas e o peito para frente",
@@ -259,10 +383,18 @@
     "name": "Pull-Up (Barra Fixa)",
     "namePt": "Pull-Up (Barra Fixa)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Costas/Pull-up.gif",
-    "targetMuscles": ["Grande Dorsal", "Bíceps", "Trapézio"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Barra Fixa"],
+    "gifUrl": "gifs360x360/Casa/Costas/Pull-up.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Bíceps",
+      "Trapézio"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Barra Fixa"
+    ],
     "instructions": [
       "Segure a barra com pegada pronada (palmas para frente) mais larga que os ombros",
       "Pendure-se com os braços totalmente estendidos",
@@ -276,10 +408,18 @@
     "name": "Superman",
     "namePt": "Superman",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Costas/Superman-exercise.gif",
-    "targetMuscles": ["Eretores da Espinha", "Glúteos", "Grande Dorsal"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Costas/Superman-exercise.gif",
+    "targetMuscles": [
+      "Eretores da Espinha",
+      "Glúteos",
+      "Grande Dorsal"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Deite-se de bruços no chão com braços estendidos à frente",
       "Mantenha o pescoço neutro olhando para o chão",
@@ -293,10 +433,18 @@
     "name": "Remada com Elástico",
     "namePt": "Remada com Elástico",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Costas/Cable-Row.gif",
-    "targetMuscles": ["Grande Dorsal", "Romboides", "Trapézio"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Elástico"],
+    "gifUrl": "gifs360x360/Casa/Costas/Cable-Row.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Romboides",
+      "Trapézio"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Elástico"
+    ],
     "instructions": [
       "Sente-se no chão com pernas estendidas e o elástico envolvendo os pés",
       "Segure as pontas do elástico mantendo as costas retas",
@@ -310,10 +458,19 @@
     "name": "Remada Curvada com Pegada Supinada",
     "namePt": "Remada Curvada com Pegada Supinada",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Costas/Reverse-Grip-Barbell-Row.gif",
-    "targetMuscles": ["Grande Dorsal", "Bíceps", "Trapézio Inferior"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Barra", "Halteres"],
+    "gifUrl": "gifs360x360/Casa/Costas/Reverse-Grip-Barbell-Row.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Bíceps",
+      "Trapézio Inferior"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Barra",
+      "Halteres"
+    ],
     "instructions": [
       "Fique em pé com joelhos levemente flexionados",
       "Incline o tronco para frente mantendo as costas retas",
@@ -327,10 +484,19 @@
     "name": "Pullover com Halter",
     "namePt": "Pullover com Halter",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Costas/Dumbbell-Pullover.gif",
-    "targetMuscles": ["Grande Dorsal", "Peitoral", "Serrátil"],
-    "bodyParts": ["Costas"],
-    "equipments": ["Halter", "Banco"],
+    "gifUrl": "gifs360x360/Casa/Costas/Dumbbell-Pullover.gif",
+    "targetMuscles": [
+      "Grande Dorsal",
+      "Peitoral",
+      "Serrátil"
+    ],
+    "bodyParts": [
+      "Costas"
+    ],
+    "equipments": [
+      "Halter",
+      "Banco"
+    ],
     "instructions": [
       "Deite-se em um banco segurando um halter acima do peito com ambas as mãos",
       "Mantenha os braços levemente flexionados durante todo o movimento",
@@ -344,10 +510,19 @@
     "name": "Agachamento Livre com Barra",
     "namePt": "Agachamento Livre com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Pernas/agachamento-livre-barra.gif",
-    "targetMuscles": ["Quadríceps", "Glúteos", "Isquiotibiais"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Barra", "Rack"],
+    "gifUrl": "gifs360x360/Academia/Pernas/agachamento-livre-barra.gif",
+    "targetMuscles": [
+      "Quadríceps",
+      "Glúteos",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Barra",
+      "Rack"
+    ],
     "instructions": [
       "Posicione a barra nas costas apoiada nos trapézios",
       "Fique em pé com os pés na largura dos ombros",
@@ -361,10 +536,18 @@
     "name": "Leg Press 45°",
     "namePt": "Leg Press 45°",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Pernas/Leg-Press.gif",
-    "targetMuscles": ["Quadríceps", "Glúteos", "Isquiotibiais"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Máquina Leg Press"],
+    "gifUrl": "gifs360x360/Academia/Pernas/Leg-Press.gif",
+    "targetMuscles": [
+      "Quadríceps",
+      "Glúteos",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Máquina Leg Press"
+    ],
     "instructions": [
       "Sente-se na máquina com as costas totalmente apoiadas",
       "Posicione os pés na plataforma na largura dos ombros",
@@ -378,10 +561,16 @@
     "name": "Cadeira Extensora",
     "namePt": "Cadeira Extensora",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Pernas/Extensora.gif",
-    "targetMuscles": ["Quadríceps"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Máquina Extensora"],
+    "gifUrl": "gifs360x360/Academia/Pernas/Extensora.gif",
+    "targetMuscles": [
+      "Quadríceps"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Máquina Extensora"
+    ],
     "instructions": [
       "Sente-se na máquina ajustando o encosto para as costas",
       "Posicione os tornozelos atrás da almofada inferior",
@@ -395,10 +584,17 @@
     "name": "Cadeira Flexora",
     "namePt": "Cadeira Flexora",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Pernas/cadeira-flexora.gif",
-    "targetMuscles": ["Isquiotibiais", "Panturrilhas"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Máquina Flexora"],
+    "gifUrl": "gifs360x360/Academia/Pernas/cadeira-flexora.gif",
+    "targetMuscles": [
+      "Isquiotibiais",
+      "Panturrilhas"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Máquina Flexora"
+    ],
     "instructions": [
       "Deite-se de bruços na máquina alinhando os joelhos com o pivô",
       "Posicione os tornozelos sob a almofada superior",
@@ -412,10 +608,18 @@
     "name": "Stiff com Barra",
     "namePt": "Stiff com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Pernas/stiff-com-barra.gif",
-    "targetMuscles": ["Isquiotibiais", "Glúteos", "Lombar"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Barra"],
+    "gifUrl": "gifs360x360/Academia/Pernas/stiff-com-barra.gif",
+    "targetMuscles": [
+      "Isquiotibiais",
+      "Glúteos",
+      "Lombar"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Barra"
+    ],
     "instructions": [
       "Fique em pé segurando a barra com pegada pronada na largura dos ombros",
       "Mantenha os joelhos levemente flexionados durante todo o movimento",
@@ -429,10 +633,18 @@
     "name": "Agachamento Sumô",
     "namePt": "Agachamento Sumô",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Pernas/SUMO-SQUAT.gif",
-    "targetMuscles": ["Quadríceps", "Glúteos", "Adutores"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Pernas/SUMO-SQUAT.gif",
+    "targetMuscles": [
+      "Quadríceps",
+      "Glúteos",
+      "Adutores"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Fique em pé com os pés mais afastados que a largura dos ombros",
       "Aponte os pés para fora em aproximadamente 45 graus",
@@ -446,10 +658,18 @@
     "name": "Agachamento Goblet com Halter",
     "namePt": "Agachamento Goblet com Halter",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Pernas/Dumbbell-Goblet-Squat.gif",
-    "targetMuscles": ["Quadríceps", "Glúteos", "Core"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Halter"],
+    "gifUrl": "gifs360x360/Casa/Pernas/Dumbbell-Goblet-Squat.gif",
+    "targetMuscles": [
+      "Quadríceps",
+      "Glúteos",
+      "Core"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Halter"
+    ],
     "instructions": [
       "Segure um halter verticalmente na frente do peito com ambas as mãos",
       "Fique em pé com os pés na largura dos ombros",
@@ -463,10 +683,19 @@
     "name": "Agachamento Búlgaro com Salto",
     "namePt": "Agachamento Búlgaro com Salto",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Pernas/Bulgarian-Jump-Squat.gif",
-    "targetMuscles": ["Quadríceps", "Glúteos", "Isquiotibiais"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Banco", "Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Pernas/Bulgarian-Jump-Squat.gif",
+    "targetMuscles": [
+      "Quadríceps",
+      "Glúteos",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Banco",
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione um pé atrás apoiado em um banco ou cadeira",
       "Mantenha o pé da frente firmemente no chão",
@@ -480,10 +709,18 @@
     "name": "Afundo com Balanço",
     "namePt": "Afundo com Balanço",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Pernas/pendulum-lunge.gif",
-    "targetMuscles": ["Quadríceps", "Glúteos", "Isquiotibiais"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Pernas/pendulum-lunge.gif",
+    "targetMuscles": [
+      "Quadríceps",
+      "Glúteos",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Fique em pé com os pés juntos",
       "Dê um passo à frente em afundo até o joelho traseiro quase tocar o chão",
@@ -497,10 +734,18 @@
     "name": "Stiff Unilateral com Halter",
     "namePt": "Stiff Unilateral com Halter",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Pernas/Single-stiff-leg-deadlift.gif",
-    "targetMuscles": ["Isquiotibiais", "Glúteos", "Core"],
-    "bodyParts": ["Pernas"],
-    "equipments": ["Halter"],
+    "gifUrl": "gifs360x360/Casa/Pernas/Single-stiff-leg-deadlift.gif",
+    "targetMuscles": [
+      "Isquiotibiais",
+      "Glúteos",
+      "Core"
+    ],
+    "bodyParts": [
+      "Pernas"
+    ],
+    "equipments": [
+      "Halter"
+    ],
     "instructions": [
       "Fique em pé segurando um halter com uma ou ambas as mãos",
       "Apoie-se em uma perna mantendo o joelho levemente flexionado",
@@ -514,10 +759,19 @@
     "name": "Desenvolvimento Militar com Barra",
     "namePt": "Desenvolvimento Militar com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Ombros/desenvolvimento-militar-com-barra.gif",
-    "targetMuscles": ["Deltoide Anterior", "Deltoide Médio", "Tríceps"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Barra", "Banco"],
+    "gifUrl": "gifs360x360/Academia/Ombros/desenvolvimento-militar-com-barra.gif",
+    "targetMuscles": [
+      "Deltoide Anterior",
+      "Deltoide Médio",
+      "Tríceps"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Barra",
+      "Banco"
+    ],
     "instructions": [
       "Sente-se em um banco com as costas apoiadas",
       "Segure a barra com pegada um pouco mais larga que os ombros",
@@ -531,10 +785,19 @@
     "name": "Desenvolvimento com Halteres",
     "namePt": "Desenvolvimento com Halteres",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Ombros/desenvolvimento-com-halteres.gif",
-    "targetMuscles": ["Deltoide Anterior", "Deltoide Médio", "Tríceps"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Halteres", "Banco"],
+    "gifUrl": "gifs360x360/Academia/Ombros/desenvolvimento-com-halteres.gif",
+    "targetMuscles": [
+      "Deltoide Anterior",
+      "Deltoide Médio",
+      "Tríceps"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Halteres",
+      "Banco"
+    ],
     "instructions": [
       "Sente-se em um banco com os halteres na altura dos ombros",
       "Mantenha as palmas das mãos voltadas para frente",
@@ -548,10 +811,17 @@
     "name": "Elevação Lateral com Halteres",
     "namePt": "Elevação Lateral com Halteres",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Ombros/elevação-lateral.gif",
-    "targetMuscles": ["Deltoide Médio", "Trapézio Superior"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Halteres"],
+    "gifUrl": "gifs360x360/Academia/Ombros/elevação-lateral.gif",
+    "targetMuscles": [
+      "Deltoide Médio",
+      "Trapézio Superior"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Halteres"
+    ],
     "instructions": [
       "Fique em pé com um halter em cada mão ao lado do corpo",
       "Mantenha os cotovelos levemente flexionados",
@@ -565,10 +835,17 @@
     "name": "Elevação Frontal com Halteres",
     "namePt": "Elevação Frontal com Halteres",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Ombros/elevação-frontal.gif",
-    "targetMuscles": ["Deltoide Anterior", "Peitoral Superior"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Halteres"],
+    "gifUrl": "gifs360x360/Academia/Ombros/elevação-frontal.gif",
+    "targetMuscles": [
+      "Deltoide Anterior",
+      "Peitoral Superior"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Halteres"
+    ],
     "instructions": [
       "Fique em pé com os halteres na frente das coxas",
       "Mantenha os cotovelos levemente flexionados",
@@ -582,10 +859,18 @@
     "name": "Remada Alta com Barra",
     "namePt": "Remada Alta com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Ombros/remada-alta.gif",
-    "targetMuscles": ["Deltoide Médio", "Trapézio Superior", "Bíceps"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Barra"],
+    "gifUrl": "gifs360x360/Academia/Ombros/remada-alta.gif",
+    "targetMuscles": [
+      "Deltoide Médio",
+      "Trapézio Superior",
+      "Bíceps"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Barra"
+    ],
     "instructions": [
       "Fique em pé segurando a barra com pegada mais estreita que os ombros",
       "Deixe a barra pendurada na frente das coxas",
@@ -599,10 +884,18 @@
     "name": "Pike Push-Up",
     "namePt": "Pike Push-Up",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Ombros/Pike-Push-up.gif",
-    "targetMuscles": ["Deltoide Anterior", "Deltoide Médio", "Tríceps"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Ombros/Pike-Push-up.gif",
+    "targetMuscles": [
+      "Deltoide Anterior",
+      "Deltoide Médio",
+      "Tríceps"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Comece em posição de prancha e eleve os quadris para cima",
       "Forme um V invertido com o corpo",
@@ -616,10 +909,17 @@
     "name": "Elevação Lateral com Halteres (Casa)",
     "namePt": "Elevação Lateral com Halteres (Casa)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Ombros/Dumbbell-Lateral-Raise.gif",
-    "targetMuscles": ["Deltoide Médio", "Trapézio Superior"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Halteres"],
+    "gifUrl": "gifs360x360/Casa/Ombros/Dumbbell-Lateral-Raise.gif",
+    "targetMuscles": [
+      "Deltoide Médio",
+      "Trapézio Superior"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Halteres"
+    ],
     "instructions": [
       "Fique em pé com um halter em cada mão ao lado do corpo",
       "Mantenha os cotovelos levemente flexionados",
@@ -633,10 +933,18 @@
     "name": "Elevação Lateral no Cabo",
     "namePt": "Elevação Lateral no Cabo",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Ombros/Cable-Lateral-Raise.gif",
-    "targetMuscles": ["Deltoide Médio", "Trapézio"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Elástico", "Cabo"],
+    "gifUrl": "gifs360x360/Casa/Ombros/Cable-Lateral-Raise.gif",
+    "targetMuscles": [
+      "Deltoide Médio",
+      "Trapézio"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Elástico",
+      "Cabo"
+    ],
     "instructions": [
       "Prenda um elástico em um ponto baixo e segure com a mão oposta",
       "Posicione-se lateralmente ao ponto de ancoragem",
@@ -650,10 +958,18 @@
     "name": "Elevação Frontal no Cabo",
     "namePt": "Elevação Frontal no Cabo",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Ombros/Cable-Front-Raise.gif",
-    "targetMuscles": ["Deltoide Anterior", "Peitoral Superior"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Elástico", "Cabo"],
+    "gifUrl": "gifs360x360/Casa/Ombros/Cable-Front-Raise.gif",
+    "targetMuscles": [
+      "Deltoide Anterior",
+      "Peitoral Superior"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Elástico",
+      "Cabo"
+    ],
     "instructions": [
       "Prenda o elástico em um ponto baixo atrás de você",
       "Segure as pontas com as mãos na frente das coxas",
@@ -667,10 +983,18 @@
     "name": "Elevação Lateral Curvada",
     "namePt": "Elevação Lateral Curvada",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Ombros/Bent-Over-Lateral-Raise.gif",
-    "targetMuscles": ["Deltoide Posterior", "Trapézio Médio", "Romboides"],
-    "bodyParts": ["Ombros"],
-    "equipments": ["Halteres"],
+    "gifUrl": "gifs360x360/Casa/Ombros/Bent-Over-Lateral-Raise.gif",
+    "targetMuscles": [
+      "Deltoide Posterior",
+      "Trapézio Médio",
+      "Romboides"
+    ],
+    "bodyParts": [
+      "Ombros"
+    ],
+    "equipments": [
+      "Halteres"
+    ],
     "instructions": [
       "Incline o tronco para frente até ficar quase paralelo ao chão",
       "Segure um halter em cada mão com os braços pendendo",
@@ -684,10 +1008,18 @@
     "name": "Rosca Direta com Barra",
     "namePt": "Rosca Direta com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Bíceps/rosca-direta-com-barra.gif",
-    "targetMuscles": ["Bíceps", "Braquial", "Antebraços"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Barra"],
+    "gifUrl": "gifs360x360/Academia/Bíceps/rosca-direta-com-barra.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Braquial",
+      "Antebraços"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Barra"
+    ],
     "instructions": [
       "Fique em pé com a barra nas mãos, pegada supinada na largura dos ombros",
       "Mantenha os cotovelos fixos próximos ao corpo",
@@ -701,10 +1033,17 @@
     "name": "Rosca Direta com Halteres",
     "namePt": "Rosca Direta com Halteres",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Bíceps/rosca-direta-com-halteres.gif",
-    "targetMuscles": ["Bíceps", "Braquial"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Halteres"],
+    "gifUrl": "gifs360x360/Academia/Bíceps/rosca-direta-com-halteres.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Braquial"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Halteres"
+    ],
     "instructions": [
       "Fique em pé com um halter em cada mão, palmas voltadas para frente",
       "Mantenha os cotovelos fixos ao lado do corpo",
@@ -718,10 +1057,18 @@
     "name": "Rosca Martelo",
     "namePt": "Rosca Martelo",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Bíceps/rosca-martelo.gif",
-    "targetMuscles": ["Bíceps", "Braquial", "Braquiorradial"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Halteres"],
+    "gifUrl": "gifs360x360/Academia/Bíceps/rosca-martelo.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Braquial",
+      "Braquiorradial"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Halteres"
+    ],
     "instructions": [
       "Fique em pé com um halter em cada mão, palmas voltadas uma para a outra",
       "Mantenha os cotovelos fixos ao lado do corpo",
@@ -735,10 +1082,18 @@
     "name": "Rosca Scott",
     "namePt": "Rosca Scott",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Bíceps/rosca-scott.gif",
-    "targetMuscles": ["Bíceps", "Braquial"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Barra", "Banco Scott"],
+    "gifUrl": "gifs360x360/Academia/Bíceps/rosca-scott.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Braquial"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Barra",
+      "Banco Scott"
+    ],
     "instructions": [
       "Sente-se no banco Scott apoiando os braços na almofada",
       "Segure a barra com pegada supinada na largura dos ombros",
@@ -752,10 +1107,17 @@
     "name": "Rosca Concentrada",
     "namePt": "Rosca Concentrada",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Bíceps/rosca-concentrada.gif",
-    "targetMuscles": ["Bíceps", "Braquial"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Halter"],
+    "gifUrl": "gifs360x360/Academia/Bíceps/rosca-concentrada.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Braquial"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Halter"
+    ],
     "instructions": [
       "Sente-se em um banco com as pernas abertas",
       "Apoie o cotovelo na parte interna da coxa",
@@ -769,10 +1131,17 @@
     "name": "Rosca com Halteres (Casa)",
     "namePt": "Rosca com Halteres (Casa)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Bíceps/Dumbbell-Curl.gif",
-    "targetMuscles": ["Bíceps", "Braquial"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Halteres"],
+    "gifUrl": "gifs360x360/Casa/Bíceps/Dumbbell-Curl.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Braquial"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Halteres"
+    ],
     "instructions": [
       "Fique em pé com um halter em cada mão, palmas para frente",
       "Mantenha os cotovelos fixos ao lado do corpo",
@@ -786,10 +1155,17 @@
     "name": "Rosca Waiter",
     "namePt": "Rosca Waiter",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Bíceps/waiter-curl.gif",
-    "targetMuscles": ["Bíceps", "Deltoide Anterior"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Halter"],
+    "gifUrl": "gifs360x360/Casa/Bíceps/waiter-curl.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Halter"
+    ],
     "instructions": [
       "Segure um halter verticalmente com ambas as mãos sob a parte superior",
       "Mantenha o halter na vertical como se fosse um garçom servindo",
@@ -803,10 +1179,19 @@
     "name": "Rosca Zottman Sentado",
     "namePt": "Rosca Zottman Sentado",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Bíceps/Seated-Zottman-Curl.gif",
-    "targetMuscles": ["Bíceps", "Braquial", "Antebraços"],
-    "bodyParts": ["Bíceps"],
-    "equipments": ["Halteres", "Banco"],
+    "gifUrl": "gifs360x360/Casa/Bíceps/Seated-Zottman-Curl.gif",
+    "targetMuscles": [
+      "Bíceps",
+      "Braquial",
+      "Antebraços"
+    ],
+    "bodyParts": [
+      "Bíceps"
+    ],
+    "equipments": [
+      "Halteres",
+      "Banco"
+    ],
     "instructions": [
       "Sente-se em um banco segurando halteres com palmas para frente",
       "Flexione os cotovelos levantando os halteres normalmente",
@@ -820,10 +1205,18 @@
     "name": "Tríceps Francês com Barra",
     "namePt": "Tríceps Francês com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Tríceps/tríceps-frances.gif",
-    "targetMuscles": ["Tríceps", "Anconeo"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Barra", "Banco"],
+    "gifUrl": "gifs360x360/Academia/Tríceps/tríceps-frances.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Anconeo"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Barra",
+      "Banco"
+    ],
     "instructions": [
       "Deite-se em um banco segurando a barra com pegada fechada",
       "Estenda os braços perpendiculares ao corpo acima do peito",
@@ -837,10 +1230,18 @@
     "name": "Tríceps na Polia com Corda",
     "namePt": "Tríceps na Polia com Corda",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Tríceps/triceps-corda.gif",
-    "targetMuscles": ["Tríceps", "Anconeo"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Polia", "Corda"],
+    "gifUrl": "gifs360x360/Academia/Tríceps/triceps-corda.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Anconeo"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Polia",
+      "Corda"
+    ],
     "instructions": [
       "Fique em pé de frente para a polia alta com a corda presa",
       "Segure as extremidades da corda com as palmas voltadas uma para a outra",
@@ -854,10 +1255,18 @@
     "name": "Tríceps na Polia com Barra",
     "namePt": "Tríceps na Polia com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Tríceps/triceps-barra-no-polia.gif",
-    "targetMuscles": ["Tríceps", "Anconeo"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Polia", "Barra"],
+    "gifUrl": "gifs360x360/Academia/Tríceps/triceps-barra-no-polia.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Anconeo"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Polia",
+      "Barra"
+    ],
     "instructions": [
       "Fique em pé de frente para a polia alta com a barra reta presa",
       "Segure a barra com pegada pronada na largura dos ombros",
@@ -871,10 +1280,18 @@
     "name": "Mergulho no Banco",
     "namePt": "Mergulho no Banco",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Tríceps/mergulho-no-banco.gif",
-    "targetMuscles": ["Tríceps", "Peitoral Inferior", "Deltoide Anterior"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Banco"],
+    "gifUrl": "gifs360x360/Academia/Tríceps/mergulho-no-banco.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Peitoral Inferior",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Banco"
+    ],
     "instructions": [
       "Apoie as mãos na borda de um banco atrás de você",
       "Estenda as pernas à frente com os calcanhares no chão",
@@ -888,10 +1305,17 @@
     "name": "Coice com Halter",
     "namePt": "Coice com Halter",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Tríceps/coice-com-halter.gif",
-    "targetMuscles": ["Tríceps"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Halter", "Banco"],
+    "gifUrl": "gifs360x360/Academia/Tríceps/coice-com-halter.gif",
+    "targetMuscles": [
+      "Tríceps"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Halter",
+      "Banco"
+    ],
     "instructions": [
       "Apoie um joelho e uma mão no banco, inclinando o tronco para frente",
       "Segure um halter com o braço livre, cotovelo flexionado a 90 graus",
@@ -905,10 +1329,17 @@
     "name": "Flexão Diamante (Casa)",
     "namePt": "Flexão Diamante (Casa)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Tríceps/Diamond-Push-up.gif",
-    "targetMuscles": ["Tríceps", "Peitoral Interno"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Tríceps/Diamond-Push-up.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Peitoral Interno"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione-se em prancha com as mãos juntas formando um diamante",
       "Una os polegares e indicadores embaixo do peito",
@@ -922,10 +1353,17 @@
     "name": "Tríceps no Chão",
     "namePt": "Tríceps no Chão",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Tríceps/Triceps-dips-on-floors.gif",
-    "targetMuscles": ["Tríceps", "Deltoide Anterior"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Tríceps/Triceps-dips-on-floors.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Sente-se no chão com as mãos apoiadas atrás de você",
       "Eleve os quadris do chão mantendo os joelhos flexionados",
@@ -939,10 +1377,18 @@
     "name": "Mergulho em Paralelas",
     "namePt": "Mergulho em Paralelas",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Tríceps/parallel-bar-dip.gif",
-    "targetMuscles": ["Tríceps", "Peitoral Inferior", "Deltoide Anterior"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Barras Paralelas"],
+    "gifUrl": "gifs360x360/Casa/Tríceps/parallel-bar-dip.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Peitoral Inferior",
+      "Deltoide Anterior"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Barras Paralelas"
+    ],
     "instructions": [
       "Segure as barras paralelas com os braços estendidos",
       "Mantenha o corpo na vertical com leve inclinação para frente",
@@ -956,10 +1402,17 @@
     "name": "Tríceps Francês Sentado com Halter",
     "namePt": "Tríceps Francês Sentado com Halter",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Tríceps/Seated-Dumbbell-Triceps-Extension.gif",
-    "targetMuscles": ["Tríceps"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Halter", "Banco"],
+    "gifUrl": "gifs360x360/Casa/Tríceps/Seated-Dumbbell-Triceps-Extension.gif",
+    "targetMuscles": [
+      "Tríceps"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Halter",
+      "Banco"
+    ],
     "instructions": [
       "Sente-se em um banco segurando um halter com ambas as mãos",
       "Levante o halter acima da cabeça com os braços estendidos",
@@ -973,10 +1426,18 @@
     "name": "Mergulho no Banco Unilateral",
     "namePt": "Mergulho no Banco Unilateral",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Tríceps/One-arm-Single-leg-Bench-Dips.gif",
-    "targetMuscles": ["Tríceps", "Core", "Estabilizadores"],
-    "bodyParts": ["Tríceps"],
-    "equipments": ["Banco"],
+    "gifUrl": "gifs360x360/Casa/Tríceps/One-arm-Single-leg-Bench-Dips.gif",
+    "targetMuscles": [
+      "Tríceps",
+      "Core",
+      "Estabilizadores"
+    ],
+    "bodyParts": [
+      "Tríceps"
+    ],
+    "equipments": [
+      "Banco"
+    ],
     "instructions": [
       "Apoie uma mão na borda do banco atrás de você",
       "Estenda a perna oposta à mão de apoio à frente",
@@ -990,10 +1451,17 @@
     "name": "Abdominal na Máquina",
     "namePt": "Abdominal na Máquina",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Abdômen/abdominal-na-maquina.gif",
-    "targetMuscles": ["Reto Abdominal", "Oblíquos"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Abdômen/abdominal-na-maquina.gif",
+    "targetMuscles": [
+      "Reto Abdominal",
+      "Oblíquos"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Sente-se na máquina e ajuste o peso desejado",
       "Segure as alças e apoie os pés na plataforma",
@@ -1007,10 +1475,18 @@
     "name": "Abdominal no Cabo (Pulldown)",
     "namePt": "Abdominal no Cabo (Pulldown)",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Abdômen/abdominal-no-cabo.gif",
-    "targetMuscles": ["Reto Abdominal", "Oblíquos"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Polia", "Corda"],
+    "gifUrl": "gifs360x360/Academia/Abdômen/abdominal-no-cabo.gif",
+    "targetMuscles": [
+      "Reto Abdominal",
+      "Oblíquos"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Polia",
+      "Corda"
+    ],
     "instructions": [
       "Ajoelhe-se de frente para a polia alta segurando a corda",
       "Posicione as mãos ao lado da cabeça ou pescoço",
@@ -1024,10 +1500,17 @@
     "name": "Elevação de Pernas Suspenso",
     "namePt": "Elevação de Pernas Suspenso",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Abdômen/elevacao-de-pernas.gif",
-    "targetMuscles": ["Reto Abdominal Inferior", "Flexores do Quadril"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Barra Fixa"],
+    "gifUrl": "gifs360x360/Academia/Abdômen/elevacao-de-pernas.gif",
+    "targetMuscles": [
+      "Reto Abdominal Inferior",
+      "Flexores do Quadril"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Barra Fixa"
+    ],
     "instructions": [
       "Pendure-se em uma barra com os braços estendidos",
       "Mantenha as pernas retas ou levemente flexionadas",
@@ -1041,10 +1524,18 @@
     "name": "Prancha com Movimento",
     "namePt": "Prancha com Movimento",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Abdômen/prancha-com-movimento.gif",
-    "targetMuscles": ["Core", "Reto Abdominal", "Oblíquos"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Academia/Abdômen/prancha-com-movimento.gif",
+    "targetMuscles": [
+      "Core",
+      "Reto Abdominal",
+      "Oblíquos"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione-se em prancha com antebraços apoiados no chão",
       "Mantenha o corpo reto dos pés à cabeça",
@@ -1058,10 +1549,18 @@
     "name": "Russian Twist",
     "namePt": "Russian Twist",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Abdômen/Russian-Twist.gif",
-    "targetMuscles": ["Oblíquos", "Reto Abdominal"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Peso Corporal", "Anilha"],
+    "gifUrl": "gifs360x360/Academia/Abdômen/Russian-Twist.gif",
+    "targetMuscles": [
+      "Oblíquos",
+      "Reto Abdominal"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Peso Corporal",
+      "Anilha"
+    ],
     "instructions": [
       "Sente-se no chão com os joelhos flexionados e pés elevados",
       "Incline o tronco para trás mantendo as costas retas",
@@ -1075,10 +1574,17 @@
     "name": "Abdominal Bicicleta",
     "namePt": "Abdominal Bicicleta",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Abdômen/Bicycle-Crunch.gif",
-    "targetMuscles": ["Reto Abdominal", "Oblíquos"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Abdômen/Bicycle-Crunch.gif",
+    "targetMuscles": [
+      "Reto Abdominal",
+      "Oblíquos"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Deite-se de costas com as mãos atrás da cabeça",
       "Eleve as pernas com os joelhos flexionados a 90 graus",
@@ -1092,10 +1598,18 @@
     "name": "Prancha Serrote",
     "namePt": "Prancha Serrote",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Abdômen/body-saw-plank.gif",
-    "targetMuscles": ["Core", "Reto Abdominal", "Estabilizadores"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Abdômen/body-saw-plank.gif",
+    "targetMuscles": [
+      "Core",
+      "Reto Abdominal",
+      "Estabilizadores"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione-se em prancha com antebraços no chão",
       "Apoie os pés em uma superfície que deslize ou use meias",
@@ -1109,10 +1623,18 @@
     "name": "Mountain Climber Cruzado",
     "namePt": "Mountain Climber Cruzado",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Abdômen/Cross-Body-Mountain-Climber.gif",
-    "targetMuscles": ["Oblíquos", "Reto Abdominal", "Core"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Abdômen/Cross-Body-Mountain-Climber.gif",
+    "targetMuscles": [
+      "Oblíquos",
+      "Reto Abdominal",
+      "Core"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Inicie em posição de prancha alta com braços estendidos",
       "Leve o joelho direito em direção ao cotovelo esquerdo",
@@ -1126,10 +1648,17 @@
     "name": "Abdominal Cruzado",
     "namePt": "Abdominal Cruzado",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Abdômen/Cross-Crunch.gif",
-    "targetMuscles": ["Oblíquos", "Reto Abdominal"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Abdômen/Cross-Crunch.gif",
+    "targetMuscles": [
+      "Oblíquos",
+      "Reto Abdominal"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Deite-se de costas com as mãos atrás da cabeça",
       "Flexione um joelho e mantenha a outra perna estendida",
@@ -1143,10 +1672,18 @@
     "name": "Prancha Lateral para Frontal",
     "namePt": "Prancha Lateral para Frontal",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Abdômen/Front-to-Side-Plank.gif",
-    "targetMuscles": ["Core", "Oblíquos", "Estabilizadores"],
-    "bodyParts": ["Abdômen"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Abdômen/Front-to-Side-Plank.gif",
+    "targetMuscles": [
+      "Core",
+      "Oblíquos",
+      "Estabilizadores"
+    ],
+    "bodyParts": [
+      "Abdômen"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Inicie em posição de prancha frontal com antebraços no chão",
       "Gire o corpo para o lado apoiando-se em um antebraço",
@@ -1160,10 +1697,19 @@
     "name": "Hip Thrust com Barra",
     "namePt": "Hip Thrust com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Glúteos/Hip-Thrust-na-barra.gif",
-    "targetMuscles": ["Glúteos", "Isquiotibiais", "Core"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Barra", "Banco"],
+    "gifUrl": "gifs360x360/Academia/Glúteos/Hip-Thrust-na-barra.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Isquiotibiais",
+      "Core"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Barra",
+      "Banco"
+    ],
     "instructions": [
       "Sente-se no chão com as costas apoiadas em um banco",
       "Posicione a barra sobre os quadris (use almofada para conforto)",
@@ -1177,10 +1723,17 @@
     "name": "Elevação Pélvica na Máquina",
     "namePt": "Elevação Pélvica na Máquina",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Glúteos/Elevação-pelvica-na-maquina.gif",
-    "targetMuscles": ["Glúteos", "Isquiotibiais"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Glúteos/Elevação-pelvica-na-maquina.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Posicione-se na máquina com as costas apoiadas",
       "Coloque os pés na plataforma e ajuste o peso",
@@ -1194,10 +1747,18 @@
     "name": "Coice na Polia",
     "namePt": "Coice na Polia",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Glúteos/coice-na-polia.gif",
-    "targetMuscles": ["Glúteos", "Isquiotibiais"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Polia", "Tornozeleira"],
+    "gifUrl": "gifs360x360/Academia/Glúteos/coice-na-polia.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Polia",
+      "Tornozeleira"
+    ],
     "instructions": [
       "Prenda a tornozeleira da polia baixa em um tornozelo",
       "Apoie-se na máquina mantendo o corpo estável",
@@ -1211,10 +1772,18 @@
     "name": "Abdução na Máquina",
     "namePt": "Abdução na Máquina",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Glúteos/abducao-na-maquina.gif",
-    "targetMuscles": ["Glúteo Médio", "Glúteo Mínimo", "Tensor da Fáscia Lata"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Glúteos/abducao-na-maquina.gif",
+    "targetMuscles": [
+      "Glúteo Médio",
+      "Glúteo Mínimo",
+      "Tensor da Fáscia Lata"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Sente-se na máquina com as costas apoiadas",
       "Posicione as pernas nas almofadas laterais",
@@ -1228,10 +1797,18 @@
     "name": "Agachamento Sumô com Barra",
     "namePt": "Agachamento Sumô com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Glúteos/agachamento-sumô.gif",
-    "targetMuscles": ["Glúteos", "Quadríceps", "Adutores"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Barra"],
+    "gifUrl": "gifs360x360/Academia/Glúteos/agachamento-sumô.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Quadríceps",
+      "Adutores"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Barra"
+    ],
     "instructions": [
       "Posicione a barra nas costas com os pés bem afastados",
       "Aponte os pés para fora em aproximadamente 45 graus",
@@ -1245,10 +1822,19 @@
     "name": "Hip Thrust com Peso Corporal",
     "namePt": "Hip Thrust com Peso Corporal",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Glúteos/Barbell-Hip-Thrust.gif",
-    "targetMuscles": ["Glúteos", "Isquiotibiais", "Core"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Peso Corporal", "Banco"],
+    "gifUrl": "gifs360x360/Casa/Glúteos/Barbell-Hip-Thrust.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Isquiotibiais",
+      "Core"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Peso Corporal",
+      "Banco"
+    ],
     "instructions": [
       "Sente-se no chão com as costas apoiadas em um banco ou sofá",
       "Posicione os pés no chão na largura dos ombros",
@@ -1262,10 +1848,18 @@
     "name": "Afundo Reverso com Peso Corporal",
     "namePt": "Afundo Reverso com Peso Corporal",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Glúteos/bodyweight-reverse-lunge.gif",
-    "targetMuscles": ["Glúteos", "Quadríceps", "Isquiotibiais"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Glúteos/bodyweight-reverse-lunge.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Quadríceps",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Fique em pé com os pés juntos",
       "Dê um passo para trás com uma perna",
@@ -1279,10 +1873,17 @@
     "name": "Exercício da Concha (Clamshell)",
     "namePt": "Exercício da Concha (Clamshell)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Glúteos/Side-Lying-Clam.gif",
-    "targetMuscles": ["Glúteo Médio", "Glúteo Mínimo"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Glúteos/Side-Lying-Clam.gif",
+    "targetMuscles": [
+      "Glúteo Médio",
+      "Glúteo Mínimo"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Deite-se de lado com os joelhos flexionados a 90 graus",
       "Mantenha os pés juntos e apoie a cabeça no braço",
@@ -1296,10 +1897,17 @@
     "name": "Coice de Perna Reta",
     "namePt": "Coice de Perna Reta",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Glúteos/Straight-Leg-Kickback.gif",
-    "targetMuscles": ["Glúteos", "Isquiotibiais"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Glúteos/Straight-Leg-Kickback.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Isquiotibiais"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Posicione-se de quatro apoios no chão",
       "Mantenha as mãos alinhadas com os ombros",
@@ -1313,10 +1921,18 @@
     "name": "Agachamento Sumô (Casa)",
     "namePt": "Agachamento Sumô (Casa)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Glúteos/SUMO-SQUAT.gif",
-    "targetMuscles": ["Glúteos", "Quadríceps", "Adutores"],
-    "bodyParts": ["Glúteos"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Glúteos/SUMO-SQUAT.gif",
+    "targetMuscles": [
+      "Glúteos",
+      "Quadríceps",
+      "Adutores"
+    ],
+    "bodyParts": [
+      "Glúteos"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Fique em pé com os pés bem afastados (mais que a largura dos ombros)",
       "Aponte os pés para fora em aproximadamente 45 graus",
@@ -1330,10 +1946,17 @@
     "name": "Panturrilha em Pé na Máquina",
     "namePt": "Panturrilha em Pé na Máquina",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Panturrilha/panturrilha-em-pé-na-maquina.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Panturrilha/panturrilha-em-pé-na-maquina.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Posicione-se na máquina com os ombros sob as almofadas",
       "Coloque a ponta dos pés na plataforma com calcanhares para fora",
@@ -1347,10 +1970,17 @@
     "name": "Panturrilha Sentado na Máquina",
     "namePt": "Panturrilha Sentado na Máquina",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Panturrilha/panturrilha-sentado.gif",
-    "targetMuscles": ["Sóleo", "Gastrocnêmio"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Panturrilha/panturrilha-sentado.gif",
+    "targetMuscles": [
+      "Sóleo",
+      "Gastrocnêmio"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Sente-se na máquina posicionando a ponta dos pés na plataforma",
       "Coloque as almofadas sobre os joelhos",
@@ -1364,10 +1994,17 @@
     "name": "Panturrilha no Leg Press",
     "namePt": "Panturrilha no Leg Press",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Panturrilha/panturrilha-no-leg-press.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Leg Press"],
+    "gifUrl": "gifs360x360/Academia/Panturrilha/panturrilha-no-leg-press.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Leg Press"
+    ],
     "instructions": [
       "Posicione-se no leg press com apenas a ponta dos pés na plataforma",
       "Estenda as pernas mantendo joelhos levemente flexionados",
@@ -1381,10 +2018,17 @@
     "name": "Panturrilha Unilateral na Máquina",
     "namePt": "Panturrilha Unilateral na Máquina",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Panturrilha/panturrilha-unilateral.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Máquina"],
+    "gifUrl": "gifs360x360/Academia/Panturrilha/panturrilha-unilateral.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Máquina"
+    ],
     "instructions": [
       "Posicione-se na máquina apoiando apenas um pé na plataforma",
       "Coloque os ombros sob as almofadas",
@@ -1398,10 +2042,18 @@
     "name": "Elevação de Calcanhares com Barra",
     "namePt": "Elevação de Calcanhares com Barra",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Panturrilha/elevacao-de-calcanhares-com-barra.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Barra", "Step"],
+    "gifUrl": "gifs360x360/Academia/Panturrilha/elevacao-de-calcanhares-com-barra.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Barra",
+      "Step"
+    ],
     "instructions": [
       "Posicione a barra nas costas e fique em pé em um step",
       "Coloque a ponta dos pés na borda com calcanhares para fora",
@@ -1415,10 +2067,18 @@
     "name": "Elevação de Panturrilha tipo Burro",
     "namePt": "Elevação de Panturrilha tipo Burro",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Panturrilha/Donkey-Calf-Raise.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Peso Corporal", "Step"],
+    "gifUrl": "gifs360x360/Casa/Panturrilha/Donkey-Calf-Raise.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Peso Corporal",
+      "Step"
+    ],
     "instructions": [
       "Incline-se para frente apoiando as mãos em um banco ou parede",
       "Coloque a ponta dos pés em uma elevação (step ou degrau)",
@@ -1432,10 +2092,18 @@
     "name": "Elevação de Panturrilha com Halter",
     "namePt": "Elevação de Panturrilha com Halter",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Panturrilha/Dumbbell-Calf-Raise.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Halteres", "Step"],
+    "gifUrl": "gifs360x360/Casa/Panturrilha/Dumbbell-Calf-Raise.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Halteres",
+      "Step"
+    ],
     "instructions": [
       "Fique em pé segurando halteres ao lado do corpo",
       "Posicione a ponta dos pés em uma elevação (step ou degrau)",
@@ -1449,10 +2117,18 @@
     "name": "Elevação de Panturrilha Unilateral",
     "namePt": "Elevação de Panturrilha Unilateral",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Panturrilha/Single-Leg-Calf-Raises.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Peso Corporal", "Step"],
+    "gifUrl": "gifs360x360/Casa/Panturrilha/Single-Leg-Calf-Raises.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Peso Corporal",
+      "Step"
+    ],
     "instructions": [
       "Apoie-se em uma parede ou barra com uma mão",
       "Fique na ponta de um pé apenas em uma elevação",
@@ -1466,10 +2142,17 @@
     "name": "Panturrilha em Pé com Peso Corporal",
     "namePt": "Panturrilha em Pé com Peso Corporal",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Panturrilha/Standing-Calf-Raise.gif",
-    "targetMuscles": ["Gastrocnêmio", "Sóleo"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Panturrilha/Standing-Calf-Raise.gif",
+    "targetMuscles": [
+      "Gastrocnêmio",
+      "Sóleo"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Fique em pé com os pés na largura dos ombros",
       "Apoie-se em uma parede para equilíbrio se necessário",
@@ -1483,10 +2166,18 @@
     "name": "Panturrilha Sentado com Peso",
     "namePt": "Panturrilha Sentado com Peso",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Panturrilha/Weighted-Seated-Calf-Raise.gif",
-    "targetMuscles": ["Sóleo", "Gastrocnêmio"],
-    "bodyParts": ["Panturrilha"],
-    "equipments": ["Peso", "Cadeira"],
+    "gifUrl": "gifs360x360/Casa/Panturrilha/Weighted-Seated-Calf-Raise.gif",
+    "targetMuscles": [
+      "Sóleo",
+      "Gastrocnêmio"
+    ],
+    "bodyParts": [
+      "Panturrilha"
+    ],
+    "equipments": [
+      "Peso",
+      "Cadeira"
+    ],
     "instructions": [
       "Sente-se em uma cadeira com a ponta dos pés em uma elevação",
       "Coloque um peso sobre os joelhos (halteres, mochila ou garrafa)",
@@ -1500,10 +2191,18 @@
     "name": "Esteira",
     "namePt": "Esteira",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Cardio/esteira.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Pernas", "Core"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Esteira"],
+    "gifUrl": "gifs360x360/Academia/Cardio/esteira.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Pernas",
+      "Core"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Esteira"
+    ],
     "instructions": [
       "Ajuste a velocidade e inclinação conforme seu condicionamento",
       "Mantenha a postura ereta olhando para frente",
@@ -1517,10 +2216,18 @@
     "name": "Bicicleta Ergométrica",
     "namePt": "Bicicleta Ergométrica",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Cardio/bicicleta-ergométrica.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Quadríceps", "Panturrilhas"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Bicicleta Ergométrica"],
+    "gifUrl": "gifs360x360/Academia/Cardio/bicicleta-ergométrica.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Quadríceps",
+      "Panturrilhas"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Bicicleta Ergométrica"
+    ],
     "instructions": [
       "Ajuste o banco na altura correta (leve flexão no joelho quando o pedal estiver embaixo)",
       "Mantenha as costas retas e os ombros relaxados",
@@ -1534,10 +2241,18 @@
     "name": "Elíptico",
     "namePt": "Elíptico",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Cardio/eliptico.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Corpo Todo", "Core"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Elíptico"],
+    "gifUrl": "gifs360x360/Academia/Cardio/eliptico.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Corpo Todo",
+      "Core"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Elíptico"
+    ],
     "instructions": [
       "Posicione os pés nos pedais e segure as alças móveis",
       "Mantenha a postura ereta com o core contraído",
@@ -1551,10 +2266,18 @@
     "name": "Escada Ergométrica (Stairmaster)",
     "namePt": "Escada Ergométrica (Stairmaster)",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Cardio/escada-ergometrica.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Glúteos", "Pernas"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Escada Ergométrica"],
+    "gifUrl": "gifs360x360/Academia/Cardio/escada-ergometrica.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Glúteos",
+      "Pernas"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Escada Ergométrica"
+    ],
     "instructions": [
       "Suba mantendo a postura ereta sem se apoiar muito nas alças",
       "Coloque todo o pé em cada degrau",
@@ -1568,10 +2291,19 @@
     "name": "Transport (Ergômetro de Remo)",
     "namePt": "Transport (Ergômetro de Remo)",
     "location": "academia",
-    "gifUrl": "gifs 360x360/Academia/Cardio/transport.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Costas", "Pernas", "Core"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Ergômetro"],
+    "gifUrl": "gifs360x360/Academia/Cardio/transport.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Costas",
+      "Pernas",
+      "Core"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Ergômetro"
+    ],
     "instructions": [
       "Sente-se com os pés presos nas correias",
       "Inicie com as pernas flexionadas segurando o cabo",
@@ -1585,10 +2317,18 @@
     "name": "Burpee com Flexão",
     "namePt": "Burpee com Flexão",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Cardio/Burpee-with-Push-Up.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Corpo Todo", "Core"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Cardio/Burpee-with-Push-Up.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Corpo Todo",
+      "Core"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Fique em pé, depois agache e apoie as mãos no chão",
       "Jogue os pés para trás entrando em posição de prancha",
@@ -1602,10 +2342,18 @@
     "name": "Corrida com Joelhos Altos",
     "namePt": "Corrida com Joelhos Altos",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Cardio/High-Knee-Run.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Quadríceps", "Core"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Cardio/High-Knee-Run.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Quadríceps",
+      "Core"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Corra no lugar levantando os joelhos até a altura dos quadris",
       "Mantenha o core contraído e a postura ereta",
@@ -1619,10 +2367,18 @@
     "name": "Polichinelo (Jumping Jack)",
     "namePt": "Polichinelo (Jumping Jack)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Cardio/Jumping-jack.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Pernas", "Ombros"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Peso Corporal"],
+    "gifUrl": "gifs360x360/Casa/Cardio/Jumping-jack.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Pernas",
+      "Ombros"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Peso Corporal"
+    ],
     "instructions": [
       "Fique em pé com os pés juntos e braços ao lado do corpo",
       "Salte abrindo as pernas e levantando os braços acima da cabeça",
@@ -1636,10 +2392,18 @@
     "name": "Pular Corda",
     "namePt": "Pular Corda",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Cardio/Skip-Jump-Rope.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Panturrilhas", "Core"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Corda"],
+    "gifUrl": "gifs360x360/Casa/Cardio/Skip-Jump-Rope.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Panturrilhas",
+      "Core"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Corda"
+    ],
     "instructions": [
       "Segure a corda com as mãos na altura dos quadris",
       "Gire a corda usando os punhos, não os braços",
@@ -1653,10 +2417,18 @@
     "name": "Corrida na Esteira (Casa)",
     "namePt": "Corrida na Esteira (Casa)",
     "location": "casa",
-    "gifUrl": "gifs 360x360/Casa/Cardio/Treadmill-.gif",
-    "targetMuscles": ["Sistema Cardiovascular", "Pernas", "Core"],
-    "bodyParts": ["Cardio"],
-    "equipments": ["Esteira"],
+    "gifUrl": "gifs360x360/Casa/Cardio/Treadmill-.gif",
+    "targetMuscles": [
+      "Sistema Cardiovascular",
+      "Pernas",
+      "Core"
+    ],
+    "bodyParts": [
+      "Cardio"
+    ],
+    "equipments": [
+      "Esteira"
+    ],
     "instructions": [
       "Ajuste a velocidade conforme seu condicionamento",
       "Mantenha a postura ereta olhando para frente",
