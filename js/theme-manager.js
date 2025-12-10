@@ -230,8 +230,16 @@ const AuthManager = {
     // Redirecionar para login se não estiver logado
     requireAuth() {
         if (!this.isLoggedIn()) {
-            alert('Você precisa fazer login para acessar esta página.');
-            window.location.href = "index.html";
+            // Tenta usar showToast se disponível, caso contrário usa alert
+            if (typeof showToast === 'function') {
+                showToast('Acesso Negado 🔒', 'Você precisa fazer login para acessar esta página.', 'warning');
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1500);
+            } else {
+                alert('Você precisa fazer login para acessar esta página.');
+                window.location.href = "index.html";
+            }
             return false;
         }
         return true;

@@ -24,30 +24,30 @@
     --input-border: #cccccc;
 }
 
-/* Tema escuro */
+/* Tema escuro - Otimizado para Alto Contraste */
 [data-theme='dark'] {
     /* Cores de fundo */
-    --bg-color: #121212;
-    --modal-bg: #1e1e1e;
-    --card-bg: #2d2d2d;
-    --secondary-bg: #1e1e1e;
-    --overlay-bg: rgba(0, 0, 0, 0.85);
-    --hover-bg: #3a3a3a;
+    --bg-color: #0a0a0a;
+    --modal-bg: #161616;
+    --card-bg: #1f1f1f;
+    --secondary-bg: #1a1a1a;
+    --overlay-bg: rgba(0, 0, 0, 0.92);
+    --hover-bg: #282828;
     
-    /* Cores de texto */
-    --text-color: #ffffff;
-    --text-secondary: #b3b3b3;
-    --text-muted: #808080;
+    /* Cores de texto - Alto Contraste */
+    --text-color: #f0f0f0;
+    --text-secondary: #d0d0d0;
+    --text-muted: #a0a0a0;
     
-    /* Cores de destaque - mantendo o vermelho original */
-    --primary-color: #ff6347;
-    --primary-hover: #e55347;
-    --accent-color: #ff6347;
+    /* Cores de destaque - Máxima visibilidade */
+    --primary-color: #ff8577;
+    --primary-hover: #ff6b5a;
+    --accent-color: #ff8577;
     
-    /* Cores de borda */
-    --border-color: #404040;
-    --divider-color: #404040;
-    --input-border: #555555;
+    /* Cores de borda - Maior contraste */
+    --border-color: #3a3a3a;
+    --divider-color: #2e2e2e;
+    --input-border: #4a4a4a;
     
     /* Variáveis específicas do chat */
     --chat-user-bg: #8B2525;
@@ -82,42 +82,59 @@
     z-index: 100 !important;
 }
 
-/* Modais */
+/* Modais - Alto Contraste */
 [data-theme='dark'] .perfil-modal,
 [data-theme='dark'] .menu-modal {
     background-color: var(--modal-bg);
     color: var(--text-color);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
 }
 
 [data-theme='dark'] .perfil-modal-bg,
 [data-theme='dark'] .menu-modal-bg {
     background: var(--overlay-bg);
+    backdrop-filter: blur(6px);
 }
 
 [data-theme='dark'] .perfil-modal-divider,
 [data-theme='dark'] .menu-modal-divider {
     border-color: var(--divider-color);
+    border-width: 2px;
 }
 
 [data-theme='dark'] .perfil-modal-item,
 [data-theme='dark'] .menu-modal-item {
     color: var(--text-color);
-    border-bottom-color: var(--divider-color);
+    border-bottom: 2px solid var(--divider-color);
+    padding: 14px 20px;
 }
 
 [data-theme='dark'] .perfil-modal-item:hover,
 [data-theme='dark'] .menu-modal-item:hover {
-    background-color: var(--card-bg);
+    background-color: var(--hover-bg);
+    border-left: 4px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
-/* Cards e containers */
+/* Cards e containers - Alto Contraste */
 [data-theme='dark'] .card {
     background-color: var(--card-bg);
-    border-color: var(--border-color);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 20px rgba(255, 133, 119, 0.3);
+    transform: translateY(-2px);
 }
 
 [data-theme='dark'] .card-label {
     color: var(--text-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
 }
 
 /* Footer */
@@ -125,14 +142,17 @@
     border-color: var(--primary-color);
 }
 
-/* Textos específicos */
+/* Textos específicos - Otimizado */
 [data-theme='dark'] .perfil-modal-header {
     color: var(--primary-color);
-    background: var(--modal-bg);
+    background: var(--secondary-bg);
+    border-bottom: 2px solid var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme='dark'] .perfil-modal-user-nome {
     color: var(--text-color);
+    font-weight: 600;
 }
 
 [data-theme='dark'] .perfil-modal-user-email {
@@ -141,12 +161,48 @@
 
 [data-theme='dark'] .menu-modal-header {
     color: var(--primary-color);
-    background: var(--modal-bg);
+    background: var(--secondary-bg);
+    border-bottom: 2px solid var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Mantém elementos vermelhos na cor original ou melhora para modo escuro */
+/* Botões - Alto Contraste */
+[data-theme='dark'] button,
+[data-theme='dark'] .btn,
+[data-theme='dark'] .btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    box-shadow: 0 3px 10px rgba(255, 133, 119, 0.4);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+[data-theme='dark'] button:hover,
+[data-theme='dark'] .btn:hover,
+[data-theme='dark'] .btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 5px 16px rgba(255, 133, 119, 0.5);
+    transform: translateY(-3px);
+}
+
+[data-theme='dark'] button:active,
+[data-theme='dark'] .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(255, 133, 119, 0.3);
+}
+
+[data-theme='dark'] button:disabled,
+[data-theme='dark'] .btn:disabled {
+    background-color: #2a2a2a;
+    color: #5a5a5a;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+/* Elementos vermelhos mantidos */
 [data-theme='dark'] .header-item:hover,
-[data-theme='dark'] .btn-primary,
 [data-theme='dark'] .chat-send-btn,
 [data-theme='dark'] .menu-icon .bar {
     color: var(--primary-color) !important;
@@ -155,12 +211,22 @@
 /* Manter o botão "Sair" em vermelho mais forte */
 [data-theme='dark'] #sair-btn {
     color: #ff4444 !important;
+    background-color: transparent;
+}
+
+[data-theme='dark'] #sair-btn:hover {
+    background-color: rgba(255, 68, 68, 0.1);
 }
 
 /* Links e elementos de destaque */
-[data-theme='dark'] a:hover,
-[data-theme='dark'] .btn-primary:hover {
-    color: var(--primary-hover) !important;
+[data-theme='dark'] a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+[data-theme='dark'] a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
 }
 
 /* Tabelas no modo escuro */
@@ -180,26 +246,37 @@
     background-color: var(--card-bg);
 }
 
-/* Input e campos de formulário */
+/* Input e campos de formulário - Alto Contraste */
 [data-theme='dark'] input,
 [data-theme='dark'] textarea,
 [data-theme='dark'] select {
-    background-color: var(--modal-bg);
-    color: var(--text-color);
-    border-color: var(--input-border);
+    background-color: #161616;
+    color: #f0f0f0;
+    border: 2px solid var(--input-border);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] input:hover,
+[data-theme='dark'] textarea:hover,
+[data-theme='dark'] select:hover {
+    border-color: #5a5a5a;
+    background-color: #1a1a1a;
 }
 
 [data-theme='dark'] input:focus,
 [data-theme='dark'] textarea:focus,
 [data-theme='dark'] select:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(122, 25, 25, 0.2);
+    background-color: #222;
+    box-shadow: 0 0 0 4px rgba(255, 133, 119, 0.25);
+    outline: none;
 }
 
 /* Placeholders em inputs */
 [data-theme='dark'] input::placeholder,
 [data-theme='dark'] textarea::placeholder {
-    color: var(--text-secondary);
+    color: #888;
+    opacity: 0.8;
 }
 
 /* Container principal */
@@ -208,14 +285,26 @@
     color: var(--text-color);
 }
 
-/* Títulos e seções */
+/* Títulos e seções - Otimizado */
 [data-theme='dark'] h1,
 [data-theme='dark'] h2,
 [data-theme='dark'] h3,
 [data-theme='dark'] h4,
 [data-theme='dark'] h5,
 [data-theme='dark'] h6 {
-    color: var(--text-color);
+    color: #e8e8e8;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] h1 {
+    color: #fff;
+}
+
+[data-theme='dark'] p,
+[data-theme='dark'] li,
+[data-theme='dark'] span {
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 /* Seção da faixa */
@@ -1077,5 +1166,105 @@ input:checked + .slider:before {
 
 [data-theme='dark'] .resultado-title {
     color: #ff5252;
+}
+
+/* ========================================
+   Scrollbar Personalizada - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 10px;
+    border: 2px solid #1a1a1a;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:active {
+    background: var(--primary-color);
+}
+
+/* Firefox scrollbar */
+[data-theme='dark'] * {
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a #1a1a1a;
+}
+
+/* ========================================
+   Seleção de Texto - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] ::selection {
+    background: rgba(255, 121, 97, 0.3);
+    color: #fff;
+}
+
+[data-theme='dark'] ::-moz-selection {
+    background: rgba(255, 121, 97, 0.3);
+    color: #fff;
+}
+
+/* ========================================
+   Tabelas - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] table {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] th {
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] td {
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] tr:hover {
+    background: var(--hover-bg);
+}
+
+/* ========================================
+   Badges e Tags - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] .badge,
+[data-theme='dark'] .tag {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme='dark'] .badge-primary {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: transparent;
+}
+
+/* ========================================
+   Tooltips - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] .tooltip {
+    background: #2a2a2a;
+    color: #e8e8e8;
+    border: 1px solid #444;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 

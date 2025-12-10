@@ -82,134 +82,116 @@
     </header>
 
     <main style="padding: 20px; max-width: 1200px; margin: 0 auto;">
-        <h1 style="text-align: center; color: var(--text-color, #333); margin-bottom: 30px;">📚 Central de Ajuda</h1>
+        <h1 style="text-align: center; color: var(--text-color, #333); margin-bottom: 10px;">📚 Central de Ajuda</h1>
+        <p style="text-align: center; color: var(--text-secondary, #666); margin-bottom: 30px;">Encontre respostas e aprenda a usar todas as funcionalidades</p>
         
-        <!-- Seção: Como Usar o App -->
-        <section class="help-section">
-            <h2 class="section-title">🚀 Como Usar o Trainew IA</h2>
-            
-            <div class="tutorial-grid">
-                <div class="tutorial-card">
-                    <div class="tutorial-icon">👤</div>
-                    <h3>1. Criar Conta</h3>
-                    <p>Cadastre-se com seu email e senha para ter acesso a todos os recursos do app.</p>
-                </div>
-                
-                <div class="tutorial-card">
-                    <div class="tutorial-icon">🤖</div>
-                    <h3>2. Chat IA</h3>
-                    <p>Converse com nossa IA para receber treinos personalizados e sugestões de dieta.</p>
-                </div>
-                
-                <div class="tutorial-card">
-                    <div class="tutorial-icon">💪</div>
-                    <h3>3. Treinos</h3>
-                    <p>Acesse seus treinos salvos e acompanhe seu progresso físico.</p>
-                </div>
-                
-                <div class="tutorial-card">
-                    <div class="tutorial-icon">🥗</div>
-                    <h3>4. Dieta</h3>
-                    <p>Veja suas refeições planejadas e dicas nutricionais personalizadas.</p>
-                </div>
+        <!-- Barra de Pesquisa -->
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="help-search" 
+                    class="search-input" 
+                    placeholder="Pesquisar na ajuda... (ex: como gerar treino, cardio, chat)"
+                    autocomplete="off"
+                >
+                <button class="search-clear" id="clear-search" style="display: none;">✕</button>
+            </div>
+            <div id="search-results" class="search-results" style="display: none;"></div>
+        </div>
 
-                <div class="tutorial-card">
-                    <div class="tutorial-icon">📸</div>
-                    <h3>5. Alimentação</h3>
-                    <p>Tire fotos das suas refeições e receba análise nutricional completa com IA Vision.</p>
-                </div>
+        <!-- Índice de Tópicos -->
+        <div class="topics-index">
+            <h3 style="color: var(--text-color); margin-bottom: 15px;">📋 Tópicos Rápidos</h3>
+            <div class="topics-grid">
+                <a href="#treinos" class="topic-link">💪 Treinos</a>
+                <a href="#chat-treino" class="topic-link">💬 Chat de Treinos</a>
+                <a href="#cardio" class="topic-link">🏃 Cardio</a>
+                <a href="#dieta" class="topic-link">🥗 Dieta</a>
+                <a href="#chat-ia" class="topic-link">🤖 Chat IA</a>
+                <a href="#alimentacao" class="topic-link">📸 Alimentação</a>
+                <a href="#perfil" class="topic-link">👤 Perfil</a>
+                <a href="#config" class="topic-link">⚙️ Configurações</a>
+            </div>
+        </div>
+
+        <!-- Seção: Treinos -->
+        <section class="help-section" id="treinos">
+            <h2 class="section-title">💪 Treinos</h2>
+            
+            <div class="feature-detail">
+                <h3>Como gerar treino</h3>
+                <p><strong>1.</strong> Vá para o Chat IA<br>
+                <strong>2.</strong> Digite: "Gerar treino de 3 dias para academia, intermediário"<br>
+                <strong>3.</strong> Clique em "💾 Salvar este treino"<br>
+                <strong>4.</strong> Acesse na página de Treinos</p>
                 
-                <div class="tutorial-card">
-                    <div class="tutorial-icon">⚙️</div>
-                    <h3>6. Configurações</h3>
-                    <p>Personalize o app com modo escuro e outras preferências.</p>
-                </div>
-                
-                <div class="tutorial-card">
-                    <div class="tutorial-icon">👥</div>
-                    <h3>7. Perfil</h3>
-                    <p>Gerencie suas informações, foto de perfil e dados da conta.</p>
-                </div>
+                <p style="margin-top: 15px;"><strong>💡 Pode informar:</strong> dias/semana (2-6), local (academia/casa), nível (iniciante/intermediário/avançado)</p>
             </div>
         </section>
 
-        <!-- Seção: Como Usar Alimentação -->
-        <section class="help-section">
-            <h2 class="section-title">📸 Como Usar a Análise Nutricional</h2>
+        <!-- Seção: Chat de Treinos -->
+        <section class="help-section" id="chat-treino">
+            <h2 class="section-title">💬 Chat de Treinos</h2>
             
             <div class="feature-detail">
-                <h3>Análise de Refeições com IA Vision</h3>
-                <p>A página de Alimentação permite que você tire fotos das suas refeições e receba uma análise nutricional completa instantaneamente usando inteligência artificial avançada.</p>
-                
-                <div class="steps-list">
-                    <div class="step-item">
-                        <span class="step-number">1</span>
-                        <div class="step-content">
-                            <h4>Acesse a Página</h4>
-                            <p>Vá até a aba "Alimentação" através do carrossel na página inicial ou pelo menu lateral.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <span class="step-number">2</span>
-                        <div class="step-content">
-                            <h4>Tire ou Selecione uma Foto</h4>
-                            <p>Você tem três opções:</p>
-                            <ul style="margin-top: 10px; padding-left: 20px;">
-                                <li><strong>📷 Tirar Foto:</strong> Clique no botão "Tirar Foto" para abrir a câmera do seu dispositivo e fotografar a refeição na hora</li>
-                                <li><strong>🖼️ Escolher da Galeria:</strong> Selecione uma foto já existente na galeria do seu celular ou computador</li>
-                                <li><strong>Arrastar:</strong> Arraste uma imagem diretamente para a área de upload</li>
-                            </ul>
-                            <p style="margin-top: 10px;">Formatos aceitos: JPG, PNG (máx. 10MB)</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <span class="step-number">3</span>
-                        <div class="step-content">
-                            <h4>Clique em Analisar</h4>
-                            <p>Após selecionar a foto, clique no botão "🔍 Analisar Refeição" e aguarde alguns segundos enquanto a IA processa a imagem.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <span class="step-number">4</span>
-                        <div class="step-content">
-                            <h4>Veja os Resultados</h4>
-                            <p>A IA irá identificar o alimento e mostrar informações detalhadas sobre:</p>
-                            <ul style="margin-top: 10px; padding-left: 20px;">
-                                <li>Calorias totais</li>
-                                <li>Quantidade de proteínas</li>
-                                <li>Carboidratos</li>
-                                <li>Gorduras</li>
-                                <li>Fibras</li>
-                                <li>Observações nutricionais e dicas</li>
-                                <li>Classificação de saudabilidade</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <span class="step-number">5</span>
-                        <div class="step-content">
-                            <h4>Consulte o Histórico</h4>
-                            <p>Todas as suas análises são salvas automaticamente no histórico. Clique em qualquer item para rever a análise completa.</p>
-                        </div>
-                    </div>
-                </div>
+                <p>Clique no <strong>botão 💬</strong> (canto direito) na página de Treinos para editar exercícios com IA.</p>
+                <p style="margin-top: 10px;"><strong>Exemplos:</strong> "Trocar supino por flexão" • "Adicionar rosca na segunda" • "Mudar para 4 séries"</p>
+            </div>
+        </section>
 
-                <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #2196f3;">
-                    <h4 style="color: #1565c0; margin-bottom: 10px;">💡 Dicas para Melhores Resultados</h4>
-                    <ul style="padding-left: 20px; color: #555;">
-                        <li>📱 <strong>Use a câmera do celular:</strong> A opção "Tirar Foto" abre diretamente a câmera do seu dispositivo</li>
-                        <li>Tire fotos com boa iluminação natural</li>
-                        <li>Enquadre toda a refeição no centro da imagem</li>
-                        <li>Evite fotos muito escuras ou borradas</li>
-                        <li>Quanto mais clara a foto, mais precisa será a análise</li>
-                        <li>Funciona melhor com pratos individuais</li>
-                        <li>Segure o celular na posição horizontal para melhor enquadramento</li>
-                    </ul>
-                </div>
+        <!-- Seção: Cardio -->
+        <section class="help-section" id="cardio">
+            <h2 class="section-title">🏃 Cardio</h2>
+            
+            <div class="feature-detail">
+                <p>Clique no <strong>botão "🏃 Cardio"</strong> (canto esquerdo) na página de Treinos para acessar exercícios cardiovasculares de academia e casa.</p>
+            </div>
+        </section>
+
+        <!-- Seção: Dieta -->
+        <section class="help-section" id="dieta">
+            <h2 class="section-title">🥗 Dieta</h2>
+            
+            <div class="feature-detail">
+                <p>No Chat IA, digite: "Gerar dieta para ganhar massa, 2500 calorias". Informe objetivo, calorias e restrições. Será salva na página Dieta.</p>
+            </div>
+        </section>
+
+        <!-- Seção: Chat IA -->
+        <section class="help-section" id="chat-ia">
+            <h2 class="section-title">🤖 Chat IA</h2>
+            
+            <div class="feature-detail">
+                <p>Assistente de fitness: gere treinos, dietas, tire dúvidas e receba dicas.</p>
+                <p style="margin-top: 10px;"><strong>Exemplos:</strong> "Gerar treino 4 dias hipertrofia" • "Dieta emagrecer 5kg" • "Como fazer supino?"</p>
+            </div>
+        </section>
+
+        <!-- Seção: Alimentação -->
+        <section class="help-section" id="alimentacao">
+            <h2 class="section-title">📸 Alimentação</h2>
+            
+            <div class="feature-detail">
+                <p>Tire foto da refeição usando a câmera ou escolha da galeria. Clique em "Analisar" para receber informações de calorias, macronutrientes e dicas. Histórico salvo automaticamente.</p>
+                <p style="margin-top: 10px;"><strong>💡 Dica:</strong> Use boa iluminação e enquadre toda a refeição.</p>
+            </div>
+        </section>
+
+        <!-- Seção: Perfil -->
+        <section class="help-section" id="perfil">
+            <h2 class="section-title">👤 Perfil</h2>
+            
+            <div class="feature-detail">
+                <p>Clique no <strong>ícone de perfil</strong> (topo direito) para alterar foto, nome ou sair da conta.</p>
+            </div>
+        </section>        <!-- Seção: Configurações -->
+        <section class="help-section" id="config">
+            <h2 class="section-title">⚙️ Configurações</h2>
+            
+            <div class="feature-detail">
+                <p>Acesse via <strong>Perfil > Configurações</strong> para ativar modo escuro e ajustar tamanho da fonte (5 níveis).</p>
             </div>
         </section>
 
@@ -850,11 +832,20 @@
 
         /* Responsividade para modo escuro */
         [data-theme='dark'] .help-section {
-            box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+            background: #1e1e1e;
+            border: 1px solid #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        [data-theme='dark'] .tutorial-card {
+            background: #252525;
+            border: 1px solid #333;
         }
 
         [data-theme='dark'] .tutorial-card:hover {
-            box-shadow: 0 4px 20px rgba(255,255,255,0.1);
+            background: #2a2a2a;
+            box-shadow: 0 6px 20px rgba(255,99,71,0.2);
+            border-color: var(--primary-color);
         }
 
         /* Links e elementos clicáveis */
@@ -894,29 +885,407 @@
 
         /* Melhorias específicas para modo escuro */
         [data-theme='dark'] h1 {
-            color: var(--text-color, #fff);
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         [data-theme='dark'] .section-title {
-            color: var(--primary-color, #ff6347);
+            color: #ff7961;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
-        [data-theme='dark'] .tutorial-card {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        [data-theme='dark'] h3,
+        [data-theme='dark'] h4 {
+            color: #e0e0e0;
+        }
+
+        [data-theme='dark'] p,
+        [data-theme='dark'] li {
+            color: #bbb;
+            line-height: 1.7;
         }
 
         [data-theme='dark'] .contact-card {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            background: #252525;
+            border: 1px solid #333;
         }
 
         [data-theme='dark'] .tip-item {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            background: #252525;
+            border: 1px solid #333;
+            border-left: 4px solid var(--primary-color);
         }
 
         [data-theme='dark'] .faq-item {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            background: #252525;
+            border: 1px solid #333;
+        }
+
+        [data-theme='dark'] .faq-question {
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        [data-theme='dark'] .faq-answer {
+            background: #1e1e1e;
+            color: #bbb;
+        }
+
+        /* Barra de Pesquisa */
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 30px;
+            padding: 12px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        [data-theme='dark'] .search-box {
+            background: #252525;
+            border: 1px solid #444;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+        }
+
+        [data-theme='dark'] .search-input {
+            color: #e0e0e0;
+        }
+
+        [data-theme='dark'] .search-input::placeholder {
+            color: #777;
+        }
+
+        .search-box:focus-within {
+            box-shadow: 0 6px 20px rgba(122, 25, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-icon {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: transparent;
+            color: var(--text-color);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 8px;
+            transition: color 0.2s;
+        }
+
+        .search-clear:hover {
+            color: var(--primary-color);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        [data-theme='dark'] .search-results {
+            background: #2a2a2a;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        [data-theme='dark'] .search-result-item {
+            border-bottom-color: #444;
+        }
+
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+
+        [data-theme='dark'] .search-result-item:hover {
+            background: #333;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .search-result-snippet {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        [data-theme='dark'] .search-result-snippet {
+            color: #999;
+        }
+
+        .search-highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        [data-theme='dark'] .search-highlight {
+            background: #665700;
+            color: #ffc107;
+        }
+
+        /* Índice de Tópicos */
+        .topics-index {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        [data-theme='dark'] .topics-index {
+            background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+            border: 1px solid #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        [data-theme='dark'] .topics-index h3 {
+            color: #e0e0e0;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .topic-link {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        [data-theme='dark'] .topic-link {
+            background: #252525;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .topic-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 99, 71, 0.3);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        [data-theme='dark'] .topic-link:hover {
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(255, 99, 71, 0.4);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #2196f3;
+        }
+
+        [data-theme='dark'] .info-box {
+            background: linear-gradient(135deg, #1e3a4f 0%, #2d4a5f 100%);
+            border: 1px solid #3d5a6f;
+            border-left: 4px solid #64b5f6;
+        }
+
+        .info-box h4 {
+            color: #1565c0;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        [data-theme='dark'] .info-box h4 {
+            color: #90caf9;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .info-box ul {
+            color: #1976d2;
+            line-height: 1.8;
+        }
+
+        [data-theme='dark'] .info-box ul,
+        [data-theme='dark'] .info-box li,
+        [data-theme='dark'] .info-box p {
+            color: #b3d9ff;
+        }
+
+        /* Examples Grid */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .example-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-color);
+            font-style: italic;
+            color: #555;
+        }
+
+        [data-theme='dark'] .example-card {
+            background: #252525;
+            border: 1px solid #333;
+            border-left: 3px solid var(--primary-color);
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .topics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 8px;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+
+    <script>
+        // Sistema de pesquisa
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('help-search');
+            const searchResults = document.getElementById('search-results');
+            const clearBtn = document.getElementById('clear-search');
+
+            // Conteúdo indexado para busca
+            const searchIndex = [
+                { title: 'Gerar treino personalizado', section: 'treinos', keywords: ['treino', 'gerar', 'criar', 'montar', 'personalizado', 'IA', 'dias', 'semana'], snippet: 'Peça no Chat IA para gerar treino com dias, local e nível.' },
+                { title: 'Chat de Treinos - Editar exercícios', section: 'chat-treino', keywords: ['chat', 'treinos', 'editar', 'trocar', 'substituir', 'exercicio', 'alterar', 'modificar'], snippet: 'Use o Chat de Treinos para trocar exercícios, adicionar ou remover.' },
+                { title: 'Exercícios de Cardio', section: 'cardio', keywords: ['cardio', 'cardiovascular', 'corrida', 'esteira', 'bicicleta', 'aerobico'], snippet: 'Acesse exercícios de cardio pelo botão laranja na página de Treinos.' },
+                { title: 'Executar exercícios', section: 'treinos', keywords: ['executar', 'fazer', 'treinar', 'series', 'repeticoes', 'gif', 'demonstracao'], snippet: 'Clique em um exercício para ver o GIF e acompanhar suas séries.' },
+                { title: 'Gerar dieta', section: 'dieta', keywords: ['dieta', 'alimentacao', 'nutrição', 'gerar', 'criar', 'calorias', 'emagrecer', 'massa'], snippet: 'Peça no Chat IA para gerar dieta com objetivo e calorias.' },
+                { title: 'Análise nutricional com foto', section: 'alimentacao', keywords: ['alimentacao', 'foto', 'camera', 'analisar', 'refeicao', 'calorias', 'nutrientes'], snippet: 'Tire foto da refeição e receba análise completa de calorias e nutrientes.' },
+                { title: 'Modo escuro', section: 'config', keywords: ['modo', 'escuro', 'dark', 'tema', 'visual', 'noite'], snippet: 'Ative em Perfil > Configurações > Modo Escuro.' },
+                { title: 'Tamanho da fonte', section: 'config', keywords: ['fonte', 'tamanho', 'texto', 'acessibilidade', 'aumentar', 'diminuir', 'letra'], snippet: 'Ajuste em Perfil > Configurações > Acessibilidade.' },
+                { title: 'Alterar foto de perfil', section: 'perfil', keywords: ['foto', 'perfil', 'imagem', 'avatar', 'alterar', 'trocar'], snippet: 'Clique no perfil > Alterar foto de perfil.' },
+                { title: 'Conversar com IA', section: 'chat-ia', keywords: ['chat', 'IA', 'conversar', 'perguntar', 'duvida', 'assistente'], snippet: 'Tire dúvidas e peça orientações sobre treinos e nutrição.' },
+            ];
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim().toLowerCase();
+                
+                if (query.length === 0) {
+                    searchResults.style.display = 'none';
+                    clearBtn.style.display = 'none';
+                    return;
+                }
+
+                clearBtn.style.display = 'block';
+
+                // Buscar nos índices
+                const results = searchIndex.filter(item => {
+                    return item.title.toLowerCase().includes(query) ||
+                           item.keywords.some(keyword => keyword.includes(query)) ||
+                           item.snippet.toLowerCase().includes(query);
+                });
+
+                if (results.length > 0) {
+                    let html = '';
+                    results.forEach(result => {
+                        const highlightedTitle = result.title.replace(
+                            new RegExp(query, 'gi'),
+                            match => `<span class="search-highlight">${match}</span>`
+                        );
+                        const highlightedSnippet = result.snippet.replace(
+                            new RegExp(query, 'gi'),
+                            match => `<span class="search-highlight">${match}</span>`
+                        );
+                        
+                        html += `
+                            <div class="search-result-item" onclick="location.hash='${result.section}'; document.getElementById('search-results').style.display='none';">
+                                <div class="search-result-title">${highlightedTitle}</div>
+                                <div class="search-result-snippet">${highlightedSnippet}</div>
+                            </div>
+                        `;
+                    });
+                    searchResults.innerHTML = html;
+                    searchResults.style.display = 'block';
+                } else {
+                    searchResults.innerHTML = `
+                        <div class="search-result-item">
+                            <div class="search-result-title">Nenhum resultado encontrado</div>
+                            <div class="search-result-snippet">Tente usar palavras-chave diferentes</div>
+                        </div>
+                    `;
+                    searchResults.style.display = 'block';
+                }
+            });
+
+            clearBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                searchResults.style.display = 'none';
+                this.style.display = 'none';
+                searchInput.focus();
+            });
+
+            // Fechar resultados ao clicar fora
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
