@@ -45,17 +45,6 @@ app.use('/js', express.static(path.join(process.cwd(), 'js'), {
   }
 }));
 
-app.use('/exercises_gifs', express.static(path.join(process.cwd(), 'exercises_gifs'), {
-  setHeaders: (res, path) => {
-    if (path.endsWith('.json')) {
-      res.set('Content-Type', 'application/json');
-    }
-    if (path.endsWith('.gif')) {
-      res.set('Content-Type', 'image/gif');
-    }
-  }
-}));
-
 const rootPath = path.resolve('public');
 
 // Rotas específicas para páginas

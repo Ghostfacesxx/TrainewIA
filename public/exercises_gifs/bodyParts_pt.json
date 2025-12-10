@@ -1,0 +1,42 @@
+[
+  {
+    "name": "neck",
+    "namePt": "Pescoço"
+  },
+  {
+    "name": "lower arms",
+    "namePt": "Antebraços"
+  },
+  {
+    "name": "shoulders",
+    "namePt": "Ombros"
+  },
+  {
+    "name": "cardio",
+    "namePt": "Cardio"
+  },
+  {
+    "name": "upper arms",
+    "namePt": "Braços"
+  },
+  {
+    "name": "chest",
+    "namePt": "Peito"
+  },
+  {
+    "name": "lower legs",
+    "namePt": "Panturrilhas"
+  },
+  {
+    "name": "back",
+    "namePt": "Costas"
+  },
+  {
+    "name": "upper legs",
+    "namePt": "Pernas"
+  },
+  {
+    "name": "waist",
+    "namePt": "Abdômen"
+  }
+]
