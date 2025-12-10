@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { OpenAI } from 'openai';
 import path from 'path';
+import fs from 'fs';
 
 const app = express();
 app.use(cors());
@@ -48,14 +49,12 @@ app.use('/js', express.static(path.join(process.cwd(), 'js'), {
 const rootPath = path.resolve('public');
 
 // Log para debug - verificar se os arquivos existem
-const fs = require('fs');
 const exercisesPath = path.join(process.cwd(), 'public', 'exercises_gifs', 'exercises.json');
 console.log('🔍 Verificando exercises.json:', fs.existsSync(exercisesPath) ? '✅ Existe' : '❌ Não encontrado');
 console.log('📁 Caminho completo:', exercisesPath);
 
 // Rota de teste para verificar se os arquivos existem
 app.get('/api/test-exercises', (req, res) => {
-  const fs = require('fs');
   const exercisesPath = path.join(process.cwd(), 'public', 'exercises_gifs', 'exercises.json');
   const exists = fs.existsSync(exercisesPath);
   
