@@ -1,0 +1,829 @@
+/* Sistema de Acessibilidade - Tamanho de Fonte */
+
+/* Tamanho Muito Pequeno */
+html.font-small {
+    font-size: 12px;
+}
+
+html.font-small .msg-bubble {
+    font-size: 0.8rem;
+}
+
+html.font-small .chat-input {
+    font-size: 0.85rem;
+}
+
+html.font-small .modal-exercicio-nome,
+html.font-small .modal-refeicao-nome {
+    font-size: 0.9rem;
+}
+
+html.font-small button,
+html.font-small .btn {
+    font-size: 0.85rem;
+}
+
+html.font-small h1 {
+    font-size: 1.5rem;
+}
+
+html.font-small h2 {
+    font-size: 1.25rem;
+}
+
+/* Tamanho Pequeno */
+html.font-medium-small {
+    font-size: 14px;
+}
+
+html.font-medium-small .msg-bubble {
+    font-size: 0.9rem;
+}
+
+html.font-medium-small .chat-input {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .modal-exercicio-nome,
+html.font-medium-small .modal-refeicao-nome {
+    font-size: 1rem;
+}
+
+html.font-medium-small button,
+html.font-medium-small .btn {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small h1 {
+    font-size: 1.75rem;
+}
+
+html.font-medium-small h2 {
+    font-size: 1.4rem;
+}
+
+/* Tamanho Normal (padrão) */
+html.font-normal {
+    font-size: 16px;
+}
+
+/* Tamanho Grande */
+html.font-medium-large {
+    font-size: 19px;
+}
+
+html.font-medium-large .msg-bubble {
+    font-size: 1.1rem;
+    padding: 14px 18px;
+}
+
+html.font-medium-large .chat-input {
+    font-size: 1.1rem;
+    padding: 14px 16px;
+}
+
+html.font-medium-large .modal-exercicio-nome,
+html.font-medium-large .modal-refeicao-nome {
+    font-size: 1.2rem;
+}
+
+html.font-medium-large .dia-card {
+    padding: 22px;
+}
+
+html.font-medium-large .dia-nome {
+    font-size: 24px;
+}
+
+html.font-medium-large .dia-resumo {
+    font-size: 16px;
+}
+
+html.font-medium-large button,
+html.font-medium-large .btn {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+}
+
+html.font-medium-large h1 {
+    font-size: 2.25rem;
+}
+
+html.font-medium-large h2 {
+    font-size: 1.75rem;
+}
+
+/* Tamanho Muito Grande */
+html.font-large {
+    font-size: 22px;
+}
+
+html.font-large .msg-bubble {
+    font-size: 1.2rem;
+    padding: 16px 20px;
+    max-width: 85%;
+}
+
+html.font-large .chat-input {
+    font-size: 1.2rem;
+    padding: 16px 18px;
+}
+
+html.font-large .modal-exercicio-nome,
+html.font-large .modal-refeicao-nome {
+    font-size: 1.35rem;
+}
+
+html.font-large .modal-exercicio-desc,
+html.font-large .modal-refeicao-desc {
+    font-size: 1.05rem;
+}
+
+html.font-large button,
+html.font-large .btn {
+    font-size: 1.2rem;
+    padding: 14px 26px;
+}
+
+html.font-large h1 {
+    font-size: 2.5rem;
+}
+
+html.font-large h2 {
+    font-size: 2rem;
+}
+
+html.font-large .dia-card {
+    padding: 24px;
+}
+
+html.font-large .dia-nome {
+    font-size: 26px;
+}
+
+html.font-large .dia-resumo {
+    font-size: 18px;
+}
+
+/* Página de Configurações - Acessibilidade */
+html.font-small .accessibility-section,
+html.font-small .danger-zone-section,
+html.font-small .theme-switch {
+    font-size: 0.85rem;
+}
+
+html.font-small .theme-switch-text,
+html.font-small .font-control-label {
+    font-size: 0.9rem;
+}
+
+html.font-small .font-btn {
+    font-size: 16px !important;
+    width: 38px !important;
+    height: 38px !important;
+}
+
+html.font-medium-small .accessibility-section,
+html.font-medium-small .danger-zone-section,
+html.font-medium-small .theme-switch {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .font-btn {
+    font-size: 18px !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+html.font-medium-large .accessibility-section,
+html.font-medium-large .danger-zone-section,
+html.font-medium-large .theme-switch {
+    font-size: 1.05rem;
+}
+
+html.font-medium-large .theme-switch-text,
+html.font-medium-large .font-control-label {
+    font-size: 1.1rem;
+}
+
+html.font-medium-large .font-btn {
+    font-size: 22px !important;
+    width: 46px !important;
+    height: 46px !important;
+}
+
+html.font-medium-large #delete-account-btn {
+    font-size: 1.05rem !important;
+    padding: 14px !important;
+}
+
+html.font-large .accessibility-section,
+html.font-large .danger-zone-section,
+html.font-large .theme-switch {
+    font-size: 1.15rem;
+}
+
+html.font-large .theme-switch-text,
+html.font-large .font-control-label {
+    font-size: 1.2rem;
+}
+
+html.font-large .font-btn {
+    font-size: 24px !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+html.font-large #delete-account-btn {
+    font-size: 1.15rem !important;
+    padding: 16px !important;
+}
+
+html.font-large #font-size-indicator {
+    font-size: 0.95rem;
+}
+
+/* Página Inicial - Cards e Seções */
+html.font-small .inicio-card,
+html.font-small .sobre-section {
+    font-size: 0.85rem;
+}
+
+html.font-small .inicio-card h2,
+html.font-small .sobre-section h2 {
+    font-size: 1.3rem;
+}
+
+html.font-small .inicio-card p {
+    font-size: 0.85rem;
+}
+
+html.font-medium-small .inicio-card,
+html.font-medium-small .sobre-section {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .inicio-card h2,
+html.font-medium-small .sobre-section h2 {
+    font-size: 1.45rem;
+}
+
+html.font-medium-large .inicio-card,
+html.font-medium-large .sobre-section {
+    font-size: 1.05rem;
+}
+
+html.font-medium-large .inicio-card h2,
+html.font-medium-large .sobre-section h2 {
+    font-size: 1.85rem;
+}
+
+html.font-medium-large .inicio-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+html.font-medium-large .inicio-btn {
+    font-size: 1.05rem !important;
+    padding: 14px 28px !important;
+}
+
+html.font-large .inicio-card,
+html.font-large .sobre-section {
+    font-size: 1.15rem;
+    padding: 26px;
+}
+
+html.font-large .inicio-card h2,
+html.font-large .sobre-section h2 {
+    font-size: 2.1rem;
+}
+
+html.font-large .inicio-card p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+html.font-large .inicio-btn {
+    font-size: 1.15rem !important;
+    padding: 16px 32px !important;
+}
+
+/* Página Sobre */
+html.font-medium-large .sobre-text,
+html.font-large .sobre-text {
+    line-height: 1.8;
+}
+
+html.font-medium-large .team-member-name {
+    font-size: 1.25rem;
+}
+
+html.font-large .team-member-name {
+    font-size: 1.4rem;
+}
+
+html.font-medium-large .team-member-role {
+    font-size: 1rem;
+}
+
+html.font-large .team-member-role {
+    font-size: 1.1rem;
+}
+
+/* Página de Ajuda/FAQ */
+html.font-small .faq-question {
+    font-size: 0.9rem;
+}
+
+html.font-small .faq-answer {
+    font-size: 0.85rem;
+}
+
+html.font-medium-small .faq-question {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .faq-answer {
+    font-size: 0.9rem;
+}
+
+html.font-medium-large .faq-question {
+    font-size: 1.1rem;
+    padding: 18px 20px;
+}
+
+html.font-medium-large .faq-answer {
+    font-size: 1.05rem;
+    padding: 16px 20px;
+    line-height: 1.7;
+}
+
+html.font-large .faq-question {
+    font-size: 1.2rem;
+    padding: 20px 22px;
+}
+
+html.font-large .faq-answer {
+    font-size: 1.15rem;
+    padding: 18px 22px;
+    line-height: 1.8;
+}
+
+/* Páginas de Login e Cadastro */
+html.font-small .login-box,
+html.font-small .cadastro-box {
+    font-size: 0.85rem;
+}
+
+html.font-small .login-box h1,
+html.font-small .cadastro-box h1 {
+    font-size: 1.6rem;
+}
+
+html.font-small .input-field {
+    font-size: 0.9rem !important;
+    padding: 10px 14px !important;
+}
+
+html.font-medium-small .login-box,
+html.font-medium-small .cadastro-box {
+    font-size: 0.95rem;
+}
+
+html.font-medium-small .input-field {
+    font-size: 0.95rem !important;
+}
+
+html.font-medium-large .login-box,
+html.font-medium-large .cadastro-box {
+    font-size: 1.05rem;
+}
+
+html.font-medium-large .login-box h1,
+html.font-medium-large .cadastro-box h1 {
+    font-size: 2.3rem;
+}
+
+html.font-medium-large .input-field {
+    font-size: 1.05rem !important;
+    padding: 14px 18px !important;
+}
+
+html.font-medium-large .login-btn,
+html.font-medium-large .cadastro-btn {
+    font-size: 1.05rem !important;
+    padding: 14px !important;
+}
+
+html.font-large .login-box,
+html.font-large .cadastro-box {
+    font-size: 1.15rem;
+    padding: 44px;
+}
+
+html.font-large .login-box h1,
+html.font-large .cadastro-box h1 {
+    font-size: 2.5rem;
+}
+
+html.font-large .input-field {
+    font-size: 1.15rem !important;
+    padding: 16px 20px !important;
+}
+
+html.font-large .login-btn,
+html.font-large .cadastro-btn {
+    font-size: 1.15rem !important;
+    padding: 16px !important;
+}
+
+html.font-large .msg-bubble {
+    font-size: 1.1rem;
+    padding: 16px 20px;
+    max-width: 85%;
+}
+
+html.font-large .chat-input {
+    font-size: 1.1rem;
+    padding: 16px 18px;
+}
+
+html.font-large .modal-exercicio-nome,
+html.font-large .modal-refeicao-nome {
+    font-size: 1.25rem;
+}
+
+html.font-large .modal-exercicio-desc,
+html.font-large .modal-refeicao-desc {
+    font-size: 1rem;
+}
+
+html.font-large .dia-card {
+    padding: 24px;
+}
+
+html.font-large .dia-nome {
+    font-size: 26px;
+}
+
+html.font-large .dia-resumo {
+    font-size: 17px;
+}
+
+html.font-large .dia-exercicios,
+html.font-large .dia-refeicoes {
+    font-size: 15px;
+}
+
+/* Header adaptativo */
+html.font-medium-large .item-label,
+html.font-large .item-label {
+    font-size: 0.85rem;
+}
+
+/* Botões e inputs mantêm proporção */
+html.font-medium-large button,
+html.font-large button {
+    font-size: 1rem;
+}
+
+/* Títulos escaláveis */
+html.font-medium-large h1 {
+    font-size: 2rem;
+}
+
+html.font-large h1 {
+    font-size: 2.2rem;
+}
+
+html.font-medium-large h2 {
+    font-size: 1.6rem;
+}
+
+html.font-large h2 {
+    font-size: 1.8rem;
+}
+
+/* Garantir legibilidade em cards pequenos */
+html.font-medium-large .card-title,
+html.font-large .card-title {
+    font-size: 1.1rem;
+}
+
+/* Modais responsivos ao tamanho */
+html.font-large .modal-content {
+    max-width: 650px;
+}
+
+html.font-large .modal-dia-nome {
+    font-size: 30px;
+}
+
+/* Toast notifications */
+html.font-medium-large .toast-notification,
+html.font-large .toast-notification {
+    padding: 18px 55px 18px 22px;
+}
+
+html.font-medium-large .toast-title,
+html.font-large .toast-title {
+    font-size: 16px;
+}
+
+html.font-medium-large .toast-message,
+html.font-large .toast-message {
+    font-size: 14px;
+}
+
+/* Espaçamento adaptativo para fontes grandes */
+html.font-large .chat-messages {
+    gap: 16px;
+}
+
+html.font-large .dias-grid {
+    gap: 22px;
+}
+
+/* Prevenir quebra de layout em mobile */
+@media (max-width: 600px) {
+    html.font-large {
+        font-size: 18px;
+    }
+    
+    html.font-large .msg-bubble {
+        font-size: 1rem;
+        padding: 14px 16px;
+    }
+    
+    html.font-large .modal-content {
+        padding: 18px;
+    }
+}
+
+/* Estilo do slider range */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #7A1919;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #7A1919;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+body.dark-mode input[type="range"]::-webkit-slider-thumb {
+    background: #ff6b6b;
+}
+
+body.dark-mode input[type="range"]::-moz-range-thumb {
+    background: #ff6b6b;
+}
+
+/* Botões de fonte - tema escuro */
+body.dark-mode .font-btn {
+    border-color: #ff6b6b !important;
+}
+
+body.dark-mode #font-decrease {
+    background: transparent !important;
+    color: #ff6b6b !important;
+}
+
+body.dark-mode #font-increase {
+    background: #ff6b6b !important;
+    color: #1a1a1a !important;
+}
+
+.font-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(122, 25, 25, 0.3);
+}
+
+body.dark-mode .font-btn:hover {
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.font-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   Página de Alimentação - Responsividade de Fonte
+   ======================================== */
+
+html.font-small .alimentacao-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-small .alimentacao-subtitle {
+    font-size: 0.85rem !important;
+}
+
+html.font-small .upload-btn,
+html.font-small .analyze-btn,
+html.font-small .new-analysis-btn {
+    font-size: 0.8rem !important;
+    padding: 10px 20px !important;
+}
+
+html.font-small .results-title,
+html.font-small .history-title {
+    font-size: 1.3rem !important;
+}
+
+html.font-small .food-name {
+    font-size: 1.2rem !important;
+}
+
+html.font-small .nutrition-label,
+html.font-small .observations-text {
+    font-size: 0.75rem !important;
+}
+
+html.font-small .nutrition-value {
+    font-size: 1rem !important;
+}
+
+html.font-medium-small .alimentacao-title {
+    font-size: 1.75rem !important;
+}
+
+html.font-medium-small .alimentacao-subtitle {
+    font-size: 0.95rem !important;
+}
+
+html.font-medium-small .upload-btn,
+html.font-medium-small .analyze-btn,
+html.font-medium-small .new-analysis-btn {
+    font-size: 0.9rem !important;
+    padding: 11px 24px !important;
+}
+
+html.font-medium-small .results-title,
+html.font-medium-small .history-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-medium-small .food-name {
+    font-size: 1.35rem !important;
+}
+
+html.font-large .alimentacao-title {
+    font-size: 2.5rem !important;
+}
+
+html.font-large .alimentacao-subtitle {
+    font-size: 1.15rem !important;
+}
+
+html.font-large .upload-btn,
+html.font-large .analyze-btn,
+html.font-large .new-analysis-btn {
+    font-size: 1.1rem !important;
+    padding: 14px 32px !important;
+}
+
+html.font-large .results-title,
+html.font-large .history-title {
+    font-size: 2rem !important;
+}
+
+html.font-large .food-name {
+    font-size: 1.65rem !important;
+}
+
+html.font-large .nutrition-label,
+html.font-large .observations-text {
+    font-size: 0.95rem !important;
+}
+
+html.font-large .nutrition-value {
+    font-size: 1.4rem !important;
+}
+
+html.font-large .history-food {
+    font-size: 1.1rem !important;
+}
+
+html.font-large .history-nutrition {
+    font-size: 0.95rem !important;
+}
+
+/* ========================================
+   Página de Execução - Responsividade de Fonte
+   ======================================== */
+
+html.font-small .avaliacao-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-small .avaliacao-subtitle {
+    font-size: 0.85rem !important;
+}
+
+html.font-small .upload-video-btn,
+html.font-small .analyze-video-btn,
+html.font-small .nova-analise-btn {
+    font-size: 0.8rem !important;
+    padding: 10px 20px !important;
+}
+
+html.font-small .resultado-title,
+html.font-small .historico-title {
+    font-size: 1.3rem !important;
+}
+
+html.font-small .analise-section-title {
+    font-size: 1rem !important;
+}
+
+html.font-small .analise-section-content {
+    font-size: 0.8rem !important;
+}
+
+html.font-small .historico-item-exercicio {
+    font-size: 0.9rem !important;
+}
+
+html.font-medium-small .avaliacao-title {
+    font-size: 1.75rem !important;
+}
+
+html.font-medium-small .avaliacao-subtitle {
+    font-size: 0.95rem !important;
+}
+
+html.font-medium-small .upload-video-btn,
+html.font-medium-small .analyze-video-btn,
+html.font-medium-small .nova-analise-btn {
+    font-size: 0.9rem !important;
+    padding: 11px 24px !important;
+}
+
+html.font-medium-small .resultado-title,
+html.font-medium-small .historico-title {
+    font-size: 1.5rem !important;
+}
+
+html.font-medium-small .analise-section-title {
+    font-size: 1.1rem !important;
+}
+
+html.font-large .avaliacao-title {
+    font-size: 2.5rem !important;
+}
+
+html.font-large .avaliacao-subtitle {
+    font-size: 1.15rem !important;
+}
+
+html.font-large .upload-video-btn,
+html.font-large .analyze-video-btn,
+html.font-large .nova-analise-btn {
+    font-size: 1.1rem !important;
+    padding: 14px 32px !important;
+}
+
+html.font-large .resultado-title,
+html.font-large .historico-title {
+    font-size: 2rem !important;
+}
+
+html.font-large .analise-section-title {
+    font-size: 1.3rem !important;
+}
+
+html.font-large .analise-section-content {
+    font-size: 1rem !important;
+}
+
+html.font-large .historico-item-exercicio {
+    font-size: 1.1rem !important;
+}
+
+html.font-large .historico-item-preview {
+    font-size: 0.95rem !important;
+}
+
+html.font-large .analise-type-label,
+html.font-large .analise-type-select {
+    font-size: 1rem !important;
+}

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Trainew IA</title>
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dark-theme.css">
+  <script src="../js/theme-manager.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    .toast-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
+      color: white;
+      padding: 16px 50px 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 300px;
+      max-width: 400px;
+      opacity: 0;
+      transform: translateX(400px);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    body.dark-mode .toast-notification {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+      color: #1a1a1a;
+    }
+    .toast-notification.show { opacity: 1; transform: translateX(0); }
+    .toast-notification.error { background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%); }
+    body.dark-mode .toast-notification.error { background: linear-gradient(135deg, #ef5350 0%, #e53935 100%); }
+    .toast-notification.success { background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); }
+    body.dark-mode .toast-notification.success { background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%); }
+    .toast-icon { font-size: 24px; flex-shrink: 0; }
+    .toast-content { flex: 1; }
+    .toast-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .toast-message { font-size: 13px; opacity: 0.9; }
+    .toast-close {
+      position: absolute; top: 8px; right: 8px;
+      background: transparent; border: none; color: white;
+      font-size: 20px; cursor: pointer;
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 6px; transition: all 0.2s;
+    }
+    body.dark-mode .toast-close { color: #1a1a1a; }
+    .toast-close:hover { background: rgba(255,255,255,0.2); }
+    @media (max-width: 768px) {
+      .toast-notification { right: 10px; left: 10px; min-width: auto; max-width: none; }
+    }
+    
+    /* Modal de Input */
+    .input-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-modal-overlay.show { display: flex; }
+    .input-modal {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+    body.dark-mode .input-modal {
+      background: #2a2a2a;
+      color: #e8e8e8;
+    }
+    @keyframes modalSlideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .input-modal-icon {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .input-modal-title {
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    body.dark-mode .input-modal-title { color: #e8e8e8; }
+    .input-modal-message {
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #666;
+    }
+    body.dark-mode .input-modal-message { color: #aaa; }
+    .input-modal-field {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    body.dark-mode .input-modal-field {
+      background: #333;
+      border-color: #555;
+      color: #e8e8e8;
+    }
+    .input-modal-field:focus {
+      outline: none;
+      border-color: #7A1919;
+    }
+    .input-modal-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .input-modal-btn {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .input-modal-btn.cancel {
+      background: #e0e0e0;
+      color: #333;
+    }
+    body.dark-mode .input-modal-btn.cancel {
+      background: #444;
+      color: #e8e8e8;
+    }
+    .input-modal-btn.cancel:hover { background: #d0d0d0; }
+    .input-modal-btn.submit {
+      background: linear-gradient(135deg, #7A1919 0%, #5a1313 100%);
+      color: white;
+    }
+    .input-modal-btn.submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 25, 25, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <img src="img/logo.png" alt="Logo Trainew IA" class="logo">
+  </header>
+
+  <main class="main-content">
+    <h2 class="welcome">Seja Bem-vindo</h2>
+    <p class="app-desc">Seu app de ajuda física</p>
+    <section class="login-box">
+      <h3 class="login-title" id="form-title">Comece agora</h3>
+      <form id="auth-form">
+        <label for="email" class="input-label">E-mail</label>
+        <input type="email" id="email" class="input-field" autocomplete="username" placeholder="Digite seu e-mail"
+          required>
+
+        <label for="senha" class="input-label">Senha</label>
+        <input type="password" id="senha" class="input-field" autocomplete="current-password"
+          placeholder="Digite sua senha" required>
+
+        <a href="#" class="forgot-password" id="forgot-link">Esqueci a senha</a>
+        <button type="submit" class="login-btn" id="submit-btn" disabled>Entrar</button>
+        <a id="cadastroLink" href="cadastro.html" class="cadastro-btn"
+          style="margin-top:10px;margin-bottom: 13px;cursor:pointer;display:block;text-align:center;">Cadastrar-se</a>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <hr class="footer-line">
+  </footer>
+
+  <!-- Modal de Input para Recuperação de Senha -->
+  <div class="input-modal-overlay" id="input-modal-overlay">
+    <div class="input-modal">
+      <div class="input-modal-icon">🔑</div>
+      <h3 class="input-modal-title">Recuperar Senha</h3>
+      <p class="input-modal-message">Digite seu e-mail cadastrado para recuperar sua senha</p>
+      <input type="email" id="recovery-email" class="input-modal-field" placeholder="seu@email.com" />
+      <div class="input-modal-buttons">
+        <button class="input-modal-btn cancel" onclick="closeInputModal()">Cancelar</button>
+        <button class="input-modal-btn submit" onclick="submitRecovery()">Recuperar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById('email');
+    const senhaInput = document.getElementById('senha');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Função toast
+    function showToast(title, message, type = 'error') {
+      const existingToast = document.querySelector('.toast-notification');
+      if (existingToast) existingToast.remove();
+      const toast = document.createElement('div');
+      toast.className = `toast-notification ${type}`;
+      const icons = { error: '❌', success: '✅', info: 'ℹ️' };
+      toast.innerHTML = `
+        <div class="toast-icon">${icons[type] || '❌'}</div>
+        <div class="toast-content">
+          <div class="toast-title">${title}</div>
+          <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 100);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    // Função para verificar se os campos estão preenchidos
+    function checkFields() {
+      const filled = emailInput.value.trim() && senhaInput.value.trim();
+      submitBtn.disabled = !filled;
+      submitBtn.style.cursor = filled ? "pointer" : "default";
+      submitBtn.style.opacity = filled ? "1" : "0.7";
+    }
+
+    // Monitorar os campos
+    [emailInput, senhaInput].forEach(input => {
+      input.addEventListener('input', checkFields);
+    });
+
+    // Login usando localStorage
+    document.getElementById('auth-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Entrando...";
+
+      const email = emailInput.value.trim();
+      const senha = senhaInput.value.trim();
+      const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+      const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+
+      if (!usuario) {
+        showToast('Erro no Login', 'E-mail ou senha incorretos.', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Entrar";
+      } else {
+        // Salva usuário logado com informações completas
+        const usuarioLogado = {
+          id: usuario.id || Date.now(),
+          nome: usuario.nome,
+          email: usuario.email,
+          fotoPerfil: usuario.fotoPerfil || null,
+          dataLogin: new Date().toISOString()
+        };
+        localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+        
+        // Carrega dados salvos do usuário (chat, treino, dieta, etc)
+        AuthManager.loadUserSessionData(usuario.email);
+        
+        window.location.href = "inicio.html";
+      }
+    });
+
+    // Esqueci a senha - abrir modal
+    function openInputModal() {
+      document.getElementById('input-modal-overlay').classList.add('show');
+      document.getElementById('recovery-email').value = '';
+      setTimeout(() => document.getElementById('recovery-email').focus(), 100);
+    }
+
+    function closeInputModal() {
+      document.getElementById('input-modal-overlay').classList.remove('show');
+    }
+
+    function submitRecovery() {
+      const email = document.getElementById('recovery-email').value.trim();
+      if (!email) {
+        showToast('Campo Vazio', 'Por favor, digite seu e-mail.', 'error');
+        return;
+      }
+      const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+      const usuario = usuarios.find(u => u.email === email);
+      if (usuario) {
+        showToast('Recurso Indisponível', 'Redefinição de senha não suportada no modo demo.', 'info');
+      } else {
+        showToast('E-mail Não Encontrado', 'Este e-mail não está cadastrado.', 'error');
+      }
+      closeInputModal();
+    }
+
+    document.getElementById('forgot-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      openInputModal();
+    });
+
+    // Fechar modal ao clicar fora
+    document.getElementById('input-modal-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'input-modal-overlay') {
+        closeInputModal();
+      }
+    });
+
+    // Verificar se já está logado
+    if (localStorage.getItem('usuarioLogado')) {
+      window.location.href = "inicio.html";
+    }
+
+    // Inicializa o gerenciador de tema
+    ThemeManager.init();
+
+    // Inicializa
+    checkFields();
+  
+
+  </script>
+  
+</body>
+
+</html>

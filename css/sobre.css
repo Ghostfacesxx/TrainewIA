@@ -1,0 +1,81 @@
+.sobre-h1{
+    color: #7a1818;
+    text-align: center;
+    font-weight: 500;
+    font-size: 35px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.content-text{
+    color: #7a1818;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 50px;
+}
+
+.img-nos{
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: #7a1818 4px solid;
+}
+
+.content-text p{
+    font-size: 15.3px;
+    text-align: justify;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+/* Estilo para box da equipe */
+.team-box {
+    margin-top: 40px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(122, 25, 25, 0.08) 0%, rgba(122, 25, 25, 0.02) 100%);
+    border-radius: 16px;
+    border-left: 4px solid #7A1919;
+}
+
+.team-box h3 {
+    color: #7A1919;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.team-box p {
+    line-height: 1.8;
+    color: #333;
+}
+
+.team-box p:last-child {
+    color: #555;
+    margin-top: 12px;
+}
+
+/* Tema escuro */
+body.dark-mode .team-box {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 107, 107, 0.05) 100%);
+    border-left-color: #ff6b6b;
+}
+
+body.dark-mode .team-box h3 {
+    color: #ff6b6b;
+}
+
+body.dark-mode .team-box p {
+    color: #e8e8e8;
+}
+
+body.dark-mode .team-box p:last-child {
+    color: #b0b0b0;
+}

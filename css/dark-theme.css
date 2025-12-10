@@ -1,0 +1,1270 @@
+/* Variáveis do tema claro (padrão) */
+:root {
+    /* Cores de fundo */
+    --bg-color: #ffffff;
+    --modal-bg: #ffffff;
+    --card-bg: #ffffff;
+    --secondary-bg: #f5f5f5;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --hover-bg: #f5f5f5;
+    
+    /* Cores de texto */
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    
+    /* Cores de destaque */
+    --primary-color: #7A1919;
+    --primary-hover: #5a1212;
+    --accent-color: #7A1919;
+    
+    /* Cores de borda */
+    --border-color: #e0e0e0;
+    --divider-color: #e0e0e0;
+    --input-border: #cccccc;
+}
+
+/* Tema escuro - Otimizado para Alto Contraste */
+[data-theme='dark'] {
+    /* Cores de fundo */
+    --bg-color: #0a0a0a;
+    --modal-bg: #161616;
+    --card-bg: #1f1f1f;
+    --secondary-bg: #1a1a1a;
+    --overlay-bg: rgba(0, 0, 0, 0.92);
+    --hover-bg: #282828;
+    
+    /* Cores de texto - Alto Contraste */
+    --text-color: #f0f0f0;
+    --text-secondary: #d0d0d0;
+    --text-muted: #a0a0a0;
+    
+    /* Cores de destaque - Máxima visibilidade */
+    --primary-color: #ff8577;
+    --primary-hover: #ff6b5a;
+    --accent-color: #ff8577;
+    
+    /* Cores de borda - Maior contraste */
+    --border-color: #3a3a3a;
+    --divider-color: #2e2e2e;
+    --input-border: #4a4a4a;
+    
+    /* Variáveis específicas do chat */
+    --chat-user-bg: #8B2525;
+    --chat-bot-bg: #2a2a2a;
+    --chat-input-bg: #1e1e1e;
+    --chat-container-bg: #121212;
+    --chat-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --chat-message-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* TESTE: Regra bem visível para verificar se o CSS está carregando */
+[data-theme='dark'] body {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+/* Aplicação das variáveis */
+[data-theme='dark'] body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Header - mantém sem modificações conforme solicitado */
+/* Não alteramos o header conforme solicitado pelo usuário */
+/* Garantindo que o header permaneça visível em modo escuro */
+[data-theme='dark'] .header {
+    /* Mantém todas as propriedades originais do header */
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+/* Modais - Alto Contraste */
+[data-theme='dark'] .perfil-modal,
+[data-theme='dark'] .menu-modal {
+    background-color: var(--modal-bg);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme='dark'] .perfil-modal-bg,
+[data-theme='dark'] .menu-modal-bg {
+    background: var(--overlay-bg);
+    backdrop-filter: blur(6px);
+}
+
+[data-theme='dark'] .perfil-modal-divider,
+[data-theme='dark'] .menu-modal-divider {
+    border-color: var(--divider-color);
+    border-width: 2px;
+}
+
+[data-theme='dark'] .perfil-modal-item,
+[data-theme='dark'] .menu-modal-item {
+    color: var(--text-color);
+    border-bottom: 2px solid var(--divider-color);
+    padding: 14px 20px;
+}
+
+[data-theme='dark'] .perfil-modal-item:hover,
+[data-theme='dark'] .menu-modal-item:hover {
+    background-color: var(--hover-bg);
+    border-left: 4px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Cards e containers - Alto Contraste */
+[data-theme='dark'] .card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 20px rgba(255, 133, 119, 0.3);
+    transform: translateY(-2px);
+}
+
+[data-theme='dark'] .card-label {
+    color: var(--text-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+
+/* Footer */
+[data-theme='dark'] .footer-line {
+    border-color: var(--primary-color);
+}
+
+/* Textos específicos - Otimizado */
+[data-theme='dark'] .perfil-modal-header {
+    color: var(--primary-color);
+    background: var(--secondary-bg);
+    border-bottom: 2px solid var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .perfil-modal-user-nome {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+[data-theme='dark'] .perfil-modal-user-email {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .menu-modal-header {
+    color: var(--primary-color);
+    background: var(--secondary-bg);
+    border-bottom: 2px solid var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Botões - Alto Contraste */
+[data-theme='dark'] button,
+[data-theme='dark'] .btn,
+[data-theme='dark'] .btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    box-shadow: 0 3px 10px rgba(255, 133, 119, 0.4);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+[data-theme='dark'] button:hover,
+[data-theme='dark'] .btn:hover,
+[data-theme='dark'] .btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 5px 16px rgba(255, 133, 119, 0.5);
+    transform: translateY(-3px);
+}
+
+[data-theme='dark'] button:active,
+[data-theme='dark'] .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(255, 133, 119, 0.3);
+}
+
+[data-theme='dark'] button:disabled,
+[data-theme='dark'] .btn:disabled {
+    background-color: #2a2a2a;
+    color: #5a5a5a;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+/* Elementos vermelhos mantidos */
+[data-theme='dark'] .header-item:hover,
+[data-theme='dark'] .chat-send-btn,
+[data-theme='dark'] .menu-icon .bar {
+    color: var(--primary-color) !important;
+}
+
+/* Manter o botão "Sair" em vermelho mais forte */
+[data-theme='dark'] #sair-btn {
+    color: #ff4444 !important;
+    background-color: transparent;
+}
+
+[data-theme='dark'] #sair-btn:hover {
+    background-color: rgba(255, 68, 68, 0.1);
+}
+
+/* Links e elementos de destaque */
+[data-theme='dark'] a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+[data-theme='dark'] a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Tabelas no modo escuro */
+[data-theme='dark'] table {
+    background-color: var(--modal-bg);
+    border-color: var(--primary-color) !important;
+}
+
+[data-theme='dark'] th,
+[data-theme='dark'] td {
+    color: var(--text-color);
+    border-color: var(--divider-color);
+    background-color: var(--modal-bg);
+}
+
+[data-theme='dark'] th {
+    background-color: var(--card-bg);
+}
+
+/* Input e campos de formulário - Alto Contraste */
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select {
+    background-color: #161616;
+    color: #f0f0f0;
+    border: 2px solid var(--input-border);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] input:hover,
+[data-theme='dark'] textarea:hover,
+[data-theme='dark'] select:hover {
+    border-color: #5a5a5a;
+    background-color: #1a1a1a;
+}
+
+[data-theme='dark'] input:focus,
+[data-theme='dark'] textarea:focus,
+[data-theme='dark'] select:focus {
+    border-color: var(--primary-color);
+    background-color: #222;
+    box-shadow: 0 0 0 4px rgba(255, 133, 119, 0.25);
+    outline: none;
+}
+
+/* Placeholders em inputs */
+[data-theme='dark'] input::placeholder,
+[data-theme='dark'] textarea::placeholder {
+    color: #888;
+    opacity: 0.8;
+}
+
+/* Container principal */
+[data-theme='dark'] .container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Títulos e seções - Otimizado */
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6 {
+    color: #e8e8e8;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] h1 {
+    color: #fff;
+}
+
+[data-theme='dark'] p,
+[data-theme='dark'] li,
+[data-theme='dark'] span {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Seção da faixa */
+[data-theme='dark'] .faixa-section {
+    background-color: var(--modal-bg);
+}
+
+[data-theme='dark'] .faixa-text {
+    color: var(--text-color) !important;
+}
+
+/* Modal de planos */
+[data-theme='dark'] .planos-modal-bg {
+    background: var(--overlay-bg);
+}
+
+[data-theme='dark'] .planos-modal {
+    background: var(--modal-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .planos-close {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .planos-title {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .plano-valor {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .plano-sub {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .badge {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .vantagens-title {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .vantagens-list {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .metodo-pgto {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .btn-pagar {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .btn-pagar:hover {
+    background: var(--primary-hover);
+}
+
+/* Chat específico - Versão otimizada */
+[data-theme='dark'] body {
+    background: var(--bg-color) !important;
+}
+
+/* Container principal do chat */
+[data-theme='dark'] .chat-container {
+    background-color: var(--chat-container-bg) !important;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--chat-shadow);
+}
+
+/* Header do chat */
+[data-theme='dark'] .chat-header {
+    background-color: var(--primary-color) !important;
+    color: var(--text-color) !important;
+    border-bottom: 2px solid var(--primary-hover);
+}
+
+/* Área de mensagens */
+[data-theme='dark'] .chat-messages {
+    background-color: var(--bg-color) !important;
+}
+
+/* Mensagens gerais */
+[data-theme='dark'] .message {
+    color: var(--text-color);
+    box-shadow: var(--chat-message-shadow);
+    border: 1px solid var(--border-color);
+}
+
+/* Mensagens do usuário */
+[data-theme='dark'] .message.user {
+    background-color: var(--chat-user-bg) !important;
+    color: #ffffff !important;
+    border: 1px solid #a52d2d;
+    box-shadow: 0 3px 12px rgba(139, 37, 37, 0.4);
+}
+
+[data-theme='dark'] .msg-row.user .msg-bubble {
+    background: var(--chat-user-bg) !important;
+    color: #ffffff !important;
+    border: 1px solid #a52d2d;
+    box-shadow: 0 2px 8px rgba(139, 37, 37, 0.3);
+}
+
+/* Mensagens do bot/IA */
+[data-theme='dark'] .message.bot,
+[data-theme='dark'] .message.ia {
+    background-color: var(--chat-bot-bg) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .msg-row.ia .msg-bubble {
+    background: var(--chat-bot-bg) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Mensagens de loading */
+[data-theme='dark'] .message.loading {
+    background-color: var(--card-bg) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--border-color);
+    opacity: 0.8;
+}
+
+/* Container do input */
+[data-theme='dark'] .chat-input-container,
+[data-theme='dark'] .chat-input-area {
+    background-color: #1a1a1a !important;
+    border-top: 1px solid #2a2a2a;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Input de texto */
+[data-theme='dark'] .chat-input {
+    background-color: var(--chat-input-bg) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a !important;
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .chat-input:focus {
+    border-color: #8B2525 !important;
+    box-shadow: 0 0 0 2px rgba(139, 37, 37, 0.3) !important;
+    background-color: #252525 !important;
+}
+
+[data-theme='dark'] .chat-input::placeholder {
+    color: #666 !important;
+}
+
+/* Botão de enviar */
+[data-theme='dark'] .chat-send-btn {
+    background-color: #8B2525 !important;
+    color: #ffffff !important;
+    border: 1px solid #a52d2d;
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .chat-send-btn:hover {
+    background-color: #a52d2d !important;
+    box-shadow: 0 4px 16px rgba(139, 37, 37, 0.5);
+    transform: translateY(-1px);
+}
+
+[data-theme='dark'] .chat-send-btn:active {
+    background-color: #6f1d1d !important;
+}
+
+/* Hint e área de mensagens */
+[data-theme='dark'] .chat-hint {
+    color: #888 !important;
+}
+
+[data-theme='dark'] .chat-messages {
+    background-color: #121212 !important;
+}
+
+[data-theme='dark'] .chat-clear-btn {
+    background-color: #8B2525 !important;
+    border-top: solid 2px #2a2a2a !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .chat-send-btn:active {
+    transform: translateY(0);
+}
+
+/* Botão limpar chat */
+[data-theme='dark'] .clear-chat {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .clear-chat:hover {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Melhorias adicionais para chat */
+[data-theme='dark'] .msg-bubble {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .msg-bubble.user {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-hover);
+}
+
+/* Timestamps */
+[data-theme='dark'] .msg-time {
+    color: var(--text-muted) !important;
+}
+
+/* Scrollbar customizada para chat */
+[data-theme='dark'] .chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme='dark'] .chat-messages::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 4px;
+}
+
+[data-theme='dark'] .chat-messages::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+[data-theme='dark'] .chat-messages::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Status indicators */
+[data-theme='dark'] .typing-indicator {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .connection-status {
+    background-color: var(--card-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+/* Links azuis no chat */
+[data-theme='dark'] .link-azul {
+    color: #4da3ff !important;
+}
+
+[data-theme='dark'] .link-azul:hover {
+    color: #66b3ff !important;
+}
+
+/* Página Sobre específica */
+[data-theme='dark'] .sobre-h1 {
+    color: var(--text-color) !important;
+    text-shadow: 0 0 15px var(--primary-color);
+    background: linear-gradient(45deg, var(--text-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme='dark'] .container {
+    background-color: var(--bg-color);
+}
+
+[data-theme='dark'] .content-text {
+    background: linear-gradient(135deg, var(--modal-bg), var(--card-bg)) !important;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 12px 40px rgba(122, 25, 25, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .content-text p {
+    color: var(--text-color) !important;
+    background-color: transparent;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .img-nos {
+    border: 4px solid var(--primary-color) !important;
+    box-shadow: 0 12px 32px rgba(122, 25, 25, 0.6),
+                0 0 0 1px rgba(122, 25, 25, 0.3) !important;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+/* Estilos específicos para o switch do tema */
+[data-theme='dark'] .theme-switch {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.theme-switch-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: inherit;
+}
+
+/* Garantir que elementos específicos mantenham boa legibilidade */
+[data-theme='dark'] .arrow {
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .arrow:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Overlay para foto em tela cheia */
+[data-theme='dark'] #foto-fullscreen-bg {
+    background: var(--overlay-bg);
+}
+
+/* Transições suaves para mudança de tema */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilos específicos para páginas de login e cadastro */
+[data-theme='dark'] .title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .subtitle {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .container {
+    background-color: var(--modal-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .form-group label {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .form-group input {
+    background-color: var(--modal-bg);
+    color: var(--text-color);
+    border-color: var(--input-border);
+}
+
+/* Inputs criados dinamicamente para edição de nome */
+[data-theme='dark'] #perfil-nome input {
+    background-color: var(--modal-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--input-border) !important;
+}
+
+/* Classe utilitária para inputs que respondem ao tema */
+[data-theme='dark'] .theme-aware-input {
+    background-color: var(--modal-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--input-border) !important;
+}
+
+[data-theme='dark'] .form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(122, 25, 25, 0.2);
+}
+
+[data-theme='dark'] .submit-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .submit-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+[data-theme='dark'] .form-footer a {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .form-footer a:hover {
+    color: var(--primary-hover);
+}
+
+/* Páginas de Login e Cadastro */
+[data-theme='dark'] .main-content {
+    background-color: var(--bg-color);
+}
+
+[data-theme='dark'] .welcome,
+[data-theme='dark'] .app-desc {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .login-box {
+    background: #2a2a2a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='dark'] .login-title {
+    color: var(--text-color);
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme='dark'] .input-label {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .input-field {
+    background: transparent;
+    border-bottom-color: var(--input-border);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .input-field::placeholder {
+    color: #666;
+}
+
+[data-theme='dark'] .input-field:focus {
+    border-bottom-color: var(--primary-color);
+}
+
+[data-theme='dark'] .forgot-password {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .forgot-password:hover {
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .login-btn,
+[data-theme='dark'] .cadastro-btn {
+    background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+    color: white;
+}
+
+[data-theme='dark'] .login-btn:hover,
+[data-theme='dark'] .cadastro-btn:hover {
+    background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+}
+
+[data-theme='dark'] .login-btn:disabled {
+    background: #444;
+    color: #888;
+}
+
+[data-theme='dark'] .cadastro-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .cadastro-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Modal de Exclusão de Conta */
+[data-theme='dark'] .delete-account-modal-overlay {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+[data-theme='dark'] .delete-account-modal {
+    background: #2a2a2a !important;
+}
+
+[data-theme='dark'] .delete-account-modal h3 {
+    color: #ff5252 !important;
+}
+
+[data-theme='dark'] .delete-account-modal p,
+[data-theme='dark'] .delete-account-modal ul li {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme='dark'] .delete-account-modal input {
+    background: #333 !important;
+    border-color: #555 !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme='dark'] .delete-account-modal input::placeholder {
+    color: #666;
+}
+
+[data-theme='dark'] .delete-account-modal input:focus {
+    border-color: var(--primary-color) !important;
+}
+
+[data-theme='dark'] #delete-account-btn {
+    border-color: #ff5252 !important;
+    color: #ff5252 !important;
+}
+
+[data-theme='dark'] #delete-account-btn:hover {
+    background: #ff5252 !important;
+    color: white !important;
+}
+
+[data-theme='dark'] .danger-zone-section {
+    background: #2a2a2a !important;
+    border-color: #c62828 !important;
+}
+
+/* Página de Execução (Avaliação) */
+[data-theme='dark'] .avaliacao-container {
+    background: var(--bg-color);
+}
+
+[data-theme='dark'] .upload-section {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .upload-section:hover {
+    border-color: #ff5252;
+    background: #3a3a3a;
+}
+
+[data-theme='dark'] .video-preview {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .resultado-section {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .resultado-header {
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme='dark'] .loading-content {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .analise-type-section {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .analise-type-select {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .analise-type-select:hover,
+[data-theme='dark'] .analise-type-select:focus {
+    border-color: #ff5252;
+}
+
+[data-theme='dark'] .analise-type-select option {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* Seções de análise estilizadas */
+[data-theme='dark'] .analise-section {
+    background: var(--secondary-bg);
+    border-left-color: #ff5252;
+}
+
+[data-theme='dark'] .analise-section-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .analise-section-content {
+    color: var(--text-color);
+}
+
+/* Histórico de avaliações */
+[data-theme='dark'] .historico-section {
+    background: transparent;
+}
+
+[data-theme='dark'] .historico-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .clear-historico-btn {
+    border-color: #ff5252;
+    color: #ff5252;
+    background: transparent;
+}
+
+[data-theme='dark'] .clear-historico-btn:hover {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .historico-item {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .historico-item:hover {
+    border-color: #ff5252;
+    box-shadow: 0 4px 12px rgba(255, 82, 82, 0.2);
+}
+
+[data-theme='dark'] .historico-item-date {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .historico-item-tipo {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .historico-item-exercicio {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .historico-item-preview {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .empty-historico {
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   Página de Alimentação - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] .alimentacao-container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .alimentacao-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .alimentacao-subtitle {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .upload-section {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .upload-area {
+    background: var(--secondary-bg);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .upload-area:hover {
+    border-color: #ff5252;
+    background: var(--hover-bg);
+}
+
+[data-theme='dark'] .upload-btn,
+[data-theme='dark'] .camera-btn,
+[data-theme='dark'] .gallery-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .upload-btn:hover,
+[data-theme='dark'] .camera-btn:hover,
+[data-theme='dark'] .gallery-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .image-preview {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .analyze-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .analyze-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .analyze-btn:disabled {
+    background: var(--secondary-bg);
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .loading {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .results-section {
+    background: var(--card-bg);
+}
+
+[data-theme='dark'] .results-title {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .food-name {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .nutrition-item {
+    background: var(--secondary-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .nutrition-label {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .nutrition-value {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .observations {
+    background: var(--secondary-bg);
+    border-left-color: #ffab00;
+}
+
+[data-theme='dark'] .observations-title {
+    color: #ffab00;
+}
+
+[data-theme='dark'] .observations-text {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .new-analysis-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .new-analysis-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .history-title {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .history-health-badge.healthy {
+    background: #1b3a1f;
+    color: #66bb6a;
+}
+
+[data-theme='dark'] .history-health-badge.unhealthy {
+    background: #3a1a1a;
+    color: #ef5350;
+}
+
+/* ========================================
+   Página de Execução - Tema Escuro Adicional
+   ======================================== */
+
+[data-theme='dark'] .avaliacao-title {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .avaliacao-subtitle {
+    color: var(--text-secondary);
+}
+
+[data-theme='dark'] .upload-video-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .upload-video-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .analyze-video-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .analyze-video-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .nova-analise-btn {
+    background: #ff5252;
+    color: white;
+}
+
+[data-theme='dark'] .nova-analise-btn:hover {
+    background: #ff6b6b;
+}
+
+[data-theme='dark'] .resultado-title {
+    color: #ff5252;
+}
+
+/* ========================================
+   Scrollbar Personalizada - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 10px;
+    border: 2px solid #1a1a1a;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:active {
+    background: var(--primary-color);
+}
+
+/* Firefox scrollbar */
+[data-theme='dark'] * {
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a #1a1a1a;
+}
+
+/* ========================================
+   Seleção de Texto - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] ::selection {
+    background: rgba(255, 121, 97, 0.3);
+    color: #fff;
+}
+
+[data-theme='dark'] ::-moz-selection {
+    background: rgba(255, 121, 97, 0.3);
+    color: #fff;
+}
+
+/* ========================================
+   Tabelas - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] table {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] th {
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] td {
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] tr:hover {
+    background: var(--hover-bg);
+}
+
+/* ========================================
+   Badges e Tags - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] .badge,
+[data-theme='dark'] .tag {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme='dark'] .badge-primary {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: transparent;
+}
+
+/* ========================================
+   Tooltips - Tema Escuro
+   ======================================== */
+
+[data-theme='dark'] .tooltip {
+    background: #2a2a2a;
+    color: #e8e8e8;
+    border: 1px solid #444;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
