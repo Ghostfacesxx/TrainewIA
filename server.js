@@ -279,6 +279,22 @@ EXERCÍCIOS DISPONÍVEIS:
 4. Se não encontrar um exercício adequado na lista, escolha o mais similar disponível
 5. Sempre filtre pela location correta (casa ou academia)
 
+🚨 ATENÇÃO ESPECIAL - EXERCÍCIOS COM VARIAÇÕES CASA/ACADEMIA:
+Alguns exercícios existem em AMBAS as versões (casa e academia). Você DEVE escolher o correto baseado no LOCAL informado:
+
+EXEMPLOS DE EXERCÍCIOS DUPLICADOS:
+- "Abdominal na Máquina" → ACADEMIA
+- "Abdominal Bicicleta" → CASA
+- "Abdominal Cruzado" → CASA
+- "Agachamento Livre com Barra" → ACADEMIA
+- "Agachamento Sumô" → CASA
+- "Agachamento Sumô com Barra" → ACADEMIA
+
+REGRA CRÍTICA:
+- Se o treino é em CASA: NUNCA use exercícios marcados com "(Academia)" ou que mencionem máquinas/cabos
+- Se o treino é em ACADEMIA: Priorize exercícios com máquinas/barras/cabos, mas pode incluir exercícios de peso corporal como complemento
+- Quando houver variações do mesmo exercício: SEMPRE escolha a versão correta para o local (ex: "Agachamento Sumô" para casa, "Agachamento Sumô com Barra" para academia)
+
 DIVISÃO DE TREINO SEMANAL (CORPO TODO):
 SEMPRE monte o treino para trabalhar TODOS os grupos musculares durante a semana:
 
@@ -430,15 +446,24 @@ app.post('/api/chat', async (req, res) => {
   console.log('✅ API key configurada, processando mensagem:', message);
 
   try {
-    // Preparar lista de exercícios para o prompt
-    const casaExercises = availableExercises.filter(ex => ex.location === 'casa').map(ex => `- ${ex.name} (Casa)`);
-    const academiaExercises = availableExercises.filter(ex => ex.location === 'academia').map(ex => `- ${ex.name} (Academia)`);
+    // Preparar lista de exercícios para o prompt - SEM marcador de location repetido
+    const casaExercises = availableExercises
+      .filter(ex => ex.location === 'casa')
+      .map(ex => `- ${ex.name}`);
+    
+    const academiaExercises = availableExercises
+      .filter(ex => ex.location === 'academia')
+      .map(ex => `- ${ex.name}`);
+    
     const exercisesList = [
-      '📍 EXERCÍCIOS PARA CASA:',
+      '📍 EXERCÍCIOS PARA CASA (Peso corporal, halteres, elásticos):',
       ...casaExercises,
       '',
-      '📍 EXERCÍCIOS PARA ACADEMIA:',
-      ...academiaExercises
+      '📍 EXERCÍCIOS PARA ACADEMIA (Máquinas, barras, cabos):',
+      ...academiaExercises,
+      '',
+      '⚠️ IMPORTANTE: Verifique o local do treino e escolha APENAS da seção correspondente!',
+      '⚠️ Se houver exercícios similares (ex: Abdominal), escolha baseado no LOCAL informado pelo usuário.'
     ].join('\n');
     
     // Substituir placeholder no prompt
