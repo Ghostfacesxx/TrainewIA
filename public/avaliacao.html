@@ -18,6 +18,8 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 0 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         .avaliacao-header {
@@ -330,6 +332,7 @@
             padding: 18px;
             margin-bottom: 25px;
             border: 1px solid var(--border-color);
+            box-sizing: border-box;
         }
 
         .analise-type-label {
@@ -342,15 +345,28 @@
 
         .analise-type-select {
             width: 100%;
-            padding: 12px 16px;
+            max-width: 100%;
+            padding: 14px 16px;
             border: 2px solid var(--border-color);
             border-radius: 10px;
             background: var(--bg-color);
             color: var(--text-color);
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M1.41 0L6 4.59L10.59 0L12 1.41l-6 6l-6-6z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 48px;
+            box-sizing: border-box;
+        }
+
+        body.dark-mode .analise-type-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23fff' d='M1.41 0L6 4.59L10.59 0L12 1.41l-6 6l-6-6z'/%3E%3C/svg%3E");
         }
 
         .analise-type-select:hover {
@@ -361,6 +377,13 @@
             outline: none;
             border-color: #7A1919;
             box-shadow: 0 0 0 3px rgba(122, 25, 25, 0.1);
+        }
+
+        .analise-type-select option {
+            padding: 12px;
+            font-size: 16px;
+            background: var(--bg-color);
+            color: var(--text-color);
         }
 
         .analise-type-desc {
@@ -558,15 +581,15 @@
 
     <div class="avaliacao-container">
         <div class="avaliacao-header">
-            <h1>🎯 Execução</h1>
+            <h1>Execução</h1>
             <p>Envie um vídeo executando seu exercício e receba feedback detalhado da IA!</p>
         </div>
 
         <div class="analise-type-section">
-            <label class="analise-type-label" for="analise-type">📊 Tipo de Análise</label>
+            <label class="analise-type-label" for="analise-type">Tipo de Análise</label>
             <select id="analise-type" class="analise-type-select">
-                <option value="resumida" selected>⚡ Análise Resumida - Rápida e objetiva</option>
-                <option value="detalhada">📝 Análise Detalhada - Completa e aprofundada</option>
+                <option value="resumida" selected>Análise Resumida</option>
+                <option value="detalhada">Análise Detalhada</option>
             </select>
             <p class="analise-type-desc" id="analise-desc">
                 Análise rápida com os pontos principais: identificação do exercício, principais erros e correções essenciais.
@@ -579,10 +602,10 @@
             <p>Formatos: MP4, MOV, AVI • Máximo: 100MB</p>
             <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
                 <button class="upload-btn" onclick="document.getElementById('camera-input').click()">
-                    📹 Gravar Vídeo
+                    Gravar Vídeo
                 </button>
                 <button class="upload-btn" onclick="document.getElementById('video-input').click()">
-                    🖼️ Galeria
+                    Galeria
                 </button>
             </div>
             <input type="file" id="video-input" accept="video/*" style="display: none;">
@@ -592,28 +615,28 @@
         <div class="video-preview" id="video-preview">
             <video id="video-player" controls></video>
             <div class="video-actions">
-                <button class="analyze-btn" id="analyze-btn">🤖 Analisar Execução</button>
-                <button class="remove-btn" id="remove-btn">🗑️ Remover Vídeo</button>
+                <button class="analyze-btn" id="analyze-btn">Analisar Execução</button>
+                <button class="remove-btn" id="remove-btn">Remover Vídeo</button>
             </div>
         </div>
 
         <div class="resultado-section" id="resultado-section">
             <div class="resultado-header">
-                <span class="resultado-icon">✅</span>
+                <span class="resultado-icon"></span>
                 <h2 class="resultado-title">Análise Completa</h2>
             </div>
             <div class="resultado-content" id="resultado-content"></div>
-            <button class="nova-analise-btn" onclick="novaAnalise()">📹 Nova Análise</button>
+            <button class="nova-analise-btn" onclick="novaAnalise()">Nova Análise</button>
         </div>
 
         <div class="historico-section" id="historico-section">
             <div class="historico-header">
-                <h2 class="historico-title">📋 Histórico de Avaliações</h2>
-                <button class="clear-historico-btn" id="clear-historico-btn" onclick="clearHistorico()">🗑️ Limpar</button>
+                <h2 class="historico-title">Histórico de Avaliações</h2>
+                <button class="clear-historico-btn" id="clear-historico-btn" onclick="clearHistorico()">Limpar</button>
             </div>
             <div class="historico-list" id="historico-list">
                 <div class="empty-historico">
-                    <div class="empty-historico-icon">📋</div>
+                    <div class="empty-historico-icon"></div>
                     <p>Nenhuma avaliação salva ainda</p>
                 </div>
             </div>
@@ -663,6 +686,7 @@
                 <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
                 <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
                 <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='playlists.html'" class="menu-modal-item">Playlists</div>
                 <div onclick="window.location.href='avaliacao.html'" class="menu-modal-item">Execução</div>
                 <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
             </div>

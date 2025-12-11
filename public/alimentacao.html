@@ -754,6 +754,7 @@
                 <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
                 <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
                 <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='playlists.html'" class="menu-modal-item">Playlists</div>
                 <div onclick="window.location.href='avaliacao.html'" class="menu-modal-item">Execução</div>
                 <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
             </div>
@@ -778,7 +779,7 @@
                     📷 Tirar Foto
                 </button>
                 <button class="camera-btn" id="gallery-btn">
-                    🖼️ Galeria
+                    Galeria
                 </button>
             </div>
 
@@ -850,7 +851,7 @@
         <div class="history-section" id="history-section">
             <div class="historico-header">
                 <h3 class="history-title">📋 Histórico de Análises</h3>
-                <button class="clear-historico-btn" onclick="clearHistorico()">🗑️ Limpar</button>
+                <button class="clear-historico-btn" onclick="clearHistorico()">Limpar</button>
             </div>
             <div class="historico-list" id="history-list">
                 <div class="empty-historico">
@@ -992,7 +993,7 @@
             if (historicoAlimentacao.length === 0) {
                 historyList.innerHTML = `
                     <div class="empty-historico">
-                        <div class="empty-historico-icon">🍽️</div>
+                        <div class="empty-historico-icon"></div>
                         <p>Nenhuma análise salva ainda</p>
                     </div>
                 `;
@@ -1004,7 +1005,7 @@
                     <div class="history-item-header">
                         <span class="history-date">${item.date}</span>
                         <span class="history-health-badge ${item.saudavel ? 'healthy' : 'unhealthy'}">
-                            ${item.saudavel ? '✅ Saudável' : '⚠️ Moderação'}
+                            ${item.saudavel ? 'Saudável' : 'Moderação'}
                         </span>
                     </div>
                     <div class="history-food">${item.alimento}</div>
@@ -1030,10 +1031,10 @@
 
             const healthBadge = document.getElementById('health-badge');
             if (item.saudavel) {
-                healthBadge.textContent = '✅ Saudável';
+                healthBadge.textContent = 'Saudável';
                 healthBadge.className = 'health-badge healthy';
             } else {
-                healthBadge.textContent = '⚠️ Com Moderação';
+                healthBadge.textContent = 'Com Moderação';
                 healthBadge.className = 'health-badge unhealthy';
             }
 
@@ -1211,10 +1212,10 @@
 
             const healthBadge = document.getElementById('health-badge');
             if (data.saudavel) {
-                healthBadge.textContent = '✅ Saudável';
+                healthBadge.textContent = 'Saudável';
                 healthBadge.className = 'health-badge healthy';
             } else {
-                healthBadge.textContent = '⚠️ Com Moderação';
+                healthBadge.textContent = 'Com Moderação';
                 healthBadge.className = 'health-badge unhealthy';
             }
 

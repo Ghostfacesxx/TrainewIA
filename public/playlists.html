@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Playlists - Trainew IA</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <script src="../js/auth-manager.js"></script>
+    <script src="../js/theme-manager.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #faf9f8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Tela de seleção de player */
+        .player-selection {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .player-selection h1 {
+            color: #7a1818;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .player-selection h1 {
+            color: #ff6b6b;
+        }
+
+        .player-options {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .player-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            width: 200px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .player-card {
+            background: #2a2a2a;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(122, 24, 24, 0.3);
+        }
+
+        .player-card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .player-card h3 {
+            color: #333;
+            font-size: 18px;
+        }
+
+        body.dark-mode .player-card h3 {
+            color: #e0e0e0;
+        }
+
+        /* Tela de seleção de estilos */
+        .genre-selection {
+            display: none;
+        }
+
+        .genre-selection h2 {
+            color: #7a1818;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        body.dark-mode .genre-selection h2 {
+            color: #ff6b6b;
+        }
+
+        .genre-selection p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .genre-selection p {
+            color: #b0b0b0;
+        }
+
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .genre-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        body.dark-mode .genre-item {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .genre-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .genre-item.selected {
+            background: linear-gradient(135deg, #7a1818 0%, #b71c1c 100%);
+            border-color: #7a1818;
+            color: white;
+        }
+
+        body.dark-mode .genre-item.selected {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+            border-color: #ff6b6b;
+        }
+
+        .genre-item.selected::after {
+            content: '✓';
+            margin-left: 5px;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #7a1818 0%, #b71c1c 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .confirm-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        }
+
+        .confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(122, 24, 24, 0.4);
+        }
+
+        .confirm-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Tela de playlists */
+        .playlists-display {
+            display: none;
+        }
+
+        .playlists-display h2 {
+            color: #7a1818;
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        body.dark-mode .playlists-display h2 {
+            color: #ff6b6b;
+        }
+
+        .player-badge {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        body.dark-mode .player-badge {
+            color: #b0b0b0;
+        }
+
+        .playlist-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .playlist-card {
+            background: #2a2a2a;
+        }
+
+        .playlist-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .playlist-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .playlist-cover {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .playlist-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #7a1818 0%, #b71c1c 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        body.dark-mode .playlist-icon {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        }
+
+        .playlist-info h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        body.dark-mode .playlist-info h3 {
+            color: #e0e0e0;
+        }
+
+        .playlist-info p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        body.dark-mode .playlist-info p {
+            color: #b0b0b0;
+        }
+
+        .playlist-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #7a1818 0%, #b71c1c 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .playlist-link {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        }
+
+        .playlist-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(122, 24, 24, 0.4);
+        }
+
+        .change-prefs-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 2px solid #7a1818;
+            color: #7a1818;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .change-prefs-btn {
+            background: #2a2a2a;
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .change-prefs-btn:hover {
+            background: #7a1818;
+            color: white;
+        }
+
+        body.dark-mode .change-prefs-btn:hover {
+            background: #ff6b6b;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img onclick="window.location.href='inicio.html'" src="img/logo.png" alt="Logo Trainew IA" class="logo">
+        <nav class="header-nav">
+            <div class="header-item menu">
+                <span class="menu-icon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+                <span class="item-label">Menu</span>
+            </div>
+            <div class="header-item perfil" id="perfil-btn">
+                <img src="img/icon.png" class="perfil-icon" id="header-perfil-icon">
+                <span class="item-label">Perfil</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Modal Perfil -->
+    <div class="perfil-modal-bg" id="perfil-modal-bg" style="display:none;">
+        <div class="perfil-modal" id="perfil-modal">
+            <div class="perfil-modal-header">Conta</div>
+            <div class="perfil-modal-user">
+                <span class="perfil-modal-user-icon" id="perfil-user-icon">
+                    <img src="img/icon.png" alt="Perfil" id="perfil-img" style="cursor:pointer;">
+                </span>
+                <div class="perfil-modal-user-info">
+                    <span class="perfil-modal-user-nome" id="perfil-nome"></span>
+                    <span class="perfil-modal-user-email" id="perfil-email"></span>
+                </div>
+            </div>
+            <hr class="perfil-modal-divider">
+            <div class="perfil-modal-list">
+                <div class="perfil-modal-item" id="alterar-foto-btn">Alterar foto de perfil
+                    <input type="file" id="foto-input" accept="image/*" style="display:none;">
+                </div>
+                <div class="perfil-modal-item" id="alterar-nome-btn">Alterar nome</div>
+                <div class="perfil-modal-item" onclick="window.location.href='config.html'">Configurações</div>
+                <div class="perfil-modal-item" onclick="window.location.href='ajuda.html'">Ajuda</div>
+                <div class="perfil-modal-item" id="sair-btn" style="color:#c00;font-weight:600;">Sair</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Menu -->
+    <div class="menu-modal-bg" id="menu-modal-bg" style="display:none;">
+        <div class="menu-modal" id="menu-modal">
+            <div class="menu-modal-header"><span>Menu</span></div>
+            <hr class="menu-modal-divider">
+            <div class="menu-modal-list">
+                <div onclick="window.location.href='chat.html'" class="menu-modal-item">Chat IA</div>
+                <div onclick="window.location.href='treino.html'" class="menu-modal-item">Treinos</div>
+                <div onclick="window.location.href='dieta.html'" class="menu-modal-item">Dieta</div>
+                <div onclick="window.location.href='alimentacao.html'" class="menu-modal-item">Alimentação</div>
+                <div onclick="window.location.href='playlists.html'" class="menu-modal-item">Playlists</div>
+                <div onclick="window.location.href='avaliacao.html'" class="menu-modal-item">Execução</div>
+                <div onclick="window.location.href='sobre.html'" class="menu-modal-item">Sobre nós</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tela 1: Seleção de Player -->
+        <div class="player-selection" id="playerSelection">
+            <h1>Qual musica vamos ouvir hoje?</h1>
+            <div class="player-options">
+                <div class="player-card" onclick="selectPlayer('spotify')">
+                    <img src="img/spotify.png" alt="Spotify">
+                </div>
+                <div class="player-card" onclick="selectPlayer('youtube')">
+                    <img src="img/yt_music.png" alt="YouTube Music">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela 2: Seleção de Estilos -->
+        <div class="genre-selection" id="genreSelection">
+            <h2>Quais estilos musicais você gosta?</h2>
+            <p>Selecione todos os estilos que deseja ouvir durante o treino</p>
+            <div class="genre-grid" id="genreGrid">
+                <div class="genre-item" data-genre="edm">EDM</div>
+                <div class="genre-item" data-genre="trap">Trap</div>
+                <div class="genre-item" data-genre="hiphop">Hip Hop</div>
+                <div class="genre-item" data-genre="rock">Rock</div>
+                <div class="genre-item" data-genre="phonk">Phonk</div>
+                <div class="genre-item" data-genre="pop">Pop</div>
+                <div class="genre-item" data-genre="funk">Funk</div>
+                <div class="genre-item" data-genre="reggae">Reggae</div>
+                <div class="genre-item" data-genre="house">House</div>
+                <div class="genre-item" data-genre="metal">Metal</div>
+                <div class="genre-item" data-genre="rap">Rap</div>
+                <div class="genre-item" data-genre="sertanejo">Sertanejo</div>
+                <div class="genre-item" data-genre="dubstep">Dubstep</div>
+                <div class="genre-item" data-genre="eletronica">Eletrônica</div>
+                <div class="genre-item" data-genre="kpop">K-Pop</div>
+                <div class="genre-item" data-genre="mpb">MPB</div>
+            </div>
+            <button class="confirm-btn" id="confirmBtn" disabled onclick="showPlaylists()">
+                Confirmar Seleção
+            </button>
+        </div>
+
+        <!-- Tela 3: Playlists -->
+        <div class="playlists-display" id="playlistsDisplay">
+            <h2>Suas Playlists</h2>
+            <div class="player-badge" id="playerBadge"></div>
+            <div id="playlistsList"></div>
+            <button class="change-prefs-btn" onclick="resetPreferences()">
+                Alterar Preferências
+            </button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <hr class="footer-line">
+    </footer>
+
+    <script src="../js/auth-manager.js"></script>
+    <script>
+        // Verificar autenticação
+        AuthManager.requireAuth();
+
+        // Inicializar tema
+        ThemeManager.init();
+
+        // Configurações de playlists
+        const playlistData = {
+            spotify: {
+                edm: { url: 'https://open.spotify.com/playlist/37i9dQZF1DX3Kdv0IChEm9?si=6efbe91df11e43b9', icon: '⚡', img: 'img/musicas/Spotify/EDM.png' },
+                trap: { url: 'https://open.spotify.com/playlist/4NXei3pQZfMIUQv3UdmU2U?si=bc99a76ceb7847da', icon: '🔥', img: 'img/musicas/Spotify/Trap.png' },
+                hiphop: { url: 'https://open.spotify.com/playlist/6kthdfbq97PF7JpANEZgrM?si=f1c7ee9c74184677', icon: '🎤', img: 'img/musicas/Spotify/Hip Hop.png' },
+                rock: { url: 'https://open.spotify.com/playlist/7IsneNrnjgPkEc1BLkBwwi?si=1b0357d988b44495', icon: '🎸', img: 'img/musicas/Spotify/Rock.png' },
+                phonk: { url: 'https://open.spotify.com/playlist/37i9dQZF1DWWY64wDtewQt?si=87979228aa164608', icon: '👻', img: 'img/musicas/Spotify/Phonk.png' },
+                pop: { url: 'https://open.spotify.com/playlist/37i9dQZF1EQncLwOalG3K7?si=34f8bb1f1a6c4154', icon: '🎵', img: 'img/musicas/Spotify/Pop.png' },
+                funk: { url: 'https://open.spotify.com/playlist/5ifcelrC9QRGO7wkqhkfnn?si=9c4303f75c394098', icon: '🕺', img: 'img/musicas/Spotify/Funk.png' },
+                reggae: { url: 'https://open.spotify.com/playlist/2R1Oele6b1foeKCpRHEJsx?si=16a2d38079c34fde', icon: '🌴', img: 'img/musicas/Spotify/Reggae.png' },
+                house: { url: 'https://open.spotify.com/playlist/7bu7BZEusLNJSaAuUUZBKn?si=5b68dadf6b714efd', icon: '🏠', img: 'img/musicas/Spotify/House.png' },
+                metal: { url: 'https://open.spotify.com/playlist/6WNmeutRfJLFVXtuG2ObK7?si=50f13e05138d456b', icon: '🤘', img: 'img/musicas/Spotify/Metal.png' },
+                rap: { url: 'https://open.spotify.com/playlist/7bsqoPpVRZArCKA5LJLenE?si=2017673045c44300', icon: '🎙️', img: 'img/musicas/Spotify/Rap.png' },
+                sertanejo: { url: 'https://open.spotify.com/playlist/31J6zqsOFj6yKjj6dHlk6U?si=cf7f5c41d00f4ccf', icon: '🤠', img: 'img/musicas/Spotify/Sertanejo.png' },
+                dubstep: { url: 'https://open.spotify.com/playlist/3ObJ6Qra3CkV0gNCRTtK0c?si=508c7c47081a4ea9', icon: '🎛️', img: 'img/musicas/Spotify/Dubstep.png' },
+                eletronica: { url: 'https://open.spotify.com/playlist/6gJj32s2qLIYTnAJwjBSrF?si=e17c7b5eeb394ef6', icon: '💿', img: 'img/musicas/Spotify/Eletronica.png' },
+                kpop: { url: 'https://open.spotify.com/playlist/4DujBQthFZUgMABGDyrdyI?si=432612ca47714430', icon: '🇰🇷', img: 'img/musicas/Spotify/K-Pop.png' },
+                mpb: { url: 'https://open.spotify.com/playlist/6IFxrPDMiUCq2zTWs6BGkJ?si=f5bf54b7abf64d3d', icon: '🇧🇷', img: 'img/musicas/Spotify/MPB.png' }
+            },
+            youtube: {
+                edm: { url: 'https://music.youtube.com/playlist?list=RDATgifodHlwZV9wbGF5bGlzdA', icon: '⚡', img: 'img/musicas/YT_Music/EDM.jpg' },
+                trap: { url: 'https://music.youtube.com/watch?v=WQ3wmf8KyFo&si=x6mmmgzZJ2aWO_Jp', icon: '🔥', img: 'img/musicas/YT_Music/TRAP.avif' },
+                hiphop: { url: 'https://music.youtube.com/playlist?list=RDATfgaGlwIGhvcA', icon: '🎤', img: 'img/musicas/YT_Music/HIPHOP.png' },
+                rock: { url: 'https://music.youtube.com/playlist?list=PLdBFXVQtEL32ddsYfFv1gSrKHuaYhCxvR', icon: '🎸', img: 'img/musicas/YT_Music/ROCK.jpg' },
+                phonk: { url: 'https://music.youtube.com/playlist?list=RDATfdcGhvbmsz', icon: '👻', img: 'img/musicas/YT_Music/PHONK.jpg' },
+                pop: { url: 'https://music.youtube.com/playlist?list=PLFQYoerw2c8TMDlZ6V5lhjaShaUbAlGNq', icon: '🎵', img: 'img/musicas/YT_Music/POP.jpg' },
+                funk: { url: 'https://music.youtube.com/playlist?list=PLjcZ2XHA1WXyIqs0FqdourZa3LVTm7cBw', icon: '🕺', img: 'img/musicas/YT_Music/FUNK.jpg' },
+                reggae: { url: 'https://music.youtube.com/playlist?list=RDCLAK5uy_lTN8j40AYIG_Mc9P2t7DECfqGn0A1uQo4', icon: '🌴', img: 'img/musicas/YT_Music/REGGAE.jpg' },
+                house: { url: 'https://music.youtube.com/playlist?list=PLMajM0pgGibs0FjD2OIs52Dr0veJmzeNY', icon: '🏠', img: 'img/musicas/YT_Music/HOUSE.jpg' },
+                metal: { url: 'https://music.youtube.com/playlist?list=PL6v6_oHO7eh1TT-2fZd0xeQgs83ApDfQQ', icon: '🤘', img: 'img/musicas/YT_Music/METAL.jpg' },
+                rap: { url: 'https://music.youtube.com/playlist?list=RDATfacmFw', icon: '🎙️', img: 'img/musicas/YT_Music/RAP.jpg' },
+                sertanejo: { url: 'https://music.youtube.com/playlist?list=RDATf0Xc2VydGFuZWpvIHVuaXZlcnNpdMOhcmlv', icon: '🤠', img: 'img/musicas/YT_Music/SERTANEJO.jpg' },
+                dubstep: { url: 'https://music.youtube.com/playlist?list=RDATfgZHVic3RlcA', icon: '🎛️', img: 'img/musicas/YT_Music/DUBSTEP.jpg' },
+                eletronica: { url: 'https://music.youtube.com/watch?v=ZgvJgqi_DFk&si=_sSx1QSDe4kfjonm', icon: '💿', img: 'img/musicas/YT_Music/ELETRONICA.jpg' },
+                kpop: { url: 'https://music.youtube.com/playlist?list=RDATg0X', icon: '🇰🇷', img: 'img/musicas/YT_Music/KPOP.jpg' },
+                mpb: { url: 'https://music.youtube.com/playlist?list=RDATg7X', icon: '🇧🇷', img: 'img/musicas/YT_Music/MPB.jpg' }
+            }
+        };
+
+        const genreNames = {
+            edm: 'EDM',
+            trap: 'Trap',
+            hiphop: 'Hip Hop',
+            rock: 'Rock',
+            phonk: 'Phonk',
+            pop: 'Pop',
+            funk: 'Funk',
+            reggae: 'Reggae',
+            house: 'House',
+            metal: 'Metal',
+            rap: 'Rap',
+            sertanejo: 'Sertanejo Universitário',
+            dubstep: 'Dubstep',
+            eletronica: 'Eletrônica',
+            kpop: 'K-Pop',
+            mpb: 'MPB'
+        };
+
+        let selectedPlayer = '';
+        let selectedGenres = new Set();
+
+        // Carregar preferências salvas
+        function loadSavedPreferences() {
+            const saved = localStorage.getItem('playlistPreferences');
+            if (saved) {
+                const prefs = JSON.parse(saved);
+                selectedPlayer = prefs.player;
+                selectedGenres = new Set(prefs.genres);
+                
+                // Pular direto para playlists
+                document.getElementById('playerSelection').style.display = 'none';
+                document.getElementById('genreSelection').style.display = 'none';
+                document.getElementById('playlistsDisplay').style.display = 'block';
+                showPlaylists();
+            }
+        }
+
+        // Selecionar player
+        function selectPlayer(player) {
+            selectedPlayer = player;
+            document.getElementById('playerSelection').style.display = 'none';
+            document.getElementById('genreSelection').style.display = 'block';
+        }
+
+        // Seleção de gêneros
+        document.querySelectorAll('.genre-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const genre = this.dataset.genre;
+                
+                if (selectedGenres.has(genre)) {
+                    selectedGenres.delete(genre);
+                    this.classList.remove('selected');
+                } else {
+                    selectedGenres.add(genre);
+                    this.classList.add('selected');
+                }
+                
+                // Habilitar/desabilitar botão
+                document.getElementById('confirmBtn').disabled = selectedGenres.size === 0;
+            });
+        });
+
+        // Mostrar playlists
+        function showPlaylists() {
+            // Salvar preferências
+            localStorage.setItem('playlistPreferences', JSON.stringify({
+                player: selectedPlayer,
+                genres: Array.from(selectedGenres)
+            }));
+
+            document.getElementById('genreSelection').style.display = 'none';
+            document.getElementById('playlistsDisplay').style.display = 'block';
+
+            const playerName = selectedPlayer === 'spotify' ? 'Spotify' : 'YouTube Music';
+            document.getElementById('playerBadge').textContent = `🎧 Player: ${playerName}`;
+
+            const playlistsList = document.getElementById('playlistsList');
+            playlistsList.innerHTML = '';
+
+            selectedGenres.forEach(genre => {
+                const playlist = playlistData[selectedPlayer][genre];
+                const card = document.createElement('div');
+                card.className = 'playlist-card';
+                card.innerHTML = `
+                    <div class="playlist-header">
+                        <img src="${playlist.img}" alt="${genreNames[genre]}" class="playlist-cover" onerror="this.style.display='none';">
+                        <div class="playlist-info">
+                            <h3>${genreNames[genre]}</h3>
+                            <p>Playlist para treino</p>
+                        </div>
+                    </div>
+                    <a href="${playlist.url}" target="_blank" class="playlist-link">
+                        Abrir Playlist
+                    </a>
+                `;
+                playlistsList.appendChild(card);
+            });
+        }
+
+        // Resetar preferências
+        function resetPreferences() {
+            localStorage.removeItem('playlistPreferences');
+            selectedPlayer = '';
+            selectedGenres.clear();
+            
+            document.querySelectorAll('.genre-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            document.getElementById('playlistsDisplay').style.display = 'none';
+            document.getElementById('playerSelection').style.display = 'block';
+        }
+
+        // Carregar ao iniciar
+        loadSavedPreferences();
+
+        // Atualizar foto do header ao carregar
+        window.addEventListener('DOMContentLoaded', function() {
+            const usuario = AuthManager.getLoggedUser();
+            if (usuario && usuario.fotoPerfil) {
+                const headerIcon = document.getElementById('header-perfil-icon');
+                if (headerIcon) {
+                    headerIcon.src = usuario.fotoPerfil;
+                }
+            }
+        });
+
+        // Gerenciamento de perfil e menu (mesmo código das outras páginas)
+        document.getElementById('perfil-btn').addEventListener('click', function() {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            document.getElementById('perfil-nome').textContent = usuario.nome || '';
+            document.getElementById('perfil-email').textContent = usuario.email || '';
+            const img = document.getElementById('perfil-img');
+            img.src = usuario.fotoPerfil || 'img/icon.png';
+            document.getElementById('perfil-modal-bg').style.display = 'block';
+        });
+
+        document.getElementById('perfil-modal-bg').addEventListener('click', function(e) {
+            if (e.target.id === 'perfil-modal-bg') {
+                this.style.display = 'none';
+            }
+        });
+
+        document.querySelector('.header-item.menu').addEventListener('click', function() {
+            document.getElementById('menu-modal-bg').style.display = 'block';
+        });
+
+        document.getElementById('menu-modal-bg').addEventListener('click', function(e) {
+            if (e.target.id === 'menu-modal-bg') {
+                this.style.display = 'none';
+            }
+        });
+
+        document.getElementById('sair-btn').addEventListener('click', function() {
+            localStorage.removeItem('usuarioLogado');
+            window.location.href = 'index.html';
+        });
+
+        // Foto de perfil
+        document.getElementById('alterar-foto-btn').addEventListener('click', function() {
+            document.getElementById('foto-input').click();
+        });
+
+        document.getElementById('foto-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const fotoBase64 = evt.target.result;
+                document.getElementById('perfil-img').src = fotoBase64;
+                const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+                usuario.fotoPerfil = fotoBase64;
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                document.getElementById('header-perfil-icon').src = fotoBase64;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Alterar nome
+        document.getElementById('alterar-nome-btn').addEventListener('click', function() {
+            const nomeSpan = document.getElementById('perfil-nome');
+            if (nomeSpan.querySelector('input')) return;
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = usuario.nome || '';
+            input.style.cssText = 'font-size:15px;font-weight:600;border-radius:4px;padding:2px 6px;width:90%;';
+            nomeSpan.textContent = '';
+            nomeSpan.appendChild(input);
+            input.focus();
+            input.select();
+
+            function salvarNome() {
+                let novoNome = input.value.trim() || usuario.nome || '';
+                usuario.nome = novoNome;
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                nomeSpan.textContent = novoNome;
+            }
+
+            input.addEventListener('keydown', function(ev) {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    salvarNome();
+                } else if (ev.key === 'Escape') {
+                    nomeSpan.textContent = usuario.nome || '';
+                }
+            });
+            input.addEventListener('blur', salvarNome);
+        });
+    </script>
+</body>
+</html>
