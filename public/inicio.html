@@ -505,20 +505,47 @@
             updateCarousel();
         });
 
-        // Suporte a Touch/Swipe para mobile
+        // Suporte a Touch/Swipe para mobile com drag contínuo
         let touchStartX = 0;
         let touchEndX = 0;
         let touchStartY = 0;
         let touchEndY = 0;
+        let isDragging = false;
+        let startTranslate = 0;
+        let currentTranslate = 0;
 
         cardsContainer.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
+            isDragging = true;
+            
+            // Captura a posição atual do translate
+            const cardsPerView = getCardsPerView();
+            startTranslate = -(100 / cardsPerView) * currentSlide;
+            
+            cardsContainer.style.transition = 'none';
+        }, { passive: true });
+
+        cardsContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const touchCurrentX = e.changedTouches[0].screenX;
+            const diff = touchCurrentX - touchStartX;
+            const containerWidth = cardsContainer.offsetWidth;
+            const percentDiff = (diff / containerWidth) * 100;
+            
+            currentTranslate = startTranslate + percentDiff;
+            cardsContainer.style.transform = `translateX(${currentTranslate}%)`;
         }, { passive: true });
 
         cardsContainer.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
             touchEndX = e.changedTouches[0].screenX;
             touchEndY = e.changedTouches[0].screenY;
+            
+            cardsContainer.style.transition = 'transform 0.3s ease';
             handleSwipe();
         }, { passive: true });
 
@@ -532,13 +559,12 @@
                 if (touchEndX < touchStartX) {
                     // Swipe para esquerda - próximo
                     currentSlide++;
-                    updateCarousel();
                 } else if (touchEndX > touchStartX) {
                     // Swipe para direita - anterior
                     currentSlide--;
-                    updateCarousel();
                 }
             }
+            updateCarousel();
         }
 
         window.addEventListener('resize', () => {
