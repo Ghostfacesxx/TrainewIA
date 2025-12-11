@@ -534,7 +534,23 @@
             const containerWidth = cardsContainer.offsetWidth;
             const percentDiff = (diff / containerWidth) * 100;
             
-            currentTranslate = startTranslate + percentDiff;
+            const cardsPerView = getCardsPerView();
+            const maxSlide = cards.length - cardsPerView;
+            const minTranslate = -(100 / cardsPerView) * maxSlide;
+            const maxTranslate = 0;
+            
+            let newTranslate = startTranslate + percentDiff;
+            
+            // Aplica efeito de resistência nos limites (rubber band)
+            if (newTranslate > maxTranslate) {
+                const excess = newTranslate - maxTranslate;
+                newTranslate = maxTranslate + (excess * 0.3); // 30% de resistência
+            } else if (newTranslate < minTranslate) {
+                const excess = minTranslate - newTranslate;
+                newTranslate = minTranslate - (excess * 0.3); // 30% de resistência
+            }
+            
+            currentTranslate = newTranslate;
             cardsContainer.style.transform = `translateX(${currentTranslate}%)`;
         }, { passive: true });
 
@@ -551,15 +567,15 @@
 
         function handleSwipe() {
             const swipeThreshold = 50; // Mínimo de pixels para considerar um swipe
-            const horizontalDiff = Math.abs(touchEndX - touchStartX);
+            const horizontalDiff = touchEndX - touchStartX;
             const verticalDiff = Math.abs(touchEndY - touchStartY);
             
             // Só considera swipe horizontal se o movimento horizontal for maior que o vertical
-            if (horizontalDiff > verticalDiff && horizontalDiff > swipeThreshold) {
-                if (touchEndX < touchStartX) {
+            if (Math.abs(horizontalDiff) > verticalDiff && Math.abs(horizontalDiff) > swipeThreshold) {
+                if (horizontalDiff < 0) {
                     // Swipe para esquerda - próximo
                     currentSlide++;
-                } else if (touchEndX > touchStartX) {
+                } else if (horizontalDiff > 0) {
                     // Swipe para direita - anterior
                     currentSlide--;
                 }
