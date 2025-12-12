@@ -12,6 +12,7 @@ const ThemeManager = {
     setTheme(theme) {
         localStorage.setItem(this.THEME_KEY, theme);
         document.documentElement.setAttribute('data-theme', theme);
+        document.body.setAttribute('data-theme', theme); // CORRIGIDO: aplica também no body
         
         // Adiciona/remove classe dark-mode no body para compatibilidade
         if (theme === 'dark') {
@@ -84,6 +85,7 @@ const ThemeManager = {
         // Aplica o tema salvo
         const savedTheme = this.getCurrentTheme();
         document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body.setAttribute('data-theme', savedTheme); // CORRIGIDO: aplica também no body na inicialização
         
         // Adiciona classe dark-mode no body se necessário
         if (savedTheme === 'dark') {
@@ -98,6 +100,7 @@ const ThemeManager = {
         window.addEventListener('storage', (e) => {
             if (e.key === this.THEME_KEY) {
                 document.documentElement.setAttribute('data-theme', e.newValue);
+                document.body.setAttribute('data-theme', e.newValue);
                 
                 if (e.newValue === 'dark') {
                     document.body.classList.add('dark-mode');
@@ -112,6 +115,7 @@ const ThemeManager = {
         // Escuta evento customizado de mudança de tema
         window.addEventListener('themechange', (e) => {
             document.documentElement.setAttribute('data-theme', e.detail.theme);
+            document.body.setAttribute('data-theme', e.detail.theme);
             
             if (e.detail.theme === 'dark') {
                 document.body.classList.add('dark-mode');

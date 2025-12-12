@@ -1960,12 +1960,15 @@
 
     /* TELA DE EXECUÇÃO */
     body[data-theme='dark'] .execution-header {
-      background: #8B2525 !important;
-      color: #ffffff !important;
+      background: transparent !important;
+      border-bottom: 3px solid #ff6b6b !important;
+      padding: 15px 0 !important;
+      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2) !important;
     }
 
     body[data-theme='dark'] .execution-title {
       color: #ffffff !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     body[data-theme='dark'] .execution-subtitle {
@@ -2023,13 +2026,101 @@
 
     body[data-theme='dark'] .execution-done-btn,
     body[data-theme='dark'] .execution-done-btn-large {
-      background: #8B2525 !important;
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%) !important;
+      border-color: #66bb6a !important;
       color: #ffffff !important;
+      box-shadow: 0 8px 24px rgba(255, 107, 107, 0.5) !important;
     }
 
     body[data-theme='dark'] .execution-done-btn:hover,
     body[data-theme='dark'] .execution-done-btn-large:hover {
-      background: #a52d2d !important;
+      background: linear-gradient(135deg, #ff8080 0%, #ff6b6b 100%) !important;
+      box-shadow: 0 12px 32px rgba(255, 107, 107, 0.6) !important;
+    }
+
+    /* Botão em estado de DESCANSO no modo escuro */
+    body[data-theme='dark'] .execution-done-btn-large.resting {
+      background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%) !important;
+      border-color: #ffeb3b !important;
+      box-shadow: 0 8px 24px rgba(255, 152, 0, 0.6) !important;
+    }
+
+    @keyframes pulseDark {
+      0%, 100% {
+        box-shadow: 0 8px 24px rgba(255, 152, 0, 0.6);
+      }
+      50% {
+        box-shadow: 0 12px 40px rgba(255, 152, 0, 0.9);
+      }
+    }
+
+    body[data-theme='dark'] .execution-done-btn-large.resting {
+      animation: pulseDark 1.5s ease-in-out infinite !important;
+    }
+
+    /* Melhorar header da execução */
+    body[data-theme='dark'] .execution-header {
+      background: transparent !important;
+      border-bottom: 3px solid #ff6b6b !important;
+      padding: 15px 0 !important;
+      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2) !important;
+    }
+
+    /* Círculos de progresso */
+    body[data-theme='dark'] .progress-circle.current {
+      background: #ff6b6b !important;
+      border-color: #ff8a80 !important;
+      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.3) !important;
+    }
+
+    body[data-theme='dark'] .progress-circle.completed {
+      background: #66bb6a !important;
+      border-color: #81c784 !important;
+    }
+
+    body[data-theme='dark'] .progress-circle.resting {
+      background: #ff9800 !important;
+      border-color: #ffa726 !important;
+      box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.3) !important;
+    }
+
+    /* Botões de ação */
+    body[data-theme='dark'] .execution-action-btn {
+      background: #2a2a2a !important;
+      border: 2px solid #444 !important;
+      color: #e0e0e0 !important;
+    }
+
+    body[data-theme='dark'] .execution-action-btn:hover {
+      background: #333 !important;
+      border-color: #ff6b6b !important;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3) !important;
+    }
+
+    /* Timer label */
+    body[data-theme='dark'] .execution-timer-label {
+      color: #ffffff !important;
+    }
+
+    /* Info row */
+    body[data-theme='dark'] .execution-info-item {
+      background: #2a2a2a !important;
+      border: 2px solid #444 !important;
+    }
+
+    body[data-theme='dark'] .execution-info-label {
+      color: #d0d0d0 !important;
+    }
+
+    body[data-theme='dark'] .execution-info-value {
+      color: #ff6b6b !important;
+      font-weight: 700 !important;
+    }
+
+    /* GIF container */
+    body[data-theme='dark'] .execution-gif-container {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+      border: 2px solid #444 !important;
     }
 
     body[data-theme='dark'] .carga-input {
@@ -2360,6 +2451,114 @@
     }
 
     // Script antigo removido - usando apenas TreinoManager.init()
+  </script>
+
+  <!-- SOLUÇÃO 2: JAVASCRIPT QUE FORÇA ESTILOS + DEBUG -->
+  <script>
+    function forcarTemaEscuroExercicios() {
+      const isDark = document.body.getAttribute('data-theme') === 'dark';
+      
+      console.log('=== DEBUG TEMA ESCURO ===');
+      console.log('Tema atual:', document.body.getAttribute('data-theme'));
+      console.log('Body tem data-theme?', document.body.hasAttribute('data-theme'));
+      
+      if (!isDark) {
+        console.log('❌ Tema não é escuro, abortando');
+        return;
+      }
+      
+      console.log('✅ Tema é escuro, aplicando estilos forçados...');
+      
+      // Seleciona todos os cards de exercício
+      const cards = document.querySelectorAll('.exercicio-card');
+      console.log(`Encontrados ${cards.length} cards de exercício`);
+      
+      cards.forEach((card, index) => {
+        // Força estilos no card
+        card.style.setProperty('background', '#2a2a2a', 'important');
+        card.style.setProperty('border', '2px solid #555', 'important');
+        
+        // Nome do exercício
+        const nome = card.querySelector('.exercicio-card-name, .exercicio-nome');
+        if (nome) {
+          nome.style.setProperty('color', '#ffffff', 'important');
+          nome.style.setProperty('font-weight', '700', 'important');
+          console.log(`Card ${index}: Nome forçado para branco`);
+        }
+        
+        // Músculos
+        const musculos = card.querySelector('.exercicio-card-musculos, .exercicio-musculos');
+        if (musculos) {
+          musculos.style.setProperty('color', '#ff6b6b', 'important');
+          musculos.style.setProperty('font-weight', '700', 'important');
+          console.log(`Card ${index}: Músculos forçados para vermelho`);
+        }
+        
+        // Itens de info (SÉRIES, REPS, etc)
+        const infoItems = card.querySelectorAll('.exercicio-card-info-item');
+        console.log(`Card ${index}: ${infoItems.length} itens de info encontrados`);
+        
+        infoItems.forEach((item, infoIndex) => {
+          item.style.setProperty('background', '#1a1a1a', 'important');
+          item.style.setProperty('border', '2px solid #555', 'important');
+          
+          const label = item.querySelector('.exercicio-card-info-label');
+          const value = item.querySelector('.exercicio-card-info-value');
+          
+          if (label) {
+            label.style.setProperty('color', '#d0d0d0', 'important');
+            label.style.setProperty('font-weight', '700', 'important');
+            console.log(`Card ${index}, Info ${infoIndex}: Label forçado`);
+          }
+          
+          if (value) {
+            value.style.setProperty('color', '#ffffff', 'important');
+            value.style.setProperty('font-weight', '800', 'important');
+            console.log(`Card ${index}, Info ${infoIndex}: Value forçado para branco`);
+          }
+        });
+        
+        // GIF container
+        const gif = card.querySelector('.exercicio-card-gif, .exercicio-gif-container');
+        if (gif) {
+          gif.style.setProperty('background', '#1a1a1a', 'important');
+        }
+        
+        // Content
+        const content = card.querySelector('.exercicio-card-content');
+        if (content) {
+          content.style.setProperty('background', '#2a2a2a', 'important');
+        }
+      });
+      
+      console.log('=== FIM DEBUG ===');
+    }
+    
+    // Executa quando a página carrega
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(forcarTemaEscuroExercicios, 500);
+    });
+    
+    // Executa quando o tema muda
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          console.log('Tema mudou, reaplicando estilos...');
+          setTimeout(forcarTemaEscuroExercicios, 100);
+        }
+      });
+    });
+    
+    observer.observe(document.body, { attributes: true });
+    
+    // Executa também quando novos elementos são adicionados
+    const contentObserver = new MutationObserver(() => {
+      if (document.body.getAttribute('data-theme') === 'dark') {
+        forcarTemaEscuroExercicios();
+      }
+    });
+    
+    contentObserver.observe(document.body, { childList: true, subtree: true });
   </script>
 
 </body>
