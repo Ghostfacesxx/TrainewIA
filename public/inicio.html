@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Trainew IA</title>
   <link rel="icon" href="img/favicon.png" type="image/png">
     <link rel="stylesheet" href="../css/header.css">
@@ -476,6 +476,7 @@
         const cards = document.querySelectorAll('.card');
 
         let currentSlide = 0;
+        let scrollPosition = 0; // Posição de scroll contínua em pixels
 
         function getCardsPerView() {
             return window.innerWidth <= 768 ? 2 : 3;
@@ -505,23 +506,38 @@
             updateCarousel();
         });
 
-        // Suporte a Touch/Swipe para mobile com drag contínuo
+        // Suporte a Touch/Swipe para mobile com scroll contínuo
         let touchStartX = 0;
         let touchEndX = 0;
         let touchStartY = 0;
         let touchEndY = 0;
         let isDragging = false;
-        let startTranslate = 0;
-        let currentTranslate = 0;
+        let startScrollPosition = 0;
+        let lastTouchX = 0;
+        let velocity = 0;
+        let lastTime = 0;
 
         cardsContainer.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
+            lastTouchX = touchStartX;
             isDragging = true;
+            velocity = 0;
+            lastTime = Date.now();
             
-            // Captura a posição atual do translate
-            const cardsPerView = getCardsPerView();
-            startTranslate = -(100 / cardsPerView) * currentSlide;
+            // Cancela qualquer animação de momentum em andamento
+            if (window.momentumAnimation) {
+                cancelAnimationFrame(window.momentumAnimation);
+            }
+            
+            // Captura a posição atual em pixels
+            const transform = window.getComputedStyle(cardsContainer).transform;
+            if (transform !== 'none') {
+                const matrix = new DOMMatrix(transform);
+                startScrollPosition = matrix.m41; // translateX em pixels
+            } else {
+                startScrollPosition = 0;
+            }
             
             cardsContainer.style.transition = 'none';
         }, { passive: true });
@@ -530,28 +546,40 @@
             if (!isDragging) return;
             
             const touchCurrentX = e.changedTouches[0].screenX;
-            const diff = touchCurrentX - touchStartX;
-            const containerWidth = cardsContainer.offsetWidth;
-            const percentDiff = (diff / containerWidth) * 100;
+            const touchCurrentY = e.changedTouches[0].screenY;
+            const diffX = touchCurrentX - touchStartX;
+            const diffY = touchCurrentY - touchStartY;
             
-            const cardsPerView = getCardsPerView();
-            const maxSlide = cards.length - cardsPerView;
-            const minTranslate = -(100 / cardsPerView) * maxSlide;
-            const maxTranslate = 0;
+            // Só movimenta se o movimento horizontal for maior que o vertical
+            if (Math.abs(diffX) < Math.abs(diffY)) return;
             
-            let newTranslate = startTranslate + percentDiff;
+            // Calcula velocidade para momentum
+            const currentTime = Date.now();
+            const timeDiff = currentTime - lastTime;
+            if (timeDiff > 0) {
+                velocity = (touchCurrentX - lastTouchX) / timeDiff;
+            }
+            lastTouchX = touchCurrentX;
+            lastTime = currentTime;
+            
+            // Calcula limites em pixels
+            const containerWidth = cardsContainer.scrollWidth;
+            const viewportWidth = cardsContainer.parentElement.offsetWidth;
+            const maxScroll = -(containerWidth - viewportWidth);
+            const minScroll = 0;
+            
+            let newPosition = startScrollPosition + diffX;
             
             // Aplica efeito de resistência nos limites (rubber band)
-            if (newTranslate > maxTranslate) {
-                const excess = newTranslate - maxTranslate;
-                newTranslate = maxTranslate + (excess * 0.3); // 30% de resistência
-            } else if (newTranslate < minTranslate) {
-                const excess = minTranslate - newTranslate;
-                newTranslate = minTranslate - (excess * 0.3); // 30% de resistência
+            if (newPosition > minScroll) {
+                const excess = newPosition - minScroll;
+                newPosition = minScroll + (excess * 0.3);
+            } else if (newPosition < maxScroll) {
+                const excess = maxScroll - newPosition;
+                newPosition = maxScroll - (excess * 0.3);
             }
             
-            currentTranslate = newTranslate;
-            cardsContainer.style.transform = `translateX(${currentTranslate}%)`;
+            cardsContainer.style.transform = `translateX(${newPosition}px)`;
         }, { passive: true });
 
         cardsContainer.addEventListener('touchend', (e) => {
@@ -561,34 +589,83 @@
             touchEndX = e.changedTouches[0].screenX;
             touchEndY = e.changedTouches[0].screenY;
             
-            cardsContainer.style.transition = 'transform 0.3s ease';
-            handleSwipe();
+            // Captura posição atual
+            const transform = window.getComputedStyle(cardsContainer).transform;
+            let currentPosition = 0;
+            if (transform !== 'none') {
+                const matrix = new DOMMatrix(transform);
+                currentPosition = matrix.m41;
+            }
+            
+            // Aplica momentum se houver velocidade significativa
+            if (Math.abs(velocity) > 0.1) {
+                applyMomentum(currentPosition, velocity);
+            } else {
+                // Snap para limites se estiver fora
+                snapToLimits(currentPosition);
+            }
         }, { passive: true });
 
-        function handleSwipe() {
-            const swipeThreshold = 50; // Mínimo de pixels para considerar um swipe
-            const horizontalDiff = touchEndX - touchStartX;
-            const verticalDiff = Math.abs(touchEndY - touchStartY);
+        function applyMomentum(startPos, vel) {
+            const friction = 0.95; // Desaceleração
+            const minVelocity = 0.1;
             
-            // Só considera swipe horizontal se o movimento horizontal for maior que o vertical
-            if (Math.abs(horizontalDiff) > verticalDiff && Math.abs(horizontalDiff) > swipeThreshold) {
-                if (horizontalDiff < 0) {
-                    // Swipe para esquerda - próximo
-                    currentSlide++;
-                } else if (horizontalDiff > 0) {
-                    // Swipe para direita - anterior
-                    currentSlide--;
+            let position = startPos;
+            let currentVel = vel * 20; // Multiplica para efeito mais pronunciado
+            
+            const containerWidth = cardsContainer.scrollWidth;
+            const viewportWidth = cardsContainer.parentElement.offsetWidth;
+            const maxScroll = -(containerWidth - viewportWidth);
+            const minScroll = 0;
+            
+            function animate() {
+                currentVel *= friction;
+                position += currentVel;
+                
+                // Aplica limites com bounce
+                if (position > minScroll) {
+                    position = minScroll;
+                    currentVel = 0;
+                } else if (position < maxScroll) {
+                    position = maxScroll;
+                    currentVel = 0;
+                }
+                
+                cardsContainer.style.transform = `translateX(${position}px)`;
+                
+                if (Math.abs(currentVel) > minVelocity) {
+                    window.momentumAnimation = requestAnimationFrame(animate);
                 }
             }
-            updateCarousel();
+            
+            animate();
+        }
+
+        function snapToLimits(position) {
+            const containerWidth = cardsContainer.scrollWidth;
+            const viewportWidth = cardsContainer.parentElement.offsetWidth;
+            const maxScroll = -(containerWidth - viewportWidth);
+            const minScroll = 0;
+            
+            let targetPosition = position;
+            
+            if (position > minScroll) {
+                targetPosition = minScroll;
+            } else if (position < maxScroll) {
+                targetPosition = maxScroll;
+            }
+            
+            if (targetPosition !== position) {
+                cardsContainer.style.transition = 'transform 0.3s ease';
+                cardsContainer.style.transform = `translateX(${targetPosition}px)`;
+            }
         }
 
         window.addEventListener('resize', () => {
-            // Garante que o slide não fique fora do limite ao redimensionar
-            const cardsPerView = getCardsPerView();
-            const maxSlide = cards.length - cardsPerView;
-            if (currentSlide > maxSlide) currentSlide = maxSlide;
-            updateCarousel();
+            // Reseta posição ao redimensionar
+            cardsContainer.style.transition = 'transform 0.3s ease';
+            cardsContainer.style.transform = 'translateX(0)';
+            currentSlide = 0;
         });
 
         updateCarousel();

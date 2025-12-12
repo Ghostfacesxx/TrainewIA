@@ -8,6 +8,10 @@
 
 body{
     font-family: "Quicksand", sans-serif;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .header {
@@ -16,6 +20,8 @@ body{
     justify-content: space-between;
     background: #7a1818;
     height: 90px;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
 }
 
 .logo {
@@ -141,6 +147,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .footer-line {
@@ -148,6 +156,7 @@ body{
     border: none;
     border-top: 2px solid #5B1313;
     margin: 24px 0 22px 0;
+    margin-bottom: max(22px, env(safe-area-inset-bottom));
 }
 
 @media (max-width: 600px) {

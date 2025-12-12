@@ -693,10 +693,8 @@ input:checked + .slider:before {
     background: var(--overlay-bg);
 }
 
-/* Transições suaves para mudança de tema */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
+/* REMOVIDO - A transição estava causando problemas de aplicação do tema */
+/* Transições aplicadas apenas quando necessário nos elementos específicos */
 
 /* Estilos específicos para páginas de login e cadastro */
 [data-theme='dark'] .title {
@@ -1268,3 +1266,383 @@ input:checked + .slider:before {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* ========================================
+   PÁGINA DE TREINOS - CORREÇÕES TEMA ESCURO
+   ======================================== */
+
+/* Cards de dias de treino */
+[data-theme='dark'] .dia-card {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%) !important;
+    border: 2px solid #ff8a80 !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4) !important;
+}
+
+[data-theme='dark'] .dia-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5) !important;
+}
+
+[data-theme='dark'] .dia-card.descanso {
+    background: linear-gradient(135deg, #4a4a4a 0%, #353535 100%) !important;
+    border: 2px solid #5a5a5a !important;
+}
+
+[data-theme='dark'] .dia-nome {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+[data-theme='dark'] .dia-resumo {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500;
+}
+
+[data-theme='dark'] .dia-exercicios {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Lista de exercícios */
+[data-theme='dark'] .exercicio-list-screen {
+    background-color: #0f0f0f !important;
+}
+
+[data-theme='dark'] .exercicio-list-title {
+    color: #f0f0f0 !important;
+}
+
+/* Cards de exercício - ESPECIFICIDADE MÁXIMA */
+html body[data-theme='dark'] .exercicio-card {
+    background: #2a2a2a !important;
+    border: 2px solid #444 !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7) !important;
+}
+
+html body[data-theme='dark'] .exercicio-card:hover {
+    background: #333 !important;
+    border-color: #ff6b6b !important;
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4) !important;
+}
+
+html body[data-theme='dark'] .exercicio-card-gif {
+    background: #1a1a1a !important;
+    border-bottom: 2px solid #444 !important;
+}
+
+html body[data-theme='dark'] .exercicio-card-content {
+    background: #2a2a2a !important;
+    color: #ffffff !important;
+}
+
+html body[data-theme='dark'] .exercicio-card-name,
+html body[data-theme='dark'] .exercicio-nome {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+html body[data-theme='dark'] .exercicio-card-musculos,
+html body[data-theme='dark'] .exercicio-musculos {
+    color: #ff6b6b !important;
+    font-weight: 700 !important;
+}
+
+html body[data-theme='dark'] .exercicio-card-info-item {
+    background: #1a1a1a !important;
+    border: 2px solid #555 !important;
+}
+
+html body[data-theme='dark'] .exercicio-card-info-label {
+    color: #d0d0d0 !important;
+    font-weight: 700 !important;
+}
+
+html body[data-theme='dark'] .exercicio-card-info-value {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+/* Botão de Cardio */
+[data-theme='dark'] .btn-cardio {
+    background: linear-gradient(135deg, #ff8a50 0%, #ff6b35 100%) !important;
+    box-shadow: 0 6px 18px rgba(255, 138, 80, 0.5) !important;
+    border: 2px solid #ffa370 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+[data-theme='dark'] .btn-cardio:hover {
+    box-shadow: 0 8px 24px rgba(255, 138, 80, 0.6) !important;
+    transform: translateY(-4px) !important;
+}
+
+/* Tela de Cardio */
+[data-theme='dark'] .cardio-screen {
+    background: #0f0f0f !important;
+}
+
+[data-theme='dark'] .cardio-title {
+    color: #f0f0f0 !important;
+}
+
+[data-theme='dark'] .cardio-subtitle {
+    color: #d0d0d0 !important;
+}
+
+[data-theme='dark'] .cardio-categories h3 {
+    color: #ff8a50 !important;
+    background: #2a2a2a;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border-left: 4px solid #ff6b35;
+}
+
+[data-theme='dark'] .cardio-card {
+    background: #2a2a2a !important;
+    border: 2px solid #3a3a3a !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='dark'] .cardio-card:hover {
+    background: #333 !important;
+    border-color: #ff8a50 !important;
+    box-shadow: 0 6px 18px rgba(255, 138, 80, 0.3) !important;
+}
+
+[data-theme='dark'] .cardio-name {
+    color: #f0f0f0 !important;
+    font-weight: 600;
+}
+
+[data-theme='dark'] .cardio-description {
+    color: #d0d0d0 !important;
+}
+
+[data-theme='dark'] .cardio-duration,
+[data-theme='dark'] .cardio-intensity {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border: 1px solid #444 !important;
+}
+
+/* Chat de Treinos */
+[data-theme='dark'] .chat-treino-screen {
+    background: #0f0f0f !important;
+}
+
+[data-theme='dark'] .chat-treino-sugestoes {
+    background: #1a1a1a !important;
+    border-top: 2px solid #2a2a2a !important;
+    border-bottom: 2px solid #2a2a2a !important;
+}
+
+[data-theme='dark'] .chat-sugestao-btn {
+    background: #2a2a2a !important;
+    border: 2px solid #444 !important;
+    color: #e0e0e0 !important;
+    font-weight: 600;
+}
+
+[data-theme='dark'] .chat-sugestao-btn:hover {
+    background: #ff6b6b !important;
+    border-color: #ff8a80 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4) !important;
+}
+
+[data-theme='dark'] .chat-treino-messages {
+    background: #0f0f0f !important;
+}
+
+[data-theme='dark'] .chat-message-user .chat-message-content {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #ff8a80 !important;
+    box-shadow: 0 3px 10px rgba(255, 107, 107, 0.4) !important;
+    font-weight: 500;
+}
+
+[data-theme='dark'] .chat-message-ia .chat-message-content {
+    background: #2a2a2a !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='dark'] .chat-treino-input-area {
+    background: #1a1a1a !important;
+    border-top: 2px solid #2a2a2a !important;
+}
+
+[data-theme='dark'] .chat-treino-input {
+    background: #2a2a2a !important;
+    color: #e8e8e8 !important;
+    border: 2px solid #444 !important;
+    font-weight: 500;
+}
+
+[data-theme='dark'] .chat-treino-input:focus {
+    border-color: #ff6b6b !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2) !important;
+}
+
+[data-theme='dark'] .chat-treino-input::placeholder {
+    color: #777 !important;
+}
+
+[data-theme='dark'] .chat-treino-send-btn {
+    background: #ff6b6b !important;
+    color: #ffffff !important;
+    border: 2px solid #ff8a80 !important;
+    font-weight: 700;
+}
+
+[data-theme='dark'] .chat-treino-send-btn:hover {
+    background: #ff5252 !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5) !important;
+}
+
+/* Botões flutuantes */
+[data-theme='dark'] .fab-chat-treino {
+    background: #ff6b6b !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5) !important;
+    border: 2px solid #ff8a80 !important;
+}
+
+[data-theme='dark'] .fab-chat-treino:hover {
+    box-shadow: 0 8px 28px rgba(255, 107, 107, 0.6) !important;
+}
+
+[data-theme='dark'] .back-btn {
+    background: #ff6b6b !important;
+    border: 2px solid #ff8a80 !important;
+}
+
+[data-theme='dark'] .back-btn:hover {
+    box-shadow: 0 6px 18px rgba(255, 107, 107, 0.4) !important;
+}
+
+/* ========================================
+   PÁGINA DE PLAYLISTS - CORREÇÕES TEMA ESCURO
+   ======================================== */
+
+[data-theme='dark'] .playlist-card {
+    background: #2a2a2a !important;
+    border: 2px solid #3a3a3a !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='dark'] .playlist-card:hover {
+    background: #333 !important;
+    border-color: #ff6b6b !important;
+    box-shadow: 0 6px 18px rgba(255, 107, 107, 0.3) !important;
+}
+
+[data-theme='dark'] .playlist-info h3 {
+    color: #f0f0f0 !important;
+    font-weight: 600;
+}
+
+[data-theme='dark'] .playlist-info p {
+    color: #d0d0d0 !important;
+}
+
+[data-theme='dark'] .playlist-link {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%) !important;
+    border: 2px solid #ff8a80 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+[data-theme='dark'] .playlist-link:hover {
+    box-shadow: 0 6px 18px rgba(255, 107, 107, 0.5) !important;
+}
+
+[data-theme='dark'] .change-prefs-btn {
+    background: #2a2a2a !important;
+    border: 2px solid #ff6b6b !important;
+    color: #ff6b6b !important;
+    font-weight: 700;
+}
+
+[data-theme='dark'] .change-prefs-btn:hover {
+    background: #ff6b6b !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4) !important;
+}
+
+[data-theme='dark'] .player-badge {
+    color: #d0d0d0 !important;
+}
+
+[data-theme='dark'] .playlists-display h2 {
+    color: #ff6b6b !important;
+}
+
+[data-theme='dark'] .playlist-icon {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%) !important;
+}
+
+/* Página de seleção de estilos musicais */
+[data-theme='dark'] .music-preferences-title {
+    color: #ff6b6b !important;
+}
+
+[data-theme='dark'] .music-preferences-subtitle {
+    color: #d0d0d0 !important;
+}
+
+[data-theme='dark'] .genre-btn {
+    background: #2a2a2a !important;
+    border: 2px solid #444 !important;
+    color: #e0e0e0 !important;
+    font-weight: 600;
+}
+
+[data-theme='dark'] .genre-btn:hover {
+    border-color: #ff6b6b !important;
+    background: #333 !important;
+}
+
+[data-theme='dark'] .genre-btn.selected {
+    background: #ff6b6b !important;
+    border-color: #ff8a80 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .confirm-btn {
+    background: #ff6b6b !important;
+    color: #ffffff !important;
+    border: 2px solid #ff8a80 !important;
+    font-weight: 700;
+}
+
+[data-theme='dark'] .confirm-btn:hover:not(:disabled) {
+    background: #ff5252 !important;
+    box-shadow: 0 6px 18px rgba(255, 107, 107, 0.5) !important;
+}
+
+[data-theme='dark'] .confirm-btn:disabled {
+    background: #3a3a3a !important;
+    color: #777 !important;
+    border-color: #444 !important;
+}
+
+/* Player selection */
+[data-theme='dark'] .player-option {
+    background: #2a2a2a !important;
+    border: 2px solid #444 !important;
+}
+
+[data-theme='dark'] .player-option:hover {
+    background: #333 !important;
+    border-color: #ff6b6b !important;
+}
+
+[data-theme='dark'] .player-option.selected {
+    background: #ff6b6b !important;
+    border-color: #ff8a80 !important;
+}
+
+[data-theme='dark'] .player-name {
+    color: #f0f0f0 !important;
+}

@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Trainew IA</title>
   <link rel="icon" href="img/favicon.png" type="image/png">
   <link rel="stylesheet" href="../css/header.css">
@@ -515,9 +515,9 @@
     }
 
     body[data-theme='dark'] .exercicio-card {
-      background: #1f1f1f !important;
-      border: 1px solid #3a3a3a !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+      background: #2a2a2a !important;
+      border: 2px solid #444 !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7) !important;
     }
 
     .exercicio-card:hover {
@@ -526,8 +526,9 @@
     }
 
     body[data-theme='dark'] .exercicio-card:hover {
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-      border-color: #8B2525;
+      box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4) !important;
+      border-color: #ff6b6b !important;
+      background: #333 !important;
     }
 
     .exercicio-card-gif {
@@ -544,8 +545,8 @@
     }
 
     body[data-theme='dark'] .exercicio-card-gif {
-      background: #161616 !important;
-      border-bottom: 1px solid #3a3a3a !important;
+      background: #1a1a1a !important;
+      border-bottom: 2px solid #444 !important;
     }
 
     .exercicio-card-gif img {
@@ -561,8 +562,8 @@
     }
 
     body[data-theme='dark'] .exercicio-card-content {
-      background: #1f1f1f !important;
-      color: #f0f0f0 !important;
+      background: #2a2a2a !important;
+      color: #ffffff !important;
     }
 
     .exercicio-card-header {
@@ -582,7 +583,8 @@
     }
 
     body[data-theme='dark'] .exercicio-card-name {
-      color: #f0f0f0;
+      color: #ffffff !important;
+      font-weight: 700;
     }
 
     .exercicio-card-toggle {
@@ -597,7 +599,7 @@
     }
 
     body[data-theme='dark'] .exercicio-card-toggle {
-      background: #444;
+      background: #555 !important;
     }
 
     .exercicio-card-toggle.active {
@@ -628,8 +630,9 @@
     }
 
     body[data-theme='dark'] .exercicio-card-musculos {
-      color: #ff8577;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      color: #ff6b6b !important;
+      font-weight: 700 !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     }
 
     .exercicio-card-info-grid {
@@ -647,8 +650,8 @@
     }
 
     body[data-theme='dark'] .exercicio-card-info-item {
-      background: #0a0a0a;
-      border-color: #444;
+      background: #1a1a1a !important;
+      border: 2px solid #555 !important;
     }
 
     .exercicio-card-info-label {
@@ -661,7 +664,8 @@
     }
 
     body[data-theme='dark'] .exercicio-card-info-label {
-      color: #a0a0a0;
+      color: #d0d0d0 !important;
+      font-weight: 700 !important;
     }
 
     .exercicio-card-info-value {
@@ -671,7 +675,8 @@
     }
 
     body[data-theme='dark'] .exercicio-card-info-value {
-      color: #f0f0f0;
+      color: #ffffff !important;
+      font-weight: 800 !important;
     }
 
     /* =============================================
@@ -1527,8 +1532,9 @@
     }
 
     body[data-theme='dark'] .exercicio-card {
-      background: #2a2a2a;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      background: #2a2a2a !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+      border: 2px solid #444 !important;
     }
 
     .exercicio-card:hover {
@@ -1537,7 +1543,9 @@
     }
 
     body[data-theme='dark'] .exercicio-card:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4) !important;
+      border-color: #ff6b6b !important;
+      background: #333 !important;
     }
 
     .exercicio-gif-container {
@@ -1553,7 +1561,8 @@
     }
 
     body[data-theme='dark'] .exercicio-gif-container {
-      background: #1a1a1a;
+      background: #1a1a1a !important;
+      border: 1px solid #444;
     }
 
     .exercicio-gif {
@@ -1580,6 +1589,11 @@
       line-height: 1.3;
     }
 
+    body[data-theme='dark'] .exercicio-nome {
+      color: #ffffff !important;
+      font-weight: 700;
+    }
+
     .exercicio-musculos {
       font-size: 12px;
       color: #666;
@@ -1587,7 +1601,8 @@
     }
 
     body[data-theme='dark'] .exercicio-musculos {
-      color: #999;
+      color: #d0d0d0 !important;
+      font-weight: 600;
     }
 
     .cardio-categories h3 {
@@ -1919,17 +1934,17 @@
     }
 
     body[data-theme='dark'] .exercicio-card-content {
-      background: #1a1a1a !important;
+      background: #2a2a2a !important;
+      color: #ffffff !important;
     }
 
-    body[data-theme='dark'] .exercicio-card-name {
-      color: #f0f0f0 !important;
+    body[data-theme='dark'] .exercicio-card-header {
+      color: #ffffff !important;
+      font-weight: 700 !important;
     }
 
-    body[data-theme='dark'] .exercicio-card-musculos {
-      color: #ff8577 !important;
-    }
-
+    /* REMOVER DUPLICAÇÃO - JÁ DEFINIDO ANTES */
+    
     body[data-theme='dark'] .exercicio-card-info-item {
       background: #0f0f0f !important;
       border: 1px solid #4a4a4a !important;
@@ -2075,6 +2090,130 @@
     body[data-theme='dark'] .fab-chat-treino:hover {
       background: #a52d2d !important;
       box-shadow: 0 6px 20px rgba(139, 37, 37, 0.6) !important;
+    }
+
+    /* ESTILOS GERAIS PARA ELEMENTOS DINÂMICOS */
+    body[data-theme='dark'] * {
+      scrollbar-width: thin;
+      scrollbar-color: #444 #1a1a1a;
+    }
+
+    /* Garante que TODOS os textos sejam legíveis - MÁXIMA ESPECIFICIDADE */
+    html body[data-theme='dark'] h1,
+    html body[data-theme='dark'] h2,
+    html body[data-theme='dark'] h3,
+    html body[data-theme='dark'] h4,
+    html body[data-theme='dark'] h5,
+    html body[data-theme='dark'] h6 {
+      color: #ffffff !important;
+    }
+
+    html body[data-theme='dark'] p,
+    html body[data-theme='dark'] span,
+    html body[data-theme='dark'] li,
+    html body[data-theme='dark'] label,
+    html body[data-theme='dark'] div {
+      color: #e0e0e0 !important;
+    }
+
+    /* FORÇA NOS CARDS - usa !important E especificidade extra */
+    html body[data-theme='dark'] .exercicio-card-name,
+    html body[data-theme='dark'] .exercicio-nome {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+
+    html body[data-theme='dark'] .exercicio-card-musculos,
+    html body[data-theme='dark'] .exercicio-musculos {
+      color: #ff6b6b !important;
+      font-weight: 700 !important;
+    }
+
+    html body[data-theme='dark'] .exercicio-card-info-label {
+      color: #d0d0d0 !important;
+      font-weight: 700 !important;
+    }
+
+    html body[data-theme='dark'] .exercicio-card-info-value {
+      color: #ffffff !important;
+      font-weight: 800 !important;
+    }
+
+    /* Boxes de informação/dicas */
+    body[data-theme='dark'] .info-box,
+    body[data-theme='dark'] .tips-box,
+    body[data-theme='dark'] .warning-box,
+    body[data-theme='dark'] .dicas-box,
+    body[data-theme='dark'] [class*="dica"],
+    body[data-theme='dark'] [class*="info"],
+    body[data-theme='dark'] [class*="tip"] {
+      background: #2a2a2a !important;
+      border: 2px solid #444 !important;
+      color: #ffffff !important;
+    }
+
+    body[data-theme='dark'] .info-box *,
+    body[data-theme='dark'] .tips-box *,
+    body[data-theme='dark'] .warning-box *,
+    body[data-theme='dark'] .dicas-box *,
+    body[data-theme='dark'] [class*="dica"] *,
+    body[data-theme='dark'] [class*="info"] *,
+    body[data-theme='dark'] [class*="tip"] * {
+      color: #e0e0e0 !important;
+    }
+
+    /* Títulos dentro de boxes */
+    body[data-theme='dark'] .info-box h1,
+    body[data-theme='dark'] .info-box h2,
+    body[data-theme='dark'] .info-box h3,
+    body[data-theme='dark'] .tips-box h1,
+    body[data-theme='dark'] .tips-box h2,
+    body[data-theme='dark'] .tips-box h3,
+    body[data-theme='dark'] .warning-box h1,
+    body[data-theme='dark'] .warning-box h2,
+    body[data-theme='dark'] .warning-box h3 {
+      color: #ff8a50 !important;
+    }
+
+    /* Cards em geral */
+    body[data-theme='dark'] [class*="card"]:not(.dia-card):not(.exercicio-card) {
+      background: #2a2a2a !important;
+      border: 2px solid #444 !important;
+      color: #ffffff !important;
+    }
+
+    /* Inputs e selects */
+    body[data-theme='dark'] input:not([type="checkbox"]):not([type="radio"]),
+    body[data-theme='dark'] select,
+    body[data-theme='dark'] textarea {
+      background: #1a1a1a !important;
+      color: #ffffff !important;
+      border: 2px solid #555 !important;
+    }
+
+    body[data-theme='dark'] input::placeholder,
+    body[data-theme='dark'] textarea::placeholder {
+      color: #888 !important;
+    }
+
+    /* Backgrounds escuros em geral */
+    body[data-theme='dark'] [style*="background: white"],
+    body[data-theme='dark'] [style*="background:white"],
+    body[data-theme='dark'] [style*="background-color: white"],
+    body[data-theme='dark'] [style*="background-color:white"],
+    body[data-theme='dark'] [style*="background: #fff"],
+    body[data-theme='dark'] [style*="background:#fff"] {
+      background: #2a2a2a !important;
+    }
+
+    /* Textos com cor clara forçada */
+    body[data-theme='dark'] [style*="color: #333"],
+    body[data-theme='dark'] [style*="color:#333"],
+    body[data-theme='dark'] [style*="color: #666"],
+    body[data-theme='dark'] [style*="color:#666"],
+    body[data-theme='dark'] [style*="color: black"],
+    body[data-theme='dark'] [style*="color:black"] {
+      color: #e0e0e0 !important;
     }
 
     /* TOAST NOTIFICATION */

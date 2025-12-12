@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Trainew IA</title>
     <link rel="icon" href="img/favicon.png" type="image/png">
     <link rel="stylesheet" href="../css/chat.css">
@@ -870,6 +871,32 @@ document.getElementById('chat-form').addEventListener('submit', async function (
                 this.style.display = 'none';
             }
         });
+
+        // Melhoria para mobile: previne zoom e ajusta scroll quando teclado abre
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+        
+        chatInput.addEventListener('focus', function() {
+            // Scroll para o input quando o teclado abrir
+            setTimeout(() => {
+                this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+        });
+        
+        // Scroll automático para última mensagem
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Chama scroll após renderizar mensagem
+        const originalRenderMessage = window.renderMessage;
+        if (originalRenderMessage) {
+            window.renderMessage = function(...args) {
+                const result = originalRenderMessage.apply(this, args);
+                setTimeout(scrollToBottom, 100);
+                return result;
+            };
+        }
     </script>
 
 </body>
